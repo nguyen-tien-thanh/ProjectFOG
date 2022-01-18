@@ -31,6 +31,10 @@ app.get('/login', (req, res) => {
   res.render('login')
 })
 
+app.get('/search', (req, res) => {
+  res.render('search')
+})
+
 app.listen(port, () => {
   console.log(`Application listening at http://localhost:${port}`)
 })
