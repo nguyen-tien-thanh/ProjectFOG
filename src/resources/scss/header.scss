@@ -5,10 +5,10 @@
   height: 85px;
 }
 
-.navbar a{
+.navbar a {
   color: black;
 }
-.navbar li{
+.navbar li {
   display: inline-block;
 }
 .navcenter{
@@ -26,13 +26,9 @@
   position: relative;
   padding-right: 96px;
 }
-.navright li{
+.navright li {
   display: inline-block;
   padding-right: 10px;
-}
-
-.navbar:hover{
-  background-color: red;
 }
 
 
@@ -41,31 +37,33 @@
   position: absolute;
   background-color: #f9f9f9;
   min-width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
 .inputsub {
-  display:none;
+  display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 220px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-.login a{
+.login a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.login a:hover {background-color: #868282}
+.login a:hover {
+  background-color: #868282;
+}
 
 .navright li:hover .login {
   display: block;
 }
-.navright li:hover .inputsub{
+.navright li:hover .inputsub {
   display: block;
 }
