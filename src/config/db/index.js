@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 async function connect(){
-    mongoose.connect("mongodb://localhost/nodejs",{
+    mongoose.connect("mongodb://localhost/DatabaseCK",{
     useNewUrlParser: true
     })
     mongoose.connection

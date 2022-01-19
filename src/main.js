@@ -5,6 +5,7 @@ const hbs = exphbs.create({ extname: '.hbs' })
 const path = require('path');
 
 const route = require('./routes');
+const db = require('./config/db');
 
 const app = express()
 const port = 3000
@@ -12,6 +13,9 @@ const port = 3000
 app.use(express.static(path.join(__dirname, 'public')))
 //HTTP Loggers
 app.use(morgan('combined'))
+
+//Connect Database
+db.connect();
 
 //Middleware to solve Body Form
 app.use(express.urlencoded())
@@ -28,5 +32,8 @@ route(app);
 
 
 app.listen(port, () => {
+  console.log(``)
+  console.log(``)
+  console.log(``)
   console.log(`Application listening at http://localhost:${port}`)
 })

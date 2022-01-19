@@ -1,8 +1,30 @@
 
+
 class SiteController {
     
     // [GET] /index -- Home page
-    index(req, res){
+    index(req, res, next){
+        
+        // res.json({
+        //     name : 'test',
+        // });
+        
+        //=======================================================//
+        // Category.find({}, function(err, category){
+        //     if (!err) {
+        //         res.json (category);
+        //     }
+        //     else {
+        //         res.status(400).json({err: ' ERROR !!!'})
+        //     }
+        // })
+
+        //=======================================================//
+        
+
+        // Catch error shortly
+        // .catch(next); 
+
         res.render('index');
     }
 

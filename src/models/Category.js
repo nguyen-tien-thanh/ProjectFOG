@@ -9,4 +9,4 @@ const Category = new Schema({
     updateAt: {type: Date, default : Date.Now}
 });
 
-module.exports = mongoose.model('category', Category);
+module.exports = mongoose.model('Category', Category);
