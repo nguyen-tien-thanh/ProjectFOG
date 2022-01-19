@@ -1,14 +1,26 @@
 .container {
-  color: green;
-}
-
-.container {
   color:#000;
 }
-
-.section-signin{
-  padding-bottom: 15px ;
+.row{
   
+}
+
+.column-4{
+  
+  float: left;
+  width: 33.33333%;
+  padding: 20px 2%;
+  align-items: center;
+}
+
+.btn-secondary{
+  background-color: #000;
+  color: #f1f1f1;
+}
+
+.create-new{
+  border-left: 1px solid #f1f1f1;
+
 }
 
 .section-create{
@@ -36,4 +48,3 @@
   margin-left: -8px;
   margin-right: -8px;
 }
-
