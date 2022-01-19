@@ -3,6 +3,7 @@
   margin-left: auto;
   margin-right: auto;
   height: 85px;
+  background-color: blanchedalmond;
 }
 
 .navbar a {
@@ -66,4 +67,11 @@
 }
 .navright li:hover .inputsub {
   display: block;
+}
+
+// CSS SLIDER
+#slider{
+  padding-top: 43.452381%;
+  background-image: url("/src/public/images/logo.jpg");
+
 }
