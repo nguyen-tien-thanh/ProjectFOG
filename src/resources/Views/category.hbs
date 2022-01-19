@@ -8,17 +8,22 @@
 
 <div class="mt-4">
     <div class="row">
+        {{#each category}}
         <div class="col-sm-6 col-lg-4">
-            {{#each category}}
             <div class="card">
-            <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{this.name}} $$</h5>
-                <p class="card-text">{{this.description}}</p>
-                <a href="#" class="btn btn-primary"> Category Detail </a>
+                <a href="/category/{{this.slug}}">
+                    <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+                    </a>
+                    <h>Slug la: {{this.slug}}</h>
+                    <div class="card-body">
+                        <a href="/category/{{this.slug}}">
+                            <h5 class="card-title">{{this.name}}</h5>
+                        </a>
+                        <p class="card-text">{{this.description}}</p>
+                        <a href="#" class="btn btn-primary"> Category Detail </a>
+                    </div>
             </div>
-            </div>
-            {{/each}}
         </div>
+        {{/each}}
     </div>
 </div>
