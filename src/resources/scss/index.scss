@@ -1,0 +1,36 @@
+// CSS SLIDER
+#slider{
+    width: 100%;
+    position: relative;
+    padding-top: 43.452381%;
+    background-image: url("/images/header1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #slider .text-link{
+      position: absolute;
+      color: aliceblue;
+      bottom: 70px;
+      left: 50%;
+      transform:translateX(-50%);
+      text-align: center;
+  }
+  #slider .Shopbutton a{
+      text-decoration: none;
+      color:white;
+  }
+//   css for button
+  .Shopbutton button {
+    background-color:rgba(0,0,0,0);
+    border-style: solid;
+    border-color: white;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }

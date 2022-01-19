@@ -1,5 +1,5 @@
 .navbar{
-  width: 1903px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   height: 85px;
@@ -13,7 +13,10 @@
   display: inline-block;
 }
 .navcenter{
-  padding-right:190px;
+  padding-right:350px;
+}
+.navcenter li{
+  font-size: 20px;
 }
 
 .navleft{
@@ -67,17 +70,4 @@
 }
 .navright li:hover .inputsub {
   display: block;
-}
-
-// CSS SLIDER
-#slider{
-  position: relative;
-  padding-top: 43.452381%;
-  background-image: url("/images/header1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#slider .text-link{
-  position: absolute;
 }
