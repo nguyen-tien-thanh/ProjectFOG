@@ -1,5 +1,5 @@
 .navbar{
-  width: 1713px;
+  width: 1903px;
   margin-left: auto;
   margin-right: auto;
   height: 85px;
@@ -11,13 +11,30 @@
 .navbar li{
   display: inline-block;
 }
+.navcenter{
+  padding-right:190px;
+}
+
+.navleft{
+  padding-left: 41px;
+}
+.navleft li{
+  padding-right: 10px;
+}
 
 .navright {
   position: relative;
+  padding-right: 96px;
 }
 .navright li{
   display: inline-block;
+  padding-right: 10px;
 }
+
+.navbar:hover{
+  background-color: red;
+}
+
 
 .login{
   display: none;
