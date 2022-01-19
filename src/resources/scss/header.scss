@@ -3,10 +3,11 @@
   margin-left: auto;
   margin-right: auto;
   height: 85px;
+  background-color:black;
 }
 
 .navbar a {
-  color: black;
+  color: white;
 }
 .navbar li {
   display: inline-block;
@@ -24,7 +25,7 @@
 
 .navright {
   position: relative;
-  padding-right: 96px;
+  padding-right: 110px;
 }
 .navright li {
   display: inline-block;
@@ -66,4 +67,17 @@
 }
 .navright li:hover .inputsub {
   display: block;
+}
+
+// CSS SLIDER
+#slider{
+  position: relative;
+  padding-top: 43.452381%;
+  background-image: url("/images/header1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#slider .text-link{
+  position: absolute;
 }
