@@ -16,10 +16,6 @@
       transform:translateX(-50%);
       text-align: center;
   }
-  #slider .Shopbutton a{
-      text-decoration: none;
-      color:white;
-  }
 //   css for button
   .Shopbutton button {
     background-color:rgba(0,0,0,0);
@@ -34,15 +30,78 @@
     margin: 4px 2px;
     cursor: pointer;
   }
+  .Shopbutton button:hover{
+    background-color: white;
+    color: black;
+  }
 // CSS SLIDER2
-#slider2{
-}
 #slider2 img{
   width: 50%;
   height: auto;
 }
- 
-.slidersub1{
+.slidersub1 img,
+.slidersub2 img{
+  float: left;
 }
+// CSS FOR CLASS SLIDERSUB1
+.slidersub1{
+  position: relative;
+}
+.slidertextsub1{
+  position: absolute;
+  top: 600px;
+  color: red;
+}
+// CSS Valentine-button
+.Valentine-button button {
+  background-color:rgba(0,0,0,0);
+  border-style: solid;
+  border-color: red;
+  padding: 15px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.Valentine-button button{
+  color: red;
+}
+.Valentine-button button:hover{
+  background-color: white;
+  color: black;
+  border-color: white;
+}
+
+// CSS FOR SLIDERSUB2
 .slidersub2{
+  position: relative;
+}
+.slidertextsub2{
+  position: absolute;
+  top: 600px;
+  left:960px;
+  color: white;
+}
+// CSS Layers-button
+.Layers-button button {
+  background-color:rgba(0,0,0,0);
+  border-style: solid;
+  border-color: white;
+  padding: 15px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.Layers-button button{
+  color: white;
+}
+.Layers-button button:hover{
+  background-color: white;
+  color: black;
+  border-color: white;
 }
