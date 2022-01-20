@@ -1,5 +1,5 @@
 .navbar {
-  width: 1903px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   height: 85px;
@@ -12,7 +12,10 @@
   display: inline-block; }
 
 .navcenter {
-  padding-right: 190px; }
+  padding-right: 350px; }
+
+.navcenter li {
+  font-size: 20px; }
 
 .navleft {
   padding-left: 41px; }
@@ -59,16 +62,6 @@
 .navright li:hover .inputsub {
   display: block; }
 
-#slider {
-  position: relative;
-  padding-top: 43.452381%;
-  background-image: url("/images/header1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; }
-
-#slider .text-link {
-  position: absolute; }
-
 footer {
   font-size: 30px; }
 
@@ -110,3 +103,46 @@ footer {
 
 .forgot {
   margin: 0 10px; }
+
+#slider {
+  width: 100%;
+  position: relative;
+  padding-top: 43.452381%;
+  background-image: url("/images/header1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+#slider .text-link {
+  position: absolute;
+  color: aliceblue;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center; }
+
+#slider .Shopbutton a {
+  text-decoration: none;
+  color: white; }
+
+.Shopbutton button {
+  background-color: rgba(0, 0, 0, 0);
+  border-style: solid;
+  border-color: white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; }
+
+#slider2 {
+  float: flex; }
+
+.slidersub1 {
+  position: relative;
+  padding-top: 86.9047619;
+  background-image: url("/images/header2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
