@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "concurrently": "^7.0.0",
+    "currently": "^0.0.8",
     "morgan": "^1.10.0",
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.15"
