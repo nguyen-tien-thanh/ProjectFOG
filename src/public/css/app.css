@@ -63,7 +63,18 @@
   display: block; }
 
 footer {
-  font-size: 30px; }
+  font-size: 16px;
+  background-color: black; }
+
+.col-2 li {
+  list-style: none;
+  padding-top: 20px; }
+
+.col-2 a {
+  color: white; }
+
+b {
+  color: white; }
 
 .container {
   color: #000; }
