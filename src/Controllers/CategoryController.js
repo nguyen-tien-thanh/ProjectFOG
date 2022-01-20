@@ -4,8 +4,6 @@ const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
 class CategoryController {
     
-
-
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
