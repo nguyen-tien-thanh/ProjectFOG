@@ -35,14 +35,14 @@
     cursor: pointer;
   }
 // CSS SLIDER2
-  #slider2{
-    float: flex;
-  }
-
-  .slidersub1{
-    position: relative;
-    padding-top: 86.9047619;
-    background-image: url("/images/header2.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+#slider2{
+}
+#slider2 img{
+  width: 50%;
+  height: auto;
+}
+ 
+.slidersub1{
+}
+.slidersub2{
+}
