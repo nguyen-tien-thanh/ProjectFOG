@@ -1,0 +1,138 @@
+.navbar {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 85px;
+  background-color: black; }
+
+.navbar a {
+  color: white; }
+
+.navbar li {
+  display: inline-block; }
+
+.navcenter {
+  padding-right: 350px; }
+
+.navcenter li {
+  font-size: 20px; }
+
+.navleft {
+  padding-left: 41px; }
+
+.navleft li {
+  padding-right: 10px; }
+
+.navright {
+  position: relative;
+  padding-right: 110px; }
+
+.navright li {
+  display: inline-block;
+  padding-right: 10px; }
+
+.login {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1; }
+
+.inputsub {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1; }
+
+.login a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block; }
+
+.login a:hover {
+  background-color: #868282; }
+
+.navright li:hover .login {
+  display: block; }
+
+.navright li:hover .inputsub {
+  display: block; }
+
+footer {
+  font-size: 30px; }
+
+.container {
+  color: #000; }
+
+.column-4 {
+  float: left;
+  width: 33.33333%;
+  padding: 20px 2%;
+  align-items: center; }
+
+.btn-secondary {
+  background-color: #000;
+  color: #f1f1f1; }
+
+.create-new {
+  border-left: 1px solid #f1f1f1; }
+
+.section-create {
+  float: left; }
+
+.section-signin {
+  margin-left: 1.6em;
+  float: left;
+  width: 33.333%; }
+
+.col-col-full {
+  padding-left: 8px;
+  padding-right: 8px; }
+
+.col-full,
+.col-section-create {
+  padding: 0 8px; }
+
+.row {
+  margin-left: -8px;
+  margin-right: -8px; }
+
+.forgot {
+  margin: 0 10px; }
+
+#slider {
+  width: 100%;
+  position: relative;
+  padding-top: 43.452381%;
+  background-image: url("/images/header1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+#slider .text-link {
+  position: absolute;
+  color: aliceblue;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center; }
+
+#slider .Shopbutton a {
+  text-decoration: none;
+  color: white; }
+
+.Shopbutton button {
+  background-color: rgba(0, 0, 0, 0);
+  border-style: solid;
+  border-color: white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; }
