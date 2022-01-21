@@ -63,7 +63,24 @@
   display: block; }
 
 footer {
-  font-size: 30px; }
+  font-size: 16px;
+  background-color: black; }
+
+.col-2 li {
+  list-style: none;
+  padding-top: 20px;
+  color: white; }
+
+.col-2 a {
+  color: white; }
+
+.col-2 .infor {
+  opacity: 0.6; }
+
+.col-6 li {
+  list-style: none;
+  color: white;
+  padding-top: 20px; }
 
 .container {
   color: #000; }
@@ -120,10 +137,6 @@ footer {
   transform: translateX(-50%);
   text-align: center; }
 
-#slider .Shopbutton a {
-  text-decoration: none;
-  color: white; }
-
 .Shopbutton button {
   background-color: rgba(0, 0, 0, 0);
   border-style: solid;
@@ -136,3 +149,72 @@ footer {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer; }
+
+.Shopbutton button:hover {
+  background-color: white;
+  color: black; }
+
+#slider2 img {
+  width: 50%;
+  height: auto; }
+
+.slidersub1 img,
+.slidersub2 img {
+  float: left; }
+
+.slidersub1 {
+  position: relative; }
+
+.slidertextsub1 {
+  position: absolute;
+  top: 600px;
+  color: red; }
+
+.Valentine-button button {
+  background-color: rgba(0, 0, 0, 0);
+  border-style: solid;
+  border-color: red;
+  padding: 15px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; }
+
+.Valentine-button button {
+  color: red; }
+
+.Valentine-button button:hover {
+  background-color: white;
+  color: black;
+  border-color: white; }
+
+.slidersub2 {
+  position: relative; }
+
+.slidertextsub2 {
+  position: absolute;
+  top: 600px;
+  left: 960px;
+  color: white; }
+
+.Layers-button button {
+  background-color: rgba(0, 0, 0, 0);
+  border-style: solid;
+  border-color: white;
+  padding: 15px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; }
+
+.Layers-button button {
+  color: white; }
+
+.Layers-button button:hover {
+  background-color: white;
+  color: black;
+  border-color: white; }

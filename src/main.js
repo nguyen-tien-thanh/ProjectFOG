@@ -18,8 +18,10 @@ app.use(morgan('combined'))
 db.connect();
 
 //Middleware to solve Body Form
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+
 
 //Template engines
 app.engine('hbs', hbs.engine)

@@ -1,3 +1,24 @@
 footer {
-  font-size: 30px;
+  font-size: 16px;
+  background-color: black;
 }
+.col-2 li{
+  list-style: none;
+  padding-top: 20px;
+  color: white;
+}
+
+.col-2 a{
+  color: white;
+}
+.col-2 .infor{
+  opacity: 0.6;
+}
+
+// CSS for Colum4
+.col-6 li{
+  list-style: none;
+  color: white;
+  padding-top: 20px;
+}
+
