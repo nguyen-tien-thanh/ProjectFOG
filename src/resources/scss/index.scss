@@ -35,12 +35,18 @@
     color: black;
   }
 // CSS SLIDER2
-#slider2 img{
+.slidersub1{
   width: 50%;
+}
+.slidersub2{
+  width: 50%;
+}
+#slider2 img{
+  width: 100%;
   height: auto;
 }
-.slidersub1 img,
-.slidersub2 img{
+.slidersub1,
+.slidersub2{
   float: left;
 }
 // CSS FOR CLASS SLIDERSUB1
@@ -49,8 +55,8 @@
 }
 .slidertextsub1{
   position: absolute;
-  top: 600px;
   color: red;
+  bottom: 50px;
 }
 // CSS Valentine-button
 .Valentine-button button {
@@ -80,8 +86,8 @@
 }
 .slidertextsub2{
   position: absolute;
-  top: 600px;
-  left:960px;
+  bottom: 50px;
+  
   color: white;
 }
 // CSS Layers-button
