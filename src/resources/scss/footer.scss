@@ -5,11 +5,20 @@ footer {
 .col-2 li{
   list-style: none;
   padding-top: 20px;
+  color: white;
 }
+
 .col-2 a{
   color: white;
 }
-// Css for tag b
-b{
-  color: white;
+.col-2 .infor{
+  opacity: 0.6;
 }
+
+// CSS for Colum4
+.col-6 li{
+  list-style: none;
+  color: white;
+  padding-top: 20px;
+}
+
