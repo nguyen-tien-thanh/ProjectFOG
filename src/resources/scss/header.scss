@@ -1,73 +1,29 @@
-.navbar{
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  height: 85px;
-  background-color:black;
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin:0;
 }
-
-.navbar a {
+.NavBar{
+  background-color: black;
+  height: 85px;
+}
+.Nav-right li,
+.Nav-left li{
+  display: inline-block;
+}
+.Nav-right li{
+  padding-right: 80px;
+  padding-top: 30px;
+}
+.Nav-right,
+.Nav-left{
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+.NavBar a{
   color: white;
 }
-.navbar li {
-  display: inline-block;
-}
-.navcenter{
-  padding-right:350px;
-}
-.navcenter li{
-  font-size: 20px;
-}
-
-.navleft{
-  padding-left: 41px;
-}
-.navleft li{
-  padding-right: 10px;
-}
-
-.navright {
-  position: relative;
-  padding-right: 110px;
-}
-.navright li {
-  display: inline-block;
-  padding-right: 10px;
-}
-
-
-.login{
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.inputsub {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 220px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.login a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.login a:hover {
-  background-color: #868282;
-}
-
-.navright li:hover .login {
-  display: block;
-}
-.navright li:hover .inputsub {
-  display: block;
+.Nav-left a{
+  font-size: 50px;
 }
