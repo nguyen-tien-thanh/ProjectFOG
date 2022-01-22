@@ -3,7 +3,7 @@
   padding: 0;
   margin: 0; }
 
-.NavBar {
+header {
   background-color: black;
   height: 85px; }
 
@@ -85,6 +85,44 @@ footer {
 
 .forgot {
   margin: 0 10px; }
+
+.Intro {
+  background-image: url("/images/slider.png");
+  padding-top: 66.6666667%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; }
+
+.Intro .text {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center; }
+
+.text h1 {
+  color: white; }
+
+.text a {
+  text-decoration: none; }
+
+.text h1:hover {
+  color: blue; }
+
+.Staff {
+  width: 50%; }
+
+.Student {
+  width: 50%; }
+
+.Student,
+.Staff {
+  float: left; }
+
+.Staff img,
+.Student img {
+  width: 100%;
+  height: auto; }
 
 #slider {
   width: 100%;
