@@ -4,6 +4,20 @@ const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
 class CategoryController {
     
+    //[GET] /create category
+    create(req,res,next) {
+        const cat = new Category(req.body);
+        cat.save(); 
+        res.render('category/create');
+    }
+
+    // //[POST] /store category
+    // store(req,res,next) {
+    //     // res.json(req.body);
+    //     // res.send('Saved category!!! ')
+    // }
+
+
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
@@ -11,7 +25,7 @@ class CategoryController {
         .then (category => {
             // res.json(category);
 
-            res.render('categories/show', { 
+            res.render('category/show', { 
                 category: mongooseToObject(category) 
             });
         })
