@@ -8,7 +8,7 @@ const route = require('./routes');
 const db = require('./config/db');
 
 const app = express()
-const port = 3001
+const port = 3000
 
 app.use(express.static(path.join(__dirname, 'public')))
 //HTTP Loggers

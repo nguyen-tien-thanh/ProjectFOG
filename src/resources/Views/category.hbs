@@ -1,15 +1,19 @@
 <h1>Category Layout</h1>
 
-<ul class="listCategory">
+{{!-- <ul class="listCategory">
     {{#each category}}
     <li>{{this.name}}</li>
     {{/each}}
-</ul>
+</ul> --}}
+
+<button><a href="./category/create">Create</a></button>
+<a href="./category/create.hbs">Update</a>
+<a href="./category/create.hbs">Delete</a>
 
 <div class="mt-4">
     <div class="row">
         {{#each category}}
-        <div class="col-sm-6 col-lg-4">
+        <div class="col-sm-6 col-lg-2">
             <div class="card">
                 <a href="/category/{{this.slug}}">
                     <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
@@ -20,7 +24,7 @@
                             <h5 class="card-title">{{this.name}}</h5>
                         </a>
                         <p class="card-text">{{this.description}}</p>
-                        <a href="#" class="btn btn-primary"> Category Detail </a>
+                        <a href="/category/{{this.slug}}" class="btn btn-primary"> Category Detail </a>
                     </div>
             </div>
         </div>

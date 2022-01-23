@@ -5,10 +5,13 @@
             <h1>List</h1>
 
         </div>
-        <div class="col-lg-10">
+        <div style="background-color:lightgrey" class="col-lg-10">
             <h1 class="text-center">Category Detail</h1>
-            <p>{{this.name}}</p>
-            <img src="" alt="">
+            <img style="width:100px" src="{{category.image}}" alt="">
+            <p>{{category.name}}</p>
+            <p>- {{category.description}}</p>
+            <p>- Create at: {{category.createdAt}}</p>
+            <p>- Update at: {{category.updatedAt}}</p>
         </div>
     </div>
 </div>

@@ -6,16 +6,19 @@ class CategoryController {
     
     //[GET] /create category
     create(req,res,next) {
-        const cat = new Category(req.body);
-        cat.save(); 
         res.render('category/create');
     }
 
-    // //[POST] /store category
-    // store(req,res,next) {
-    //     // res.json(req.body);
-    //     // res.send('Saved category!!! ')
-    // }
+    //[POST] /store category
+    store(req,res,next) {
+        const cat = new Category(req.body);
+        cat.save()
+            .then(() => res.redirect('/'))
+            .catch(error => {
+                
+            })
+        res.json(req.body);
+    }
 
 
     // [GET] /:slug

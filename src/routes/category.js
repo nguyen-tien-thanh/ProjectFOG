@@ -7,7 +7,7 @@ const categoryController = require('../Controllers/CategoryController');
 router.use('/create', categoryController.create)
 
 // // [POST] /categories/store category
-// router.use('/store', categoryController.store)
+router.post('/store', categoryController.store)
 
 // [link bien dong] /category/show || /category/:slug
 router.use('/:slug', categoryController.show)
