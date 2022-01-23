@@ -25,14 +25,14 @@
 
 //CSS FOR 2 IMG
 .Staff{
-    width: 50%;
+    width: 100%;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+
 }
 .Student{
-    width: 50%;
-}
-.Student,
-.Staff{
-    float: left;
+    width: 100%;
+    margin-top: -68.47%;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
 .Staff img,
@@ -40,3 +40,29 @@
     width: 100%;
     height: auto;
 }
+.Slider a{
+    text-decoration: none;
+    color: black;
+}
+
+.Staff{
+    position: relative;
+}
+
+.Staff-text{
+    position: absolute; 
+    color: white;
+    bottom: 50%;
+    left: 15%;
+}
+.Student{
+    position: relative;
+}
+.Student-text{
+    position: absolute;
+    color: white;
+    bottom: 50%;
+    right: 15%;
+}
+
+
