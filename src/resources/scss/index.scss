@@ -26,13 +26,14 @@
 //CSS FOR 2 IMG
 .Staff{
     width: 100%;
-    clip-path: polygon(0 0, 100% 0, 0 100%);
+    clip-path: polygon(0 0, 30% 0, 70% 100%, 0% 100%);
 
 }
 .Student{
     width: 100%;
-    margin-top: -68.47%;
-    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    margin-top: -68.5%;
+    clip-path: polygon(100% 0, 100% 100%, 70% 100%, 30% 0);
+
 }
 
 .Staff img,
@@ -48,21 +49,74 @@
 .Staff{
     position: relative;
 }
+.overlay1{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color:rgb(57, 57, 59);
+  }
+.textStaff{
+    position: absolute;
+    color: white;
+    bottom: 50%;
+    left: 15%;
+    font-size: 50px;
+}
 
 .Staff-text{
     position: absolute; 
     color: white;
     bottom: 50%;
     left: 15%;
+    font-size: 50px;
+    opacity: 0;
 }
+.Staff:hover .overlay1,
+.Staff:hover .Staff-text{
+    opacity: 1;
+}
+
+//////////
 .Student{
     position: relative;
+}
+.overlay2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color:rgb(57, 57, 59);
+  }
+.textStudent{
+    position: absolute;
+    color: white;
+    bottom: 50%;
+    right: 15%;
+    font-size: 50px;
 }
 .Student-text{
     position: absolute;
     color: white;
     bottom: 50%;
     right: 15%;
+    font-size: 50px;
+    opacity: 0;
 }
+.Student:hover .overlay2,
+.Student:hover .Student-text{
+    opacity: 1;
+}
+///////////////
 
 
