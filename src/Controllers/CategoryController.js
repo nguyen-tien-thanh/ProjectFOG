@@ -25,6 +25,15 @@ class CategoryController {
             .catch(next);
     }
 
+    
+
+    //[DELETE] /category/:id
+    delete(req,res,next) {
+        Category.deleteOne({_id: req.params.id})
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
     //[POST] /store category
     store(req,res,next) {
         const cat = new Category(req.body);

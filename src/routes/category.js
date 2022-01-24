@@ -12,6 +12,9 @@ router.get('/:id/edit', categoryController.edit)
 // [PUT] /category/:id/update category
 router.put('/:id', categoryController.update)
 
+// [DELETE] /category/:id/detele category
+router.delete('/:id', categoryController.delete)
+
 // // [POST] /categories/store category
 router.post('/store', categoryController.store)
 
