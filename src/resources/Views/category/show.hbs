@@ -8,10 +8,10 @@
         <div style="background-color:lightgrey" class="col-lg-10">
             <h1 class="text-center">Category Detail</h1>
             <img style="width:100px" src="{{category.image}}" alt="">
-            <p>{{category.name}}</p>
-            <p>- {{category.description}}</p>
-            <p>- Create at: {{category.createdAt}}</p>
-            <p>- Update at: {{category.updatedAt}}</p>
+            <p>- Name: {{category.name}}</p>
+            <p>- Detail: {{category.description}}</p>
+            <p>- Create at: {{moment category.createdAt format="HH:mm on DD-MM-YYYY"}}</p>
+            <p>- Update at: {{moment category.updatedAt format="HH:mm on DD-MM-YYYY"}}</p>
         </div>
     </div>
 </div>

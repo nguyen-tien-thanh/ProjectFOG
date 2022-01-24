@@ -1,8 +1,17 @@
 const express = require('express')
 const morgan = require('morgan')
 const exphbs = require('express-handlebars')
-const hbs = exphbs.create({ extname: '.hbs' })
 const path = require('path');
+const methodOverride = require('method-override');
+
+
+const hbs = exphbs.create({ 
+  extname: '.hbs', 
+  helper: {
+    sum: (a,b) => a+b,
+}})
+
+const helpers = require('handlebars-helpers')();
 
 const route = require('./routes');
 const db = require('./config/db');
@@ -20,6 +29,7 @@ db.connect();
 //Middleware to solve Body Form
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(methodOverride('_method'));
 
 
 

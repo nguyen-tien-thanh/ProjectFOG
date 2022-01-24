@@ -4,9 +4,25 @@ const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
 class CategoryController {
     
-    //[GET] /create category
+    //[GET] /category/create 
     create(req,res,next) {
         res.render('category/create');
+    }
+
+    //[POST] /category/:id/edit
+    edit(req,res,next) {
+        Category.findById(req.params.id)
+            .then(category => res.render('category/edit', {
+                category: mongooseToObject(category)
+            }))
+            .catch(next);
+    }
+
+    //[PUT] /category/:id
+    update(req,res,next) {
+        Category.updateOne({_id: req.params.id}, req.body)
+            .then(category => res.redirect('/category'))
+            .catch(next);
     }
 
     //[POST] /store category

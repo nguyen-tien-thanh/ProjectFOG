@@ -1,0 +1,28 @@
+<h1>Stored Category</h1>
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">No</th>
+        <th scope="col">Category Name</th>
+        <th scope="col">Detail</th>
+        <th scope="col">Created Date</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each category}}
+        <tr>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.description}}</td>
+        <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
+        <td style="padding:5px">
+            <a href="/category/{{this._id}}/edit"><button class="btn btn-secondary">Edit</button></a>
+            <a href="/category/{{this._id}}/detail"><button class="btn btn-secondary">Detail</button></a>
+            <a href="/category/{{this._id}}/delete"><button class="btn btn-secondary">Delete</button></a>
+        </td>
+        </tr>
+        {{/each}}
+    </tbody>
+    </table>

@@ -6,6 +6,12 @@ const categoryController = require('../Controllers/CategoryController');
 // [GET] /category/create category
 router.use('/create', categoryController.create)
 
+// [GET] /category/:id/edit category
+router.get('/:id/edit', categoryController.edit)
+
+// [PUT] /category/:id/update category
+router.put('/:id', categoryController.update)
+
 // // [POST] /categories/store category
 router.post('/store', categoryController.store)
 
