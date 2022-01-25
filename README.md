@@ -22,7 +22,7 @@ Team member:
 - Presentation ===>>> ALL
 
 
-============================= Develope =============================
+============================= Develop =============================
 - install:
   - nodejs: https://nodejs.org/dist/v16.13.2/node-v16.13.2-x64.msi
   
@@ -39,6 +39,15 @@ Team member:
   - npm i mongoose-slug-generator
   - npm i mongoose-delete
   - npm i mongodb
+
+- Run website (2 ways)
+  - npm run test
+  - npm run watch && npm run start
+
+- Use Git
+  - git add .
+  - git commit -m"WorkName"
+  - git push -u origin master
 
 ============================= Function =============================
 - Role
