@@ -1,5 +1,5 @@
-<h1>Stored Category</h1>
-<a href="/me/deleted/category">Deleted Category</a>
+<h1>Deleted Category</h1>
+<a href="/me/stored/category">Stored Category</a>
 
     <table class="table">
     <thead>
@@ -19,16 +19,15 @@
         <td>{{this.description}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td style="padding:5px">
-            <a href="/category/{{this._id}}/edit"><button class="btn btn-secondary">Edit</button></a>
-            <a href="/category/{{this.slug}}"><button class="btn btn-secondary">Detail</button></a>
+            <a href=""><button class="btn btn-secondary btn-restore" data-id="{{this._id}}">Restore</button></a>
             <a href="" data-toggle="modal" data-target="#delete-category" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
         </td>
         </tr>
         {{else}}
         <tr>
             <td colspan="5" class="text-center">
-                You have not created any category.
-                <a href="/category/create">Create new one?</a>
+                The trash is empty.
+                <a href="/me/stored/category">Stored Category</a>
             </td>
         </tr>
 
@@ -47,24 +46,28 @@
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure to delete this category?
+                This action <b>cannot be recovered.</b> <br>
+                Are you sure you want to <b>permanently delete</b> this category?
             </div>
             <div class="modal-footer">
-                <button id="btn-delete-category" type="button" class="btn btn-danger">Delete</button>
+                <button id="btn-delete-category" type="button" class="btn btn-danger ">Permanently Delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
             </div>
             </div>
         </div>
         </div>
 
-        {{!-- Delete form hidden --}}
+        {{!-- Delete and restore form hidden --}}
         <form name="delete-category-form" method="post"></form>
+        <form name="restore-category-form" method="post"></form>
 
         <script>
             //WHEN HTML DOM is loaded, Delete confirm shows
             document.addEventListener('DOMContentLoaded', function(){
                 var categoryId;
                 var deleteForm = document.forms['delete-category-form'];
+                var restoreForm = document.forms['restore-category-form'];
+                var restoreBtnAll = document.querySelectorAll('.btn-restore');
 
                 $('#delete-category').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget)
@@ -73,8 +76,19 @@
 
                 var btnDeleteCategory = document.getElementById('btn-delete-category')
                 btnDeleteCategory.onclick = function(){
-                    deleteForm.action = '/category/' + categoryId + '?_method=DELETE';
+                    deleteForm.action = '/category/' + categoryId + '/force?_method=DELETE';
                     deleteForm.submit();
-            }
+                }
+
+
+                restoreBtnAll.forEach((restoreBtn) => {
+                    restoreBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+
+                        var categoryId = restoreBtn.getAttribute('data-id');
+                        restoreForm.action = '/category/' + categoryId + '/restore?_method=PATCH';
+                        restoreForm.submit()
+                    });
+                });
             })
         </script>

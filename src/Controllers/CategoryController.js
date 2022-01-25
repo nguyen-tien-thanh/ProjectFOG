@@ -25,24 +25,38 @@ class CategoryController {
             .catch(next);
     }
 
-    
-
     //[DELETE] /category/:id
     delete(req,res,next) {
+        Category.delete({_id: req.params.id})
+            .then(() => res.redirect('back'))
+            .catch(next);
+        
+    }
+
+    //[DELETE] /category/:id/force
+    force(req,res,next) {
         Category.deleteOne({_id: req.params.id})
             .then(() => res.redirect('back'))
             .catch(next);
+        
+    }
+
+    //[RESTORE] /category/:id/store
+    restore(req,res,next) {
+        Category.restore({_id: req.params.id})
+            .then(() => res.redirect('/me/stored/category'))
+            .catch(next);
+        
     }
 
     //[POST] /store category
     store(req,res,next) {
         const cat = new Category(req.body);
         cat.save()
-            .then(() => res.redirect('/'))
+            .then(() => res.redirect('/category'))
             .catch(error => {
                 
             })
-        res.json(req.body);
     }
 
 
