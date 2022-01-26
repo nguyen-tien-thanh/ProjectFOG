@@ -71,3 +71,5 @@ Team member:
 		- List most liked idea, view --> show to interface
 		- 5 ideas tren page
   - Statistical analysis (e.g. number of ideas per Department) needs to be available.
+  - ![image](https://user-images.githubusercontent.com/84694920/151093856-aa6a799e-2cbc-484b-a426-8344a3c2f2da.png)
+
