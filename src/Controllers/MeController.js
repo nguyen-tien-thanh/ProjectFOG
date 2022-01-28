@@ -8,27 +8,48 @@ class MeController {
     // [GET] /me/stored/category
     storedCategory(req, res, next) {
 
+        Promise.all([Category.find({}), Category.countDeleted(), Category.count()])
+            .then(([category, deletedCount, storedCount]) => 
+            res.render('me/stored-category', {
+                deletedCount,
+                storedCount,
+                category: multipleMongooseToObject(category),
+                })
+            )
+            .catch(next)
+            
+
         // Category.countDocumentsDeleted()
         //     .then((deletedCount) => {
         //         console.log(deletedCount)
         //     })
-        //     .catch(next)
+        //     .catch(() => {});
         
 
-        Category.find({ deleted: false})
-            .then (category => res.render('me/stored-category', {
-             category: multipleMongooseToObject(category)
-            }))
-            .catch(next);
+        // Category.find({ deleted: false})
+        //     .then (category => res.render('me/stored-category', {
+        //      category: multipleMongooseToObject(category)
+        //     }))
+        //     .catch(next);
     }
 
     // [GET] /me/deleted/category
     deletedCategory(req, res, next) {
-        Category.find({ deleted: !null})
-            .then (category => res.render('me/deleted-category', {
-             category: multipleMongooseToObject(category)
-            }))
-            .catch(next);
+        // Category.find({ deleted: !null})
+        // Category.findDeleted({})
+        //     .then (category => res.render('me/deleted-category', {
+        //      category: multipleMongooseToObject(category)
+        //     }))
+        //     .catch(next);
+        Promise.all([Category.findDeleted({}), Category.countDeleted(), Category.count()])
+        .then(([category, deletedCount, storedCount]) => 
+        res.render('me/deleted-category', {
+            deletedCount,
+            storedCount,
+            category: multipleMongooseToObject(category),
+            })
+        )
+        .catch(next)   
     }
 }
 

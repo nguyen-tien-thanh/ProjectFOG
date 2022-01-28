@@ -18,8 +18,8 @@ const Category = new Schema({
 
 //Add plugin
 Category.plugin(mongooseDelete, {
-    ovverideMethode: true,
-    deletedAt: true,
+    overrideMethods: 'all',
+    deletedAt: true
 });
 mongoose.plugin(slug);
 

@@ -1,5 +1,3 @@
-
-
 class SiteController {
     
     // [GET] /index -- Home page
@@ -14,7 +12,7 @@ class SiteController {
 
     home(req, res, next){
 
-        res.render('home');
+        res.render('home', {layout: 'intropage'});
     }
 
 }

@@ -1,41 +1,68 @@
 <h1>Deleted Category</h1>
-<a href="/me/stored/category">Stored Category</a>
+<a href="/me/stored/category">Stored Category</a> (Total: {{storedCount}})
 
-    <table class="table">
-    <thead>
-        <tr>
-        <th scope="col">No</th>
-        <th scope="col">Category Name</th>
-        <th scope="col">Detail</th>
-        <th scope="col">Created Date</th>
-        <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each category}}
-        <tr>
-        <th scope="row">{{sum @index 1}}</th>
-        <td>{{this.name}}</td>
-        <td>{{this.description}}</td>
-        <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
-        <td style="padding:5px">
-            <a href=""><button class="btn btn-secondary btn-restore" data-id="{{this._id}}">Restore</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-category" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
-        </td>
-        </tr>
-        {{else}}
-        <tr>
-            <td colspan="5" class="text-center">
-                The trash is empty.
-                <a href="/me/stored/category">Stored Category</a>
+    <form action="/category/handle-form-actions" method="POST">
+        <div class="mt-4 d-flex align-items-center">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+                <label class="form-check-label" for="checkbox-all">
+                    Select all categories
+                </label>
+            </div>
+
+            <select class="form-control form-control-sm checkbox-select-all-options" name="action" id="action-select" required>
+                <option value="restore" selected>Restore</option>
+                <option value="force">Delete from bin</option>
+            </select>
+
+            <button  type="button" 
+                class="btn btn-primary btn-small disabled check-all-submit-btn">Do action
+            </button>
+        </div>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+            <th scope="col">No (Total: {{deletedCount}})</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Deleted Date</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each category}}
+            <tr>
+                <th>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="categoryIds[]" value="{{this._id}}" >
+                        </label>
+                    </div>
+                </th>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.description}}</td>
+            <td>{{moment this.deletedAt format="HH:mm on DD-MM-YYYY"}}</td>
+            <td style="padding:5px">
+                <a href="" data-toggle="modal" data-target="#restore-category" data-id="{{this._id}}"><button class="btn btn-secondary btn-restore" >Restore</button></a>
+                <a href="" data-toggle="modal" data-target="#delete-category" data-id="{{this._id}}"><button class="btn btn-secondary btn-force">Delete</button></a>
             </td>
-        </tr>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="5" class="text-center">
+                    The trash is empty.
+                    <a href="/me/stored/category">Stored Category</a>
+                </td>
+            </tr>
 
-        {{/each}}
-    </tbody>
-    </table>
+            {{/each}}
+        </tbody>
+        </table>
+    
 
-    {{!-- Confirm delete code --}}
+    {{!-- Confirm force delete 1 category code --}}
     <div class="modal fade" id="delete-category" tabindex="-1" role="dialog" aria-labelledby="delete-categoryLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -57,38 +84,136 @@
         </div>
         </div>
 
+    {{!-- Confirm restore multiple categories code --}}
+    <div class="modal fade" id="restore-category" tabindex="-1" role="dialog" aria-labelledby="restore-categoryLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="restore-categoryLabel">Restore Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to <b>restore</b> this category?
+            </div>
+            <div class="modal-footer">
+                <button id="btn-restore-category" type="button" class="btn btn-danger ">Restore</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        {{!-- Confirm force delete multiple categories code --}}
+    <div class="modal fade" id="action-change-modal" tabindex="-1" role="dialog" aria-labelledby="action-change-modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="action-change-modalLabel">Action Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <b>Are you sure</b> you want to do that change?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-action-change-restore"> Action</button>
+                {{!-- <button type="" class="btn btn-danger btn-action-change-modal">Permanently </button> --}}
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+        </div>
+</form>
         {{!-- Delete and restore form hidden --}}
         <form name="delete-category-form" method="post"></form>
         <form name="restore-category-form" method="post"></form>
 
-        <script>
-            //WHEN HTML DOM is loaded, Delete confirm shows
-            document.addEventListener('DOMContentLoaded', function(){
-                var categoryId;
-                var deleteForm = document.forms['delete-category-form'];
-                var restoreForm = document.forms['restore-category-form'];
-                var restoreBtnAll = document.querySelectorAll('.btn-restore');
+<script>
+    //WHEN HTML DOM is loaded, Delete confirm shows
+    document.addEventListener('DOMContentLoaded', function(){
+        var categoryId;
+        var deleteForm = document.forms['delete-category-form'];
+        var forceBtnAll = document.querySelectorAll('.btn-force');
 
-                $('#delete-category').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget)
-                categoryId = button.data('id')
-                })
+        var restoreForm = document.forms['restore-category-form'];
+        var restoreBtnAll = document.querySelectorAll('.btn-restore');
 
-                var btnDeleteCategory = document.getElementById('btn-delete-category')
-                btnDeleteCategory.onclick = function(){
-                    deleteForm.action = '/category/' + categoryId + '/force?_method=DELETE';
-                    deleteForm.submit();
-                }
+        var checkboxAll = $('#checkbox-all');
+        var categoryItemCheckBox = $('input[name="categoryIds[]"]');
+        var checkAllSubmitBtn = $('.check-all-submit-btn');
 
 
-                restoreBtnAll.forEach((restoreBtn) => {
-                    restoreBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
 
-                        var categoryId = restoreBtn.getAttribute('data-id');
-                        restoreForm.action = '/category/' + categoryId + '/restore?_method=PATCH';
-                        restoreForm.submit()
-                    });
-                });
-            })
-        </script>
+        // When checkbox select all clicked
+        checkboxAll.change( function () {
+            var isCheckedAll = $(this).is(':checked');
+            categoryItemCheckBox.prop('checked', isCheckedAll);
+            renderCheckAllSubmitBtn();
+        })
+
+
+        // When checkbox item clicked
+        categoryItemCheckBox.change( function () {
+            var isCheckedAll = categoryItemCheckBox.length === $('input[name="categoryIds[]"]:checked').length;
+            checkboxAll.prop('checked', isCheckedAll);
+            renderCheckAllSubmitBtn();
+        })
+
+
+        // Render submit action button 
+        function renderCheckAllSubmitBtn(){
+            var checkedCount = $('input[name="categoryIds[]"]:checked').length;
+            if (checkedCount > 0 ){
+                checkAllSubmitBtn.removeClass('disabled')
+                checkAllSubmitBtn.attr("data-toggle","modal");
+                checkAllSubmitBtn.attr("data-target","#action-change-modal");
+                 $('.btn-action-change-restore').attr("type","submit")
+            }
+            else{
+                checkAllSubmitBtn.addClass('disabled')
+                checkAllSubmitBtn.attr("data-toggle","");
+                checkAllSubmitBtn.attr("data-target","");
+            }
+        }
+        
+
+        //When button delete clicked
+        $('#delete-category').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        categoryId = button.data('id')
+        })
+        var btnDeleteCategory = document.getElementById('btn-delete-category')
+        btnDeleteCategory.onclick = function(){
+            deleteForm.action = '/category/' + categoryId + '/force?_method=DELETE';
+            deleteForm.submit();
+        }
+
+
+        //When button restore clicked
+        $('#restore-category').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        categoryId = button.data('id')
+        })
+        var btnRestoreCategory = document.getElementById('btn-restore-category')
+        btnRestoreCategory.onclick = function(){
+            restoreForm.action = '/category/' + categoryId + '/restore?_method=PATCH';
+            restoreForm.submit();
+        }
+        
+        
+        // Restore multiple categories when btn clicked 
+        $('.btn-action-change-restore').on('submit', function (e) {
+            var isSubmittable = !$(this).hasClass('disable');
+            if(!isSubmittable){
+                e.preventDefault();
+            }
+        })
+
+
+
+
+    })
+</script>

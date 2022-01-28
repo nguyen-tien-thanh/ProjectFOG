@@ -3,6 +3,9 @@ const router = express.Router();
 
 const categoryController = require('../Controllers/CategoryController');
 
+// [POST] /category/handle-form-actions category
+router.post('/handle-form-actions', categoryController.handleFormActions)
+
 // [GET] /category/create category
 router.use('/create', categoryController.create)
 

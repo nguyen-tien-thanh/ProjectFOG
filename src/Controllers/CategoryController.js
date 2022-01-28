@@ -8,6 +8,29 @@ class CategoryController {
     create(req,res,next) {
         res.render('category/create');
     }
+    
+    //[POST] /category/handle-form-actions
+    handleFormActions(req,res,next) {
+        switch (req.body.action){
+            case 'delete':
+                Category.delete({_id: { $in: req.body.categoryIds}})
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'restore':
+                Category.restore({_id: { $in: req.body.categoryIds}})
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'force':
+                Category.remove({_id: { $in: req.body.categoryIds}})
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            default:
+                res.json({Message: 'Action is invalid !!'})
+        }
+    }
 
     //[POST] /category/:id/edit
     edit(req,res,next) {
