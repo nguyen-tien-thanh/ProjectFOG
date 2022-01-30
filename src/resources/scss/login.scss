@@ -1,54 +1,50 @@
 .container {
-  color:#000;
+  color: #000;
 }
-.row{
-  
+.row {
 }
 
-.column-4{
-  
+.column-4 {
   float: left;
   width: 33.33333%;
   padding: 20px 2%;
   align-items: center;
 }
 
-.btn-secondary{
+.btn-secondary {
   background-color: #000;
   color: #f1f1f1;
 }
 
-.create-new{
+.create-new {
   border-left: 1px solid #f1f1f1;
-
 }
 
-.section-create{
+.section-create {
   float: left;
 }
 
-.section-signin{
+.section-signin {
   margin-left: 1.6em;
   float: left;
   width: 33.333%;
 }
 
-.col-col-full{
+.col-col-full {
   padding-left: 8px;
   padding-right: 8px;
 }
 
 .col-full,
-.col-section-create{
+.col-section-create {
   padding: 0 8px;
-
 }
 
-.row{
+.row {
   margin-left: -8px;
   margin-right: -8px;
 }
 
-.forgot{
-  margin:0 10px;
+.forgot {
+  margin: 0 10px;
 }

@@ -1,122 +1,118 @@
-.Intro{
-    background-image: url("/images/slider.png");
-    padding-top: 66.6666667%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+.Intro {
+  background-image: url("/images/slider.png");
+  padding-top: 66.6666667%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-.Intro .text{
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform:translateX(-50%);
-    text-align: center;
+.Intro .text {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
-.text h1{
-    color: white;
+.text h1 {
+  color: white;
 }
-.text a{
-    text-decoration: none;
+.text a {
+  text-decoration: none;
 }
-.text h1:hover{
-    color: blue;
+.text h1:hover {
+  color: blue;
 }
 
 //CSS FOR 2 IMG
-.Staff{
-    width: 100%;
-    clip-path: polygon(0 0, 30% 0, 70% 100%, 0% 100%);
-
+.Staff {
+  width: 100%;
+  clip-path: polygon(0 0, 30% 0, 70% 100%, 0% 100%);
 }
-.Student{
-    width: 100%;
-    margin-top: -68.5%;
-    clip-path: polygon(100% 0, 100% 100%, 70% 100%, 30% 0);
-
+.Student {
+  width: 100%;
+  margin-top: -68.5%;
+  clip-path: polygon(100% 0, 100% 100%, 70% 100%, 30% 0);
 }
 
 .Staff img,
-.Student img{
-    width: 100%;
-    height: auto;
+.Student img {
+  width: 100%;
+  height: auto;
 }
-.Slider a{
-    text-decoration: none;
-    color: black;
-}
-
-.Staff{
-    position: relative;
-}
-.overlay1{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color:rgb(57, 57, 59);
-  }
-.textStaff{
-    position: absolute;
-    color: white;
-    bottom: 50%;
-    left: 15%;
-    font-size: 50px;
+.Slider a {
+  text-decoration: none;
+  color: black;
 }
 
-.Staff-text{
-    position: absolute; 
-    color: white;
-    bottom: 50%;
-    left: 15%;
-    font-size: 50px;
-    opacity: 0;
+.Staff {
+  position: relative;
+}
+.overlay1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: rgb(57, 57, 59);
+}
+.textStaff {
+  position: absolute;
+  color: white;
+  bottom: 50%;
+  left: 15%;
+  font-size: 50px;
+}
+
+.Staff-text {
+  position: absolute;
+  color: white;
+  bottom: 50%;
+  left: 15%;
+  font-size: 50px;
+  opacity: 0;
 }
 .Staff:hover .overlay1,
-.Staff:hover .Staff-text{
-    opacity: 1;
+.Staff:hover .Staff-text {
+  opacity: 1;
 }
 
 //////////
-.Student{
-    position: relative;
+.Student {
+  position: relative;
 }
 .overlay2 {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color:rgb(57, 57, 59);
-  }
-.textStudent{
-    position: absolute;
-    color: white;
-    bottom: 50%;
-    right: 15%;
-    font-size: 50px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: rgb(57, 57, 59);
 }
-.Student-text{
-    position: absolute;
-    color: white;
-    bottom: 50%;
-    right: 15%;
-    font-size: 50px;
-    opacity: 0;
+.textStudent {
+  position: absolute;
+  color: white;
+  bottom: 50%;
+  right: 15%;
+  font-size: 50px;
+}
+.Student-text {
+  position: absolute;
+  color: white;
+  bottom: 50%;
+  right: 15%;
+  font-size: 50px;
+  opacity: 0;
 }
 .Student:hover .overlay2,
-.Student:hover .Student-text{
-    opacity: 1;
+.Student:hover .Student-text {
+  opacity: 1;
 }
 ///////////////
-
-

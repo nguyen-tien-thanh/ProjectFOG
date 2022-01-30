@@ -1,0 +1,182 @@
+<h1>Manage event</h1>
+<a href="/event/trash">Trash event </a>
+(Total deleted event: {{deletedCount}})
+
+<form name="container-form" action="/event/handle-form-actions" method="POST">
+    <div class="mt-4 d-flex align-items-center">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+            <label class="form-check-label" for="checkbox-all">
+                Select all events
+            </label>
+        </div>
+
+        <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
+            <option value="delete">Delete</option>
+        </select>
+
+        
+        <button value="Do action" type="button" class="btn btn-primary disabled check-all-submit-btn">
+            Do action
+        </button>
+        {{!-- <button class="btn btn-primary btn-small disabled check-all-submit-btn">Go</button> --}}
+    </div>
+
+    <table class="table mt-4">
+    <thead>
+        <tr>
+            <th></th>
+            <th scope="col">No (Total: {{storedCount}})</th>
+            <th scope="col">Event Name</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each event}}
+        <tr>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="eventIds[]" value="{{this._id}}" >
+                    </label>
+                </div>
+            </td>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.description}}</td>
+        <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
+        <td style="padding:5px">
+            <a href="/event/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
+            <a href="/event/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
+            <a href="" data-toggle="modal" data-target="#delete-event" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
+        </td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="5" class="text-center">
+                You have not created any event.
+                <a href="/event/create">Create new one?</a>
+            </td>
+        </tr>
+
+        {{/each}}
+    </tbody>
+    </table>
+
+    {{!-- Confirm delete code --}}
+    <div class="modal fade" id="delete-event" tabindex="-1" role="dialog" aria-labelledby="delete-eventLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-eventLabel">Delete event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete this event?
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-event" type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Delete multiple events model confirm -->
+        <div class="modal fade" id="delete-multiple-events" tabindex="-1" role="dialog" aria-labelledby="delete-multiple-events" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-multiple-eventsLabel">Delete event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to <b>delete</b> these events?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-small disabled delete-multiple-events-btn">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+</form>
+        {{!-- Delete form hidden --}}
+        <form name="delete-event-form" method="post"></form>
+
+        <script>
+            //WHEN HTML DOM is loaded, Delete confirm shows
+            document.addEventListener('DOMContentLoaded', function(){
+                var eventId;
+                var deleteForm = document.forms['delete-event-form'];
+                var checkboxAll = $('#checkbox-all');
+                var eventItemCheckBox = $('input[name="eventIds[]"]');
+                var deleteMultipleEventsBtn = $('.delete-multiple-events-btn');
+                var containerForm = document.forms['container-form'];
+                var checkAllSubmitBtn = $('.check-all-submit-btn');
+
+                $('#delete-event').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+                eventId = button.data('id')
+                })
+
+                //When delete event btn clicked
+                var btnDeleteEvent = document.getElementById('btn-delete-event')
+                btnDeleteEvent.onclick = function(){
+                    deleteForm.action = '/event/' + eventId + '?_method=DELETE';
+                    deleteForm.submit();
+                }
+
+                //Checkbox all clicked
+                checkboxAll.change(function () {
+                    var isCheckedAll = $(this).prop('checked');
+                        eventItemCheckBox.prop('checked', isCheckedAll);
+                        renderCheckAllSubmitBtn();
+                });
+
+                eventItemCheckBox.change(function () {
+                    var isCheckedAll = eventItemCheckBox.length === $('input[name="eventIds[]"]:checked').length;
+                    checkboxAll.prop('checked', isCheckedAll);
+                    renderCheckAllSubmitBtn();
+                })
+
+                //Check all submit btn clicked not submit
+                deleteMultipleEventsBtn.on('submit', function (e) {
+                    var isSubmittable = !$(this).hasClass('disable');
+                    if(!isSubmittable){
+                        e.preventDefault();
+                    }
+                })
+
+                checkAllSubmitBtn.on('change', function (e) {
+                    var isSubmittable = !$(this).hasClass('disable');
+                    if(isSubmittable){
+                        e.preventDefault();
+                        console.log('123')
+                    }
+                })
+                
+
+                //Re-render check all submit button <Go>
+                function renderCheckAllSubmitBtn() {
+                    var checkedCount = $('input[name="eventIds[]"]:checked').length;
+                    if(checkedCount > 0){
+                        deleteMultipleEventsBtn.removeClass('disabled');
+                        checkAllSubmitBtn.removeClass('disabled');
+                        checkAllSubmitBtn.attr("data-toggle","modal");
+                        checkAllSubmitBtn.attr("data-target","#delete-multiple-events");
+                    } else{
+                        deleteMultipleEventsBtn.addClass('disabled');
+                        checkAllSubmitBtn.addClass('disabled');
+                        checkAllSubmitBtn.attr("data-toggle","");
+                        checkAllSubmitBtn.attr("data-target","");
+                    }
+                }
+                
+            })
+        </script>

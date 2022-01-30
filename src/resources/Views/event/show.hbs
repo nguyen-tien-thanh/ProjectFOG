@@ -1,0 +1,14 @@
+
+<div class="mt-4">
+    <div class="row">
+        <div style="background-color:lightgrey" class="col-lg-12">
+            <h1 class="text-center">Event Detail</h1>
+            <img style="width:100px" src="{{event.image}}" alt="">
+            <p>- Name: {{event.name}}</p>
+            <p>- Detail: {{event.description}}</p>
+            <p>- Author: {{event.author}}</p>
+            <p>- Create at: {{moment event.createdAt format="HH:mm on DD-MM-YYYY"}}</p>
+            <p>- Update at: {{moment event.updatedAt format="HH:mm on DD-MM-YYYY"}}</p>
+        </div>
+    </div>
+</div>

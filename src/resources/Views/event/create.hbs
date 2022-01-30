@@ -1,7 +1,7 @@
-<h1>Create new category page</h1> 
+<h1>Create new event page</h1> 
 <div class="mt-4">
   {{!-- enctype="multipart/form-data" --}}
-<form action="/category/store" method="post" >
+<form action="/event/store" method="post" >
   <div class="form-group">
         <label for="name">name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required> 
@@ -13,6 +13,10 @@
       <div class="form-group">
         <label for="image">image</label>
         <input type="text" class="form-control" id="image" name="image" placeholder="Enter image" required> 
+      </div>
+      <div class="form-group">
+        <label for="author">author</label>
+        <input type="text" class="form-control" id="author" name="author" placeholder="Enter author" required> 
       </div>
       {{!-- <div class="form-group">
         <label for="createdAt">Create at</label>
@@ -26,7 +30,7 @@
         <label for="slug">slug</label>
         <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug"> 
       </div> --}}
-  <input type="submit" value="Submit">
+  <input type="submit" class="btn btn-success" value="Submit">
 </form>
 </div>
 

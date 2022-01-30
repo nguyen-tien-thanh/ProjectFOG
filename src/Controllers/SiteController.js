@@ -6,6 +6,11 @@ class SiteController {
         res.render('index', {layout: 'intropage'});
     }
 
+    contact(req, res, next){
+
+        res.render('contact');
+    }
+
     search(req,res){
         res.render('search');
     }

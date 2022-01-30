@@ -1,29 +1,29 @@
-*{
+* {
   box-sizing: border-box;
   padding: 0;
-  margin:0;
+  margin: 0;
 }
-header{
+header {
   background-color: black;
   height: 85px;
 }
 .Nav-right li,
-.Nav-left li{
+.Nav-left li {
   display: inline-block;
 }
-.Nav-right li{
+.Nav-right li {
   padding-right: 80px;
   padding-top: 30px;
 }
 .Nav-right,
-.Nav-left{
+.Nav-left {
   width: 50%;
   float: left;
   text-align: center;
 }
-.NavBar a{
+.NavBar a {
   color: white;
 }
-.Nav-left a{
+.Nav-left a {
   font-size: 50px;
 }
