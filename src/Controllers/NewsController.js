@@ -40,17 +40,17 @@ class NewsController {
     handleFormActions(req,res,next) {
         switch (req.body.action){
             case 'delete':
-                News.delete({_id: { $in: req.body.NewsIds}})
+                News.delete({_id: { $in: req.body.newsIds}})
                     .then(() => res.redirect('back'))
                     .catch(next);
                 break;
             case 'restore':
-                News.restore({_id: { $in: req.body.NewsIds}})
+                News.restore({_id: { $in: req.body.newsIds}})
                     .then(() => res.redirect('back'))
                     .catch(next);
                 break;
             case 'force':
-                News.remove({_id: { $in: req.body.NewsIds}})
+                News.remove({_id: { $in: req.body.newsIds}})
                     .then(() => res.redirect('back'))
                     .catch(next);
                 break;
@@ -70,7 +70,7 @@ class NewsController {
 
     //[PUT] /News/:id
     update(req,res,next) {
-        news.updateOne({_id: req.params.id}, req.body)
+        News.updateOne({_id: req.params.id}, req.body)
             .then(news => res.redirect('/news'))
             .catch(next);
     }
