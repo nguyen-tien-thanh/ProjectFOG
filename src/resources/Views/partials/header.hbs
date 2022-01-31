@@ -1,6 +1,25 @@
+
 <header>
-    <nav>
-        <div class="NavBar">
+    <nav class="Nav__bar">
+        <div class="Nav_Tablet">
+                <div class="nav-option-btn">
+                            <label for="option-nav" class="option__navbar"><i class="fas fa-bars" style="color: white;"></i></label>
+                            <input type="checkbox" id="option-nav" class="nav__option">
+                            <label for="option-nav" class="overlay-for-tablet"></label>
+                            <div class="nav_tablet">
+                                <label for="option-nav" class="x-btn">X</label>
+                                <ul>
+                                    <li><a href="">Homepage</a></li>
+                                    <li><a href="">Category</a></li>
+                                    <li><a href="">Event</a></li>
+                                    <li><a href="">Contact</a></li>
+                                </ul>
+                            </div>
+                </div>
+                <div class="nav-left-tablet"><a href="/">FOG</a></div>
+        </div>
+            {{!-- nav for pc --}}
+            <div class="Nav_PC">
               <div class="Nav-right">
                 <ul>
                     <li><a href="/home">Homepage</a></li>
@@ -22,16 +41,16 @@
                         <a style="color:black" class="dropdown-item" href="/event/manage">Manage event</a>
                         </div>
                     </li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/contact" class="">Contact</a></li>
                 </ul>
-            </div>
+              </div>
 
               <div class="Nav-left">
                 <ul>
                     <li><a href="/">FOG</a> </li>
                 </ul>
               </div>
-        </div>
+            </div>
     </nav>
 </header>
 

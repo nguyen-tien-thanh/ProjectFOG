@@ -4,8 +4,15 @@
   margin: 0; }
 
 header {
+  width: 100%;
+  height: 100%; }
+
+.Nav_PC {
   background-color: black;
   height: 85px; }
+
+.Nav_PC a {
+  color: white; }
 
 .Nav-right li,
 .Nav-left li {
@@ -15,17 +22,88 @@ header {
   padding-right: 80px;
   padding-top: 30px; }
 
-.Nav-right,
-.Nav-left {
-  width: 50%;
-  float: left;
-  text-align: center; }
+.Nav-right {
+  float: left; }
 
-.NavBar a {
-  color: white; }
+.Nav-left {
+  margin-left: 80%; }
 
 .Nav-left a {
   font-size: 50px; }
+
+.Nav_Tablet {
+  height: 85px;
+  background-color: black;
+  display: none; }
+
+.nav-left-tablet {
+  display: none; }
+
+.nav-left-tablet a {
+  color: white; }
+
+.nav-option-btn {
+  padding-left: 10px; }
+
+.nav__option {
+  display: none; }
+
+.nav_tablet {
+  position: fixed;
+  background-color: white;
+  width: 30%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform linear 0.2s, opacity linear 0.2s; }
+
+.nav_tablet a {
+  color: black;
+  font-size: 20px; }
+
+.option__navbar {
+  cursor: pointer; }
+
+.overlay-for-tablet {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  animation: fadeIn linear 0.2s; }
+
+.nav__option:checked ~ .nav_tablet {
+  transform: translateX(0%);
+  opacity: 1; }
+
+.nav__option:checked ~ .overlay-for-tablet {
+  display: block; }
+
+.x-btn {
+  margin-left: 90%; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .Nav_PC {
+    display: none; }
+  .Nav_Tablet {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    justify-content: space-between; }
+  .nav-left-tablet {
+    display: block;
+    font-size: 50px;
+    padding-right: 10px; } }
 
 footer {
   font-size: 16px;
@@ -91,14 +169,8 @@ footer {
   padding-top: 66.6666667%;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative; }
-
-.Intro .text {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center; }
+  display: flex;
+  justify-content: center; }
 
 .text h1 {
   color: white; }

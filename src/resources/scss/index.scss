@@ -3,15 +3,8 @@
   padding-top: 66.6666667%;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-}
-
-.Intro .text {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 .text h1 {
   color: white;
