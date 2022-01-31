@@ -1,0 +1,182 @@
+<h1>Manage news</h1>
+<a href="/news/trash">Trash news </a>
+(Total deleted news: {{deletedCount}})
+
+<form name="container-form" action="/news/handle-form-actions" method="POST">
+    <div class="mt-4 d-flex align-items-center">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+            <label class="form-check-label" for="checkbox-all">
+                Select all news
+            </label>
+        </div>
+
+        <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
+            <option value="delete">Delete</option>
+        </select>
+
+        
+        <button value="Do action" type="button" class="btn btn-primary disabled check-all-submit-btn">
+            Do action
+        </button>
+        {{!-- <button class="btn btn-primary btn-small disabled check-all-submit-btn">Go</button> --}}
+    </div>
+
+    <table class="table mt-4">
+    <thead>
+        <tr>
+            <th></th>
+            <th scope="col">No (Total: {{storedCount}})</th>
+            <th scope="col">news Name</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each news}}
+        <tr>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="newsIds[]" value="{{this._id}}" >
+                    </label>
+                </div>
+            </td>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.description}}</td>
+        <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
+        <td style="padding:5px">
+            <a href="/news/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
+            <a href="/news/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
+            <a href="" data-toggle="modal" data-target="#delete-news" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
+        </td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="5" class="text-center">
+                You have not created any news.
+                <a href="/news/create">Create new one?</a>
+            </td>
+        </tr>
+
+        {{/each}}
+    </tbody>
+    </table>
+
+    {{!-- Confirm delete code --}}
+    <div class="modal fade" id="delete-news" tabindex="-1" role="dialog" aria-labelledby="delete-newsLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-newsLabel">Delete news</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete this news?
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-news" type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Delete multiple news model confirm -->
+        <div class="modal fade" id="delete-multiple-news" tabindex="-1" role="dialog" aria-labelledby="delete-multiple-news" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-multiple-newsLabel">Delete news</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to <b>delete</b> these news?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-small disabled delete-multiple-news-btn">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+</form>
+        {{!-- Delete form hidden --}}
+        <form name="delete-news-form" method="post"></form>
+
+        <script>
+            //WHEN HTML DOM is loaded, Delete confirm shows
+            document.addEventListener('DOMContentLoaded', function(){
+                var newsId;
+                var deleteForm = document.forms['delete-news-form'];
+                var checkboxAll = $('#checkbox-all');
+                var newsItemCheckBox = $('input[name="newsIds[]"]');
+                var deleteMultipleNewsBtn = $('.delete-multiple-news-btn');
+                var containerForm = document.forms['container-form'];
+                var checkAllSubmitBtn = $('.check-all-submit-btn');
+
+                $('#delete-news').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+                newsId = button.data('id')
+                })
+
+                //When delete news btn clicked
+                var btnDeleteNews = document.getElementById('btn-delete-news')
+                btnDeleteNews.onclick = function(){
+                    deleteForm.action = '/news/' + newsId + '?_method=DELETE';
+                    deleteForm.submit();
+                }
+
+                //Checkbox all clicked
+                checkboxAll.change(function () {
+                    var isCheckedAll = $(this).prop('checked');
+                        newsItemCheckBox.prop('checked', isCheckedAll);
+                        renderCheckAllSubmitBtn();
+                });
+
+                newsItemCheckBox.change(function () {
+                    var isCheckedAll = newsItemCheckBox.length === $('input[name="newsIds[]"]:checked').length;
+                    checkboxAll.prop('checked', isCheckedAll);
+                    renderCheckAllSubmitBtn();
+                })
+
+                //Check all submit btn clicked not submit
+                deleteMultipleNewsBtn.on('submit', function (e) {
+                    var isSubmittable = !$(this).hasClass('disable');
+                    if(!isSubmittable){
+                        e.preventDefault();
+                    }
+                })
+
+                checkAllSubmitBtn.on('change', function (e) {
+                    var isSubmittable = !$(this).hasClass('disable');
+                    if(isSubmittable){
+                        e.preventDefault();
+                        console.log('123')
+                    }
+                })
+                
+
+                //Re-render check all submit button <Go>
+                function renderCheckAllSubmitBtn() {
+                    var checkedCount = $('input[name="newsIds[]"]:checked').length;
+                    if(checkedCount > 0){
+                        deleteMultipleNewsBtn.removeClass('disabled');
+                        checkAllSubmitBtn.removeClass('disabled');
+                        checkAllSubmitBtn.attr("data-toggle","modal");
+                        checkAllSubmitBtn.attr("data-target","#delete-multiple-news");
+                    } else{
+                        deleteMultipleNewsBtn.addClass('disabled');
+                        checkAllSubmitBtn.addClass('disabled');
+                        checkAllSubmitBtn.attr("data-toggle","");
+                        checkAllSubmitBtn.attr("data-target","");
+                    }
+                }
+                
+            })
+        </script>

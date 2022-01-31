@@ -1,0 +1,33 @@
+<h1 class="text-center">News Layout</h1>
+
+
+<div class="mt-4">
+    <ul class="row">
+        <div class="col-3">
+            <ul>
+                {{#each news}}
+                <a href="/news/{{this.slug}}"><li>{{this.title}}</li></a>
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="col-9 row">
+            {{#each news}}
+            <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+                <a href="/news/{{this.slug}}">
+                    <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+                </a>
+                <div class="card-body">
+                    <a href="/news/{{this.slug}}">
+                        <h5 class="card-title">{{this.name}}</h5>
+                    </a>
+                    <p class="card-text">{{this.description}}</p>
+                    <a href="/news/{{this.slug}}" class="btn btn-primary"> Detail </a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        </div>
+    </ul>
+</div>
