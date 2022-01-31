@@ -1,0 +1,36 @@
+<h1>Edit news page</h1> 
+<div class="mt-4 ml-4">
+  {{!-- enctype="multipart/form-data" --}}
+<form action="/news/{{news._id}}?_method=PUT" method="post">
+      <div class="form-group">
+            <label for="title">title</label>
+            <input type="text" class="form-control" value="{{news.title}}" id="title" name="title" placeholder="Enter title"> 
+          </div>
+      <div class="form-group">
+        <label for="name">name</label>
+        <input type="text" class="form-control" value="{{news.name}}" id="name" name="name" placeholder="Enter name"> 
+      </div>
+      <div class="form-group">
+        <label for="description">description</label>
+        <textarea class="form-control" id="description" name="description" >{{news.description}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="image">image</label>
+        <input type="text" class="form-control" value="{{news.image}}" id="image" name="image" placeholder="Enter image"> 
+      </div>
+      <div class="form-group">
+        <label for="createdAt">Create at</label>
+        <input type="text" class="form-control" value="{{news.createdAt}}" id="createdAt" name="createdAt" placeholder="Enter createdAt"> 
+      </div>
+      <div class="form-group">
+        <label for="updatedAt">Updated at</label>
+        <input type="text" class="form-control" value="{{news.updatedAt}}" id="updatedAt" name="updatedAt" placeholder="Enter updatedAt"> 
+      </div> 
+      <div class="form-group">
+        <label for="slug">slug</label>
+        <input type="text" class="form-control" value="{{news.slug}}" id="slug" name="slug" placeholder="Enter slug"> 
+      </div>
+  <input type="submit" class="btn btn-success"value="Edit">
+</form>
+</div>
+
