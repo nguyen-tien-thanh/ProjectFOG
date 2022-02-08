@@ -1,10 +1,15 @@
 .Intro {
+  position: relative;
   background-image: url("/images/slider.png");
   padding-top: 66.6666667%;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
+}
+.text{
+  position: absolute;
+  margin-top: -50px;
 }
 .text h1 {
   color: white;
