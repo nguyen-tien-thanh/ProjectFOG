@@ -6,6 +6,9 @@
             <p>- Title: {{idea.title}}</p>
             <p>- Detail: {{idea.detail}}</p>
             <p>- Author: {{idea.author}}</p>
+            <p>- Category: {{idea.type}}</p>
+            <p>- File: <a href="../../idea/{{idea.file}}">File</a></p>
+            <iframe src="https://docs.google.com/gview?url=http://remote.url.tld/idea/{{idea.file}}&embedded=true"></iframe>
             <p>- Create at: {{moment idea.createdAt format="HH:mm on DD-MM-YYYY"}}</p>
             <p>- Update at: {{moment idea.updatedAt format="HH:mm on DD-MM-YYYY"}}</p>
         </div>

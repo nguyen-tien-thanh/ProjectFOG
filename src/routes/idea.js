@@ -3,38 +3,38 @@ const router = express.Router();
 
 const ideaController = require('../Controllers/IdeaController');
 
-// [POST] /category/handle-form-actions category
+// [POST] /idea/handle-form-actions idea
 router.post('/handle-form-actions', ideaController.handleFormActions)
 
-// [GET] /category/create category
+// [POST] /idea/create idea
 router.use('/create', ideaController.create)
 
-// [GET] /category/trash category
+// [GET] /idea/trash idea
 router.use('/trash', ideaController.trash)
 
-// [GET] /category/create category
+// [GET] /idea/create idea
 router.use('/manage', ideaController.manage)
 
-// [GET] /category/:id/edit category
+// [GET] /idea/:id/edit idea
 router.get('/:id/edit', ideaController.edit)
 
-// [PUT] /category/:id/update category
+// [PUT] /idea/:id/update idea
 router.put('/:id', ideaController.update)
 
-// [PATCH] /category/:id/update category
+// [PATCH] /idea/:id/update idea
 router.patch('/:id/restore', ideaController.restore)
 
-// [DELETE] /category/:id/detele category
+// [DELETE] /idea/:id/detele idea
 router.delete('/:id', ideaController.delete)
 router.delete('/:id/force', ideaController.force)
 
-// // [POST] /categories/store category
+// // [POST] /categories/store idea
 router.post('/store', ideaController.store)
 
-// [link bien dong] /category/show || /category/:slug
+// [link bien dong] /idea/show || /idea/:slug
 router.use('/:slug', ideaController.show)
 
-// /category/index - category.hbs
+// /idea/index - idea.hbs
 router.use('/', ideaController.index)
 
 

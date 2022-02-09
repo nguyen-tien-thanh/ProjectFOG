@@ -4,6 +4,10 @@ const Category = require('../models/Category');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
 
+const formidable = require("formidable");
+var fs = require('fs');
+
+
 class IdeaController {
     
     //[GET] /idea/create 
@@ -108,12 +112,22 @@ class IdeaController {
 
     //[POST] /store idea
     store(req,res,next) {
-        const eve = new Idea(req.body);
-        eve.save()
-            .then(() => res.redirect('/idea'))
-            .catch(error => {
-                
+        const form = new formidable.IncomingForm();
+        form.parse(req, function(err, fields, files){
+  
+        const oldPath = files.file.filepath;
+        const newPath = 'src/uploads/idea/' + files.file.originalFilename
+        const rawData = fs.readFileSync(oldPath)
+        const idea = new Idea(fields);
+        
+            
+            idea.file = files.file.originalFilename;
+            fs.writeFile(newPath, rawData, function(err){
+                if(err) console.log(err)
+                idea.save()
+                return res.send("Successfully uploaded")
             })
+        })
     }
 
 
