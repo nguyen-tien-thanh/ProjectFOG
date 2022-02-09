@@ -1,13 +1,13 @@
-<h1>Stored Category</h1>
-<a href="/me/deleted/category">Trash Category </a>
-(Total deleted Category: {{deletedCount}})
+<h1>Manage idea</h1>
+<a href="/idea/trash">Trash idea </a>
+(Total deleted idea: {{deletedCount}})
 
-<form name="container-form" action="/category/handle-form-actions" method="POST">
+<form name="container-form" action="/idea/handle-form-actions" method="POST">
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
             <label class="form-check-label" for="checkbox-all">
-                Select all categories
+                Select all ideas
             </label>
         </div>
 
@@ -25,36 +25,40 @@
     <table class="table mt-4">
     <thead>
         <tr>
-        <th></th>
-        <th scope="col">No (Total: {{storedCount}})</th>
-        <th scope="col">Category Name</th>
-        <th scope="col">Created Date</th>
-        <th scope="col">Action</th>
+            <th></th>
+            <th scope="col">No (Total: {{storedCount}})</th>
+            <th scope="col">Idea Title</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">File</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        {{#each category}}
+        {{#each idea}}
         <tr>
             <td>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="categoryIds[]" value="{{this._id}}" >
+                    <input class="form-check-input" type="checkbox" name="ideaIds[]" value="{{this._id}}" >
                     </label>
                 </div>
             </td>
         <th scope="row">{{sum @index 1}}</th>
-        <td>{{this.name}}</td>
+        <td>{{this.title}}</td>
+        <td>{{this.detail}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
+        <td>{{this.file}}</td>
         <td style="padding:5px">
-            <a href="/category/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
-            <a href="/category/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-category" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
+            <a href="/idea/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
+            <a href="/idea/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
+            <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
         </td>
         </tr>
         {{else}}
         <tr>
             <td colspan="5" class="text-center">
-                You have not created any category.
-                <a href="/category/create">Create new one?</a>
+                You have not created any idea.
+                <a href="/idea/create">Create new one?</a>
             </td>
         </tr>
 
@@ -63,41 +67,41 @@
     </table>
 
     {{!-- Confirm delete code --}}
-    <div class="modal fade" id="delete-category" tabindex="-1" role="dialog" aria-labelledby="delete-categoryLabel" aria-hidden="true">
+    <div class="modal fade" id="delete-idea" tabindex="-1" role="dialog" aria-labelledby="delete-ideaLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete-categoryLabel">Delete Category</h5>
+                <h5 class="modal-title" id="delete-ideaLabel">Delete idea</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure to delete this category?
+                Are you sure to delete this idea?
             </div>
             <div class="modal-footer">
-                <button id="btn-delete-category" type="button" class="btn btn-danger">Delete</button>
+                <button id="btn-delete-idea" type="button" class="btn btn-danger">Delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
             </div>
             </div>
         </div>
         </div>
 
-        <!-- Delete multiple categories model confirm -->
-        <div class="modal fade" id="delete-multiple-categories" tabindex="-1" role="dialog" aria-labelledby="delete-multiple-categoriesLabel" aria-hidden="true">
+        <!-- Delete multiple ideas model confirm -->
+        <div class="modal fade" id="delete-multiple-ideas" tabindex="-1" role="dialog" aria-labelledby="delete-multiple-ideas" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete-multiple-categoriesLabel">Delete category</h5>
+                <h5 class="modal-title" id="delete-multiple-ideasLabel">Delete idea</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure to <b>delete</b> these categories?
+                Are you sure to <b>delete</b> these ideas?
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger btn-small disabled delete-multiple-categories-btn">Delete</button>
+                <button class="btn btn-danger btn-small disabled delete-multiple-ideas-btn">Delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
             </div>
@@ -105,56 +109,56 @@
         </div>
 </form>
         {{!-- Delete form hidden --}}
-        <form name="delete-category-form" method="post"></form>
+        <form name="delete-idea-form" method="post"></form>
 
         <script>
             //WHEN HTML DOM is loaded, Delete confirm shows
             document.addEventListener('DOMContentLoaded', function(){
-                var categoryId;
-                var deleteForm = document.forms['delete-category-form'];
+                var ideaId;
+                var deleteForm = document.forms['delete-idea-form'];
                 var checkboxAll = $('#checkbox-all');
-                var categoryItemCheckBox = $('input[name="categoryIds[]"]');
-                var deleteMultipleCategoriesBtn = $('.delete-multiple-categories-btn');
+                var ideaItemCheckBox = $('input[name="ideaIds[]"]');
+                var deleteMultipleIdeasBtn = $('.delete-multiple-ideas-btn');
                 var containerForm = document.forms['container-form'];
                 var checkAllSubmitBtn = $('.check-all-submit-btn');
 
-                $('#delete-category').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget)
-                categoryId = button.data('id')
+                $('#delete-idea').on('show.bs.modal', function (idea) {
+                var button = $(idea.relatedTarget)
+                ideaId = button.data('id')
                 })
 
-                //When delete category btn clicked
-                var btnDeleteCategory = document.getElementById('btn-delete-category')
-                btnDeleteCategory.onclick = function(){
-                    deleteForm.action = '/category/' + categoryId + '?_method=DELETE';
+                //When delete idea btn clicked
+                var btnDeleteIdea = document.getElementById('btn-delete-idea')
+                btnDeleteIdea.onclick = function(){
+                    deleteForm.action = '/idea/' + ideaId + '?_method=DELETE';
                     deleteForm.submit();
                 }
 
                 //Checkbox all clicked
                 checkboxAll.change(function () {
                     var isCheckedAll = $(this).prop('checked');
-                        categoryItemCheckBox.prop('checked', isCheckedAll);
+                        ideaItemCheckBox.prop('checked', isCheckedAll);
                         renderCheckAllSubmitBtn();
                 });
 
-                categoryItemCheckBox.change(function () {
-                    var isCheckedAll = categoryItemCheckBox.length === $('input[name="categoryIds[]"]:checked').length;
+                ideaItemCheckBox.change(function () {
+                    var isCheckedAll = ideaItemCheckBox.length === $('input[name="ideaIds[]"]:checked').length;
                     checkboxAll.prop('checked', isCheckedAll);
                     renderCheckAllSubmitBtn();
                 })
 
                 //Check all submit btn clicked not submit
-                deleteMultipleCategoriesBtn.on('submit', function (e) {
+                deleteMultipleIdeasBtn.on('submit', function (e) {
                     var isSubmittable = !$(this).hasClass('disable');
                     if(!isSubmittable){
-                        e.preventDefault();
+                        e.prideaDefault();
                     }
                 })
 
                 checkAllSubmitBtn.on('change', function (e) {
                     var isSubmittable = !$(this).hasClass('disable');
                     if(isSubmittable){
-                        e.preventDefault();
+                        e.prideaDefault();
                         console.log('123')
                     }
                 })
@@ -162,14 +166,14 @@
 
                 //Re-render check all submit button <Go>
                 function renderCheckAllSubmitBtn() {
-                    var checkedCount = $('input[name="categoryIds[]"]:checked').length;
+                    var checkedCount = $('input[name="ideaIds[]"]:checked').length;
                     if(checkedCount > 0){
-                        deleteMultipleCategoriesBtn.removeClass('disabled');
+                        deleteMultipleIdeasBtn.removeClass('disabled');
                         checkAllSubmitBtn.removeClass('disabled');
                         checkAllSubmitBtn.attr("data-toggle","modal");
-                        checkAllSubmitBtn.attr("data-target","#delete-multiple-categories");
+                        checkAllSubmitBtn.attr("data-target","#delete-multiple-ideas");
                     } else{
-                        deleteMultipleCategoriesBtn.addClass('disabled');
+                        deleteMultipleIdeasBtn.addClass('disabled');
                         checkAllSubmitBtn.addClass('disabled');
                         checkAllSubmitBtn.attr("data-toggle","");
                         checkAllSubmitBtn.attr("data-target","");

@@ -1,0 +1,219 @@
+<h1>Deleted idea</h1>
+<a href="/idea/manage">Stored idea</a> (Total: {{storedCount}})
+
+    <form action="/idea/handle-form-actions" method="POST">
+        <div class="mt-4 d-flex align-items-center">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+                <label class="form-check-label" for="checkbox-all">
+                    Select all ideas
+                </label>
+            </div>
+
+            <select class="form-control form-control-sm checkbox-select-all-options" name="action" id="action-select" required>
+                <option value="restore" selected>Restore</option>
+                <option value="force">Delete from bin</option>
+            </select>
+
+            <button  type="button" 
+                class="btn btn-primary btn-small disabled check-all-submit-btn">Do action
+            </button>
+        </div>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+            <th scope="col">No (Total: {{deletedCount}})</th>
+            <th scope="col">Title</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Deleted Date</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each idea}}
+            <tr>
+                <th>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="ideaIds[]" value="{{this._id}}" >
+                        </label>
+                    </div>
+                </th>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.description}}</td>
+            <td>{{moment this.deletedAt format="HH:mm on DD-MM-YYYY"}}</td>
+            <td style="padding:5px">
+                <a href="" data-toggle="modal" data-target="#restore-idea" data-id="{{this._id}}"><button class="btn btn-secondary btn-restore" >Restore</button></a>
+                <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}"><button class="btn btn-secondary btn-force">Delete</button></a>
+            </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="5" class="text-center">
+                    The trash is empty.
+                    <a href="/idea/manage">Stored idea</a>
+                </td>
+            </tr>
+
+            {{/each}}
+        </tbody>
+        </table>
+    
+
+    {{!-- Confirm force delete 1 idea code --}}
+    <div class="modal fade" id="delete-idea" tabindex="-1" role="dialog" aria-labelledby="delete-ideaLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-ideaLabel">Delete idea</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                This action <b>cannot be recovered.</b> <br>
+                Are you sure you want to <b>permanently delete</b> this idea?
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-idea" type="button" class="btn btn-danger ">Permanently Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+    {{!-- Confirm restore multiple ideas code --}}
+    <div class="modal fade" id="restore-idea" tabindex="-1" role="dialog" aria-labelledby="restore-ideaLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="restore-ideaLabel">Restore idea</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to <b>restore</b> this idea?
+            </div>
+            <div class="modal-footer">
+                <button id="btn-restore-idea" type="button" class="btn btn-danger ">Restore</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        {{!-- Confirm force delete multiple ideas code --}}
+    <div class="modal fade" id="action-change-modal" tabindex="-1" role="dialog" aria-labelledby="action-change-modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="action-change-modalLabel">Action idea</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <b>Are you sure</b> you want to do that change?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-action-change-restore"> Action</button>
+                {{!-- <button type="" class="btn btn-danger btn-action-change-modal">Permanently </button> --}}
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+        </div>
+</form>
+        {{!-- Delete and restore form hidden --}}
+        <form name="delete-idea-form" method="post"></form>
+        <form name="restore-idea-form" method="post"></form>
+
+<script>
+    //WHEN HTML DOM is loaded, Delete confirm shows
+    document.addEventListener('DOMContentLoaded', function(){
+        var ideaId;
+        var deleteForm = document.forms['delete-idea-form'];
+        var forceBtnAll = document.querySelectorAll('.btn-force');
+
+        var restoreForm = document.forms['restore-idea-form'];
+        var restoreBtnAll = document.querySelectorAll('.btn-restore');
+
+        var checkboxAll = $('#checkbox-all');
+        var ideaItemCheckBox = $('input[name="ideaIds[]"]');
+        var checkAllSubmitBtn = $('.check-all-submit-btn');
+
+
+
+        // When checkbox select all clicked
+        checkboxAll.change( function () {
+            var isCheckedAll = $(this).is(':checked');
+            ideaItemCheckBox.prop('checked', isCheckedAll);
+            renderCheckAllSubmitBtn();
+        })
+
+
+        // When checkbox item clicked
+        ideaItemCheckBox.change( function () {
+            var isCheckedAll = ideaItemCheckBox.length === $('input[name="ideaIds[]"]:checked').length;
+            checkboxAll.prop('checked', isCheckedAll);
+            renderCheckAllSubmitBtn();
+        })
+
+
+        // Render submit action button 
+        function renderCheckAllSubmitBtn(){
+            var checkedCount = $('input[name="ideaIds[]"]:checked').length;
+            if (checkedCount > 0 ){
+                checkAllSubmitBtn.removeClass('disabled')
+                checkAllSubmitBtn.attr("data-toggle","modal");
+                checkAllSubmitBtn.attr("data-target","#action-change-modal");
+                 $('.btn-action-change-restore').attr("type","submit")
+            }
+            else{
+                checkAllSubmitBtn.addClass('disabled')
+                checkAllSubmitBtn.attr("data-toggle","");
+                checkAllSubmitBtn.attr("data-target","");
+            }
+        }
+        
+
+        //When button delete clicked
+        $('#delete-idea').on('show.bs.modal', function (idea) {
+        var button = $(idea.relatedTarget)
+        ideaId = button.data('id')
+        })
+        var btnDeleteIdea = document.getElementById('btn-delete-idea')
+        btnDeleteIdea.onclick = function(){
+            deleteForm.action = '/idea/' + ideaId + '/force?_method=DELETE';
+            deleteForm.submit();
+        }
+
+
+        //When button restore clicked
+        $('#restore-idea').on('show.bs.modal', function (idea) {
+        var button = $(idea.relatedTarget)
+        ideaId = button.data('id')
+        })
+        var btnRestoreIdea = document.getElementById('btn-restore-idea')
+        btnRestoreIdea.onclick = function(){
+            restoreForm.action = '/idea/' + ideaId + '/restore?_method=PATCH';
+            restoreForm.submit();
+        }
+        
+        
+        // Restore multiple ideas when btn clicked 
+        $('.btn-action-change-restore').on('submit', function (e) {
+            var isSubmittable = !$(this).hasClass('disable');
+            if(!isSubmittable){
+                e.prideaDefault();
+            }
+        })
+
+
+
+
+    })
+</script>
