@@ -1,0 +1,42 @@
+const express = require('express');
+const router = express.Router();
+
+const ideaController = require('../Controllers/IdeaController');
+
+// [POST] /idea/handle-form-actions idea
+router.post('/handle-form-actions', ideaController.handleFormActions)
+
+// [POST] /idea/create idea
+router.use('/create', ideaController.create)
+
+// [GET] /idea/trash idea
+router.use('/trash', ideaController.trash)
+
+// [GET] /idea/create idea
+router.use('/manage', ideaController.manage)
+
+// [GET] /idea/:id/edit idea
+router.get('/:id/edit', ideaController.edit)
+
+// [PUT] /idea/:id/update idea
+router.put('/:id', ideaController.update)
+
+// [PATCH] /idea/:id/update idea
+router.patch('/:id/restore', ideaController.restore)
+
+// [DELETE] /idea/:id/detele idea
+router.delete('/:id', ideaController.delete)
+router.delete('/:id/force', ideaController.force)
+
+// // [POST] /categories/store idea
+router.post('/store', ideaController.store)
+
+// [link bien dong] /idea/show || /idea/:slug
+router.use('/:slug', ideaController.show)
+
+// /idea/index - idea.hbs
+router.use('/', ideaController.index)
+
+
+
+module.exports = router;

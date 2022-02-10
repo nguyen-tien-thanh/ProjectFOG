@@ -1,0 +1,37 @@
+<h1>Create new idea page</h1> 
+<div class="mt-4">
+  {{!-- enctype="multipart/form-data" --}}
+<form action="/idea/store" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="title">title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required> 
+      </div>
+      <div class="form-group">
+        <label for="detail">detail</label>
+        <textarea type="text" class="form-control" id="detail" name="detail" placeholder="Enter detail" required></textarea>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="type">Category</label>
+        </div>
+        <select class="custom-select form-group" id="type" name="type">
+          {{#each category}}
+            <option value="{{this.name}}">{{this.name}}</option>
+          {{/each}}
+          <option value="Another">Another</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="author">author</label>
+        <input type="text" class="form-control" id="author" name="author" placeholder="Enter author" required> 
+      </div>
+      <div class="form-group">
+        <input type="file" name="file" class="form-upload validate[upload]"
+          data-file-accept="pdf, doc, docx, xls, csv, txt, rtf, html, zip, jpg, jpeg, png, gif" 
+          data-file-maxsize="10240" data-component="fileupload">
+      </div>
+     
+  <input type="submit" class="btn btn-success" value="Submit">
+</form>
+</div>
+

@@ -6,8 +6,6 @@ const Schema = mongoose.Schema;
 
 const Category = new Schema({
     name: {type: String, minLength: 1, maxLength: 255},
-    description: {type: String, maxLength: 600},
-    image: {type : String, minLength : 1},
     slug: {type : String, slug : 'name', unique: true},
     deletedAt: {},
     // createdAt: {type: Date, default : Date.Now},

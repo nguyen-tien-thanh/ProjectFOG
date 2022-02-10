@@ -86,15 +86,25 @@ class CategoryController {
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
-        Category.findOne({ slug: req.params.slug})
-        .then (category => {
-            // res.json(category);
 
-            res.render('category/show', { 
-                category: mongooseToObject(category) 
-            });
-        })
+        Promise.all([Category.findOne({ slug: req.params.slug }), Category.find()])
+        .then(([category, list]) => 
+        res.render('category/show', {
+            category: mongooseToObject(category),
+            list: multipleMongooseToObject(list),
+            })
+        )
         .catch(next)
+
+        // Category.findOne({ slug: req.params.slug})
+        // .then (category => {
+        //     // res.json(category);
+
+        //     res.render('category/show', { 
+        //         category: mongooseToObject(category) 
+        //     });
+        // })
+        // .catch(next)
         // res.send('New detail !!! - '+ req.params.slug );
     }
 
