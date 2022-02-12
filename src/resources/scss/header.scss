@@ -76,6 +76,9 @@ header{
    color:black;
    font-size: 20px;
 }
+.nav_tablet li{
+  cursor: pointer;
+}
 .option__navbar{
   cursor: pointer;
 }
@@ -100,6 +103,7 @@ header{
 .x-btn{
   margin-left: 90%;
 }
+.x-btn:hover{opacity: 0.7;}
 
 @keyframes fadeIn {
   from{
@@ -112,8 +116,8 @@ header{
 .Category-content{
   background-color: #f9f9f9;
   min-width: 30%;
+  padding-bottom: 40px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
   display: none;
 }
 .Category-content a {
@@ -122,11 +126,24 @@ header{
   text-decoration: none;
   display: block;
 }
+.idea-content{
+  background-color: #f9f9f9;
+  min-width: 30%;
+  padding-bottom: 40px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  display: none;
+}
+.idea-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
 .Event-content{
   background-color: #f9f9f9;
   min-width: 30%;
+  padding-bottom: 40px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
   display: none;
 }
 .Event-content a {
@@ -139,8 +156,8 @@ header{
 .News-content{
   background-color: #f9f9f9;
   min-width: 30%;
+  padding-bottom: 40px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
   display: none;
 }
 .News-content a {
@@ -152,6 +169,9 @@ header{
 .nav_tablet li:hover .Category-content{
   display: block;
 }
+.nav_tablet li:hover .idea-content{
+  display: block;
+}
 .nav_tablet li:hover .Event-content{
   display: block;
 }
@@ -161,6 +181,7 @@ header{
 .News-content a:hover{background-color: #f1f1f1}
 .Event-content a:hover{background-color: #f1f1f1}
 .Category-content a:hover {background-color: #f1f1f1}
+.idea-content a:hover {background-color: #f1f1f1}
 
 
 @media only screen and (min-width: 740px)and (max-width:1024px){
