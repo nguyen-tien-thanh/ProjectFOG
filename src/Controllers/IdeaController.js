@@ -10,6 +10,16 @@ var fs = require('fs');
 
 class IdeaController {
     
+    //[POST] /idea/:id/interactive
+    interactive(req,res,next){
+        const action = req.body.action;
+        const counter = action === 'Like' ? 1 : -1;
+        Idea.updateOne({_id: req.params.id}, {$inc: {ratings: counter}}, {}, (err, numberAffected) => {
+            res.send('');
+        });
+        
+    }
+
     //[GET] /idea/create 
     create(req,res,next) {
         Category.find({})

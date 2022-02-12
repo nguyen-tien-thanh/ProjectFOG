@@ -29,6 +29,7 @@
             <th scope="col">No (Total: {{storedCount}})</th>
             <th scope="col">Idea Title</th>
             <th scope="col">Detail</th>
+            <th scope="col">Ratings</th>
             <th scope="col">Created Date</th>
             <th scope="col">File</th>
             <th scope="col">Action</th>
@@ -46,6 +47,7 @@
         <th scope="row">{{sum @index 1}}</th>
         <td>{{this.title}}</td>
         <td>{{this.detail}}</td>
+        <td>{{this.ratings}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td>{{this.file}}</td>
         <td style="padding:5px">
@@ -151,14 +153,14 @@
                 deleteMultipleIdeasBtn.on('submit', function (e) {
                     var isSubmittable = !$(this).hasClass('disable');
                     if(!isSubmittable){
-                        e.prideaDefault();
+                        e.preventDefault();
                     }
                 })
 
                 checkAllSubmitBtn.on('change', function (e) {
                     var isSubmittable = !$(this).hasClass('disable');
                     if(isSubmittable){
-                        e.prideaDefault();
+                        e.preventDefault();
                         console.log('123')
                     }
                 })

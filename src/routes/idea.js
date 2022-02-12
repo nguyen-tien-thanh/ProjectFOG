@@ -3,6 +3,9 @@ const router = express.Router();
 
 const ideaController = require('../Controllers/IdeaController');
 
+// [POST] /idea/:id/interactive idea
+router.put('/:id/interactive', ideaController.interactive)
+
 // [POST] /idea/handle-form-actions idea
 router.post('/handle-form-actions', ideaController.handleFormActions)
 
