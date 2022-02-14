@@ -260,8 +260,8 @@ footer {
 
 .Intro {
   position: relative;
-  background-image: url("/images/slider.png");
-  padding-top: 66.6666667%;
+  background-image: url("https://www.flc.vn/wp-content/uploads/2020/03/ANH-1.jpg");
+  padding-top: 42%;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -366,6 +366,7 @@ footer {
 .Student:hover .Student-text {
   opacity: 1; }
 
+<<<<<<< HEAD
 #slider {
   width: 100%;
   position: relative;
@@ -477,6 +478,8 @@ body li {
   list-style-type: none;
   text-decoration: none; }
 
+=======
+>>>>>>> 7d519055e7141ed85836f66222ddf4f3c3e93f3e
 .checkbox-select-all-options {
   width: 10%;
   margin: 0px 16px; }
