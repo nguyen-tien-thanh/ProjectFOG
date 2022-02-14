@@ -49,6 +49,7 @@ Team member:
   - git commit -m"WorkName"
   - git push -u origin master
 
+- Main color:   rgb(255, 50, 71)
 ============================= Function =============================
 - Role
   - Admin - Quality Assurance Manager
