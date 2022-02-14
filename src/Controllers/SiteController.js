@@ -15,11 +15,6 @@ class SiteController {
         res.render('search');
     }
 
-    home(req, res, next){
-
-        res.render('home', {layout: 'intropage'});
-    }
-
 }
 
 module.exports = new SiteController;
