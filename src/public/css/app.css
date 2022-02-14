@@ -469,6 +469,14 @@ footer {
   color: black;
   border-color: white; }
 
+.abc:hover {
+  color: white;
+  background-color: #007bff; }
+
+body li {
+  list-style-type: none;
+  text-decoration: none; }
+
 .checkbox-select-all-options {
   width: 10%;
   margin: 0px 16px; }

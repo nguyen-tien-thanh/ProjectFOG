@@ -4,16 +4,17 @@
 <div class="mt-4">
     <ul class="row">
         <div class="col-3">
-            <ul>
+            <ul class="list-group">
                 {{#each news}}
-                <a href="/news/{{this.slug}}"><li>{{this.title}}</li></a>
+                    <a data-spy="scroll" class="list-group-item list-group-item-action abc" href="/news/{{this.slug}}"><li>{{this.title}}</li></a>
                 {{/each}}
             </ul>
         </div>
 
+
         <div class="col-9 row">
             {{#each news}}
-            <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="mb-4">
             <div class="card">
                 <a href="/news/{{this.slug}}">
                     <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">

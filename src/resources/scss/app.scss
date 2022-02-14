@@ -5,8 +5,13 @@
 @import "index.scss";
 @import "home.scss";
 @import "register.scss";
+@import "news.scss";
 
 //
+body li{
+  list-style-type: none;
+  text-decoration: none;
+}
 
 .checkbox-select-all-options {
   width: 10%;
