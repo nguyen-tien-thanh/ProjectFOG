@@ -3,11 +3,11 @@
   padding: 0;
   margin: 0;
 }
-header{
+header {
   width: 100%;
   height: 100%;
 }
-.Nav_PC{
+.Nav_PC {
   background-color: black;
   height: 85px;
 }
@@ -25,7 +25,7 @@ header{
 .Nav-right {
   float: left;
 }
-.Nav-left{
+.Nav-left {
   margin-left: 80%;
 }
 .Nav-left a {
@@ -33,12 +33,12 @@ header{
 }
 
 // NAV FOR TABLET
-.Nav_Tablet{
+.Nav_Tablet {
   height: 85px;
   background-color: black;
   display: none;
 }
-.overlay_modal{
+.overlay_modal {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.6);
   top: 0;
@@ -48,20 +48,20 @@ header{
   z-index: 1;
   display: none;
 }
-.nav-left-tablet{
+.nav-left-tablet {
   display: none;
 }
-.nav-left-tablet a{
+.nav-left-tablet a {
   color: white;
 }
-.nav-option-btn{
+.nav-option-btn {
   padding-left: 10px;
 }
-.nav__option{
+.nav__option {
   display: none;
 }
-.nav_tablet{
-  position:fixed;
+.nav_tablet {
+  position: fixed;
   background-color: white;
   width: 30%;
   height: 100%;
@@ -70,54 +70,56 @@ header{
   transform: translateX(-100%);
   opacity: 0;
   transition: transform linear 0.2s, opacity linear 0.2s;
-  z-index:  1;
-}
-.nav_tablet a{
-   color:black;
-   font-size: 20px;
-}
-.nav_tablet li{
-  cursor: pointer;
-}
-.option__navbar{
-  cursor: pointer;
-}
-.overlay-for-tablet{
-  position: fixed;
-  top:0;
-  right:0;
-  left:0;
-  bottom:0;
   z-index: 1;
-  background-color:rgba(255, 255, 255, 0.6);
+}
+.nav_tablet a {
+  color: black;
+  font-size: 20px;
+}
+.nav_tablet li {
+  cursor: pointer;
+}
+.option__navbar {
+  cursor: pointer;
+}
+.overlay-for-tablet {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.6);
   display: none;
   animation: fadeIn linear 0.2s;
 }
-.nav__option:checked ~ .nav_tablet{
+.nav__option:checked ~ .nav_tablet {
   transform: translateX(0%);
   opacity: 1;
 }
-.nav__option:checked ~ .overlay-for-tablet{
+.nav__option:checked ~ .overlay-for-tablet {
   display: block;
 }
-.x-btn{
+.x-btn {
   margin-left: 90%;
 }
-.x-btn:hover{opacity: 0.7;}
+.x-btn:hover {
+  opacity: 0.7;
+}
 
 @keyframes fadeIn {
-  from{
+  from {
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
-.Category-content{
+.Category-content {
   background-color: #f9f9f9;
   min-width: 30%;
   padding-bottom: 40px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   display: none;
 }
 .Category-content a {
@@ -126,11 +128,11 @@ header{
   text-decoration: none;
   display: block;
 }
-.idea-content{
+.idea-content {
   background-color: #f9f9f9;
   min-width: 30%;
   padding-bottom: 40px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   display: none;
 }
 .idea-content a {
@@ -139,11 +141,11 @@ header{
   text-decoration: none;
   display: block;
 }
-.Event-content{
+.Event-content {
   background-color: #f9f9f9;
   min-width: 30%;
   padding-bottom: 40px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   display: none;
 }
 .Event-content a {
@@ -153,11 +155,11 @@ header{
   display: block;
 }
 
-.News-content{
+.News-content {
   background-color: #f9f9f9;
   min-width: 30%;
   padding-bottom: 40px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   display: none;
 }
 .News-content a {
@@ -166,40 +168,44 @@ header{
   text-decoration: none;
   display: block;
 }
-.nav_tablet li:hover .Category-content{
+.nav_tablet li:hover .Category-content {
   display: block;
 }
-.nav_tablet li:hover .idea-content{
+.nav_tablet li:hover .idea-content {
   display: block;
 }
-.nav_tablet li:hover .Event-content{
+.nav_tablet li:hover .Event-content {
   display: block;
 }
-.nav_tablet li:hover .News-content{
+.nav_tablet li:hover .News-content {
   display: block;
 }
-.News-content a:hover{background-color: #f1f1f1}
-.Event-content a:hover{background-color: #f1f1f1}
-.Category-content a:hover {background-color: #f1f1f1}
-.idea-content a:hover {background-color: #f1f1f1}
+.News-content a:hover {
+  background-color: #f1f1f1;
+}
+.Event-content a:hover {
+  background-color: #f1f1f1;
+}
+.Category-content a:hover {
+  background-color: #f1f1f1;
+}
+.idea-content a:hover {
+  background-color: #f1f1f1;
+}
 
-
-@media only screen and (min-width: 740px)and (max-width:1024px){
-  .Nav_PC{
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .Nav_PC {
     display: none;
   }
-  .Nav_Tablet{
+  .Nav_Tablet {
     display: flex;
     align-items: center;
     font-size: 30px;
     justify-content: space-between;
   }
-  .nav-left-tablet{
+  .nav-left-tablet {
     display: block;
     font-size: 50px;
     padding-right: 10px;
   }
-
 }
-
-
