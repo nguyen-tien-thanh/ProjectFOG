@@ -366,120 +366,17 @@ footer {
 .Student:hover .Student-text {
   opacity: 1; }
 
-<<<<<<< HEAD
-#slider {
-  width: 100%;
-  position: relative;
-  padding-top: 43.452381%;
-  background-image: url("/images/header1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; }
-
-#slider .text-link {
-  position: absolute;
-  color: aliceblue;
-  bottom: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center; }
-
-.Shopbutton button {
-  background-color: rgba(0, 0, 0, 0);
-  border-style: solid;
-  border-color: white;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer; }
-
-.Shopbutton button:hover {
-  background-color: white;
-  color: black; }
-
-.slidersub1 {
-  width: 50%; }
-
-.slidersub2 {
-  width: 50%; }
-
-#slider2 img {
-  width: 100%;
-  height: auto; }
-
-.slidersub1,
-.slidersub2 {
-  float: left; }
-
-.slidersub1 {
-  position: relative; }
-
-.slidertextsub1 {
-  position: absolute;
-  color: red;
-  bottom: 50px; }
-
-.Valentine-button button {
-  background-color: rgba(0, 0, 0, 0);
-  border-style: solid;
-  border-color: red;
-  padding: 15px 100px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer; }
-
-.Valentine-button button {
-  color: red; }
-
-.Valentine-button button:hover {
-  background-color: white;
-  color: black;
-  border-color: white; }
-
-.slidersub2 {
-  position: relative; }
-
-.slidertextsub2 {
-  position: absolute;
-  bottom: 50px;
-  color: white; }
-
-.Layers-button button {
-  background-color: rgba(0, 0, 0, 0);
-  border-style: solid;
-  border-color: white;
-  padding: 15px 100px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer; }
-
-.Layers-button button {
-  color: white; }
-
-.Layers-button button:hover {
-  background-color: white;
-  color: black;
-  border-color: white; }
-
-.abc:hover {
+.list-hover:hover {
   color: white;
   background-color: #007bff; }
+
+.card-deck {
+  display: flex; }
 
 body li {
   list-style-type: none;
   text-decoration: none; }
 
-=======
->>>>>>> 7d519055e7141ed85836f66222ddf4f3c3e93f3e
 .checkbox-select-all-options {
   width: 10%;
   margin: 0px 16px; }
