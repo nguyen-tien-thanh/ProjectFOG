@@ -376,9 +376,12 @@ footer {
 .Student:hover .Student-text {
   opacity: 1; }
 
-.abc:hover {
+.list-hover:hover {
   color: white;
   background-color: #007bff; }
+
+.card-deck {
+  display: flex; }
 
 body li {
   list-style-type: none;

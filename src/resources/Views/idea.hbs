@@ -19,7 +19,7 @@
                     <a href="/idea/{{this.slug}}">
                         <h5 class="card-title">{{this.title}}</h5>
                     </a>
-                    <p class="card-text">{{this.detail}}</p>
+                    <p class="card-text idea-detail">{{this.detail}}</p>
                     Author: <p class="card-text">{{this.author}}</p>
                     Category: <p class="card-text">{{this.type}}</p>
                     File: <p class="card-text"><a href="../../idea/{{this.file}}">{{this.file}}</a></p>
@@ -32,6 +32,12 @@
                             data-post-id="{{ this._id }}">Unlike
                     </button>
                     <p><span id="ratings-{{ this._id }}">{{ this.ratings }}</span> liked this</p>
+
+                    <form action="" method="post"> 
+                        <label for="idea-comment">Write a comment:</label><br>
+                        <input type="text" id="idea-comment" name="idea-comment"><br>
+                        <input type="submit" value="Submit">
+                    </form> 
                 </div>
             </div>
         </div>
