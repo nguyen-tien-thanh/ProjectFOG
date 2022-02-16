@@ -12,7 +12,8 @@ header {
   height: 85px; }
 
 .Nav_PC a {
-  color: white; }
+  color: white;
+  text-decoration: none; }
 
 .Nav-right li,
 .Nav-left li {
@@ -258,27 +259,36 @@ footer {
 .forgot {
   margin: 0 10px; }
 
+.index_page {
+  margin-top: -85px; }
+
 .Intro {
   position: relative;
-  background-image: url("https://www.flc.vn/wp-content/uploads/2020/03/ANH-1.jpg");
-  padding-top: 42%;
+  background-image: url("/images/mainome.jpeg");
+  padding-top: 54.1666667%;
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
-  justify-content: center; }
+  z-index: -1; }
 
 .text {
   position: absolute;
-  margin-top: -50px; }
+  margin-top: -30%;
+  margin-left: 50%;
+  transform: translate(-50%, -50%); }
 
 .text h1 {
-  color: white; }
+  color: white;
+  font-size: 60px;
+  text-shadow: 0px 10px 30px black; }
 
 .text a {
   text-decoration: none; }
 
 .text h1:hover {
   color: blue; }
+
+.Slider {
+  position: relative; }
 
 .Staff {
   width: 100%;
