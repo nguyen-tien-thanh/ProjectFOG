@@ -1,0 +1,39 @@
+.list-hover:hover { 
+    color: white;
+    background-color: #007bff;
+}
+
+.list-group h4 {
+    background-color: black;
+    color: white;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    margin: 0;
+    font-size: 20px;
+    padding: 12px 20px;
+    position: relative;
+}
+
+.detail-background {
+    border-radius: 8px;
+    background-color:lightgrey;
+    margin-top: 32px;
+    position: relative;
+}
+
+.detail-img {
+    transform: translateY(-32px);
+    width: 100%;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: .5rem .5rem 3rem 1px rgba(0, 0, 0, 0.6);
+}
+
+.detail-title {
+    color: #007bff;
+    font-size: 2.6rem;
+}
+
+.detail-info {
+    font-size: 20px;
+}
