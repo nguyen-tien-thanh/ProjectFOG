@@ -14,8 +14,8 @@
 
 
         <div class="col-9 row">
-            <div class="card-columns">
             {{#each news}}
+            <div class="card-group col-4 mb-4">
                 <div class="card">
                     <a href="/news/{{this.slug}}">
                         <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
@@ -24,12 +24,14 @@
                         <a href="/news/{{this.slug}}">
                             <h5 class="card-title">{{this.name}}</h5>
                         </a>
-                        <p class="card-text">{{this.description}}</p>
+                        <p class="card-text test1">{{this.description}}</p>
+                    </div>
+                    <div class="card-footer">
                         <a href="/news/{{this.slug}}" class="btn btn-primary"> Detail </a>
                     </div>
                 </div>
-            {{/each}}
             </div>
+            {{/each}}
         </div>
     </ul>
 </div>
