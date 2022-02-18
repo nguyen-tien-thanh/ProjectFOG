@@ -259,16 +259,13 @@ footer {
 .forgot {
   margin: 0 10px; }
 
-.index_page {
-  margin-top: -85px; }
-
 .Intro {
   position: relative;
   background-image: url("/images/mainome.jpeg");
   padding-top: 54.1666667%;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: -1; }
+  z-index: 1; }
 
 .text {
   position: absolute;
