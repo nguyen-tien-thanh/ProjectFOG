@@ -1,36 +1,27 @@
 <h1 class="text-center">Event Layout</h1>
 
-
-<div class="mt-4">
-    <ul class="row">
-        <div class="col-3">
-            <ul class="list-group">
-                <h4>Event List</h4>
-                {{#each event}}
-                    <a class="list-group-item list-group-item-action list-hover" href="/event/{{this.slug}}"><li>{{this.name}}</li></a>
-                {{/each}}
-            </ul>
-        </div>
-
-        <div class="col-9 row">
+   <div class="col-12 row">
             {{#each event}}
-            <div class="card-group col-4 mb-4">
-                <div class="card">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+            <div class="card">
+                <a class="card_content" href="/event/{{this.slug}}">
+                    <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+                </a>
+                <div class="card-body">
                     <a href="/event/{{this.slug}}">
-                        <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+                        <h5 class="card-title">{{this.name}}</h5>
                     </a>
-                    <div class="card-body">
-                        <a href="/event/{{this.slug}}">
-                            <h5 class="card-title">{{this.name}}</h5>
-                        </a>
-                        <p class="card-text">{{this.description}}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/event/{{this.slug}}" class="btn btn-primary"> Detail </a>
-                    </div>
-                </div>
+                    <p class="card-text">{{this.description}}</p>
+                     <a class="" href="/event/{{this.slug}}">
+                       <i  class="fas-solid fas-right" ></i>
+                        See More 
+                    </a>
+                </div>  
             </div>
-            {{/each}}
         </div>
-    </ul>
+        {{/each}}
+        </div>
+    
 </div>
+
+ 
