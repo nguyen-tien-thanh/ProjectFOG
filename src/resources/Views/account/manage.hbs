@@ -1,0 +1,198 @@
+<h1>Manage account</h1>
+<a href="/account/trash">Trash account </a>
+(Total deleted account: {{deletedCount}})
+
+<form name="container-form" action="/account/handle-form-actions" method="POST">
+    <div class="mt-4 d-flex align-items-center">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+            <label class="form-check-label" for="checkbox-all">
+                Select all accounts
+            </label>
+        </div>
+
+        <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
+            <option value="delete">Delete</option>
+        </select>
+
+        
+        <button value="Do action" type="button" class="btn btn-primary disabled check-all-submit-btn">
+            Do action
+        </button>
+        {{!-- <button class="btn btn-primary btn-small disabled check-all-submit-btn">Go</button> --}}
+    </div>
+
+    <table class="table mt-4">
+    <thead>
+        <tr>
+            <th></th>
+            <th scope="col">Total:{{storedCount}}</th>
+            <th scope="col">Name</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Email</th> 
+            <th scope="col">Password</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">Worktime</th>
+            <th scope="col">Workplace</th>
+            <th scope="col">Role</th>
+            <th scope="col">Address</th>
+            <th scope="col">Birth</th>
+            <th scope="col">Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each account}}
+        <tr>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
+                    </label>
+                </div>
+            </td>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.username}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.password}}</td>
+        <td>{{this.avatar}}</td>
+        <td>{{this.worktime}}</td>
+        <td>{{this.workplace}}</td>
+        <td>{{this.role}}</td>
+        <td>{{this.address}}</td>
+        <td>{{this.birth}}</td>
+        <td>{{this.gender}}</td>
+        <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
+        <td style="padding:5px">
+            <a href="/account/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
+            <a href="/account/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
+            <a href="" data-toggle="modal" data-target="#delete-account" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
+        </td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="5" class="text-center">
+                You have not created any account.
+                <a href="/account/create">Create new one?</a>
+            </td>
+        </tr>
+
+        {{/each}}
+    </tbody>
+    </table>
+
+    {{!-- Confirm delete code --}}
+    <div class="modal fade" id="delete-account" tabindex="-1" role="dialog" aria-labelledby="delete-accountLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-accountLabel">Delete account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete this account?
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-account" type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Delete multiple accounts model confirm -->
+        <div class="modal fade" id="delete-multiple-accounts" tabindex="-1" role="dialog" aria-labelledby="delete-multiple-accounts" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-multiple-accountsLabel">Delete account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to <b>delete</b> these accounts?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-small disabled delete-multiple-accounts-btn">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+</form>
+        {{!-- Delete form hidden --}}
+        <form name="delete-account-form" method="post"></form>
+
+        <script>
+            //WHEN HTML DOM is loaded, Delete confirm shows
+            document.addEventListener('DOMContentLoaded', function(){
+                var accountId;
+                var deleteForm = document.forms['delete-account-form'];
+                var checkboxAll = $('#checkbox-all');
+                var accountItemCheckBox = $('input[name="accountIds[]"]');
+                var deleteMultipleAccountsBtn = $('.delete-multiple-accounts-btn');
+                var containerForm = document.forms['container-form'];
+                var checkAllSubmitBtn = $('.check-all-submit-btn');
+
+                $('#delete-account').on('show.bs.modal', function (account) {
+                var button = $(account.relatedTarget)
+                accountId = button.data('id')
+                })
+
+                //When delete account btn clicked
+                var btnDeleteAccount = document.getElementById('btn-delete-account')
+                btnDeleteAccount.onclick = function(){
+                    deleteForm.action = '/account/' + accountId + '?_method=DELETE';
+                    deleteForm.submit();
+                }
+
+                //Checkbox all clicked
+                checkboxAll.change(function () {
+                    var isCheckedAll = $(this).prop('checked');
+                        accountItemCheckBox.prop('checked', isCheckedAll);
+                        renderCheckAllSubmitBtn();
+                });
+
+                accountItemCheckBox.change(function () {
+                    var isCheckedAll = accountItemCheckBox.length === $('input[name="accountIds[]"]:checked').length;
+                    checkboxAll.prop('checked', isCheckedAll);
+                    renderCheckAllSubmitBtn();
+                })
+
+                //Check all submit btn clicked not submit
+                deleteMultipleAccountsBtn.on('submit', function (e) {
+                    var isSubmittable = !$(this).hasClass('disable');
+                    if(!isSubmittable){
+                        e.preventDefault();
+                    }
+                })
+
+                checkAllSubmitBtn.on('change', function (e) {
+                    var isSubmittable = !$(this).hasClass('disable');
+                    if(isSubmittable){
+                        e.preventDefault();
+                        console.log('123')
+                    }
+                })
+                
+
+                //Re-render check all submit button <Go>
+                function renderCheckAllSubmitBtn() {
+                    var checkedCount = $('input[name="accountIds[]"]:checked').length;
+                    if(checkedCount > 0){
+                        deleteMultipleAccountsBtn.removeClass('disabled');
+                        checkAllSubmitBtn.removeClass('disabled');
+                        checkAllSubmitBtn.attr("data-toggle","modal");
+                        checkAllSubmitBtn.attr("data-target","#delete-multiple-accounts");
+                    } else{
+                        deleteMultipleAccountsBtn.addClass('disabled');
+                        checkAllSubmitBtn.addClass('disabled');
+                        checkAllSubmitBtn.attr("data-toggle","");
+                        checkAllSubmitBtn.attr("data-target","");
+                    }
+                }
+                
+            })
+        </script>
