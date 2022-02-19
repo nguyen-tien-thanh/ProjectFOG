@@ -104,9 +104,7 @@ class AccountController {
         const eve = new Account(req.body);
         eve.save()
             .then(() => res.redirect('/account'))
-            .catch(error => {
-                
-            })
+            .catch(next);
     }
 
 

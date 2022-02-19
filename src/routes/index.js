@@ -5,9 +5,12 @@ const meRouter = require('./me');
 const eventRouter = require('./event');
 const newsRouter = require('./news');
 const ideaRouter = require('./idea');
+const accountRouter = require('./account');
 
 
 function route(app){
+
+    app.use('/account', accountRouter);
 
     app.use('/news', newsRouter);
 
@@ -18,15 +21,6 @@ function route(app){
     app.use('/event', eventRouter);
 
     app.use('/me', meRouter);
-    
-    app.get('/register', (req, res) => {
-        // console.log('User searchs:', req.query.q)
-        res.render('register')
-    })
-    
-    app.get('/login', (req, res) => {
-        res.render('login')
-    })
 
     app.use('/',siteRouter);
 }

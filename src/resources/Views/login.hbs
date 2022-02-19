@@ -3,11 +3,11 @@
         <h2 class="create-new">
             Sign In
         </h2>
-        <form method="post" action="/">
+        <form method="get" action="/validation">
             <label>Email</label>
-            <input type="email" name="email" id="this is email" class="form-control">
+            <input type="text" name="email" id="this is email" class="form-control" required>
             <label>Password</label>         
-            <input type="password" name="password" id="this is pass" class="form-control">
+            <input type="password" name="password" id="this is pass" class="form-control" required>
             <input type="checkbox" name="checkrememberme" id=""> Remember me  <a class= "forgot"href="">Forgot password?</a> 
             
         <input type="submit" class="btn btn-secondary" value="SIGN IN"> 

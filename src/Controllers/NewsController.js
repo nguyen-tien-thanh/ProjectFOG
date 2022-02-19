@@ -109,13 +109,12 @@ class NewsController {
             })
     }
 
-
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
         News.findOne({ slug: req.params.slug})
         .then (news => {
-            // res.json(News);
+            // res.json(news);
 
             res.render('news/show', { 
                 news: mongooseToObject(news) 
@@ -125,11 +124,11 @@ class NewsController {
         // res.send('New detail !!! - '+ req.params.slug );
     }
 
-    // [GET] /News
+    // [GET] /news
     index(req, res, next){
         News.find({})
         .then(news => {
-            // News = News.map(cat => cat.toObject())
+            // news = news.map(cat => cat.toObject())
             res.render('news', {
                 news: multipleMongooseToObject(news)
             })

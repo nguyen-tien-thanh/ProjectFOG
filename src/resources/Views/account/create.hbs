@@ -1,0 +1,64 @@
+<h1>Create new account page</h1> 
+<div class="mt-4">
+  {{!-- enctype="multipart/form-data" --}}
+<form action="/account/store" method="post" >
+  <div class="form-group">
+        <label for="name">name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name"> 
+      </div>
+      <div class="form-group">
+        <label for="username">username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"> 
+      </div>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email"> 
+      </div>
+      <div class="form-group">
+        <label for="password">password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"> 
+      </div>
+      <div class="form-group">
+        <label for="avatar">avatar</label>
+        <input type="avatar" class="form-control" id="avatar" name="avatar" placeholder="Enter avatar"> 
+      </div>
+      <div class="form-group">
+        <label for="worktime">worktime</label>
+        <input type="text" class="form-control" id="worktime" name="worktime" placeholder="Enter worktime"> 
+      </div>
+      <div class="form-group">
+        <label for="workplace">workplace</label>
+        <input type="text" class="form-control" id="workplace" name="workplace" placeholder="Enter workplace"> 
+      </div>
+      <div class="form-group">
+        <label for="role">role</label>
+        <input type="text" class="form-control" id="role" name="role" placeholder="Enter role"> 
+      </div>
+      <div class="form-group">
+        <label for="address">address</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="Enter address"> 
+      </div>
+      <div class="form-group">
+        <label for="birth">birth</label>
+        <input type="text" class="form-control" id="birth" name="birth" placeholder="Enter birth"> 
+      </div>
+      <div class="form-group">
+        <label for="gender">gender</label>
+        <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter gender"> 
+      </div>
+      {{!-- <div class="form-group">
+        <label for="createdAt">Create at</label>
+        <input type="text" class="form-control" id="createdAt" name="createdAt" placeholder="Enter createdAt"> 
+      </div>
+      <div class="form-group">
+        <label for="updatedAt">Updated at</label>
+        <input type="text" class="form-control" id="updatedAt" name="updatedAt" placeholder="Enter updatedAt"> 
+      </div> --}}
+      {{!-- <div class="form-group">
+        <label for="slug">slug</label>
+        <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug"> 
+      </div> --}}
+  <input type="submit" class="btn btn-success" value="Submit">
+</form>
+</div>
+
