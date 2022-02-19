@@ -1,21 +1,28 @@
-<h1 class="text-center">Event Layout</h1>
+<h1 class="text-center">Event </h1>
 
    <div class="col-12 row">
             {{#each event}}
             <div class="col-sm-4 col-md-4 col-lg-4">
-            <div class="card">
-                <a class="card_content" href="/event/{{this.slug}}">
+                
+            <div class="card event-card">
+                <a class="card-content" href="/event/{{this.slug}}">
                     <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
                 </a>
-                <div class="card-body">
+                <div class="card-body body-new">
                     <a href="/event/{{this.slug}}">
                         <h5 class="card-title">{{this.name}}</h5>
                     </a>
-                    <p class="card-text">{{this.description}}</p>
-                     <a class="" href="/event/{{this.slug}}">
-                       <i  class="fas-solid fas-right" ></i>
+                    <p class="card-text text-new">{{this.description}}</p>
+                    <div class="btn btn-primary">
+
+                    </div>
+                     <a class="slug" href="/event/{{this.slug}}">
+                     <div class="slug-content__modify">
+
+                       <i class="fas fa-arrow-right icon"></i>
                         See More 
-                    </a>
+                     </div>
+                    </a>    
                 </div>  
             </div>
         </div>
