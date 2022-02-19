@@ -275,14 +275,14 @@ footer {
 
 .text h1 {
   color: white;
-  font-size: 60px;
+  font-size: 1000%;
   text-shadow: 0px 10px 30px black; }
 
 .text a {
   text-decoration: none; }
 
 .text h1:hover {
-  color: blue; }
+  color: #ff3247; }
 
 .Slider {
   position: relative; }
