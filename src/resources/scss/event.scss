@@ -47,8 +47,29 @@ body{
     height: 210px;
     margin-top: -8px;
     text-decoration: none;
+    position: relative;
+}
+.event-footer-button button{
+    position: absolute;  
+    background-color: #f4f4f4;
+    border: none;
+    color: #1e1e1e;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #f0efefb7;
 }
 
+.event-footer-button button:hover{
+    background-color: #B22222;
+    color: #fff;
+}
 
 
 .card-title {
@@ -75,9 +96,13 @@ body{
 }
 
 .slug {
-    margin-top: 12px;
+    position: relative;
+    margin-top: 2px;
     text-decoration: none;
     color: #1e1e1e;
+    justify-content: center;
+    left: 0;
+    right: 0;
 }
 
  a .slug :hover{
