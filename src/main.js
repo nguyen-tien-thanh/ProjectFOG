@@ -4,14 +4,6 @@ const exphbs = require('express-handlebars')
 const path = require('path');
 const methodOverride = require('method-override');
 const formidable = require('formidable');
-const bodyParser = require('body-parser');
-
-
-//For authonization login 
-const cors = require('cors');
-const corsOptions = {
-  origin: "http://localhost:3001"
-};
 
 
 const hbs = exphbs.create({ 
@@ -55,8 +47,6 @@ form.multiples = true; // multiple files
 form.maxFileSize = 50 * 1024 * 1024; // 5MB file
 
 
-//Create role for application
-const Role = db.role;
 
 //Template engines
 app.engine('hbs', hbs.engine)

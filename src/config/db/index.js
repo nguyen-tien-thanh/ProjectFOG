@@ -14,45 +14,4 @@ async function connect(){
     })
     }
 
-    function initial() {
-        Role.estimatedDocumentCount((err, count) => {
-          if (!err && count === 0) {
-            new Role({
-              name: "Admin"
-            }).save(err => {
-              if (err) {
-                console.log("error", err);
-              }
-              console.log("added 'Admin' to roles collection");
-            });
-            new Role({
-              name: "QA Manager"
-            }).save(err => {
-              if (err) {
-                console.log("error", err);
-              }
-              console.log("added 'QA Manager' to roles collection");
-            });
-            new Role({
-              name: "QA Coordinator"
-            }).save(err => {
-              if (err) {
-                console.log("error", err);
-              }
-              console.log("added 'QA Coordinator' to roles collection");
-            });
-            new Role({
-              name: "Staff"
-            }).save(err => {
-              if (err) {
-                console.log("error", err);
-              }
-              console.log("added 'Staff' to roles collection");
-            });
-          }
-        });
-      }
-      
-
 module.exports = { connect }
-
