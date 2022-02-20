@@ -30,8 +30,6 @@ app.use(morgan('combined'))
 //Connect Database
 db.connect();
 
-//Using body-parser to parse request and CORS for middleware
-app.use(cors(corsOptions));
 
 //Middleware to solve Body Form
 app.use(express.urlencoded({ extended: true }))
