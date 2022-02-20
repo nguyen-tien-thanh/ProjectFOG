@@ -372,6 +372,9 @@ footer {
 .Student:hover .Student-text {
   opacity: 1; }
 
+.text-center {
+  margin: 12px 12px; }
+
 .list-hover:hover {
   color: white;
   background-color: #007bff; }
@@ -392,6 +395,10 @@ footer {
   margin-top: 32px;
   position: relative; }
 
+.event-background__detail {
+  position: relative;
+  background-color: #f3f3f3; }
+
 .detail-img {
   transform: translateY(-32px);
   width: 100%;
@@ -399,12 +406,41 @@ footer {
   position: relative;
   box-shadow: 0.5rem 0.5rem 3rem 1px rgba(0, 0, 0, 0.6); }
 
+.event-detail__img {
+  width: 100%;
+  height: 599.688px;
+  position: relative;
+  object-fit: cover;
+  transform: translateX(-30px) translateY(-20px); }
+
 .detail-title {
   color: #007bff;
   font-size: 2.6rem; }
 
-.detail-info {
-  font-size: 20px; }
+.detail-title__name {
+  font-size: 1.8rem;
+  margin: 20px 20px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.detail-title__name--modify {
+  transform: translateX(-30px) translateY(-20px); }
+
+.event-detail__des,
+.event-detail__date,
+.event-detail__author {
+  font-size: 1rem;
+  line-height: 1.8rem;
+  font-weight: 300;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.event-detail__author {
+  text-align: right;
+  font-weight: bold; }
+
+.event-detail__info {
+  transform: translateX(-30px) translateY(-20px);
+  margin-top: 30px; }
 
 .col-3 ul {
   float: left; }
@@ -420,11 +456,13 @@ body {
   display: block;
   width: 100%;
   height: 244px;
-  object-fit: cover; }
+  object-fit: cover;
+  overflow: hidden; }
 
 .event-card {
   margin: 18px 8px;
-  box-shadow: 5px 10px  #888888; }
+  box-shadow: 5px 10px  #888888;
+  display: flex; }
 
 .body-new:hover {
   background-color: #fff; }
@@ -499,6 +537,9 @@ a .slug :hover {
   align-items: center;
   padding: 3px 3px; }
 
+.container-fluid {
+  font-family: Arial, Helvetica, sans-serif; }
+
 .container {
   padding-bottom: 12px;
   padding-top: 12px; }
@@ -553,6 +594,10 @@ img.img-center {
   font-size: 16px;
   font-weight: 300;
   font-family: Arial, Helvetica, sans-serif; }
+
+.btn-modify:hover {
+  color: #fff;
+  background-color: #B22222; }
 
 body li {
   list-style-type: none;

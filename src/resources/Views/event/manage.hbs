@@ -47,9 +47,9 @@
         <td>{{this.description}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td style="padding:5px">
-            <a href="/event/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
-            <a href="/event/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-event" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
+            <a href="/event/{{this._id}}/edit"><button type="button" class="btn btn-secondary btn-modify">Edit</button></a>
+            <a href="/event/{{this.slug}}"><button type="button" class="btn btn-secondary btn-modify">Detail</button></a>
+            <a href="" data-toggle="modal" data-target="#delete-event" data-id="{{this._id}}"><button class="btn btn-secondary btn-modify">Delete</button></a>
         </td>
         </tr>
         {{else}}
