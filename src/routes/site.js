@@ -14,7 +14,7 @@ router.post('/store', siteController.store)
 router.use('/login', siteController.login)
 
 // [login]
-router.get('/validation', siteController.validation)
+router.post('/validation', siteController.validation)
 
 // [link bien dong]
 router.use('/search', siteController.search)

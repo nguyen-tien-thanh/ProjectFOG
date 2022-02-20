@@ -1,28 +1,28 @@
-<h1>Account Layout</h1>
+<h1>User Layout</h1>
 
 {{!-- <ul class="listCategory">
-    {{#each account}}
+    {{#each user}}
     <li>{{this.name}}</li>
     {{/each}}
 </ul> --}}
 
-<button><a href="./account/create">Create</a></button>
-<a href="./account/create.hbs">Update</a>
-<a href="./account/create.hbs">Delete</a>
+<button><a href="./user/create">Create</a></button>
+<a href="./user/create.hbs">Update</a>
+<a href="./user/create.hbs">Delete</a>
 
 <div class="mt-4">
     <div class="row">
-        {{#each account}}
+        {{#each user}}
         <div class="col-sm-6 col-lg-2">
             <div class="card">
-                <a href="/account/{{this.slug}}">
+                <a href="/user/{{this.slug}}">
                     </a>
                     <h>Slug la: {{this.slug}}</h>
                     <div class="card-body">
-                        <a href="/account/{{this.slug}}">
+                        <a href="/user/{{this.slug}}">
                             <h5 class="card-title">{{this.name}}</h5>
                         </a>
-                        <a href="/account/{{this.slug}}" class="btn btn-primary"> Account Detail </a>
+                        <a href="/user/{{this.slug}}" class="btn btn-primary"> User Detail </a>
                     </div>
             </div>
         </div>

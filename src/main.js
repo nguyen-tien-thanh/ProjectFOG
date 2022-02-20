@@ -4,6 +4,15 @@ const exphbs = require('express-handlebars')
 const path = require('path');
 const methodOverride = require('method-override');
 const formidable = require('formidable');
+const bodyParser = require('body-parser');
+
+
+//For authonization login 
+const cors = require('cors');
+const corsOptions = {
+  origin: "http://localhost:3001"
+};
+
 
 const hbs = exphbs.create({ 
   extname: '.hbs', 
@@ -29,6 +38,9 @@ app.use(morgan('combined'))
 //Connect Database
 db.connect();
 
+//Using body-parser to parse request and CORS for middleware
+app.use(cors(corsOptions));
+
 //Middleware to solve Body Form
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -38,12 +50,13 @@ app.use(methodOverride('_method'));
 const uploadFolder =  path.join(__dirname, 'uploads/idea');
 //Basic config for upload file
 const form = formidable(options);
-// form.uploadDir= uploadFolder;
-// form.uploaddir= uploadFolder; 
 form.options.uploadDir= uploadFolder; // folder to save file
 form.multiples = true; // multiple files
 form.maxFileSize = 50 * 1024 * 1024; // 5MB file
 
+
+//Create role for application
+const Role = db.role;
 
 //Template engines
 app.engine('hbs', hbs.engine)
