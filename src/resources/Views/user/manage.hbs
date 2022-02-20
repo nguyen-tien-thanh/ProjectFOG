@@ -1,13 +1,13 @@
-<h1>Manage account</h1>
-<a href="/account/trash">Trash account </a>
-(Total deleted account: {{deletedCount}})
+<h1>Manage user</h1>
+<a href="/user/trash">Trash user </a>
+(Total deleted user: {{deletedCount}})
 
-<form name="container-form" action="/account/handle-form-actions" method="POST">
+<form name="container-form" action="/user/handle-form-actions" method="POST">
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
             <label class="form-check-label" for="checkbox-all">
-                Select all accounts
+                Select all users
             </label>
         </div>
 
@@ -41,11 +41,11 @@
         </tr>
     </thead>
     <tbody>
-        {{#each account}}
+        {{#each user}}
         <tr>
             <td>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="accountIds[]" value="{{this._id}}" >
+                    <input class="form-check-input" type="checkbox" name="userIds[]" value="{{this._id}}" >
                     </label>
                 </div>
             </td>
@@ -63,16 +63,16 @@
         <td>{{this.gender}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td style="padding:5px">
-            <a href="/account/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
-            <a href="/account/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-account" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
+            <a href="/user/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
+            <a href="/user/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
+            <a href="" data-toggle="modal" data-target="#delete-user" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
         </td>
         </tr>
         {{else}}
         <tr>
             <td colspan="5" class="text-center">
-                You have not created any account.
-                <a href="/account/create">Create new one?</a>
+                You have not created any user.
+                <a href="/user/create">Create new one?</a>
             </td>
         </tr>
 
@@ -81,41 +81,41 @@
     </table>
 
     {{!-- Confirm delete code --}}
-    <div class="modal fade" id="delete-account" tabindex="-1" role="dialog" aria-labelledby="delete-accountLabel" aria-hidden="true">
+    <div class="modal fade" id="delete-user" tabindex="-1" role="dialog" aria-labelledby="delete-userLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete-accountLabel">Delete account</h5>
+                <h5 class="modal-title" id="delete-userLabel">Delete user</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure to delete this account?
+                Are you sure to delete this user?
             </div>
             <div class="modal-footer">
-                <button id="btn-delete-account" type="button" class="btn btn-danger">Delete</button>
+                <button id="btn-delete-user" type="button" class="btn btn-danger">Delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
             </div>
             </div>
         </div>
         </div>
 
-        <!-- Delete multiple accounts model confirm -->
-        <div class="modal fade" id="delete-multiple-accounts" tabindex="-1" role="dialog" aria-labelledby="delete-multiple-accounts" aria-hidden="true">
+        <!-- Delete multiple users model confirm -->
+        <div class="modal fade" id="delete-multiple-users" tabindex="-1" role="dialog" aria-labelledby="delete-multiple-users" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete-multiple-accountsLabel">Delete account</h5>
+                <h5 class="modal-title" id="delete-multiple-usersLabel">Delete user</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure to <b>delete</b> these accounts?
+                Are you sure to <b>delete</b> these users?
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger btn-small disabled delete-multiple-accounts-btn">Delete</button>
+                <button class="btn btn-danger btn-small disabled delete-multiple-users-btn">Delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
             </div>
@@ -123,46 +123,46 @@
         </div>
 </form>
         {{!-- Delete form hidden --}}
-        <form name="delete-account-form" method="post"></form>
+        <form name="delete-user-form" method="post"></form>
 
         <script>
             //WHEN HTML DOM is loaded, Delete confirm shows
             document.addEventListener('DOMContentLoaded', function(){
-                var accountId;
-                var deleteForm = document.forms['delete-account-form'];
+                var userId;
+                var deleteForm = document.forms['delete-user-form'];
                 var checkboxAll = $('#checkbox-all');
-                var accountItemCheckBox = $('input[name="accountIds[]"]');
-                var deleteMultipleAccountsBtn = $('.delete-multiple-accounts-btn');
+                var userItemCheckBox = $('input[name="userIds[]"]');
+                var deleteMultipleUsersBtn = $('.delete-multiple-users-btn');
                 var containerForm = document.forms['container-form'];
                 var checkAllSubmitBtn = $('.check-all-submit-btn');
 
-                $('#delete-account').on('show.bs.modal', function (account) {
-                var button = $(account.relatedTarget)
-                accountId = button.data('id')
+                $('#delete-user').on('show.bs.modal', function (user) {
+                var button = $(user.relatedTarget)
+                userId = button.data('id')
                 })
 
-                //When delete account btn clicked
-                var btnDeleteAccount = document.getElementById('btn-delete-account')
-                btnDeleteAccount.onclick = function(){
-                    deleteForm.action = '/account/' + accountId + '?_method=DELETE';
+                //When delete user btn clicked
+                var btnDeleteUser = document.getElementById('btn-delete-user')
+                btnDeleteUser.onclick = function(){
+                    deleteForm.action = '/user/' + userId + '?_method=DELETE';
                     deleteForm.submit();
                 }
 
                 //Checkbox all clicked
                 checkboxAll.change(function () {
                     var isCheckedAll = $(this).prop('checked');
-                        accountItemCheckBox.prop('checked', isCheckedAll);
+                        userItemCheckBox.prop('checked', isCheckedAll);
                         renderCheckAllSubmitBtn();
                 });
 
-                accountItemCheckBox.change(function () {
-                    var isCheckedAll = accountItemCheckBox.length === $('input[name="accountIds[]"]:checked').length;
+                userItemCheckBox.change(function () {
+                    var isCheckedAll = userItemCheckBox.length === $('input[name="userIds[]"]:checked').length;
                     checkboxAll.prop('checked', isCheckedAll);
                     renderCheckAllSubmitBtn();
                 })
 
                 //Check all submit btn clicked not submit
-                deleteMultipleAccountsBtn.on('submit', function (e) {
+                deleteMultipleUsersBtn.on('submit', function (e) {
                     var isSubmittable = !$(this).hasClass('disable');
                     if(!isSubmittable){
                         e.preventDefault();
@@ -180,14 +180,14 @@
 
                 //Re-render check all submit button <Go>
                 function renderCheckAllSubmitBtn() {
-                    var checkedCount = $('input[name="accountIds[]"]:checked').length;
+                    var checkedCount = $('input[name="userIds[]"]:checked').length;
                     if(checkedCount > 0){
-                        deleteMultipleAccountsBtn.removeClass('disabled');
+                        deleteMultipleUsersBtn.removeClass('disabled');
                         checkAllSubmitBtn.removeClass('disabled');
                         checkAllSubmitBtn.attr("data-toggle","modal");
-                        checkAllSubmitBtn.attr("data-target","#delete-multiple-accounts");
+                        checkAllSubmitBtn.attr("data-target","#delete-multiple-users");
                     } else{
-                        deleteMultipleAccountsBtn.addClass('disabled');
+                        deleteMultipleUsersBtn.addClass('disabled');
                         checkAllSubmitBtn.addClass('disabled');
                         checkAllSubmitBtn.attr("data-toggle","");
                         checkAllSubmitBtn.attr("data-target","");

@@ -1,6 +1,8 @@
-const Account = require('../models/Account');
+const User = require('../models/User');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
+
+
 class SiteController {
     
     // [GET] /index -- Home page
@@ -15,13 +17,12 @@ class SiteController {
     }
 
     register(req, res, next){
-
         res.render('register');
     }
 
-    //[POST] /store Account
+    //[POST] /store User
     store(req,res,next) {
-        const register = new Account(req.body);
+        const register = new User(req.body);
         register.save()
             .then(() => res.redirect('login'))
             .catch(next)
@@ -32,26 +33,28 @@ class SiteController {
         res.render('login');
     }
 
-    //[POST] /validation Account
+    //[POST] /validation User
     validation(req,res,next) {
-        Account.findOne({email: req.query.email, password: req.query.password})
-        .then (account => {
-            res.render('account/show', { 
-                account: mongooseToObject(account) 
+        User.findOne({email: req.body.email, password: req.body.password})
+        .then (user => {
+            res.render('user/show', { 
+                user: mongooseToObject(user) 
             });
         })
-        .catch(next)
+        .catch(next => {
+            console.log('Failed')
+        })
     }
 
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
-        Account.findOne({ slug: req.params.slug})
-        .then (account => {
-            // res.json(Account);
+        User.findOne({ slug: req.params.slug})
+        .then (user => {
+            // res.json(User);
 
-            res.render('account/show', { 
-                account: mongooseToObject(account) 
+            res.render('user/show', { 
+                user: mongooseToObject(user) 
             });
         })
         .catch(next)

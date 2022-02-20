@@ -4,7 +4,7 @@ const mongooseDelete = require('mongoose-delete');
 
 const Schema = mongoose.Schema;
 
-const Account = new Schema({
+const User = new Schema({
     name: {type: String, maxLength: 255},
     username: {type: String, maxLength: 255},
     email: {type: String, require: true},
@@ -12,7 +12,8 @@ const Account = new Schema({
     avatar: {type: String},    
     worktime: {type: String, maxLength: 255},
     workplace: {type: String, maxLength: 255},
-    role: {type: String, maxLength: 255},
+    roles: [
+        {type: mongoose.Schema.Types.ObjectId, ref: "Role"}],
     address: {type: String, maxLength: 255},
     birth: {type: String, maxLength: 255},
     gender: {type: String, maxLength: 255},
@@ -25,10 +26,10 @@ const Account = new Schema({
 });
 
 //Add plugin
-Account.plugin(mongooseDelete, {
+User.plugin(mongooseDelete, {
     overrideMethods: 'all',
     deletedAt: true
 });
 mongoose.plugin(slug);
 
-module.exports = mongoose.model('Account', Account);
+module.exports = mongoose.model('User', User);

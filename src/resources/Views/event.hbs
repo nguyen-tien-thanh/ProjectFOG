@@ -1,6 +1,16 @@
 <h1 class="text-center">Event </h1>
+<div class="mt-4">
+    <ul class="row">
+        <div class="col-3">
+            <ul class="list-group">
+                <h4>Event List</h4>
+                {{#each event}}
+                    <a class="list-group-item list-group-item-action list-hover" href="/event/{{this.slug}}"><li>{{this.name}}</li></a>
+                {{/each}}
+            </ul>
+        </div>
 
-   <div class="col-12 row">
+   <div class="col-9 row">
             {{#each event}}
             <div class="col-sm-4 col-md-4 col-lg-4">
                 
@@ -24,7 +34,7 @@
         </div>
         {{/each}}
         </div>
-    
+    </ul>
 </div>
 
  

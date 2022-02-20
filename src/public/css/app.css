@@ -1,3 +1,33 @@
+.sub-header {
+  background-color: #1f272b;
+  position: relative;
+  z-index: 1111; }
+
+.sub-header .right-content p {
+  color: #fff;
+  padding: 8px 0px;
+  font-size: 13px; }
+
+.sub-header .left-icons {
+  text-align: left;
+  padding: 8px 0px; }
+
+.sub-header .left-icons ul li {
+  display: inline-block;
+  margin-left: 15px; }
+
+.sub-header .left-icons ul li a {
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s; }
+
+.sub-header .left-icons ul li a:hover {
+  color: #ff3247; }
+
+.sub-header .right-content p em {
+  font-style: normal;
+  color: #ff3247; }
+
 * {
   box-sizing: border-box;
   padding: 0;

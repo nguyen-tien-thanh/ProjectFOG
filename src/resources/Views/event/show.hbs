@@ -12,6 +12,7 @@
             </ul>
         </div>
 
+<<<<<<< HEAD
         <div class="col-9 col-sm-9 col-md-9 col-lg-9 column-fix">
             <div class="col-lg-12 detail-background event-background__detail">
                     <p class="detail-title detail-title__name detail-title__name--modify">{{event.name}}</p>
@@ -21,6 +22,16 @@
                     {{!-- <p class="detail-title detail-title__name">{{event.name}}</p> --}}
                     <p class="event-detail__des">{{event.description}}</p>
                     <p class="event-detail__author">Author: {{event.author}}</p>
+=======
+        <div class="col-9">
+            <div class="col-lg-12 detail-background">
+                <img class="detail-img" src="{{eventDetail.image}}" alt="">
+                <ul class="detail-info">
+                    <p>Creation date: {{moment eventDetail.createdAt format="DD-MM-YYYY"}}</p>
+                    <p class="detail-title">{{eventDetail.name}}</p>
+                    <p>{{eventDetail.description}}</p>
+                    <p>Author: {{eventDetail.author}}</p>
+>>>>>>> 7bbd87488e9c803a26b539ae4dd33abf3e47c356
                 </ul>
             </div>
         </div>
