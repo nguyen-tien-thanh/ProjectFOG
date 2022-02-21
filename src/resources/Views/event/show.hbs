@@ -12,14 +12,15 @@
             </ul>
         </div>
 
-        <div class="col-9">
-            <div class="col-lg-12 detail-background">
-                <img class="detail-img" src="{{event.image}}" alt="">
-                <ul class="detail-info">
-                    <p>Creation date: {{moment event.createdAt format="DD-MM-YYYY"}}</p>
-                    <p class="detail-title">{{event.name}}</p>
-                    <p>{{event.description}}</p>
-                    <p>Author: {{event.author}}</p>
+        <div class="col-9 col-sm-9 col-md-9 col-lg-9 column-fix">
+            <div class="col-lg-12 detail-background event-background__detail">
+                    <p class="detail-title detail-title__name detail-title__name--modify">{{eventDetail.name}}</p>
+                <img class="detail-img event-detail__img" src="{{eventDetail.image}}" alt="">
+                <ul class="detail-info event-detail__info">
+                    <p class="event-detail__date">Creation date: {{moment eventDetail.createdAt format="DD-MM-YYYY"}}</p>
+                    {{!-- <p class="detail-title detail-title__name">{{event.name}}</p> --}}
+                    <p class="event-detail__des">{{eventDetail.description}}</p>
+                    <p class="event-detail__author">Author: {{eventDetail.author}}</p>
                 </ul>
             </div>
         </div>

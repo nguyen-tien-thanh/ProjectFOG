@@ -5,6 +5,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const formidable = require('formidable');
 
+
 const hbs = exphbs.create({ 
   extname: '.hbs', 
   helper: {
@@ -18,7 +19,7 @@ const db = require('./config/db');
 const { options } = require('./routes/idea');
 
 const app = express()
-const port = 3000
+const port = 3001
 
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -29,6 +30,7 @@ app.use(morgan('combined'))
 //Connect Database
 db.connect();
 
+
 //Middleware to solve Body Form
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -38,11 +40,10 @@ app.use(methodOverride('_method'));
 const uploadFolder =  path.join(__dirname, 'uploads/idea');
 //Basic config for upload file
 const form = formidable(options);
-// form.uploadDir= uploadFolder;
-// form.uploaddir= uploadFolder; 
 form.options.uploadDir= uploadFolder; // folder to save file
 form.multiples = true; // multiple files
 form.maxFileSize = 50 * 1024 * 1024; // 5MB file
+
 
 
 //Template engines

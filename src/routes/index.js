@@ -5,12 +5,12 @@ const meRouter = require('./me');
 const eventRouter = require('./event');
 const newsRouter = require('./news');
 const ideaRouter = require('./idea');
-const accountRouter = require('./account');
+const userRouter = require('./user');
 
 
 function route(app){
 
-    app.use('/account', accountRouter);
+    app.use('/user', userRouter);
 
     app.use('/news', newsRouter);
 

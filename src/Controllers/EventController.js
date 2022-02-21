@@ -113,16 +113,21 @@ class EventController {
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
-        Event.findOne({ slug: req.params.slug})
-        .then (event => {
-            // res.json(event);
-
-            res.render('event/show', { 
-                event: mongooseToObject(event) 
-            });
-        })
-        .catch(next)
-        // res.send('New detail !!! - '+ req.params.slug );
+        // Event.findOne({ slug: req.params.slug})
+        // .then (event => {
+        //     res.render('event/show', { 
+        //         event: mongooseToObject(event) 
+        //     });
+        // })
+        // .catch(next)
+        Promise.all([Event.find({}), Event.findOne({ slug: req.params.slug})])
+            .then(([event, eventDetail]) => 
+            res.render('event/show', {
+                eventDetail: mongooseToObject(eventDetail),
+                event: multipleMongooseToObject(event),
+                })
+            )
+            .catch(next)
     }
 
     // [GET] /event
