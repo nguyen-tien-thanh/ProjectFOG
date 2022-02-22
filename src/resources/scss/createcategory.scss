@@ -36,16 +36,16 @@ button0:hover
 .create-modal-content 
 {
   background-color: #fefefe;
-  margin: 10% auto 25% auto;
+  margin: 7% auto 15% auto;
   border: 1px solid #888;
-  width: 80%;
+  width: 60%;
 }
 
 .create-close 
 {
   position: absolute;
-  right: 18rem;
-  top: 17.8rem;
+  right: 21rem;
+  top: 16rem;
   color: #000;
   font-size: 2.2rem;
 }
@@ -74,7 +74,7 @@ input[type=text1]
   border: 0.01rem solid #ccc;
   box-sizing: border-box;
 }
-input[type=submit]
+.btn-success-1
 {
   padding: 1rem 4rem;
   border-radius: 25rem;
@@ -82,7 +82,10 @@ input[type=submit]
   color: lightpink;
   cursor: pointer;
 }
-
+.btn-success-1:hover 
+{
+  opacity: 0.85;
+}
 .animate 
 {
   -webkit-animation: animatezoom 0.6s;
