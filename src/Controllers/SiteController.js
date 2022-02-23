@@ -37,7 +37,8 @@ class SiteController {
     validation(req,res,next) {
         User.findOne({email: req.body.email, password: req.body.password})
         .then (user => {
-            res.render('user/show', { 
+            res.render('index', { 
+                layout: 'intropage',
                 user: mongooseToObject(user) 
             });
         })
