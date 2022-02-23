@@ -19,7 +19,10 @@ const db = require('./config/db');
 const { options } = require('./routes/idea');
 
 const app = express()
-const port = 3004
+
+const port = 3000
+
+
 
 
 

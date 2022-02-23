@@ -1,64 +1,97 @@
-<h1>Create new user page</h1> 
-<div class="mt-4">
+<h1 class="text-center">Create new user</h1> 
+<div class="mt-1">
   {{!-- enctype="multipart/form-data" --}}
 <form action="/user/store" method="post" >
-  <div class="form-group">
-        <label for="name">name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name"> 
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter name"> 
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required> 
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required> 
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required> 
+        </div>
+        <div class="form-group">
+          <label for="avatar">Avatar</label>
+          <input type="avatar" class="form-control" id="avatar" name="avatar" placeholder="Enter avatar"> 
       </div>
-      <div class="form-group">
-        <label for="username">username</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"> 
+    </div>
+  
+      <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="form-group">
+            <label for="worktime">Worktime</label>
+            <input type="text" class="form-control" id="worktime" name="worktime" placeholder="Enter worktime"> 
+          </div>
+          <div class="row">
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+              <label for="workplace">Workplace</label>
+              <select class="form-select form-control" name="workplace" id="workplace">
+                <optgroup label="Department">
+                  <option value="QA Department">QA</option>
+                  <option value="HR Department">Human Resources</option>
+                  <option value="Marketing Department">Marketing</option>
+                  <option value="Accounting Department">Accounting</option>
+                  <option value="Custom Services Department">Custom Services</option>
+                </optgroup>
+                <optgroup label="Falcuty">
+                  <option value="IT Falcuty">IT</option>
+                  <option value="BM Falcuty">BM</option>
+                  <option value="GD Falcuty">GD</option>
+                  <option value="BM Falcuty">BM</option>
+                  <option value="PR Falcuty">PR</option>
+                </optgroup>
+              </select>
+              {{!-- <input type="text" class="form-control" id="workplace" name="workplace" placeholder="Enter workplace">  --}}
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+              <label for="role">Role</label>
+              <select class="form-select form-control" name="role" id="role">
+                  <option value="">--Choose--</option>
+                  <option value="QA Manager">QA Manager</option>
+                  <option value="QA Coorditioner">QA Coorditioner</option>
+                  <option value="Manager">Manager</option>
+                  <option value="Staff">Staff</option>
+              </select>
+              {{!-- <input type="text" class="form-control" id="role" name="role" placeholder="Enter role">  --}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="int" class="form-control" id="phone" name="phone" placeholder="Enter phone"> 
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="Enter address"> 
+          </div>
+
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-12">
+            <label for="birth">Birth</label>
+            <input type="text" class="form-control" id="birth" name="birth" placeholder="Enter birth"> 
+          </div>
+          <div class="form-group col-6 col-md-6 col-sm-12">
+            <label for="gender">Gender</label>
+            <select class="form-select form-control" name="gender" id="gender">
+              <option value="Another">--Choose--</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Another">Another</option>
+            </select>
+            {{!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter gender">  --}}
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="email">email</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email"> 
-      </div>
-      <div class="form-group">
-        <label for="password">password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"> 
-      </div>
-      <div class="form-group">
-        <label for="avatar">avatar</label>
-        <input type="avatar" class="form-control" id="avatar" name="avatar" placeholder="Enter avatar"> 
-      </div>
-      <div class="form-group">
-        <label for="worktime">worktime</label>
-        <input type="text" class="form-control" id="worktime" name="worktime" placeholder="Enter worktime"> 
-      </div>
-      <div class="form-group">
-        <label for="workplace">workplace</label>
-        <input type="text" class="form-control" id="workplace" name="workplace" placeholder="Enter workplace"> 
-      </div>
-      <div class="form-group">
-        <label for="role">role</label>
-        <input type="text" class="form-control" id="role" name="role" placeholder="Enter role"> 
-      </div>
-      <div class="form-group">
-        <label for="address">address</label>
-        <input type="text" class="form-control" id="address" name="address" placeholder="Enter address"> 
-      </div>
-      <div class="form-group">
-        <label for="birth">birth</label>
-        <input type="text" class="form-control" id="birth" name="birth" placeholder="Enter birth"> 
-      </div>
-      <div class="form-group">
-        <label for="gender">gender</label>
-        <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter gender"> 
-      </div>
-      {{!-- <div class="form-group">
-        <label for="createdAt">Create at</label>
-        <input type="text" class="form-control" id="createdAt" name="createdAt" placeholder="Enter createdAt"> 
-      </div>
-      <div class="form-group">
-        <label for="updatedAt">Updated at</label>
-        <input type="text" class="form-control" id="updatedAt" name="updatedAt" placeholder="Enter updatedAt"> 
-      </div> --}}
-      {{!-- <div class="form-group">
-        <label for="slug">slug</label>
-        <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug"> 
-      </div> --}}
-  <input type="submit" class="btn btn-success" value="Submit">
+    </div>
+    <div class="d-flex justify-content-center mb-2"><input type="submit" class="btn btn-secondary save-btn " value="Submit"></div>
 </form>
 </div>
 

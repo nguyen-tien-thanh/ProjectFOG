@@ -3,10 +3,10 @@
     <form class="sign-in" method="post" action="/validation">
         <h3>Login Here</h3>
         <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="email" name="email" required>
+        <input  type="text" placeholder="Email or Phone" id="email" name="email" required>
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="password" required>
+        <input type="password" ; placeholder="Password" id="password"  name="password" required>
 
         <button class="log-in-button submit">Log In</button>
         <div class="social">
@@ -15,15 +15,3 @@
         </div>
     </form>
 </div>
-<script>
-     $(function(){
-    var y = document.getElementById("mail");
-    var z = document.getElementById("pass");
-    
-    console.log(z)
-    console.log(y);
-    y.onchange = function(){
-      z.setAttribute("style","display:block")
-    }
-  })
-</script>
