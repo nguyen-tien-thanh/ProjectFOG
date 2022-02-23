@@ -1,70 +1,23 @@
-<h1>Sign up Layout</h1>
 
-<div class="row">
-    <div class="column-6">
-        <h2 class="create-new">
-            Create An Account 
-        </h2>
-        <form action="/store" method="POST">
-            <label>Email</label>
-            <input type="text" name="email" id="this is email" class="form-control" required>
-            <label>Password</label>         
-            <input type="password" name="password" id="this is pass" class="form-control" required>
-            <label for="" class="contain">Your password must contain:</label>
-            <ul class="three-content">
-                <li>At least 6 characters</li>
-                <li>1 letter</li>
-                <li>1 number</li>
-            </ul>
-            <label class="Already" for="">Already a Calvin Klein Preferred Loyalty Member?</label> <br>
-            <input type="submit" class="btn btn-secondary" value="REGISTER"> <br>
-            <label for="" class="by">By submitting my information I agree to the 
-                <a href="" class="term">TERMS & CONDITIONS.</a> </label>
-        </form>
-    </div>
-
-
-     <div class="column-6">
-        <h2 class="Earn-Points">
-           Earn Points On <br>
-           Every Purchase 
-        </h2>
-        <form>
-          <label for="" class="Preferred"> Preferred Loyalty Program members get:
-              <li>$1 spent = 1 point</li>
-              <li>200 points = $20 reward</li>
-              <li>Fast, easy checkout</li>
-              <li>Special birthday gift</li>
-          </label>
-            
-          <label for="" class="Please">Please read our <a href="" class="term2">TERMS AND CONDITIONS</a> for 
-          more details.</label> 
-        </form>
-    </div>
-</div>
-
-{{!-- <div class="sign-in-page">
+<div class="sign-up-page">
         
-    <form class="sign-in sign-up" method="post" action="/validation">
+    <form class="sign-up" method="post" action="/store">
         <h3>Register Here</h3>
         <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
         </div>
-        <label for="email">Email</label>
-        <input type="text" placeholder="Email" id="email" name="email" required>
+        <label for="username">Username</label>
+        <input class="input-signup" type="text" placeholder="Email" id="email" name="email" required>
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="password" required>
+        <input class="input-signup" type="password" placeholder="Password" id="password"  name="password" required>
 
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                I agree to <a href="" style="text-decoration:underline;color:#007bff">Terms and conditions</a>
-            </label>
+        <div class="checkbox-terms">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" required>
+            <label1 for="vehicle1"> I accept the <a href="">Terms and Conditions</a></label1>
         </div>
 
-        <button class="log-in-button submit">Register</button>
+        <button class="register-button submit">Register</button>
     </form>
 </div>
- --}}

@@ -24,3 +24,12 @@ body li {
   width: 10%;
   margin: 0px 16px;
 }
+
+.btn-secondary {
+  background-color: black;
+  border: rgb(255, 50, 71);
+}
+
+.btn-secondary:hover {
+  background-color: rgb(255, 50, 71);
+}

@@ -1,48 +1,46 @@
-*,
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.sign-up a {
+  text-decoration: underline;
+  color: rgb(255, 50, 71);
 }
-.sign-in-page {
+
+.sign-up-page {
   background-color: #080710;
   height: 100vh;
 }
-.sign-in {
+.sign-up {
   height: 520px;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 60%;
+  top: 50%;
   left: 50%;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 50px 35px;
 }
-.sign-in * {
+.sign-up * {
   font-family: "Poppins", sans-serif;
   color: #ffffff;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
 }
-.sign-in h3 {
+.sign-up h3 {
   font-size: 32px;
   font-weight: 500;
   line-height: 42px;
   text-align: center;
 }
 
-label {
+.sign-up label {
   display: block;
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500;
 }
-input {
+.sign-up .input-signup {
   display: block;
   height: 50px;
   width: 100%;
@@ -53,11 +51,17 @@ input {
   font-size: 14px;
   font-weight: 300;
 }
+
 ::placeholder {
   color: #e5e5e5;
 }
-.sign-in button {
-  margin-top: 50px;
+
+.checkbox-terms {
+  margin-top: 10px;
+}
+
+.sign-up button {
+  margin-top: 15px;
   width: 100%;
   background-color: #ffffff;
   color: black;
@@ -67,7 +71,7 @@ input {
   border-radius: 5px;
   cursor: pointer;
 }
-.sign-in button:hover {
+.sign-up button:hover {
   background-color: rgb(255, 50, 71);
 }
 .social {

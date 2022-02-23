@@ -1,10 +1,3 @@
-*,
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 .sign-in-page {
   background-color: #080710;
   height: 100vh;
@@ -15,7 +8,7 @@
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 60%;
+  top: 50%;
   left: 50%;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -53,17 +46,6 @@
   font-size: 14px;
   font-weight: 300;
 }
-// input{
-//     display: block;
-//     height: 50px;
-//     width: 100%;
-//     background-color: rgba(255,255,255,0.07);
-//     border-radius: 3px;
-//     padding: 0 10px;
-//     margin-top: 8px;
-//     font-size: 14px;
-//     font-weight: 300;
-// }
 ::placeholder {
   color: #e5e5e5;
 }
