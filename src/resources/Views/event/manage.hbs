@@ -1,8 +1,9 @@
+<div class="container-sm">
 <h1>Manage event</h1>
 <a href="/event/trash">Trash event </a>
 (Total deleted event: {{deletedCount}})
 
-<form name="container-form" action="/event/handle-form-actions" method="POST">
+<form class="form-mobile" name="container-form" action="/event/handle-form-actions" method="POST">
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
@@ -35,7 +36,7 @@
     </thead>
     <tbody>
         {{#each event}}
-        <tr>
+        <tr class="manage_mobile">
             <td>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="eventIds[]" value="{{this._id}}" >
@@ -43,8 +44,8 @@
                 </div>
             </td>
         <th scope="row">{{sum @index 1}}</th>
-        <td>{{this.name}}</td>
-        <td>{{this.description}}</td>
+        <td class="kitbox">{{this.name}}</td>
+        <td class="kitbox">{{this.description}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td style="padding:5px">
             <a href="/event/{{this._id}}/edit"><button type="button" class="btn btn-secondary btn-modify">Edit</button></a>
@@ -176,7 +177,8 @@
                         checkAllSubmitBtn.attr("data-toggle","");
                         checkAllSubmitBtn.attr("data-target","");
                     }
-                }
+                }gi
                 
             })
         </script>
+</div>
