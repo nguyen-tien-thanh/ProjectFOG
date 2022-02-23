@@ -275,7 +275,7 @@ footer {
   padding: 50px 35px; }
 
 .sign-in * {
-  font-family: 'Poppins',sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #ffffff;
   letter-spacing: 0.5px;
   outline: none;
@@ -292,17 +292,6 @@ label {
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500; }
-
-input {
-  display: block;
-  height: 50px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.07);
-  border-radius: 3px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300; }
 
 ::placeholder {
   color: #e5e5e5; }
@@ -455,6 +444,99 @@ input {
 .Student:hover .overlay2,
 .Student:hover .Student-text {
   opacity: 1; }
+
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+.sign-in-page {
+  background-color: #080710;
+  height: 100vh; }
+
+.sign-in {
+  height: 520px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 60%;
+  left: 50%;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px; }
+
+.sign-in * {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none; }
+
+.sign-in h3 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center; }
+
+label {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500; }
+
+input {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300; }
+
+::placeholder {
+  color: #e5e5e5; }
+
+.sign-in button {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  color: black;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer; }
+
+.sign-in button:hover {
+  background-color: #ff3247; }
+
+.social {
+  margin-top: 30px;
+  display: flex; }
+
+.social div {
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255, 255, 255, 0.27);
+  color: #eaf0fb;
+  text-align: center; }
+
+.social div:hover {
+  background-color: #ff3247; }
+
+.social .fb {
+  margin-left: 25px; }
+
+.social i {
+  margin-right: 4px; }
 
 .text-center {
   margin: 12px 12px; }
@@ -717,42 +799,9 @@ img.img-center {
   top: 340px;
   background-color: #8B93FC; }
 
-<<<<<<< HEAD
-#input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box; }
-
-#button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%; }
-
-#button:hover {
-  opacity: 0.8; }
-
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336; }
-
-.container {
-  padding: 16px; }
-
-#span.psw {
-  float: right;
-  padding-top: 16px; }
-
-.modal {
-=======
-h1, h2, p {
+h1,
+h2,
+p {
   text-align: center;
   line-height: 2; }
 
@@ -770,7 +819,6 @@ button0:hover {
   opacity: 0.85; }
 
 .create-modal {
->>>>>>> 833d152687ec7b583f0f196603be044e6cc69fec
   display: none;
   position: fixed;
   z-index: 1;
@@ -779,31 +827,6 @@ button0:hover {
   width: 100%;
   height: 100%;
   overflow: auto;
-<<<<<<< HEAD
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding-top: 60px; }
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto;
-  border: 1px solid #888;
-  width: 80%; }
-
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold; }
-
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer; }
-
-=======
   background-color: rgba(0, 0, 0, 0.4);
   padding-top: 7rem; }
 
@@ -831,7 +854,7 @@ button0:hover {
 h3 {
   text-align: center; }
 
-input[type=text1] {
+input[type="text1"] {
   padding: 1rem 10rem;
   margin: 0.5rem 0;
   display: inline-block;
@@ -848,7 +871,6 @@ input[type=text1] {
 .btn-success-1:hover {
   opacity: 0.85; }
 
->>>>>>> 833d152687ec7b583f0f196603be044e6cc69fec
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s; }
@@ -864,14 +886,6 @@ input[type=text1] {
     transform: scale(0); }
   to {
     transform: scale(1); } }
-
-<<<<<<< HEAD
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none; }
-  .cancelbtn {
-    width: 100%; } }
 
 .user-card {
   position: relative;
@@ -899,8 +913,42 @@ input[type=text1] {
 .save-btn:hover {
   background-color: #ff3247; }
 
-=======
->>>>>>> 833d152687ec7b583f0f196603be044e6cc69fec
+.icon-user {
+  font-size: 18px; }
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ba68c8; }
+
+.profile-button {
+  background: #632778;
+  box-shadow: none;
+  border: none; }
+
+.profile-button:hover {
+  background: #682773; }
+
+.profile-button:focus {
+  background: #682773;
+  box-shadow: none; }
+
+.profile-button:active {
+  background: #682773;
+  box-shadow: none; }
+
+.back:hover {
+  color: #682773;
+  cursor: pointer; }
+
+.labels {
+  font-size: 11px; }
+
+.add-experience:hover {
+  background: #ba68c8;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #ba68c8; }
+
 body li {
   list-style-type: none;
   text-decoration: none; }

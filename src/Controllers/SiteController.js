@@ -17,7 +17,7 @@ class SiteController {
     }
 
     register(req, res, next){
-        res.render('register');
+        res.render('register', {layout: 'intropage'});
     }
 
     //[POST] /store User
