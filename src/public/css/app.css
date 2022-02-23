@@ -287,13 +287,13 @@ footer {
   line-height: 42px;
   text-align: center; }
 
-label {
+.sign-in label {
   display: block;
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500; }
 
-input {
+.sign-in input {
   display: block;
   height: 50px;
   width: 100%;
