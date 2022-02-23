@@ -19,7 +19,7 @@ const db = require('./config/db');
 const { options } = require('./routes/idea');
 
 const app = express()
-const port = 3001
+const port = 3000
 
 
 app.use(express.static(path.join(__dirname, 'public')))

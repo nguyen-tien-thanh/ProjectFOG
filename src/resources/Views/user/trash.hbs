@@ -1,5 +1,5 @@
-<h1>Deleted user</h1>
-<a href="/user/manage">Stored user</a> (Total: {{storedCount}})
+<h1 class="text-center">Deleted user</h1>
+<a href="/user/manage"><i class="fa fa-cloud"></i> Stored user</a> (Total: {{storedCount}})
 
     <form action="/user/handle-form-actions" method="POST">
         <div class="mt-4 d-flex align-items-center">
@@ -23,11 +23,14 @@
         <table class="table">
         <thead>
             <tr>
-                <th></th>
-            <th scope="col">No (Total: {{deletedCount}})</th>
-            <th scope="col">user Name</th>
-            <th scope="col">Detail</th>
-            <th scope="col">Deleted Date</th>
+            <th><a href="/user/create"><button type="button"class="btn btn-secondary">Create</button></a></th>
+            <th scope="col">Total:{{deletedCount}}</th>
+            <th scope="col">Name</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Email</th> 
+            <th scope="col">Workplace</th>
+            <th scope="col">Role</th>
+            <th scope="col">Created at</th>
             <th scope="col">Action</th>
             </tr>
         </thead>
@@ -42,8 +45,11 @@
                 </th>
             <th scope="row">{{sum @index 1}}</th>
             <td>{{this.name}}</td>
-            <td>{{this.description}}</td>
-            <td>{{moment this.deletedAt format="HH:mm on DD-MM-YYYY"}}</td>
+            <td>{{this.username}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.workplace}}</td>
+            <td>{{this.role}}</td>
+            <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
             <td style="padding:5px">
                 <a href="" data-toggle="modal" data-target="#restore-user" data-id="{{this._id}}"><button class="btn btn-secondary btn-restore" >Restore</button></a>
                 <a href="" data-toggle="modal" data-target="#delete-user" data-id="{{this._id}}"><button class="btn btn-secondary btn-force">Delete</button></a>
@@ -51,9 +57,9 @@
             </tr>
             {{else}}
             <tr>
-                <td colspan="5" class="text-center">
+                <td colspan="10" class="text-center">
                     The trash is empty.
-                    <a href="/user/manage">Stored user</a>
+                    <a href="/user/manage"><i class="fa fa-cloud"></i>Stored user</a>
                 </td>
             </tr>
 
