@@ -1,5 +1,5 @@
-<h1>Manage user</h1>
-<a href="/user/trash">Trash user </a>
+<h1 class="text-center">Manage user</h1>
+<a href="/user/trash"><i class="fa fa-trash"></i> Deleted users </a>
 (Total deleted user: {{deletedCount}})
 
 <form name="container-form" action="/user/handle-form-actions" method="POST">
@@ -19,25 +19,20 @@
         <button value="Do action" type="button" class="btn btn-primary disabled check-all-submit-btn">
             Do action
         </button>
-        {{!-- <button class="btn btn-primary btn-small disabled check-all-submit-btn">Go</button> --}}
     </div>
 
     <table class="table mt-4">
     <thead>
         <tr>
-            <th></th>
+            <th><a href="/user/create"><button type="button"class="btn btn-secondary">Create</button></a></th>
             <th scope="col">Total:{{storedCount}}</th>
             <th scope="col">Name</th>
             <th scope="col">UserName</th>
             <th scope="col">Email</th> 
-            <th scope="col">Password</th>
-            <th scope="col">Avatar</th>
-            <th scope="col">Worktime</th>
             <th scope="col">Workplace</th>
             <th scope="col">Role</th>
-            <th scope="col">Address</th>
-            <th scope="col">Birth</th>
-            <th scope="col">Gender</th>
+            <th scope="col">Created at</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -53,14 +48,8 @@
         <td>{{this.name}}</td>
         <td>{{this.username}}</td>
         <td>{{this.email}}</td>
-        <td>{{this.password}}</td>
-        <td>{{this.avatar}}</td>
-        <td>{{this.worktime}}</td>
         <td>{{this.workplace}}</td>
         <td>{{this.role}}</td>
-        <td>{{this.address}}</td>
-        <td>{{this.birth}}</td>
-        <td>{{this.gender}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td style="padding:5px">
             <a href="/user/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
@@ -70,7 +59,7 @@
         </tr>
         {{else}}
         <tr>
-            <td colspan="5" class="text-center">
+            <td colspan="10" class="text-center">
                 You have not created any user.
                 <a href="/user/create">Create new one?</a>
             </td>

@@ -1,32 +1,213 @@
-<h1>Edit user page</h1> 
+<div class="container">
+		<div class="user-detail-body">
+            <h1 class="text-center">Edit Profile</h1>
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="card user-card">
+						<div class="card-body">
+							<div class="d-flex flex-column align-items-center text-center">
+								<img src="{{user.avatar}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+								<div class="mt-3">
+									<h4>{{user.name}}</h4>
+									<p class="text-secondary mb-1">{{user.workplace}}</p>
+									<p class="text-muted font-size-sm">{{user.address}}</p>
+									<button class="btn btn-primary">Follow</button>
+									<button class="btn btn-outline-primary">Message</button>
+								</div>
+							</div>
+							<hr class="my-4">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<h6 class="mb-0"><i class="icon-user fa fa-globe"></i> Website</h6>
+									<span class="text-secondary">https://website.com</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<h6 class="mb-0"><i class="icon-user fab fa-github"></i> Github</h6>
+									<span class="text-secondary">{{user.username}}</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<h6 class="mb-0"><i class="icon-user fab fa-twitter"></i> Twitter</h6>
+									<span class="text-secondary">@{{user.username}}</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<h6 class="mb-0"><i class="icon-user fab fa-instagram"></i> Instagram</h6>
+									<span class="text-secondary">{{user.username}}</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<h6 class="mb-0"><i class="icon-user fab fa-facebook"></i> Facebook</h6>
+									<span class="text-secondary">{{user.username}}</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<div class="card user-card">
+
+            
+<form action="/user/{{user._id}}?_method=PUT" method="post">
+						<div class="card-body">
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Full Name</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name="name" value="{{user.name}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Username</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name = "username" value="{{user.username}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Email</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="email" class="form-control" name="email" value="{{user.email}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Password</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="password" class="form-control" name="password" value="{{user.password}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Avatar</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name="avatar" value="{{user.avatar}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Work time</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name="worktime" value="{{user.worktime}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Work place</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name="workplace" value="{{user.workplace}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Phone</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name="phone" value="{{user.phone}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Address</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name="address" value="{{user.address}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Birthday</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name="birth" value="{{user.birth}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Gender</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" name="gender" value="{{user.gender}}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Created at</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" disable value="{{moment user.createdAt format="HH:mm on DD-MM-YYYY"}}">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-9 text-secondary">
+                  <button type="submit" class="btn btn-secondary px-3 save-btn">Edit Profile</button>
+								</div>
+							</div>
+						</div>
+</form>
+
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ {{!-- <h1 class="text-center">Edit user page</h1> 
 <div class="mt-4 ml-4">
-  {{!-- enctype="multipart/form-data" --}}
 <form action="/user/{{user._id}}?_method=PUT" method="post">
   <div class="form-group">
         <label for="name">name</label>
         <input type="text" class="form-control" value="{{user.name}}" id="name" name="name" placeholder="Enter name"> 
       </div>
       <div class="form-group">
-        <label for="description">description</label>
-        <textarea class="form-control" id="description" name="description" >{{user.description}}</textarea>
+        <label for="username">username</label>
+        <textarea class="form-control" id="username" name="username" >{{user.username}}</textarea>
       </div>
       <div class="form-group">
-        <label for="image">image</label>
-        <input type="text" class="form-control" value="{{user.image}}" id="image" name="image" placeholder="Enter image"> 
+        <label for="email">email</label>
+        <textarea class="form-control" id="email" name="email" >{{user.email}}</textarea>
       </div>
       <div class="form-group">
-        <label for="createdAt">Create at</label>
-        <input type="text" class="form-control" value="{{user.createdAt}}" id="createdAt" name="createdAt" placeholder="Enter createdAt"> 
+        <label for="password">password</label>
+        <textarea class="form-control" id="password" name="password" >{{user.password}}</textarea>
       </div>
       <div class="form-group">
-        <label for="updatedAt">Updated at</label>
-        <input type="text" class="form-control" value="{{user.updatedAt}}" id="updatedAt" name="updatedAt" placeholder="Enter updatedAt"> 
-      </div> 
+        <label for="avatar">avatar</label>
+        <textarea class="form-control" id="avatar" name="avatar" >{{user.avatar}}</textarea>
+      </div>
       <div class="form-group">
-        <label for="slug">slug</label>
-        <input type="text" class="form-control" value="{{user.slug}}" id="slug" name="slug" placeholder="Enter slug"> 
+        <label for="worktime">worktime</label>
+        <textarea class="form-control" id="worktime" name="worktime" >{{user.worktime}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="workplace">workplace</label>
+        <textarea class="form-control" id="workplace" name="workplace" >{{user.workplace}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="phone">phone</label>
+        <textarea class="form-control" id="phone" name="phone" >{{user.phone}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="address">address</label>
+        <textarea class="form-control" id="address" name="address" >{{user.address}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="birth">birth</label>
+        <textarea class="form-control" id="birth" name="birth" >{{user.birth}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="gender">gender</label>
+        <textarea class="form-control" id="gender" name="gender" >{{user.gender}}</textarea>
       </div>
   <input type="submit" value="Edit">
 </form>
-</div>
+</div>  --}}
 
