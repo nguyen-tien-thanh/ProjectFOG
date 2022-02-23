@@ -2,7 +2,7 @@
 <div class="mt-4">
     <ul class="row">
         <div class="col-3">
-            <ul class="list-group">
+            <ul class="list-group list__group-mobile">
                 <h4>Event List</h4>
                 {{#each event}}
                     <a class="list-group-item list-group-item-action list-hover" href="/event/{{this.slug}}"><li>{{this.name}}</li></a>
@@ -10,17 +10,17 @@
             </ul>
         </div>
 
-   <div class="col-9 row">
+   <div class="col-9 row col-modify">
             {{#each event}}
-            <div class="col-sm-4 col-md-4 col-lg-4">
+            <div class="col-sm-4 col-md-4 col-lg-4 col-mobile">
                 
             <div class="card event-card">
                 <a class="card-content" href="/event/{{this.slug}}">
-                    <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+                    <img class="card-img-top img-mobile" src="{{this.image}}" alt="{{this.name}}">
                 </a>
                 <div class="card-body body-new">
                     <a href="/event/{{this.slug}}">
-                        <h5 class="card-title">{{this.name}}</h5>
+                        <h5 class="card-title title-mobile">{{this.name}}</h5>
                     </a>
                     <p class="card-text text-new ">{{this.description}}</p>
                   
