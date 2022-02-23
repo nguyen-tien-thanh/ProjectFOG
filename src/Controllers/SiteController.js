@@ -30,7 +30,7 @@ class SiteController {
 
     login(req, res, next){
 
-        res.render('login');
+        res.render('login', {layout: 'intropage'});
     }
 
     //[POST] /validation User

@@ -1,25 +1,32 @@
-<body>
-  <h1 class="text-center"><B> CREATE NEW CATEGORY </B></h1>
-  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">CREATE</button>
-<div id="id01" class="modal">
-  <form class="modal-content animate" action="/category/store" method="post">
-    <div class="cacontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+<h1 class="text-center"><B> NEW CATEGORY </B></h1>
+<h2 class="text-center"><button0 onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i>Create</i></button0></h2>
+<p><img class="w3-image" src="/images/slider3.jpg" alt="FOG" width="100%" height="100%"></p>
+
+<div id="id01" class="create-modal">
+  <form class="create-modal-content animate" action="/action_page.php" method="post">
+    
+    <div class="cr-container">
+      <span onclick="document.getElementById('id01').style.display='none'" class="create-close" title="Close Modal">&times;</span>
     </div>
-    <div class="container">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required></div>
-      <input type="submit" value="Submit">
+    
+    <div class="create-container">
+      <label for="uname"><b>Name CATEGORY</b></label>
+      <h3><input type="text1" class="form-control-create" id="name" name="name" placeholder="Enter Username" name="uname" required>
+      <input type="submit" class="btn-success-1"value="Submit"></h3>
+    </div>
+      
   </form>
 </div>
 <script>
-var modal = document.getElementById('id01');
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+var cr-modal = document.getElementById('id01');
+window.onclick = function(event) 
+{
+    if (event.target == cr-modal) 
+    {
+        cr-modal.style.display = "none";
     }
 }
 </script>
-</body>
+
 
 

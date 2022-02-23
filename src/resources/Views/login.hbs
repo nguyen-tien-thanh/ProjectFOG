@@ -1,16 +1,29 @@
-<div class="row">
-    <div class="column-4">
-        <h2 class="create-new">
-            Sign In
-        </h2>
-        <form method="post" action="/validation">
-            <label>Email</label>
-            <input type="text" name="email" id="this is email" class="form-control" required>
-            <label>Password</label>         
-            <input type="password" name="password" id="this is pass" class="form-control" required>
-            <input type="checkbox" name="checkrememberme" id=""> Remember me  <a class= "forgot"href="">Forgot password?</a> 
-            
-        <input type="submit" class="btn btn-secondary" value="SIGN IN"> 
-        </form>
-    </div>
+<div class="sign-in-page">
+        
+    <form class="sign-in" method="post" action="/validation">
+        <h3>Login Here</h3>
+        <label for="username">Username</label>
+        <input type="text" placeholder="Email or Phone" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" name="password" required>
+
+        <button class="log-in-button submit">Log In</button>
+        <div class="social">
+          <div class="go"><i class="fab fa-google"></i>  Google</div>
+          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+        </div>
+    </form>
 </div>
+<script>
+     $(function(){
+    var y = document.getElementById("mail");
+    var z = document.getElementById("pass");
+    
+    console.log(z)
+    console.log(y);
+    y.onchange = function(){
+      z.setAttribute("style","display:block")
+    }
+  })
+</script>
