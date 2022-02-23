@@ -1,11 +1,4 @@
 
-*,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 .sign-in-page{
     background-color: #080710;
     height: 100vh;
@@ -16,7 +9,7 @@
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 60%;
+    top: 50%;
     left: 50%;
     border-radius: 10px;
     border: 2px solid rgba(255,255,255,0.1);
