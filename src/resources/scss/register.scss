@@ -1,98 +1,62 @@
-.sign-up a {
-  text-decoration: underline;
-  color: rgb(255, 50, 71);
+.divider-text {
+  position: relative;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.divider-text span {
+  padding: 7px;
+  font-size: 12px;
+  position: relative;   
+  z-index: 2;
+  border-radius: 50%;
+}
+.divider-text:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  top: 55%;
+  left: 0;
+  z-index: 1;
 }
 
-.sign-up-page {
-  background-color: #080710;
-  height: 100vh;
+.btn-facebook {
+  background-color: #405D9D;
+  color: #fff;
 }
-.sign-up {
-  height: 520px;
-  width: 400px;
+.btn-google {
+  background-color: #ff3247;
+  color: #fff;
+}
+
+.text-white {
+  color: #fff!important;
+}
+
+.link-registerpage {
+  color: #ff3247;
+}
+
+.link-registerpage:hover {
+  color: red;
+}
+
+.btn-register {
+  color: #fff;
+  border-color: #ff3247;
+  background-color: #ff3247;
+}
+
+.btn-register:hover {
+  color: #fff;
+  border-color: red;
+  background-color: red;
+}
+
+.register-form {
   background-color: rgba(255, 255, 255, 0.13);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  padding: 50px 35px;
-}
-.sign-up * {
-  font-family: "Poppins", sans-serif;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-  outline: none;
-  border: none;
-}
-.sign-up h3 {
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 42px;
-  text-align: center;
-}
-
-.sign-up label {
-  display: block;
-  margin-top: 30px;
-  font-size: 16px;
-  font-weight: 500;
-}
-.sign-up .input-signup {
-  display: block;
-  height: 50px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.07);
-  border-radius: 3px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-}
-
-::placeholder {
-  color: #e5e5e5;
-}
-
-.checkbox-terms {
-  margin-top: 10px;
-}
-
-.sign-up button {
-  margin-top: 15px;
-  width: 100%;
-  background-color: #ffffff;
-  color: black;
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.sign-up button:hover {
-  background-color: rgb(255, 50, 71);
-}
-.social {
-  margin-top: 30px;
-  display: flex;
-}
-.social div {
-  background: red;
-  width: 150px;
-  border-radius: 3px;
-  padding: 5px 10px 10px 5px;
-  background-color: rgba(255, 255, 255, 0.27);
-  color: #eaf0fb;
-  text-align: center;
-}
-.social div:hover {
-  background-color: rgb(255, 50, 71);
-}
-.social .fb {
-  margin-left: 25px;
-}
-.social i {
-  margin-right: 4px;
+  margin: 20px 0px;
 }
