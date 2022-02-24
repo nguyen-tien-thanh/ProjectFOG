@@ -203,8 +203,27 @@
         display: block;
     }
 
-    .kitbox{
-        
+    .kitbox {
+        overflow-wrap: break-word;
+    }
+
+    
+
+    .manage_mobile {
+        display:inline-block;
+        padding:5px;
+        width:100%;
+    }
+
+    .table-sm  {
+        padding: 0.19rem;
+    }
+
+    .thead-mobile{
+    top: -9999px;
+    left: -9999px;
+    display: block;
+    white-space: nowrap;
     }
 
    
