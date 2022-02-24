@@ -7,9 +7,6 @@ const newsRouter = require('./news');
 const ideaRouter = require('./idea');
 const userRouter = require('./user');
 
-'use strict';
-const middleware = require('../utils/middleware')
-
 
 function route(app){
 
