@@ -17,7 +17,7 @@ class SiteController {
     }
 
     register(req, res, next){
-        res.render('register');
+        res.render('register', {layout: 'intropage'});
     }
 
     //[POST] /store User
@@ -37,7 +37,8 @@ class SiteController {
     validation(req,res,next) {
         User.findOne({email: req.body.email, password: req.body.password})
         .then (user => {
-            res.render('user/show', { 
+            res.render('index', { 
+                layout: 'intropage',
                 user: mongooseToObject(user) 
             });
         })
