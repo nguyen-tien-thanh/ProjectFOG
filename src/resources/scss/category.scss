@@ -13,6 +13,7 @@
 #mySide a:hover
 {
   left: 0;
+  opacity: 0.8;
 }
 #C
 {
@@ -29,3 +30,28 @@
   top: 340px;
   background-color: #8B93FC;
 }
+
+#head-category
+{
+  background-color: black;
+  color: rgb(173, 154, 173);
+  text-align: center;
+}
+#body-category
+{
+  text-align: center;
+}
+
+#M-CA
+{
+  background-color: #8B93FC;
+}
+#N-CA
+{
+  background-color: #DCCB97;
+}
+#M-CA:hover
+{
+  opacity: 0.5;
+}
+

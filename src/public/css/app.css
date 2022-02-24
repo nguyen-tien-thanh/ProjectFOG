@@ -785,7 +785,8 @@ img.img-center {
   border-radius: 0 5px 5px 0; }
 
 #mySide a:hover {
-  left: 0; }
+  left: 0;
+  opacity: 0.8; }
 
 #C {
   top: 220px;
@@ -799,22 +800,42 @@ img.img-center {
   top: 340px;
   background-color: #8B93FC; }
 
-h1, h2, p {
+#head-category {
+  background-color: black;
+  color: #ad9aad;
+  text-align: center; }
+
+#body-category {
+  text-align: center; }
+
+#M-CA {
+  background-color: #8B93FC; }
+
+#N-CA {
+  background-color: #DCCB97; }
+
+#M-CA:hover {
+  opacity: 0.5; }
+
+#h1-create-category,
+#h2-create-category,
+#p-create-category {
   text-align: center;
-  line-height: 2; }
+  line-height: 2em; }
 
-h2 {
-  font-size: 1.3rem; }
+#h2-create-category {
+  font-size: 1.2em; }
 
-button0 {
+#N-create-category {
+  width: auto;
   background-color: black;
   color: pink;
-  padding: 1.1rem 20rem;
-  border-radius: 50rem;
+  padding: 1em 15em;
+  border-radius: 5em;
   cursor: pointer; }
 
-button0:hover {
-  opacity: 0.85; }
+#N-create-category:hover {
+  opacity: 0.8; }
 
 .create-modal {
   display: none;
@@ -826,33 +847,21 @@ button0:hover {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
-  padding-top: 7rem; }
+  padding-top: 7em; }
 
 .create-modal-content {
   background-color: #fefefe;
-  margin: 7% auto 15% auto;
+  margin: 10% auto 15% auto;
   border: 1px solid #888;
-  width: 60%; }
-
-.create-close {
-  position: absolute;
-  right: 21rem;
-  top: 16rem;
-  color: #000;
-  font-size: 2.2rem; }
-
-.create-close:hover,
-.create-close:focus {
-  color: lightpink;
-  cursor: pointer; }
+  width: 65%; }
 
 .create-container {
   padding: 1.5rem; }
 
-h3 {
+#h3-create-category {
   text-align: center; }
 
-input[type=text1] {
+#input type[text-create-category] {
   padding: 1rem 10rem;
   margin: 0.5rem 0;
   display: inline-block;
@@ -860,16 +869,25 @@ input[type=text1] {
   box-sizing: border-box; }
 
 .btn-success-1 {
-  padding: 1rem 4rem;
-  border-radius: 25rem;
+  padding: .3em 4em;
+  border-radius: 2em;
   background-color: black;
   color: lightpink;
   cursor: pointer; }
 
-.btn-success-1:hover {
+.cancelbtn-1 {
+  width: auto;
+  padding: .3em 4em;
+  border-radius: 2em;
+  background-color: #d47872;
+  color: black;
+  cursor: pointer; }
+
+.btn-success-1:hover,
+.cancelbtn-1:hover {
   opacity: 0.85; }
 
-.animate {
+.animate-cr-ca {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s; }
 
