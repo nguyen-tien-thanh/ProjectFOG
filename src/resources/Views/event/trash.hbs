@@ -20,8 +20,10 @@
             </button>
         </div>
 
-        <table class="table">
-        <thead>
+        <div class="table-responsive">
+        
+        <table class="table mt-4 table-sm">
+        <thead class="thead-mobile">
             <tr>
                 <th></th>
             <th scope="col">No (Total: {{deletedCount}})</th>
@@ -32,7 +34,7 @@
             </tr>
         </thead>
         <tbody>
-            {{#each event}}
+            {{#each event}} 
             <tr>
                 <th>
                     <div class="form-check">
@@ -60,6 +62,8 @@
             {{/each}}
         </tbody>
         </table>
+        </div>
+
     
 
     {{!-- Confirm force delete 1 event code --}}

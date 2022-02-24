@@ -1,17 +1,17 @@
 <h1>Edit event page</h1> 
 <div class="mt-4 ml-4">
   {{!-- enctype="multipart/form-data" --}}
-<form action="/event/{{event._id}}?_method=PUT" method="post">
+<form class = "event-edit" action="/event/{{event._id}}?_method=PUT" method="post">
   <div class="form-group">
-        <label for="name">name</label>
+        <label for="name">Name</label>
         <input type="text" class="form-control" value="{{event.name}}" id="name" name="name" placeholder="Enter name"> 
       </div>
       <div class="form-group">
-        <label for="description">description</label>
+        <label for="description">Description</label>
         <textarea class="form-control" id="description" name="description" >{{event.description}}</textarea>
       </div>
       <div class="form-group">
-        <label for="image">image</label>
+        <label for="image">Image</label>
         <input type="text" class="form-control" value="{{event.image}}" id="image" name="image" placeholder="Enter image"> 
       </div>
       <div class="form-group">
@@ -23,7 +23,7 @@
         <input type="text" class="form-control" value="{{event.updatedAt}}" id="updatedAt" name="updatedAt" placeholder="Enter updatedAt"> 
       </div> 
       <div class="form-group">
-        <label for="slug">slug</label>
+        <label for="slug">Slug</label>
         <input type="text" class="form-control" value="{{event.slug}}" id="slug" name="slug" placeholder="Enter slug"> 
       </div>
   <input type="submit" value="Edit">

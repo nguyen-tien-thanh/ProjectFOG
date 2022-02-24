@@ -1,4 +1,4 @@
-<div class="container-sm">
+
 <h1>Manage event</h1>
 <a href="/event/trash">Trash event </a>
 (Total deleted event: {{deletedCount}})
@@ -23,7 +23,7 @@
         {{!-- <button class="btn btn-primary btn-small disabled check-all-submit-btn">Go</button> --}}
     </div>
 
-    <table class="table mt-4">
+    <table class="table mt-4 table-sm">
     <thead>
         <tr>
             <th></th>
@@ -48,9 +48,9 @@
         <td class="kitbox">{{this.description}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td style="padding:5px">
-            <a href="/event/{{this._id}}/edit"><button type="button" class="btn btn-secondary btn-modify">Edit</button></a>
-            <a href="/event/{{this.slug}}"><button type="button" class="btn btn-secondary btn-modify">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-event" data-id="{{this._id}}"><button class="btn btn-secondary btn-modify">Delete</button></a>
+            <a href="/event/{{this._id}}/edit"><button type="button" class="btn btn-dark btn-modify">Edit</button></a>
+            <a href="/event/{{this.slug}}"><button type="button" class="btn btn-dark btn-modify">Detail</button></a>
+            <a href="" data-toggle="modal" data-target="#delete-event" data-id="{{this._id}}"><button class="btn btn-dark btn-modify">Delete</button></a>
         </td>
         </tr>
         {{else}}
@@ -181,4 +181,3 @@
                 
             })
         </script>
-</div>

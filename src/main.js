@@ -20,7 +20,8 @@ const { options } = require('./routes/idea');
 
 const app = express()
 
-const port = 3000
+const port = 3001
+
 
 
 
