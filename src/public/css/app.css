@@ -596,7 +596,8 @@ header {
 
 .sign-up-page {
   background: #080710;
-  padding: 24px 0; }
+  padding: 24px 0;
+  height: 100vh; }
 
 .text-center {
   margin: 12px 12px; }
