@@ -701,6 +701,9 @@ header {
   transform: translateX(-30px) translateY(-20px);
   margin-top: 30px; }
 
+.event-edit {
+  margin-bottom: 12px; }
+
 .col-3 ul {
   float: left; }
 
@@ -1104,7 +1107,21 @@ input[type="text1"] {
     display: block; }
   .container-sm {
     max-width: 500px;
-    display: block; } }
+    display: block; }
+  .kitbox {
+    overflow-wrap: break-word; }
+  .manage_mobile {
+    display: inline-block;
+    padding: 5px;
+    width: 100%; }
+  .table-sm {
+    padding: 0.19rem; }
+  .thead-mobile {
+    top: -9999px;
+    left: -9999px;
+    white-space: nowrap; }
+  .des-sm {
+    display: table cell; } }
 
 body li {
   list-style-type: none;

@@ -216,17 +216,19 @@
     }
 
     .table-sm  {
+
         padding: 0.19rem;
     }
 
     .thead-mobile{
     top: -9999px;
     left: -9999px;
-    display: block;
     white-space: nowrap;
     }
 
-   
+   .des-sm{
+       display: table cell;
+   }
      
    
 }
