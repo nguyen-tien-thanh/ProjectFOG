@@ -592,7 +592,11 @@ header {
   background-color: rgba(255, 255, 255, 0.13);
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.1);
-  margin: 20px 0px; }
+  width: 450px; }
+
+.sign-up-page {
+  background: #080710;
+  padding: 24px 0; }
 
 .text-center {
   margin: 12px 12px; }
