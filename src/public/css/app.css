@@ -230,6 +230,19 @@ header {
     font-size: 50px;
     padding-right: 10px; } }
 
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .Nav_PC {
+    display: none; }
+  .Nav_Tablet {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    justify-content: space-between; }
+  .nav-left-tablet {
+    display: block;
+    font-size: 50px;
+    padding-right: 10px; } }
+
 .site-footer {
   background-color: #47484c;
   padding: 45px 0 20px;
@@ -538,6 +551,14 @@ header {
 .Student:hover .overlay2,
 .Student:hover .Student-text {
   opacity: 1; }
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .text {
+    font-size: 10px; } }
+
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .text {
+    font-size: 5px; } }
 
 .divider-text {
   position: relative;

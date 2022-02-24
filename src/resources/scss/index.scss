@@ -119,4 +119,15 @@
 .Student:hover .Student-text {
   opacity: 1;
 }
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .text{
+    font-size: 10px;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .text{
+    font-size: 5px;
+  }
+}
 ///////////////
