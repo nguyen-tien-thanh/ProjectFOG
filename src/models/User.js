@@ -3,21 +3,23 @@ const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
 
 const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
+
 
 const User = new Schema({
     name: {type: String, maxLength: 255, default:"No information"},
-    username: {type: String, maxLength: 255, default:"No information"},
-    email: {type: String, require: true},
-    password: {type: String, minLength: 1, maxLength: 32},
+    username: {type: String, maxLength: 255, default:"No information", required:true},
+    email: {type: String, default:"No information"},
+    password: {type: String, minLength: 1, maxLength: 32, require:true},
     avatar: {type: String, default: "https://www.w3schools.com/howto/img_avatar.png"},    
     worktime: {type: String, maxLength: 255, default:"No information"},
     workplace: {type: String, maxLength: 255, default:"No information"},
-    rolee: {type: String, maxLength: 255, default:"Not define"},
+    role: {type: String, maxLength: 20, default:"Not define"},
     phone: {type: Number, maxLength: 12, default:"123456789"},
     address: {type: String, maxLength: 255, default:"No information"},
     birth: {type: String, maxLength: 255, default:"No information"},
     gender: {type: String, maxLength: 255, default:"No information"},
-    slug: {type : String, slug : 'email', unique: true},
+    slug: {type : String, slug : 'username', unique: true},
     deletedAt: {},
     // createdAt: {type: Date, default : Date.Now},
     // updateAt: {type: Date, default : Date.Now}
@@ -31,5 +33,6 @@ User.plugin(mongooseDelete, {
     deletedAt: true
 });
 mongoose.plugin(slug);
+User.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', User);

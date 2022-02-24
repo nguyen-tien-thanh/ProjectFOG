@@ -31,6 +31,21 @@
   color: rgb(255, 50, 71);
 }
 
+.sub-header .right-content ul li {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.sub-header .right-content ul li a {
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.sub-header .right-content ul li a:hover {
+  color: rgb(255, 50, 71);
+}
+
 .sub-header .right-content p em {
   font-style: normal;
   color: rgb(255, 50, 71);

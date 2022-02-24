@@ -15,7 +15,13 @@
         <div class="col-lg-4 col-sm-4">
           <div class="right-content">
               <a href="#">
-                <p><em>((name user))</em><i class="fas fa-chevron-down"></i></p>
+                <ul>
+                    <li>
+                        <p><em>Hello {{user.username}}</em><i class="fas fa-chevron-down"></i></p>
+                    </li>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
             </a>
           </div>
         </div>
@@ -112,8 +118,6 @@
                         </div>
                     </li>
                     <li><a href="/contact">Contact</a></li>
-                    <li><a href="/register">register</a></li>
-                    <li><a href="/login">login</a></li>
                 </ul>
               </div>
 

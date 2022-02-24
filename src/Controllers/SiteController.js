@@ -1,7 +1,11 @@
 const User = require('../models/User');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
+const { isLoggedIn } = require('../ulti/authonize')
 
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 class SiteController {
     
@@ -9,6 +13,12 @@ class SiteController {
     index(req, res, next){
 
         res.render('index', {layout: 'intropage'});
+    }
+
+    // [GET] /logout --> Home page
+    logout (req, res) {
+        req.logout();
+        res.redirect('/');
     }
 
     contact(req, res, next){
@@ -22,10 +32,31 @@ class SiteController {
 
     //[POST] /store User
     store(req,res,next) {
-        const register = new User(req.body);
-        register.save()
-            .then(() => res.redirect('login'))
-            .catch(next)
+        // const register = new User(req.body);
+        // register.save()
+        //     .then(() => res.redirect('login'))
+        //     .catch(next)
+        
+        var username = req.body.username
+        var password = req.body.password
+        User.register(new User({ username: username }),
+                password, function (err, user) {
+            if (err) {
+                console.log(err);
+                return res.redirect("register");
+            }
+    
+            passport.authenticate("local")(
+                req, res, function () {
+                    User.findOne({username: req.user.username})
+                        .then (user =>{
+                            res.render('index', { 
+                                user: mongooseToObject(user) 
+                            });
+                        })
+            });
+            
+        });
     }
 
     login(req, res, next){
@@ -35,16 +66,7 @@ class SiteController {
 
     //[POST] /validation User
     validation(req,res,next) {
-        User.findOne({email: req.body.email, password: req.body.password})
-        .then (user => {
-            res.render('index', { 
-                layout: 'intropage',
-                user: mongooseToObject(user) 
-            });
-        })
-        .catch(next => {
-            console.log('Failed')
-        })
+        
     }
 
     // [GET] /:slug
@@ -62,8 +84,8 @@ class SiteController {
         // res.send('New detail !!! - '+ req.params.slug );
     }
 
-    search(req,res){
-        res.render('search');
+    secret(req,res){
+        res.render('secret');
     }
 
 }
