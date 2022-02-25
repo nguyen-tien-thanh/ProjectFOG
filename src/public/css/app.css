@@ -230,6 +230,19 @@ header {
     font-size: 50px;
     padding-right: 10px; } }
 
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .Nav_PC {
+    display: none; }
+  .Nav_Tablet {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    justify-content: space-between; }
+  .nav-left-tablet {
+    display: block;
+    font-size: 50px;
+    padding-right: 10px; } }
+
 .site-footer {
   background-color: #47484c;
   padding: 45px 0 20px;
@@ -539,6 +552,14 @@ header {
 .Student:hover .Student-text {
   opacity: 1; }
 
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .text {
+    font-size: 10px; } }
+
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .text {
+    font-size: 5px; } }
+
 .divider-text {
   position: relative;
   text-align: center;
@@ -597,7 +618,10 @@ header {
 .sign-up-page {
   background: #080710;
   padding: 24px 0;
+<<<<<<< HEAD
   width: 100%;
+=======
+>>>>>>> 3e1db40f89fcc3b2acca262ff89f5d424210a554
   height: 100vh; }
 
 .text-center {
@@ -1015,7 +1039,7 @@ img.img-center {
     height: 100%;
     transform: translateX(10px) translateY(-10px); }
   .event-detail__info {
-    transform: translateX(10px) translateY(-10px);
+    transform: translateX(-10px) translateY(-20px);
     margin-top: 30px; }
   .event-detail__des {
     margin: 0; }
@@ -1039,7 +1063,8 @@ img.img-center {
     object-fit: cover;
     transform: translateX(0px) translateY(-30px); }
   .event-detail__info {
-    margin: 12px 12px; }
+    margin: 12px 12px;
+    transform: translateX(-10px) translateY(-20px); }
   .detail-title__name {
     font-size: 1rem;
     margin: 12px 12px;
@@ -1087,15 +1112,15 @@ img.img-center {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto; }
-  .manage_mobile tr {
-    display: block; }
   .container-sm {
     max-width: 500px;
     display: block; }
   .kitbox {
     overflow-wrap: break-word; }
+  h1 {
+    font-size: 2rem;
+    text-align: center; }
   .manage_mobile {
-    display: inline-block;
     padding: 5px;
     width: 100%; }
   .table-sm {
@@ -1103,7 +1128,6 @@ img.img-center {
   .thead-mobile {
     top: -9999px;
     left: -9999px;
-    display: block;
     white-space: nowrap; } }
 
 body li {
