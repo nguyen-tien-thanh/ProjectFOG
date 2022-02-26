@@ -1,11 +1,8 @@
 const User = require('../models/User');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
-const { isLoggedIn } = require('../ulti/authonize')
 
 const passport = require('passport');
-const LocalStrategy = require('passport-local');
-const passportLocalMongoose = require('passport-local-mongoose');
 
 class SiteController {
     
@@ -18,12 +15,21 @@ class SiteController {
     // [GET] /logout --> Home page
     logout (req, res) {
         req.logout();
-        res.redirect('/');
+        res.redirect('login');
     }
 
-    contact(req, res, next){
-
-        res.render('contact');
+    contact(req, res,next){
+        if (req.isAuthenticated()) {
+            User.findOne({username: req.user.username})
+            .then (user =>{
+                res.render('contact', { 
+                    userLogin: mongooseToObject(user)
+                });
+            })
+        }
+        else{
+            res.render('contact')
+        }
     }
 
     register(req, res, next){
@@ -51,7 +57,7 @@ class SiteController {
                     User.findOne({username: req.user.username})
                         .then (user =>{
                             res.render('index', { 
-                                user: mongooseToObject(user) 
+                                userLogin: mongooseToObject(user)
                             });
                         })
             });
@@ -66,26 +72,60 @@ class SiteController {
 
     //[POST] /validation User
     validation(req,res,next) {
-        
+        // var username = req.body.username;
+        // var password = req.body.password;
+
+        // User.findOne({username: username}).then(function(user) {
+        //     if(user){
+        //       if (user.password == password){
+        //           console.log('User connected');
+        //           req.session.username = username;
+        //           req.session.password = password;
+        //           console.log(req.session);
+        //         //   res.status(200).send('User Authentified');
+        //       }else{
+        //           res.status(401).send('Invalid Password');
+        //       }
+        //   }else{
+        //       res.status(401).send('Username');
+        //   }
+        // });
+        passport.authenticate("local")(
+            req, res, function () {
+                User.findOne({username: req.user.username})
+                    .then (user =>{
+                        res.render('index', { 
+                            layout: 'intropage',
+                            userLogin: mongooseToObject(user)
+                        });
+                    })
+        });
     }
 
     // [GET] /:slug
-    // Find object in MongoDB by slug
-    show(req,res,next){
-        User.findOne({ slug: req.params.slug})
-        .then (user => {
-            // res.json(User);
-
-            res.render('user/show', { 
-                user: mongooseToObject(user) 
+    // Show 404 not found error
+    error(req,res,next){
+        User.findOne({username: req.user.username})
+        .then (user =>{
+            res.render('partials/error', { 
+                userLogin: mongooseToObject(user)
             });
         })
         .catch(next)
-        // res.send('New detail !!! - '+ req.params.slug );
     }
 
-    secret(req,res){
-        res.render('secret');
+    secret(req,res,next){
+        if (req.isAuthenticated()) {
+            User.findOne({username: req.user.username})
+            .then (user =>{
+                res.render('secret', { 
+                    userLogin: mongooseToObject(user)
+                });
+            })
+        }
+        else{
+            res.render('secret')
+        }
     }
 
 }

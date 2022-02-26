@@ -56,7 +56,7 @@ form.maxFileSize = 50 * 1024 * 1024; // 5MB file
 //=========SIGN UP SIGN IN AUTHORNIZE ==========================//
 app.use(require("express-session")({
   secret: "keyboard cat",
-  resave: false,
+  resave: true,
   saveUninitialized: true
 }));
 
@@ -67,6 +67,7 @@ const User = require('./models/User');
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 
 //Template engines
 app.engine('hbs', hbs.engine)

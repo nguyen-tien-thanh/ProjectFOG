@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const { isLoggedIn, authRole } = require('../ulti/authonize')
+const {ROLE} = require('../models/Role')
+
 const eventController = require('../Controllers/EventController');
 
 // [POST] /category/handle-form-actions category

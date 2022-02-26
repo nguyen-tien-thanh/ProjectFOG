@@ -14,7 +14,7 @@ const User = new Schema({
     avatar: {type: String, default: "https://www.w3schools.com/howto/img_avatar.png"},    
     worktime: {type: String, maxLength: 255, default:"No information"},
     workplace: {type: String, maxLength: 255, default:"No information"},
-    role: {type: String, maxLength: 20, default:"Not define"},
+    role: {type: String, maxLength: 20, default:"Staff"},
     phone: {type: Number, maxLength: 12, default:"123456789"},
     address: {type: String, maxLength: 255, default:"No information"},
     birth: {type: String, maxLength: 255, default:"No information"},
