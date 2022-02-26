@@ -20,8 +20,10 @@
             </button>
         </div>
 
-        <table class="table">
-        <thead>
+        <div class="table-responsive table-sm">
+        
+        <table class="table mt-4 table-sm">
+        <thead class="thead-mobile">
             <tr>
                 <th></th>
             <th scope="col">No (Total: {{deletedCount}})</th>
@@ -32,7 +34,7 @@
             </tr>
         </thead>
         <tbody>
-            {{#each event}}
+            {{#each event}} 
             <tr>
                 <th>
                     <div class="form-check">
@@ -42,7 +44,7 @@
                 </th>
             <th scope="row">{{sum @index 1}}</th>
             <td>{{this.name}}</td>
-            <td>{{this.description}}</td>
+            <td class="des-sm">{{this.description}}</td>
             <td>{{moment this.deletedAt format="HH:mm on DD-MM-YYYY"}}</td>
             <td style="padding:5px">
                 <a href="" data-toggle="modal" data-target="#restore-event" data-id="{{this._id}}"><button class="btn btn-secondary btn-restore" >Restore</button></a>
@@ -60,6 +62,8 @@
             {{/each}}
         </tbody>
         </table>
+        </div>
+
     
 
     {{!-- Confirm force delete 1 event code --}}

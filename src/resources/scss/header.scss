@@ -263,3 +263,21 @@ header {
     padding-right: 10px;
   }
 }
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .Nav_PC {
+    display: none;
+  }
+  .Nav_Tablet {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    justify-content: space-between;
+  }
+  .nav-left-tablet {
+    display: block;
+    font-size: 50px;
+    padding-right: 10px;
+  }
+}
+
+

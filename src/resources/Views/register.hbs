@@ -1,5 +1,6 @@
 
 <div class="sign-up-page">
+<<<<<<< HEAD
         
     <form class="sign-up" method="post" action="/store">
         <h3>Register Here</h3>
@@ -10,15 +11,54 @@
 
         <label for="username">Username</label>
         <input class="input-signup" type="text" placeholder="Username" id="username" name="username" required>
+=======
+>>>>>>> 3e1db40f89fcc3b2acca262ff89f5d424210a554
 
-        <label for="password">Password</label>
-        <input class="input-signup" type="password" placeholder="Password" id="password"  name="password" required>
+    <div class="card register-form mx-auto">
+        <article class="card-body">
+            <h4 class="card-title mt-3 text-center text-white">Create Account</h4>
+            <p class="text-center text-white">Get started with your free account</p>
+            <p>
+                <a href="" class="btn btn-block btn-google"> <i class="fab fa-google"></i>   Login via Google</a>
+                <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+            </p>
+            <p class="divider-text">
+                <span class="bg-light">OR</span>
+            </p>
+            <form method="post" action="/store">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <label for="username"></label>
+                    <input class="form-control input-signup" type="text" placeholder="Email" id="email" name="email" required>
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <label for="password"></label>
+                    <input class="form-control input-signup" type="password" placeholder="Create password" id="password"  name="password" required>
+                </div> <!-- form-group// -->     
+                <div class="checkbox-terms" style="margin-bottom: 16px">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" required>
+                    <label1 class="text-white" for="vehicle1"> I accept the <a class="link-registerpage" href="">Terms and Conditions</a></label1>
+                </div>  
+                <div class="form-group">
+                    <button type="submit" class="btn btn-register btn-block register-button"> Create Account  </button>
+                </div> <!-- form-group// -->      
+                <p class="text-center text-white">Have an account? <a class="link-registerpage" href="./login">Log In</a> </p>                                                                 
+            </form>
+        </article>
+        </form>
+    </div> <!-- card.// -->   
 
+<<<<<<< HEAD
         {{!-- <div class="checkbox-terms">
             <input type="checkbox" required>
             <label1> I accept the <a href="">Terms and Conditions</a></label1>
         </div> --}}
+=======
+>>>>>>> 3e1db40f89fcc3b2acca262ff89f5d424210a554
 
-        <button class="register-button submit">Register</button>
-    </form>
 </div>
