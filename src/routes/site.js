@@ -14,7 +14,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 // [link bien dong]
 // router.use('/secret', siteController.secret)
-router.use('/secret', isLoggedIn, authRole(ROLE.STAFF), siteController.secret);
+router.use('/secret', isLoggedIn, siteController.secret);
 
 // [/register]
 router.use('/register', siteController.register)

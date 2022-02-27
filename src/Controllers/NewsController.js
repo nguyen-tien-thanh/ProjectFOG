@@ -1,5 +1,6 @@
 
 const News = require('../models/News');
+const User = require('../models/User');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
 

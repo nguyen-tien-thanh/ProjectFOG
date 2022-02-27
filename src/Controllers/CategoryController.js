@@ -3,6 +3,33 @@ const Category = require('../models/Category');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
 class CategoryController {
+
+        // [GET] /me/stored/category
+        manage(req, res, next) {
+
+            Promise.all([Category.find({}), Category.countDeleted(), Category.count()])
+                .then(([category, deletedCount, storedCount]) => 
+                res.render('category/manage', {
+                    deletedCount,
+                    storedCount,
+                    category: multipleMongooseToObject(category),
+                    })
+                )
+                .catch(next)
+        }
+    
+        // [GET] /me/deleted/category
+        trash(req, res, next) {
+            Promise.all([Category.findDeleted({}), Category.countDeleted(), Category.count()])
+            .then(([category, deletedCount, storedCount]) => 
+            res.render('category/trash', {
+                deletedCount,
+                storedCount,
+                category: multipleMongooseToObject(category),
+                })
+            )
+            .catch(next)   
+        }
     
     //[GET] /category/create 
     create(req,res,next) {
@@ -95,17 +122,6 @@ class CategoryController {
             })
         )
         .catch(next)
-
-        // Category.findOne({ slug: req.params.slug})
-        // .then (category => {
-        //     // res.json(category);
-
-        //     res.render('category/show', { 
-        //         category: mongooseToObject(category) 
-        //     });
-        // })
-        // .catch(next)
-        // res.send('New detail !!! - '+ req.params.slug );
     }
 
     // [GET] /category

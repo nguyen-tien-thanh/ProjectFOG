@@ -130,7 +130,7 @@ class UserController {
     show(req,res,next){
         Promise.all([User.findOne({ slug: req.params.slug}), User.findOne({username: req.user.username})])
             .then(([user, userLogin]) => 
-            res.render('user/edit', {
+            res.render('user/show', {
                 user: mongooseToObject(user),
                 userLogin: mongooseToObject(userLogin),
                 })

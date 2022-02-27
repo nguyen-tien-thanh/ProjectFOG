@@ -1,40 +1,43 @@
 const express = require('express');
 const router = express.Router();
 
+const { isLoggedIn, authRole } = require('../ulti/authonize')
+const {ROLE} = require('../models/Role')
+
 const newsController = require('../Controllers/NewsController');
 
-// [POST] /category/handle-form-actions category
-router.post('/handle-form-actions', newsController.handleFormActions)
+// [POST] /news/handle-form-actions news
+router.post('/handle-form-actions', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), newsController.handleFormActions)
 
-// [GET] /category/create category
-router.use('/create', newsController.create)
+// [GET] /news/create news
+router.use('/create', isLoggedIn, newsController.create)
 
-// [GET] /category/trash category
-router.use('/trash', newsController.trash)
+// [GET] /news/trash news
+router.use('/trash', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), newsController.trash)
 
-// [GET] /category/create category
-router.use('/manage', newsController.manage)
+// [GET] /news/create news
+router.use('/manage', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), newsController.manage)
 
-// [GET] /category/:id/edit category
-router.get('/:id/edit', newsController.edit)
+// [GET] /news/:id/edit news
+router.get('/:id/edit', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), newsController.edit)
 
-// [PUT] /category/:id/update category
-router.put('/:id', newsController.update)
+// [PUT] /news/:id/update news
+router.put('/:id', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), newsController.update)
 
-// [PATCH] /category/:id/update category
-router.patch('/:id/restore', newsController.restore)
+// [PATCH] /news/:id/update news
+router.patch('/:id/restore', isLoggedIn, newsController.restore)
 
-// [DELETE] /category/:id/detele category
-router.delete('/:id', newsController.delete)
-router.delete('/:id/force', newsController.force)
+// [DELETE] /news/:id/detele news
+router.delete('/:id', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), newsController.delete)
+router.delete('/:id/force', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), newsController.force)
 
-// // [POST] /categories/store category
-router.post('/store', newsController.store)
+// // [POST] /news/store news
+router.post('/store', isLoggedIn, newsController.store)
 
-// [link bien dong] /category/show || /category/:slug
+// [link bien dong] /news/show || /news/:slug
 router.use('/:slug', newsController.show)
 
-// /category/index - category.hbs
+// /news/index - news.hbs
 router.use('/', newsController.index)
 
 

@@ -6,38 +6,38 @@ const {ROLE} = require('../models/Role')
 
 const eventController = require('../Controllers/EventController');
 
-// [POST] /category/handle-form-actions category
-router.post('/handle-form-actions', eventController.handleFormActions)
+// [POST] /event/handle-form-actions event
+router.post('/handle-form-actions', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), eventController.handleFormActions)
 
-// [GET] /category/create category
-router.use('/create', eventController.create)
+// [GET] /event/create event
+router.use('/create', isLoggedIn, eventController.create)
 
-// [GET] /category/trash category
-router.use('/trash', eventController.trash)
+// [GET] /event/trash event
+router.use('/trash', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), eventController.trash)
 
-// [GET] /category/create category
-router.use('/manage', eventController.manage)
+// [GET] /event/create event
+router.use('/manage', isLoggedIn, authRole(ROLE.QAC), authRole(ROLE.ADMIN), eventController.manage)
 
-// [GET] /category/:id/edit category
-router.get('/:id/edit', eventController.edit)
+// [GET] /event/:id/edit event
+router.get('/:id/edit', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), eventController.edit)
 
-// [PUT] /category/:id/update category
-router.put('/:id', eventController.update)
+// [PUT] /event/:id/update event
+router.put('/:id', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), eventController.update)
 
-// [PATCH] /category/:id/update category
-router.patch('/:id/restore', eventController.restore)
+// [PATCH] /event/:id/update event
+router.patch('/:id/restore', isLoggedIn, eventController.restore)
 
-// [DELETE] /category/:id/detele category
-router.delete('/:id', eventController.delete)
-router.delete('/:id/force', eventController.force)
+// [DELETE] /event/:id/detele event
+router.delete('/:id', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), eventController.delete)
+router.delete('/:id/force', isLoggedIn, authRole(ROLE.ADMIN || ROLE.QAC), eventController.force)
 
-// // [POST] /categories/store category
-router.post('/store', eventController.store)
+// // [POST] /event/store event
+router.post('/store', isLoggedIn, eventController.store)
 
-// [link bien dong] /category/show || /category/:slug
+// [link bien dong] /event/show || /event/:slug
 router.use('/:slug', eventController.show)
 
-// /category/index - category.hbs
+// /event/index - event.hbs
 router.use('/', eventController.index)
 
 

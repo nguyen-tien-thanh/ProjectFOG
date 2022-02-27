@@ -21,6 +21,12 @@ function authRole(role) {
     }
 }
 
+// function isManager(role){
+//     return (req.res.next) => {
+//         if(req.user)
+//     }
+// }
+
 
 module.exports = { 
     isLoggedIn,
