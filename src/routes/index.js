@@ -7,18 +7,19 @@ const newsRouter = require('./news');
 const ideaRouter = require('./idea');
 const userRouter = require('./user');
 
+const { isLoggedIn} = require('../ulti/authonize')
 
 function route(app){
 
-    app.use('/user', userRouter);
+    app.use('/user',isLoggedIn, userRouter);
 
     app.use('/news', newsRouter);
 
     app.use('/idea', ideaRouter);
 
-    app.use('/category', categoryRouter);
+    app.use('/category',isLoggedIn, categoryRouter);
 
-    app.use('/event', eventRouter);
+    app.use('/event',isLoggedIn, eventRouter);
 
     app.use('/me', meRouter);
 

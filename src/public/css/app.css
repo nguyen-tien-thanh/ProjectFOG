@@ -24,6 +24,18 @@
 .sub-header .left-icons ul li a:hover {
   color: #ff3247; }
 
+.sub-header .right-content ul li {
+  display: inline-block;
+  margin-left: 15px; }
+
+.sub-header .right-content ul li a {
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s; }
+
+.sub-header .right-content ul li a:hover {
+  color: #ff3247; }
+
 .sub-header .right-content p em {
   font-style: normal;
   color: #ff3247; }

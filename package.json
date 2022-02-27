@@ -28,7 +28,15 @@
     "express": "^4.17.3",
     "express-handlebars": "^6.0.2",
     "express-load": "^1.1.16",
+<<<<<<< HEAD
+    "express-session": "^1.17.2",
+    "mongoose": "^6.1.7",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0"
+=======
     "mongoose": "^6.2.3"
+>>>>>>> 3e1db40f89fcc3b2acca262ff89f5d424210a554
   },
   "devDependencies": {
     "concurrently": "^7.0.0",

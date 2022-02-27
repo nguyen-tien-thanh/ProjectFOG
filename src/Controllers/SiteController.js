@@ -2,6 +2,7 @@ const User = require('../models/User');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
 
+const passport = require('passport');
 
 class SiteController {
     
@@ -11,9 +12,24 @@ class SiteController {
         res.render('index', {layout: 'intropage'});
     }
 
-    contact(req, res, next){
+    // [GET] /logout --> Home page
+    logout (req, res) {
+        req.logout();
+        res.redirect('login');
+    }
 
-        res.render('contact');
+    contact(req, res,next){
+        if (req.isAuthenticated()) {
+            User.findOne({username: req.user.username})
+            .then (user =>{
+                res.render('contact', { 
+                    userLogin: mongooseToObject(user)
+                });
+            })
+        }
+        else{
+            res.render('contact')
+        }
     }
 
     register(req, res, next){
@@ -22,10 +38,31 @@ class SiteController {
 
     //[POST] /store User
     store(req,res,next) {
-        const register = new User(req.body);
-        register.save()
-            .then(() => res.redirect('login'))
-            .catch(next)
+        // const register = new User(req.body);
+        // register.save()
+        //     .then(() => res.redirect('login'))
+        //     .catch(next)
+        
+        var username = req.body.username
+        var password = req.body.password
+        User.register(new User({ username: username }),
+                password, function (err, user) {
+            if (err) {
+                console.log(err);
+                return res.redirect("register");
+            }
+    
+            passport.authenticate("local")(
+                req, res, function () {
+                    User.findOne({username: req.user.username})
+                        .then (user =>{
+                            res.render('index', { 
+                                userLogin: mongooseToObject(user)
+                            });
+                        })
+            });
+            
+        });
     }
 
     login(req, res, next){
@@ -35,35 +72,60 @@ class SiteController {
 
     //[POST] /validation User
     validation(req,res,next) {
-        User.findOne({email: req.body.email, password: req.body.password})
-        .then (user => {
-            res.render('index', { 
-                layout: 'intropage',
-                user: mongooseToObject(user) 
-            });
-        })
-        .catch(next => {
-            console.log('Failed')
-        })
+        // var username = req.body.username;
+        // var password = req.body.password;
+
+        // User.findOne({username: username}).then(function(user) {
+        //     if(user){
+        //       if (user.password == password){
+        //           console.log('User connected');
+        //           req.session.username = username;
+        //           req.session.password = password;
+        //           console.log(req.session);
+        //         //   res.status(200).send('User Authentified');
+        //       }else{
+        //           res.status(401).send('Invalid Password');
+        //       }
+        //   }else{
+        //       res.status(401).send('Username');
+        //   }
+        // });
+        passport.authenticate("local")(
+            req, res, function () {
+                User.findOne({username: req.user.username})
+                    .then (user =>{
+                        res.render('index', { 
+                            layout: 'intropage',
+                            userLogin: mongooseToObject(user)
+                        });
+                    })
+        });
     }
 
     // [GET] /:slug
-    // Find object in MongoDB by slug
-    show(req,res,next){
-        User.findOne({ slug: req.params.slug})
-        .then (user => {
-            // res.json(User);
-
-            res.render('user/show', { 
-                user: mongooseToObject(user) 
+    // Show 404 not found error
+    error(req,res,next){
+        User.findOne({username: req.user.username})
+        .then (user =>{
+            res.render('partials/error', { 
+                userLogin: mongooseToObject(user)
             });
         })
         .catch(next)
-        // res.send('New detail !!! - '+ req.params.slug );
     }
 
-    search(req,res){
-        res.render('search');
+    secret(req,res,next){
+        if (req.isAuthenticated()) {
+            User.findOne({username: req.user.username})
+            .then (user =>{
+                res.render('secret', { 
+                    userLogin: mongooseToObject(user)
+                });
+            })
+        }
+        else{
+            res.render('secret')
+        }
     }
 
 }

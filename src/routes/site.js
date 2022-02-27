@@ -4,6 +4,18 @@ const router = express.Router();
 const siteController = require('../Controllers/SiteController');
 
 
+const { isLoggedIn, authRole } = require('../ulti/authonize')
+const {ROLE} = require('../models/Role')
+
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
+
+
+// [link bien dong]
+// router.use('/secret', siteController.secret)
+router.use('/secret', isLoggedIn, authRole(ROLE.STAFF), siteController.secret);
+
 // [/register]
 router.use('/register', siteController.register)
 
@@ -11,23 +23,25 @@ router.use('/register', siteController.register)
 router.post('/store', siteController.store)
 
 // [login]
-router.use('/login', siteController.login)
+router.use('/login',siteController.login)
 
 // [login]
-router.post('/validation', siteController.validation)
+router.post('/validation', passport.authenticate("local", {
+    // successRedirect: "../",
+    failureRedirect: "/login",
+}), siteController.validation);
 
-// [link bien dong]
-router.use('/search', siteController.search)
+router.get('/logout',siteController.logout);
 
 // siteController.contact
 router.use('/contact', siteController.contact)
 
-// [link bien dong] /category/show || /category/:slug
-router.use('/:slug', siteController.show)
+
+// [link bien dong]
+router.use('/:slug', siteController.error)
+
 
 // siteController.index
 router.use('/', siteController.index)
-
-
 
 module.exports = router;
