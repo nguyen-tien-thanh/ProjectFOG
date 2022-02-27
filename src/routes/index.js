@@ -6,8 +6,7 @@ const newsRouter = require('./news');
 const ideaRouter = require('./idea');
 const userRouter = require('./user');
 
-const { isLoggedIn, authRole } = require('../ulti/authonize')
-const {ROLE} = require('../models/Role')
+const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize')
 
 function route(app){
 
@@ -17,7 +16,7 @@ function route(app){
 
     app.use('/idea', ideaRouter);
 
-    app.use('/category', isLoggedIn, authRole(ROLE.ADMIN), categoryRouter);
+    app.use('/category', isLoggedIn, isAdmin, categoryRouter);
 
     app.use('/event', eventRouter);
 
