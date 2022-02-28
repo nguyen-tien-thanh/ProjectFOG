@@ -43,171 +43,123 @@
 				</div>
 				<div class="col-lg-8">
 					<div class="card user-card">
-
-            
-<form action="/user/{{user._id}}?_method=PUT" method="post">
-						<div class="card-body">
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Full Name</h6>
+						<form action="/user/{{user._id}}?_method=PUT" method="post">
+							<div class="card-body">
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Full Name</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name="name" value="{{user.name}}">
+									</div>
 								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name="name" value="{{user.name}}">
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Username</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name = "username" value="{{user.username}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Email</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="email" class="form-control" name="email" value="{{user.email}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Password</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="password" class="form-control" name="password" value="{{user.password}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Role</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name="role" value="{{user.role}}" disabled>
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Avatar</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name="avatar" value="{{user.avatar}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Work time</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name="worktime" value="{{user.worktime}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Work place</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name="workplace" value="{{user.workplace}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Phone</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name="phone" value="{{user.phone}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Address</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name="address" value="{{user.address}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Birthday</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name="birth" value="{{user.birth}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Gender</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" name="gender" value="{{user.gender}}">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Created at</h6>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" class="form-control" value="{{moment user.createdAt format="HH:mm on DD-MM-YYYY"}}" disabled>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-9 text-secondary">
+						<button type="submit" class="btn btn-secondary px-3 save-btn">Edit Profile</button>
+									</div>
 								</div>
 							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Username</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name = "username" value="{{user.username}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Email</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="email" class="form-control" name="email" value="{{user.email}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Password</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="password" class="form-control" name="password" value="{{user.password}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Avatar</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name="avatar" value="{{user.avatar}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Work time</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name="worktime" value="{{user.worktime}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Work place</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name="workplace" value="{{user.workplace}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Phone</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name="phone" value="{{user.phone}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Address</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name="address" value="{{user.address}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Birthday</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name="birth" value="{{user.birth}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Gender</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name="gender" value="{{user.gender}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Created at</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" disable value="{{moment user.createdAt format="HH:mm on DD-MM-YYYY"}}">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-3"></div>
-								<div class="col-sm-9 text-secondary">
-                  <button type="submit" class="btn btn-secondary px-3 save-btn">Edit Profile</button>
-								</div>
-							</div>
-						</div>
-</form>
-
+						</form>
           </div>
         </div>
         </div>
       </div>
     </div>
   </div>
-
-
- {{!-- <h1 class="text-center">Edit user page</h1> 
-<div class="mt-4 ml-4">
-<form action="/user/{{user._id}}?_method=PUT" method="post">
-  <div class="form-group">
-        <label for="name">name</label>
-        <input type="text" class="form-control" value="{{user.name}}" id="name" name="name" placeholder="Enter name"> 
-      </div>
-      <div class="form-group">
-        <label for="username">username</label>
-        <textarea class="form-control" id="username" name="username" >{{user.username}}</textarea>
-      </div>
-      <div class="form-group">
-        <label for="email">email</label>
-        <textarea class="form-control" id="email" name="email" >{{user.email}}</textarea>
-      </div>
-      <div class="form-group">
-        <label for="password">password</label>
-        <textarea class="form-control" id="password" name="password" >{{user.password}}</textarea>
-      </div>
-      <div class="form-group">
-        <label for="avatar">avatar</label>
-        <textarea class="form-control" id="avatar" name="avatar" >{{user.avatar}}</textarea>
-      </div>
-      <div class="form-group">
-        <label for="worktime">worktime</label>
-        <textarea class="form-control" id="worktime" name="worktime" >{{user.worktime}}</textarea>
-      </div>
-      <div class="form-group">
-        <label for="workplace">workplace</label>
-        <textarea class="form-control" id="workplace" name="workplace" >{{user.workplace}}</textarea>
-      </div>
-      <div class="form-group">
-        <label for="phone">phone</label>
-        <textarea class="form-control" id="phone" name="phone" >{{user.phone}}</textarea>
-      </div>
-      <div class="form-group">
-        <label for="address">address</label>
-        <textarea class="form-control" id="address" name="address" >{{user.address}}</textarea>
-      </div>
-      <div class="form-group">
-        <label for="birth">birth</label>
-        <textarea class="form-control" id="birth" name="birth" >{{user.birth}}</textarea>
-      </div>
-      <div class="form-group">
-        <label for="gender">gender</label>
-        <textarea class="form-control" id="gender" name="gender" >{{user.gender}}</textarea>
-      </div>
-  <input type="submit" value="Edit">
-</form>
-</div>  --}}
-

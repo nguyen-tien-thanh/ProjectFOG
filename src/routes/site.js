@@ -5,7 +5,6 @@ const siteController = require('../Controllers/SiteController');
 
 
 const { isLoggedIn, authRole } = require('../ulti/authonize')
-const {ROLE} = require('../models/Role')
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -14,7 +13,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 // [link bien dong]
 // router.use('/secret', siteController.secret)
-router.use('/secret', isLoggedIn, authRole(ROLE.STAFF), siteController.secret);
+router.use('/secret', isLoggedIn, siteController.secret);
 
 // [/register]
 router.use('/register', siteController.register)
