@@ -630,10 +630,6 @@ header {
 .sign-up-page {
   background: #080710;
   padding: 24px 0;
-<<<<<<< HEAD
-  width: 100%;
-=======
->>>>>>> 3e1db40f89fcc3b2acca262ff89f5d424210a554
   height: 100vh; }
 
 .text-center {
@@ -872,6 +868,12 @@ img.img-center {
   background-color: #ff3247;
   color: white;
   text-decoration: none; }
+
+.overflow-hidden {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis; }
 
 #mySide a {
   position: absolute;
