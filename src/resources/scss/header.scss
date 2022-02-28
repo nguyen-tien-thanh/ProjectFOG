@@ -4,6 +4,9 @@
   position: relative;
   z-index: 1;
 }
+.sub-header .right-content{
+  margin-left: 50%;
+}
 
 .sub-header .right-content p {
   color: #fff;
@@ -13,7 +16,6 @@
 
 .sub-header .left-icons {
   text-align: left;
-  padding: 8px 0px;
 }
 
 .sub-header .left-icons ul li {

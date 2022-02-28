@@ -3,14 +3,16 @@
   position: relative;
   z-index: 1; }
 
+.sub-header .right-content {
+  margin-left: 50%; }
+
 .sub-header .right-content p {
   color: #fff;
   padding: 8px 0px;
   font-size: 13px; }
 
 .sub-header .left-icons {
-  text-align: left;
-  padding: 8px 0px; }
+  text-align: left; }
 
 .sub-header .left-icons ul li {
   display: inline-block;
@@ -877,6 +879,12 @@ img.img-center {
   background-color: #ff3247;
   color: white;
   text-decoration: none; }
+
+.overflow-hidden {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis; }
 
 #mySide a {
   position: absolute;
