@@ -16,12 +16,16 @@
           <div class="right-content">
               <a href="#">
                 <ul>
-                    <li>
+                    {{#if userLogin}}
+
+                    <li id="hello-username">
                         <p><em>Hello {{userLogin.username}}</em><i class="fas fa-chevron-down"></i></p>
                     </li>
-                    <li><a href="/logout">Log out</a></li>
+                    <li id="log-out"><a href="/logout">Log out</a></li>
+                    {{else }}
                     <li><a href="/register">Register</a></li>
                     <li><a href="/login">Login</a></li>
+                    {{/if}}
                 </ul>
             </a>
           </div>
