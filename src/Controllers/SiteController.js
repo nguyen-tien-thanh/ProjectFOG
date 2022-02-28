@@ -105,13 +105,31 @@ class SiteController {
     // [GET] /:slug
     // Show 404 not found error
     error(req,res,next){
-        User.findOne({username: req.user.username})
-        .then (user =>{
-            res.render('partials/error', { 
-                userLogin: mongooseToObject(user)
-            });
-        })
-        .catch(next)
+        if (req.isAuthenticated()) {
+            User.findOne({username: req.user.username})
+            .then (user =>{
+                res.render('partials/error', { 
+                    userLogin: mongooseToObject(user)
+                });
+            })
+        }
+        else{
+            res.render('partials/error')
+        }
+    }
+
+    termsandconditions(req, res, next){
+        if (req.isAuthenticated()) {
+            User.findOne({username: req.user.username})
+            .then (user =>{
+                res.render('termsandconditions', { 
+                    userLogin: mongooseToObject(user)
+                });
+            })
+        }
+        else{
+            res.render('termsandconditions')
+        }
     }
 
     secret(req,res,next){

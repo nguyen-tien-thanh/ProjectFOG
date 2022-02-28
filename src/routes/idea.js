@@ -34,7 +34,7 @@ router.patch('/:id/restore', ideaController.restore)
 router.delete('/:id', ideaController.delete)
 router.delete('/:id/force', ideaController.force)
 
-// // [POST] /categories/store idea
+// // [POST] /idea/store idea
 router.post('/store', ideaController.store)
 
 // [link bien dong] /idea/show || /idea/:slug

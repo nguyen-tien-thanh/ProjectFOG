@@ -35,6 +35,8 @@ router.get('/logout',siteController.logout);
 // siteController.contact
 router.use('/contact', siteController.contact)
 
+// siteController.termsandconditions
+router.use('/termsandconditions', siteController.termsandconditions)
 
 // [link bien dong]
 router.use('/:slug', siteController.error)

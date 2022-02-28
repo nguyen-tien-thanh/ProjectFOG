@@ -1,5 +1,6 @@
 
 const Idea = require('../models/Idea');
+const User = require('../models/User');
 const Category = require('../models/Category');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
@@ -158,14 +159,35 @@ class IdeaController {
 
     // [GET] /idea
     index(req, res, next){
-        Idea.find({})
-        .then(idea => {
-            // idea = idea.map(cat => cat.toObject())
+        // Idea.find({})
+        // .then(idea => {
+        //     // idea = idea.map(cat => cat.toObject())
+        //     res.render('idea', {
+        //         idea: multipleMongooseToObject(idea)
+        //     })
+        // })
+        // .catch(err=>next(err));
+
+        if (req.isAuthenticated()) {
+            Promise.all([Idea.find({}), User.findOne({username: req.user.username})])
+            .then(([idea, userLogin]) => 
             res.render('idea', {
-                idea: multipleMongooseToObject(idea)
+                idea: multipleMongooseToObject(idea),
+                userLogin: mongooseToObject(userLogin),
+                })
+            )
+            .catch(next)
+        }
+        else{
+            Idea.find({})
+            .then(idea => {
+                // idea = idea.map(cat => cat.toObject())
+                res.render('idea', {
+                    idea: multipleMongooseToObject(idea)
+                })
             })
-        })
-        .catch(err=>next(err));
+            .catch(err=>next(err));
+            }
     }
 
 }
