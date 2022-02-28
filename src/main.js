@@ -4,6 +4,11 @@ const exphbs = require('express-handlebars')
 const path = require('path');
 const methodOverride = require('method-override');
 const formidable = require('formidable');
+const session = require('express-session');
+
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 
 const hbs = exphbs.create({ 
@@ -49,6 +54,20 @@ form.options.uploadDir= uploadFolder; // folder to save file
 form.multiples = true; // multiple files
 form.maxFileSize = 50 * 1024 * 1024; // 5MB file
 
+//=========SIGN UP SIGN IN AUTHORNIZE ==========================//
+app.use(require("express-session")({
+  secret: "keyboard cat",
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User = require('./models/User');
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 //Template engines

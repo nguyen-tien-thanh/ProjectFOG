@@ -1,40 +1,42 @@
 const express = require('express');
 const router = express.Router();
 
+const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize')
+
 const eventController = require('../Controllers/EventController');
 
-// [POST] /category/handle-form-actions category
-router.post('/handle-form-actions', eventController.handleFormActions)
+// [POST] /event/handle-form-actions event
+router.post('/handle-form-actions', isLoggedIn, isManager, eventController.handleFormActions)
 
-// [GET] /category/create category
-router.use('/create', eventController.create)
+// [GET] /event/create event
+router.use('/create', isLoggedIn, eventController.create)
 
-// [GET] /category/trash category
-router.use('/trash', eventController.trash)
+// [GET] /event/trash event
+router.use('/trash', isLoggedIn, isManager, eventController.trash)
 
-// [GET] /category/create category
-router.use('/manage', eventController.manage)
+// [GET] /event/create event
+router.use('/manage', isLoggedIn, isManager, eventController.manage)
 
-// [GET] /category/:id/edit category
-router.get('/:id/edit', eventController.edit)
+// [GET] /event/:id/edit event
+router.get('/:id/edit', isLoggedIn, isManager, eventController.edit)
 
-// [PUT] /category/:id/update category
-router.put('/:id', eventController.update)
+// [PUT] /event/:id/update event
+router.put('/:id', isLoggedIn, isManager, eventController.update)
 
-// [PATCH] /category/:id/update category
-router.patch('/:id/restore', eventController.restore)
+// [PATCH] /event/:id/update event
+router.patch('/:id/restore', isLoggedIn, isManager, eventController.restore)
 
-// [DELETE] /category/:id/detele category
-router.delete('/:id', eventController.delete)
-router.delete('/:id/force', eventController.force)
+// [DELETE] /event/:id/detele event
+router.delete('/:id', isLoggedIn, isManager, eventController.delete)
+router.delete('/:id/force', isLoggedIn, isManager, eventController.force)
 
-// // [POST] /categories/store category
-router.post('/store', eventController.store)
+// // [POST] /event/store event
+router.post('/store', isLoggedIn, eventController.store)
 
-// [link bien dong] /category/show || /category/:slug
+// [link bien dong] /event/show || /event/:slug
 router.use('/:slug', eventController.show)
 
-// /category/index - category.hbs
+// /event/index - event.hbs
 router.use('/', eventController.index)
 
 

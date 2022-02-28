@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const { isLoggedIn, authRole } = require('../ulti/authonize')
+const {ROLE} = require('../models/Role')
+
 const ideaController = require('../Controllers/IdeaController');
 
 // [POST] /idea/:id/interactive idea

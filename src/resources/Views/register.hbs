@@ -19,8 +19,7 @@
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
                     <label for="username"></label>
-                    <input class="form-control input-signup" type="text" placeholder="Email" id="email" name="email" required>
-                    <span class="form-message"></span>
+                    <input class="form-control input-signup" type="text" placeholder="Username" id="username" name="username" required>
                 </div> <!-- form-group// -->
 
      
@@ -50,17 +49,7 @@
     
 
 </div>
-<script src="./layouts/Validators.js"> </script>
-   <script>
-        Validator ({
-            form: '#form-1', 
-            errorSelector:'.form-message',
-            rules: [
-                Validator.isEmail('#email'),
-                Validator.minLength('#password', 6),
-            ]
-        });
-    </script>
+
  
 
 

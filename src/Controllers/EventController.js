@@ -1,5 +1,6 @@
 
 const Event = require('../models/Event');
+const User = require('../models/User');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
 
@@ -7,30 +8,52 @@ class EventController {
     
     //[GET] /event/create 
     create(req,res,next) {
-        res.render('event/create');
+        if (req.isAuthenticated()) {
+            User.findOne({username: req.user.username})
+            .then (user =>{
+                res.render('event/create', { 
+                    userLogin: mongooseToObject(user)
+                });
+            })
+        }
+        else{
+            res.render('event/create')
+        }
     }
 
     //[GET] /event/trash 
     trash(req,res,next) {
-        Promise.all([Event.findDeleted({}), Event.countDeleted(), Event.count()])
-        .then(([event, deletedCount, storedCount]) => 
+        Promise.all([Event.findDeleted({}), Event.countDeleted(), Event.count(), User.findOne({username:req.user.username})])
+        .then(([event, deletedCount, storedCount, userLogin]) => 
         res.render('event/trash', {
             deletedCount,
             storedCount,
             event: multipleMongooseToObject(event),
+            userLogin: mongooseToObject(userLogin),
             })
         )
-        .catch(next) 
+        .catch(next)
+
+        // Promise.all([Event.findDeleted({}), Event.countDeleted(), Event.count()])
+        // .then(([event, deletedCount, storedCount]) => 
+        // res.render('event/trash', {
+        //     deletedCount,
+        //     storedCount,
+        //     event: multipleMongooseToObject(event),
+        //     })
+        // )
+        // .catch(next) 
     }
 
     //[GET] /event/manage 
     manage(req,res,next) {
-        Promise.all([Event.find({}), Event.countDeleted(), Event.count()])
-            .then(([event, deletedCount, storedCount]) => 
+        Promise.all([Event.find({}), Event.countDeleted(), Event.count(), User.findOne({username: req.user.username})])
+            .then(([event, deletedCount, storedCount, userLogin]) => 
             res.render('event/manage', {
                 deletedCount,
                 storedCount,
                 event: multipleMongooseToObject(event),
+                userLogin: mongooseToObject(userLogin),
                 })
             )
             .catch(next)
@@ -61,11 +84,20 @@ class EventController {
 
     //[POST] /event/:id/edit
     edit(req,res,next) {
-        Event.findById(req.params.id)
-            .then(event => res.render('event/edit', {
-                event: mongooseToObject(event)
-            }))
-            .catch(next);
+        Promise.all([Event.findById(req.params.id), User.findOne({username: req.user.username})])
+            .then(([event, userLogin]) => 
+            res.render('event/edit', {
+                event: mongooseToObject(event),
+                userLogin: mongooseToObject(userLogin),
+                })
+            )
+            .catch(next)
+
+        // Event.findById(req.params.id)
+        //     .then(event => res.render('event/edit', {
+        //         event: mongooseToObject(event)
+        //     }))
+        //     .catch(next);
     }
 
     //[PUT] /event/:id
@@ -120,26 +152,71 @@ class EventController {
         //     });
         // })
         // .catch(next)
-        Promise.all([Event.find({}), Event.findOne({ slug: req.params.slug})])
-            .then(([event, eventDetail]) => 
+        
+        if (req.isAuthenticated()) {
+        Promise.all([Event.find({}), Event.findOne({ slug: req.params.slug}), 
+            User.findOne({username: req.user.username})])
+            .then(([event, eventDetail, userLogin]) => 
             res.render('event/show', {
                 eventDetail: mongooseToObject(eventDetail),
                 event: multipleMongooseToObject(event),
+                userLogin: mongooseToObject(userLogin),
                 })
             )
             .catch(next)
+        }
+        else{
+            Promise.all([Event.find({}), Event.findOne({ slug: req.params.slug})])
+                .then(([event, eventDetail]) => 
+                res.render('event/show', {
+                    eventDetail: mongooseToObject(eventDetail),
+                    event: multipleMongooseToObject(event),
+                    })
+                )
+                .catch(err=>next(err));
+        }
     }
 
     // [GET] /event
     index(req, res, next){
-        Event.find({})
-        .then(event => {
-            // event = event.map(cat => cat.toObject())
+        if (req.isAuthenticated()) {
+            Promise.all([Event.find({}), User.findOne({username: req.user.username})])
+            .then(([event, userLogin]) => 
             res.render('event', {
-                event: multipleMongooseToObject(event)
+                event: multipleMongooseToObject(event),
+                userLogin: mongooseToObject(userLogin),
+                })
+            )
+            .catch(next)
+        }
+        else{
+            Event.find({})
+            .then(event => {
+                // event = event.map(cat => cat.toObject())
+                res.render('event', {
+                    event: multipleMongooseToObject(event)
+                })
             })
-        })
-        .catch(err=>next(err));
+            .catch(err=>next(err));
+            }
+
+        // Promise.all([Event.find({}), User.findOne({username: req.user.username})])
+        //     .then(([event, userLogin]) => 
+        //     res.render('event', {
+        //         event: multipleMongooseToObject(event),
+        //         userLogin: mongooseToObject(userLogin),
+        //         })
+        //     )
+        //     .catch(next)
+
+        // Event.find({})
+        // .then(event => {
+        //     // event = event.map(cat => cat.toObject())
+        //     res.render('event', {
+        //         event: multipleMongooseToObject(event)
+        //     })
+        // })
+        // .catch(err=>next(err));
     }
 
 }

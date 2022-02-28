@@ -24,6 +24,18 @@
 .sub-header .left-icons ul li a:hover {
   color: #ff3247; }
 
+.sub-header .right-content ul li {
+  display: inline-block;
+  margin-left: 15px; }
+
+.sub-header .right-content ul li a {
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s; }
+
+.sub-header .right-content ul li a:hover {
+  color: #ff3247; }
+
 .sub-header .right-content p em {
   font-style: normal;
   color: #ff3247; }
@@ -995,6 +1007,39 @@ img.img-center {
     transform: scale(0); }
   to {
     transform: scale(1); } }
+
+.co-xxxlarge {
+  text-align: center;
+  font-size: 5em;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
+
+.co-display {
+  color: black;
+  text-align: center;
+  font-size: 1.5em; }
+
+.co-modal-content {
+  padding: 1em 10em; }
+
+.co-wide {
+  text-align: center;
+  font-size: 2em;
+  padding: 0.5em 2.5em;
+  background-color: black;
+  color: pink;
+  border-radius: 15em; }
+
+.co-co {
+  padding: 0 7em;
+  text-align: center; }
+
+.left-column-1 {
+  width: 50%;
+  float: left; }
+
+.right-column-1 {
+  width: 50%;
+  float: right; }
 
 .grid {
   width: 1200px;

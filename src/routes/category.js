@@ -3,6 +3,12 @@ const router = express.Router();
 
 const categoryController = require('../Controllers/CategoryController');
 
+// [GET] /category/trash category
+router.use('/trash', categoryController.trash)
+
+// [GET] /category/create category
+router.use('/manage', categoryController.manage)
+
 // [POST] /category/handle-form-actions category
 router.post('/handle-form-actions', categoryController.handleFormActions)
 
