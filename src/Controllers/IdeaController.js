@@ -142,6 +142,22 @@ class IdeaController {
     }
 
 
+    //[POST] /addComment idea
+    addComment(req,res,next) {
+        // const cmt = new Idea(req.body);
+        // cmt.save()
+        //     .then(() => res.redirect('/idea'))
+        //     .catch(next => {
+                
+        //     })
+        Idea.create({_id: req.params.id}, req.body)
+            .then(idea => res.redirect('/idea'))
+            .catch(next);
+        
+
+    }
+
+
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
