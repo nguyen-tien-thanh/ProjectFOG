@@ -33,11 +33,33 @@
                     </button>
                     <p><span id="ratings-{{ this._id }}">{{ this.ratings }}</span> liked this</p>
 
-                    <form action="" method="post"> 
-                        <label for="idea-comment">Write a comment:</label><br>
-                        <input type="text" id="idea-comment" name="idea-comment"><br>
+                    {{!-- <form action="/idea/{{this._id}}?_method=PUT" method="post">  --}}
+                    <form action="/idea/{{this._id}}/addComment" method="post"> 
+                        <label for="idea-comment">Write a comment:</label>
+                        <input class="form-control" type="text" style="" id="comment-user-name" name="comment[userName]">
+                        <input class="form-control" type="text" name="comment[content]">
+                        <input class="form-control" style="" id="comment-date" name="comment[commentAt]">
+                        <p>
+                            <input type="checkbox" style="" id="comment-annoymous" value="true" name="comment[annoymous]">
+                            Comment as anonymous
+                        </p>
                         <input type="submit" value="Submit">
                     </form> 
+                    
+                    {{#comment}}
+                    <div class="card">
+                        <p>Comments: </p>
+                        {{#if annoymous}}
+                        <input id="comment-posted-username" value="Annoymous" disabled>
+                        {{else}}
+                        <input id="comment-posted-username" value="Name: {{this.userName}}" disabled>
+                        {{/if}}
+                        <p>Content: {{this.content}}</p>
+                        <p>Comment at (Hour): {{moment this.commentAt format="HH:mm"}}</p>
+                        <p>Comment at (Date): {{moment this.commentAt format="DD-MM-YYYY"}}</p>
+                    </div>
+                    {{/comment}}
+
                 </div>
             </div>
         </div>
@@ -46,7 +68,16 @@
     </ul>
 </div>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            //Assign the user name of who is using to input form
+            $('input[id="comment-user-name"]').val("{{userLogin.username}}");
+            //Assign time now for posting cmt
+            $('input[id="comment-date"]').val(Date.now());
+        });
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         var updateIdeaRatings = {
             Like: function (postId) {
