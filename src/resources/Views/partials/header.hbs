@@ -1,8 +1,6 @@
 
 <header>
     <div class="sub-header">
-      <div class="row">
-        <div class="col-lg-8 col-sm-8">
             <div class="left-icons">
             <ul>
               <li><a href="#"><i class="fab fa-facebook"></i></a></li>
@@ -10,28 +8,35 @@
               <li><a href="#"><i class="fab fa-instagram"></i></a></li>
               <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
             </ul>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-4">
+            </div>
           <div class="right-content">
-              <a href="#">
                 <ul>
                     {{#if userLogin}}
 
-                    <li id="hello-username">
-                        <p><em>Hello {{userLogin.username}}</em><i class="fas fa-chevron-down"></i></p>
+                    <li>
+                        <p style="cursor:pointer;"><em>Hello {{userLogin.username}}</em><i class="fas fa-chevron-down"></i></p>
+                        <div class="subnav-dropdown">
+                        <hr class="hr-profile">
+                        <a style="margin-bottom: 10px;" href="/user/{{userLogin.slug}}">
+                            <img class="profile-img" src="{{userLogin.avatar}}" alt="avatar"> 
+                            <p class="profile-name"><b>{{userLogin.name}}</b></p>
+                        </a>
+                        <hr>
+                        <a href="/user/{{userLogin._id}}/edit"><i class="fas fa-cog "></i> Edit Profile</a>
+                        <a href=""><i class="fa fa-file"></i> Terms & Conditions</a>
+                        <a href=""><i class="fa fa-address-card"></i> Contact</a>
+                        <hr>
+                        <a href="/logout"><i class='fas fa-sign-out-alt'></i> Log out</a>
+                        <hr class="hr-logout">
+                        </div>
                     </li>
-                    <li id="log-out"><a href="/logout">Log out</a></li>
                     {{else }}
                     <li><a href="/register">Register</a></li>
                     <li><a href="/login">Login</a></li>
                     {{/if}}
                 </ul>
-            </a>
           </div>
         </div>
-      </div>
-    </div>
 
     <nav class="Nav__bar">
         <div class="Nav_Tablet">
@@ -43,7 +48,7 @@
                                 <label for="option-nav" class="x-btn" style="cursor: pointer;">x</label>
                                 <ul>
                                     <li><a href="">Homepage</a></li>
-                                    <li>
+                                    {{!-- <li>
                                         <a>Category <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
                                             <div class="Category-content">
                                                 <a href="/category">Category List</a>
@@ -58,8 +63,8 @@
                                                 <a href="../idea/create">Create</a>
                                                 <a href="idea/manage">User idea</a>
                                             </div>
-                                    </li>
-                                    
+                                    </li> --}}
+                                    {{#if userLogin}}
                                     <li>
                                         <a>Event <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
                                         <div class="Event-content">
@@ -68,6 +73,10 @@
                                             <a href="/event/manage">Manage event</a>
                                         </div>
                                     </li>
+                                    {{else}}
+                                    <li><a href="">Event</a></li>
+                                    {{/if}}
+                                    {{#if userLogin}}
                                     <li>
                                         <a>News <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
                                         <div class="News-content">
@@ -76,6 +85,11 @@
                                             <a href="/news/manage">Manage News</a>  
                                         </div>
                                     </li>
+                                    {{else}}
+                                    <li><a href="">News</a></li>
+                                    {{/if}}
+                                    <li><a href="">Terms & Conditions</a></li>
+                                    <li><a href="">Contact</a></li>
                                 </ul>
                             </div>
                 </div>
@@ -85,44 +99,37 @@
             <div class="Nav_PC">
               <div class="Nav-right">
                 <ul>
-                    <li><a href="">Homepage</a></li>
-                    <li><a style="padding:0px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/category">Category</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a style="color:black" class="dropdown-item" href="/category">Category List</a>
-                        <div class="dropdown-divider"></div>
-                        <a style="color:black" class="dropdown-item" href="../category/create">Create</a>
-                        <a style="color:black" class="dropdown-item" href="/me/stored/category">User category</a>
+                  <li><a href="">Homepage </a></li>
+                  {{#if userLogin}}
+                  <li>
+                    <div class="news-event-dropdown">
+                        <a href="">News <i class="fa fa-angle-down"></i></a>
+                        <div class="news-event-content">
+                            <a href="">New list</a>
+                            <a href="">Create News</a>
+                            <a href="">Manage News</a>
                         </div>
-                    </li>
-                    <li><a style="padding:0px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/event">Event</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a style="color:black" class="dropdown-item" href="/event">Event list</a>
-                        <div class="dropdown-divider"></div>
-                        <a style="color:black" class="dropdown-item" href="../event/create">Create event</a>
-                        <a style="color:black" class="dropdown-item" href="/event/manage">Manage event</a>
+                    </div>
+                  </li>
+                  {{else}}
+                    
+                  <li><a href="">News</a></li>
+                  {{/if}}
+                  {{#if userLogin}}
+                  <li>
+                    <div class="news-event-dropdown">
+                        <a href="">Event <i class="fa fa-angle-down"></i></a>
+                        <div class="news-event-content">
+                            <a href="">Event list</a>
+                            <a href="">Create Event</a>
+                            <a href="">Manage Event</a>
                         </div>
-                    </li>
-                    <li><a style="padding:0px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/news">News</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a style="color:black" class="dropdown-item" href="/news">News list</a>
-                        <div class="dropdown-divider"></div>
-                        <a style="color:black" class="dropdown-item" href="../news/create">Create News</a>
-                        <a style="color:black" class="dropdown-item" href="/news/manage">Manage News</a>
-                        </div>
-                    </li>
-                    <li><a style="padding:0px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/idea">Idea</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a style="color:black" class="dropdown-item" href="/idea">Idea list</a>
-                        <div class="dropdown-divider"></div>
-                        <a style="color:black" class="dropdown-item" href="../idea/create">Create Idea</a>
-                        <a style="color:black" class="dropdown-item" href="/idea/manage">Manage Idea</a>
-                        </div>
-                    </li>
-                    <li><a href="/contact">Contact</a></li>
+                    </div>
+                  </li>
+                  {{else}}
+                    
+                  <li><a href="">Event</a></li>
+                  {{/if}}
                 </ul>
               </div>
 
