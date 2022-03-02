@@ -143,16 +143,18 @@ class IdeaController {
 
 
     //[POST] /addComment idea
-    addComment(req,res,next) {
+    doComment(req,res,next) {
         // const cmt = new Idea(req.body);
         // cmt.save()
         //     .then(() => res.redirect('/idea'))
         //     .catch(next => {
                 
         //     })
-        Idea.create({_id: req.params.id}, req.body)
-            .then(idea => res.redirect('/idea'))
-            .catch(next);
+        // Idea.update({"_id": Object(req.body.idea_id)},{
+        //     $push: {
+        //         "comment": {userName: req.body.username, content:req.body.content, commentAt: req.body.}
+        //     }
+        // })
         
 
     }

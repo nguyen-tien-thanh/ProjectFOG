@@ -29,6 +29,7 @@
     "express-handlebars": "^6.0.2",
     "express-load": "^1.1.16",
     "express-session": "^1.17.2",
+    "jquery": "^3.6.0",
     "mongoose": "^6.1.7",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",

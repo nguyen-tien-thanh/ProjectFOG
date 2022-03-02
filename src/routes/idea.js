@@ -35,7 +35,7 @@ router.delete('/:id', ideaController.delete)
 router.delete('/:id/force', ideaController.force)
 
 // // [POST] /idea/addComment idea
-router.post('/:id/addComment', ideaController.addComment)
+router.post('/do-comment', ideaController.doComment)
 
 // // [POST] /idea/store idea
 router.post('/store', ideaController.store)
