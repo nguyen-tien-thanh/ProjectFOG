@@ -715,6 +715,15 @@ header {
   padding: 24px 0;
   height: 100vh; }
 
+.form-control:hover {
+  border-color: #1dbfaf; }
+
+.form-group.invalid .form-control {
+  border-color: #f33a58; }
+
+.form-group.invalid .form-message {
+  color: #f33a58; }
+
 .text-center {
   margin: 12px 12px; }
 
@@ -1259,6 +1268,26 @@ img.img-center {
     top: -9999px;
     left: -9999px;
     white-space: nowrap; } }
+
+.page-wrap {
+  min-height: 100vh; }
+
+.button-back {
+  background-color: #fff;
+  border: 3px solid #f3f3f3;
+  border-radius: 2px; }
+
+.button-back:hover {
+  background-color: #B22222;
+  color: #fff; }
+
+.font-btn {
+  color: #1d1d1d;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.font-btn:hover {
+  color: #fff; }
 
 body li {
   list-style-type: none;
