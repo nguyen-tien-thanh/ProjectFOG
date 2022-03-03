@@ -91,7 +91,7 @@
                 </div>
                 {{/if}}
             {{!-- nav for pc --}}
-            <div class="Nav_PC">
+            <div class="Nav_PC" id="Nav_PC">
               <div class="Nav-right">
                 <ul>
                   <li><a href="/">Homepage </a></li>
@@ -141,5 +141,16 @@
             </div>
     </nav>
 </header>
-
+<script>
+    var navPc = document.getElementById("Nav_PC")
+    var bodyScroll=document.getElementsByTagName("body")[0]
+    bodyScroll.onscroll =function(){
+        if(document.documentElement.scrollTop > 48){
+        navPc.setAttribute("style", "position:fixed; left:0; right:0; top:0; z-index:1")
+        }
+        else{
+            navPc.setAttribute("style", "background-color:black; height:85px ")
+        }
+    }
+</script>
    
