@@ -127,8 +127,13 @@ header {
   display: inline-block;
 }
 .Nav-right li {
-  padding-right: 80px;
+  padding-right: 100px;
   padding-top: 30px;
+  padding-left: 20px;
+}
+.Nav-right li a{
+  font-size: 20px;
+  font-weight: bold;
 }
 .Nav-right {
   float: left;
@@ -141,10 +146,10 @@ header {
 }
 
 //Dropdown for news and event
-  .news-event-dropdown{
+  .news-idea-event-dropdown{
     position: relative;
   }
-  .news-event-content{
+  .news-idea-event-content{
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
@@ -153,17 +158,17 @@ header {
     z-index: 1;
     display: none;
   }
-  .news-event-content a{
+  .news-idea-event-content a{
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
-  .news-event-content a:hover{
+  .news-idea-event-content a:hover{
     background-color: #c0b9b9;
     border-radius: 5px;
   }
-  .Nav-right li:hover .news-event-content{
+  .Nav-right li:hover .news-idea-event-content{
     display: block;
   }
 // NAV FOR TABLET
@@ -184,6 +189,12 @@ header {
 }
 .nav-left-tablet {
   display: none;
+}
+.nav-left-tablet-none-login{
+  display: none;
+}
+.nav-left-tablet-none-login a{
+  color: white;
 }
 .nav-left-tablet a {
   color: white;
@@ -250,96 +261,53 @@ header {
     opacity: 1;
   }
 }
-.Category-content {
-  background-color: #f9f9f9;
-  min-width: 30%;
-  padding-bottom: 40px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  display: none;
-}
-.Category-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-.idea-content {
-  background-color: #f9f9f9;
-  min-width: 30%;
-  padding-bottom: 40px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  display: none;
-}
-.idea-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-.Event-content {
-  background-color: #f9f9f9;
-  min-width: 30%;
-  padding-bottom: 40px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  display: none;
-}
-.Event-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
 
-.News-content {
+.News-Event-Idea-content {
   background-color: #f9f9f9;
   min-width: 30%;
   padding-bottom: 40px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   display: none;
 }
-.News-content a {
+.News-Event-Idea-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
-.nav_tablet li:hover .Category-content {
+.nav_tablet li:hover .News-Event-Idea-content {
   display: block;
 }
-.nav_tablet li:hover .idea-content {
-  display: block;
-}
-.nav_tablet li:hover .Event-content {
-  display: block;
-}
-.nav_tablet li:hover .News-content {
-  display: block;
-}
-.News-content a:hover {
+.News-Event-Idea-content a:hover {
   background-color: #f1f1f1;
 }
-.Event-content a:hover {
-  background-color: #f1f1f1;
-}
-.Category-content a:hover {
-  background-color: #f1f1f1;
-}
-.idea-content a:hover {
+.News-Event-Idea-content a:hover {
   background-color: #f1f1f1;
 }
 
-@media only screen and (min-width: 740px) and (max-width: 1024px) {
+@media only screen and (min-width: 740px) and (max-width: 1200px) {
   .Nav_PC {
     display: none;
   }
   .Nav_Tablet {
+    position: relative;
     display: flex;
     align-items: center;
     font-size: 30px;
-    justify-content: space-between;
   }
   .nav-left-tablet {
-    display: block;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    display: flex;
+    font-size: 50px;
+    padding-right: 10px;
+  }
+  .nav-left-tablet-none-login{
+    position: absolute;
+    top: 5px;
+    right: 0;
+    display: flex;
     font-size: 50px;
     padding-right: 10px;
   }
@@ -352,10 +320,31 @@ header {
     display: flex;
     align-items: center;
     font-size: 30px;
-    justify-content: space-between;
   }
   .nav-left-tablet {
-    display: block;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    display: flex;
+    font-size: 50px;
+    padding-right: 10px;
+  }
+  .nav-left-tablet-none-login{
+    position: absolute;
+    top: 5px;
+    right: 0;
+    display: flex;
+    font-size: 50px;
+    padding-right: 10px;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 738px) {
+ 
+  .nav-left-tablet-none-login{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    display: flex;
     font-size: 50px;
     padding-right: 10px;
   }

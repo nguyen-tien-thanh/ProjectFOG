@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 const Category = new Schema({
     name: {type: String, minLength: 1, maxLength: 255},
     slug: {type : String, slug : 'name', unique: true},
+    deadline: {type: Date, default: Date.now() + (3600 * 1000 * 24 * 7)},
     deletedAt: {},
     // createdAt: {type: Date, default : Date.Now},
     // updateAt: {type: Date, default : Date.Now}

@@ -23,23 +23,37 @@ class IdeaController {
 
     //[GET] /idea/create 
     create(req,res,next) {
-        Category.find({})
-        .then(category => {
+        if (req.isAuthenticated()) {
+            Promise.all([Category.find({}), User.findOne({username: req.user.username})])
+            .then(([category, userLogin]) => 
             res.render('idea/create', {
-                category: multipleMongooseToObject(category)
+                category: multipleMongooseToObject(category),
+                userLogin: mongooseToObject(userLogin),
+                })
+            )
+            .catch(next)
+        }
+        else{
+            Category.find({})
+            .then(category => {
+                // category = category.map(cat => cat.toObject())
+                res.render('idea/create', {
+                    category: multipleMongooseToObject(category)
+                })
             })
-        })
-        .catch(err=>next(err));
+            .catch(err=>next(err));
+            }
     }
 
     //[GET] /idea/trash 
     trash(req,res,next) {
-        Promise.all([Idea.findDeleted({}), Idea.countDeleted(), Idea.count()])
-        .then(([idea, deletedCount, storedCount]) => 
+        Promise.all([Idea.findDeleted({}), Idea.countDeleted(), Idea.count(), User.findOne({username: req.user.username})])
+        .then(([idea, deletedCount, storedCount, userLogin]) => 
         res.render('idea/trash', {
             deletedCount,
             storedCount,
             idea: multipleMongooseToObject(idea),
+            userLogin: mongooseToObject(userLogin),
             })
         )
         .catch(next) 
@@ -47,12 +61,13 @@ class IdeaController {
 
     //[GET] /idea/manage 
     manage(req,res,next) {
-        Promise.all([Idea.find({}), Idea.countDeleted(), Idea.count()])
-            .then(([idea, deletedCount, storedCount]) => 
+        Promise.all([Idea.find({}), Idea.countDeleted(), Idea.count(), User.findOne({username: req.user.username})])
+            .then(([idea, deletedCount, storedCount, userLogin]) => 
             res.render('idea/manage', {
                 deletedCount,
                 storedCount,
                 idea: multipleMongooseToObject(idea),
+                userLogin: mongooseToObject(userLogin),
                 })
             )
             .catch(next)
@@ -142,21 +157,11 @@ class IdeaController {
     }
 
 
-    //[POST] /addComment idea
-    doComment(req,res,next) {
-        // const cmt = new Idea(req.body);
-        // cmt.save()
-        //     .then(() => res.redirect('/idea'))
-        //     .catch(next => {
-                
-        //     })
-        // Idea.update({"_id": Object(req.body.idea_id)},{
-        //     $push: {
-        //         "comment": {userName: req.body.username, content:req.body.content, commentAt: req.body.}
-        //     }
-        // })
-        
-
+    //[POST] /storeComment idea
+    storeComment(req,res,next) {
+        Idea.findByIdAndUpdate({_id: req.params.id}, {$push: {comment: req.body}})
+            .then(idea => res.redirect('/idea'))
+            .catch(next);  
     }
 
 
@@ -187,7 +192,7 @@ class IdeaController {
         // .catch(err=>next(err));
 
         if (req.isAuthenticated()) {
-            Promise.all([Idea.find({}), User.findOne({username: req.user.username})])
+            Promise.all([Idea.find({}).sort({ratings: -1}).limit(5), User.findOne({username: req.user.username})])
             .then(([idea, userLogin]) => 
             res.render('idea', {
                 idea: multipleMongooseToObject(idea),
@@ -197,7 +202,7 @@ class IdeaController {
             .catch(next)
         }
         else{
-            Idea.find({})
+            Idea.find({}).sort({ratings: -1}).limit(5)
             .then(idea => {
                 // idea = idea.map(cat => cat.toObject())
                 res.render('idea', {
