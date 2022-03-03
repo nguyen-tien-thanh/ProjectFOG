@@ -57,6 +57,7 @@ class SiteController {
                     User.findOne({username: req.user.username})
                         .then (user =>{
                             res.render('index', { 
+                                layout: 'intropage',
                                 userLogin: mongooseToObject(user)
                             });
                         })

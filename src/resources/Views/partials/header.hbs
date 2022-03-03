@@ -48,53 +48,48 @@
                                 <label for="option-nav" class="x-btn" style="cursor: pointer;">x</label>
                                 <ul>
                                     <li><a href="">Homepage</a></li>
-                                    {{!-- <li>
-                                        <a>Category <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
-                                            <div class="Category-content">
-                                                <a href="/category">Category List</a>
-                                                <a href="../category/create">Create</a>
-                                                <a href="/me/stored/category">User category</a>
-                                            </div>
-                                    </li>
-                                    <li>
-                                        <a>Idea <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
-                                            <div class="idea-content">
-                                                <a href="/idea">Idea List</a>
-                                                <a href="../idea/create">Create</a>
-                                                <a href="idea/manage">User idea</a>
-                                            </div>
-                                    </li> --}}
                                     {{#if userLogin}}
                                     <li>
                                         <a>Event <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
-                                        <div class="Event-content">
+                                        <div class="News-Event-Idea-content">
                                             <a href="/event">Event list</a>
                                             <a href="../event/create">Create event</a>
                                             <a href="/event/manage">Manage event</a>
                                         </div>
                                     </li>
-                                    {{else}}
-                                    <li><a href="">Event</a></li>
-                                    {{/if}}
-                                    {{#if userLogin}}
                                     <li>
                                         <a>News <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
-                                        <div class="News-content">
+                                        <div class="News-Event-Idea-content">
                                             <a href="/news">New list</a>
                                             <a href="../news/create">Create News</a>
                                             <a href="/news/manage">Manage News</a>  
                                         </div>
                                     </li>
+                                    <li>
+                                            <a href="/idea">Idea <i class="fa fa-angle-down"></i></a>
+                                            <div class="News-Event-Idea-content">
+                                                <a href="/idea">Idea list</a>
+                                                <a href="../idea/create">Create Idea</a>
+                                                <a href="/idea/manage">Manage Idea</a>
+                                            </div>
+                                        </div>
+                                    </li>
                                     {{else}}
-                                    <li><a href="">News</a></li>
-                                    {{/if}}
+                                    <li><a href="/event">Event</a></li>
+                                    <li><a href="/news">News</a></li>
                                     <li><a href="">Terms & Conditions</a></li>
                                     <li><a href="">Contact</a></li>
+                                    {{/if}}
                                 </ul>
                             </div>
                 </div>
+                {{#if userLogin}}
                 <div class="nav-left-tablet"><a href="/"><i class="fas fa-fire" style="font-size:60px; color:red;"></i>FearOG</a></div>
-        </div>
+                </div>
+                {{else}}
+                <div class="nav-left-tablet-none-login"><a href="/"><i class="fas fa-fire" style="font-size:60px; color:red;"></i>FearOG</a></div>
+                </div>
+                {{/if}}
             {{!-- nav for pc --}}
             <div class="Nav_PC">
               <div class="Nav-right">
@@ -102,33 +97,38 @@
                   <li><a href="/">Homepage </a></li>
                   {{#if userLogin}}
                   <li>
-                    <div class="news-event-dropdown">
-                        <a href="">News <i class="fa fa-angle-down"></i></a>
-                        <div class="news-event-content">
-                            <a href="">New list</a>
-                            <a href="">Create News</a>
-                            <a href="">Manage News</a>
+                    <div class="news-idea-event-dropdown">
+                        <a href="/news">News <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a href="/news">New list</a>
+                            <a href="../news/create">Create News</a>
+                            <a href="/news/manage">Manage News</a>
                         </div>
                     </div>
                   </li>
-                  {{else}}
-                    
-                  <li><a href="">News</a></li>
-                  {{/if}}
-                  {{#if userLogin}}
                   <li>
-                    <div class="news-event-dropdown">
+                    <div class="news-idea-event-dropdown">
                         <a href="">Event <i class="fa fa-angle-down"></i></a>
-                        <div class="news-event-content">
-                            <a href="">Event list</a>
-                            <a href="">Create Event</a>
-                            <a href="">Manage Event</a>
+                        <div class="news-idea-event-content">
+                            <a href="/event">Event list</a>
+                            <a href="../event/create">Create Event</a>
+                            <a href="/event/manage">Manage Event</a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-idea-event-dropdown">
+                        <a href="/idea">Idea <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a href="/idea">Idea list</a>
+                            <a href="../idea/create">Create Idea</a>
+                            <a href="/idea/manage">Manage Idea</a>
                         </div>
                     </div>
                   </li>
                   {{else}}
-                    
-                  <li><a href="">Event</a></li>
+                  <li><a href="/event">Event</a></li>
+                  <li><a href="/news">News</a></li>
                   {{/if}}
                 </ul>
               </div>
