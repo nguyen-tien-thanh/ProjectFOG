@@ -16,7 +16,8 @@ function route(app){
 
     app.use('/idea', ideaRouter);
 
-    app.use('/category', isLoggedIn, isAdmin, categoryRouter);
+    // app.use('/category', categoryRouter);
+    app.use('/category', isLoggedIn, isManager, categoryRouter);
 
     app.use('/event', eventRouter);
 

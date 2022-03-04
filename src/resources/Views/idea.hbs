@@ -33,33 +33,35 @@
                     </button>
                     <p><span id="ratings-{{ this._id }}">{{ this.ratings }}</span> liked this</p>
 
-                    {{!-- <form action="/idea/{{this._id}}?_method=PUT" method="post">  --}}
-                    <form action="/idea/{{this._id}}/addComment" method="post"> 
+                    <form action="/idea/{{this._id}}/storeComment?_method=PUT" method="post"> 
                         <label for="idea-comment">Write a comment:</label>
-                        <input class="form-control" type="text" style="" id="comment-user-name" name="comment[userName]">
-                        <input class="form-control" type="text" name="comment[content]">
-                        <input class="form-control" style="" id="comment-date" name="comment[commentAt]">
+                        <input class="form-control" type="text" style="" id="comment-user-name" name="userName">
+                        <text>content:</text><input class="form-control" type="text" name="content">
+                        <text>Cmt at:</text><input class="form-control" style="" id="comment-date" name="commentAt">
+
+                        <text>Idea id:</text><input type="" id="comment-idea-id" name="idea_id" value="{{this._id}}">
+
                         <p>
-                            <input type="checkbox" style="" id="comment-annoymous" value="true" name="comment[annoymous]">
+                            <input type="checkbox" style="" id="comment-annoymous" value="true" name="annoymous">
                             Comment as anonymous
                         </p>
                         <input type="submit" value="Submit">
                     </form> 
                     
-                    {{#comment}}
+
                     <div class="card">
                         <p>Comments: </p>
+                    {{#comment}}
                         {{#if annoymous}}
-                        <input id="comment-posted-username" value="Annoymous" disabled>
+                        <input id="comment-posted-username" value="Annoymous" class="mt-4" disabled>
                         {{else}}
-                        <input id="comment-posted-username" value="Name: {{this.userName}}" disabled>
+                        <input id="comment-posted-username" value="Name: {{userName}}" class="mt-4" disabled>
                         {{/if}}
-                        <p>Content: {{this.content}}</p>
-                        <p>Comment at (Hour): {{moment this.commentAt format="HH:mm"}}</p>
-                        <p>Comment at (Date): {{moment this.commentAt format="DD-MM-YYYY"}}</p>
-                    </div>
+                        <p>Content: {{content}}</p>
+                        <p>Comment at (Hour): {{moment commentAt format="HH:mm"}}</p>
+                        <p>Comment at (Date): {{moment commentAt format="DD-MM-YYYY"}}</p>
                     {{/comment}}
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,14 +70,50 @@
     </ul>
 </div>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
+        /* function doComment(form){
+            $.ajax({
+                url: "/idea/do-comment",
+                method: "POST",
+                data: {
+                    userName: form.commentUserName.value, 
+                    content: form.commentContent.value, 
+                    commentAt: form.commentAt.value, 
+                    annoymous: form.commentAnnoymous.value, 
+                    idea_id: form.idea_id.value,
+                }, 
+                    success: function (res){
+                        alert(res);
+                    }
+            });
+            return false
+        } 
+        $(document).ready(function doComment(form) {
+            $.ajax({
+                url: "/idea/do-comment",
+                method: "POST",
+                data: {
+                    userName: form.commentUserName.value, 
+                    content: form.commentContent.value, 
+                    commentAt: form.commentAt.value, 
+                    annoymous: form.commentAnnoymous.value, 
+                    idea_id: form.idea_id.value,
+                }, 
+                    success: function (res){
+                        alert(res);
+                    }
+            });
+            return false
+        });*/
+        
         $(document).ready(function () {
             //Assign the user name of who is using to input form
             $('input[id="comment-user-name"]').val("{{userLogin.username}}");
             //Assign time now for posting cmt
             $('input[id="comment-date"]').val(Date.now());
         });
+
     </script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>

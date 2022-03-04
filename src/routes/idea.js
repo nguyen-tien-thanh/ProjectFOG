@@ -1,50 +1,50 @@
 const express = require('express');
 const router = express.Router();
 
-const { isLoggedIn, authRole } = require('../ulti/authonize')
+const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize')
 const {ROLE} = require('../models/Role')
 
 const ideaController = require('../Controllers/IdeaController');
 
 // [POST] /idea/:id/interactive idea
-router.put('/:id/interactive', ideaController.interactive)
+router.put('/:id/interactive', isLoggedIn, ideaController.interactive)
 
 // [POST] /idea/handle-form-actions idea
-router.post('/handle-form-actions', ideaController.handleFormActions)
+router.post('/handle-form-actions', isLoggedIn, ideaController.handleFormActions)
 
 // [POST] /idea/create idea
-router.use('/create', ideaController.create)
+router.use('/create', isLoggedIn, ideaController.create)
 
 // [GET] /idea/trash idea
-router.use('/trash', ideaController.trash)
+router.use('/trash', isLoggedIn, isManager ,ideaController.trash)
 
 // [GET] /idea/create idea
-router.use('/manage', ideaController.manage)
+router.use('/manage', isLoggedIn, isManager, ideaController.manage)
 
 // [GET] /idea/:id/edit idea
-router.get('/:id/edit', ideaController.edit)
+router.get('/:id/edit', isLoggedIn, ideaController.edit)
 
 // [PUT] /idea/:id/update idea
-router.put('/:id', ideaController.update)
+router.put('/:id', isLoggedIn, ideaController.update)
 
 // [PATCH] /idea/:id/update idea
-router.patch('/:id/restore', ideaController.restore)
+router.patch('/:id/restore', isLoggedIn, ideaController.restore)
 
 // [DELETE] /idea/:id/detele idea
-router.delete('/:id', ideaController.delete)
-router.delete('/:id/force', ideaController.force)
-
-// // [POST] /idea/addComment idea
-router.post('/:id/addComment', ideaController.addComment)
+router.delete('/:id', isLoggedIn, isManager, ideaController.delete)
+router.delete('/:id/force', isLoggedIn, isManager, ideaController.force)
 
 // // [POST] /idea/store idea
-router.post('/store', ideaController.store)
+router.post('/store', isLoggedIn, ideaController.store)
+
+// // [POST] /idea/storeComment idea
+router.put('/:id/storeComment', isLoggedIn, ideaController.storeComment)
 
 // [link bien dong] /idea/show || /idea/:slug
-router.use('/:slug', ideaController.show)
+router.use('/:slug', isLoggedIn, ideaController.show)
 
 // /idea/index - idea.hbs
-router.use('/', ideaController.index)
+router.use('/', isLoggedIn, ideaController.index)
 
 
 
