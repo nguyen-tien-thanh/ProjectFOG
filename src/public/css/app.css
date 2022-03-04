@@ -1169,7 +1169,12 @@ img.img-center {
     object-fit: cover;
     overflow: hidden; }
   .event-card {
-    margin: 10px 10px 10px 10px; } }
+    margin: 10px 10px 10px 10px; }
+  .col-tablet {
+    transform: translateX(40px); }
+  .img-tablet {
+    height: 100px;
+    object-fit: cover; } }
 
 /* MOBILE */
 @media (max-width: 740px) {
@@ -1193,7 +1198,7 @@ img.img-center {
     width: 100%;
     display: none; }
   .col-mobile {
-    margin: -18px 12px; }
+    margin: -18px 32px; }
   .title-mobile {
     font-size: 1rem;
     margin: -8px 2px; }

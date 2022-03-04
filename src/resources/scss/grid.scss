@@ -91,6 +91,21 @@
         margin: 10px 10px 10px 10px;
     }
 
+    // event list col 
+    .col-tablet{
+        transform: translateX(40px);
+    }
+
+    .img-tablet{
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .list__group-tablet{
+        
+    }
+    
+
     
 }
 
@@ -126,7 +141,7 @@
     }
 
     .col-mobile{
-        margin:-18px 12px;
+        margin: -18px 32px;
     }
 
     .title-mobile{
