@@ -1,34 +1,37 @@
 <h1 class="text-center">News Layout</h1>
 
+<div class= "container-fluid">
+    <div class="mt-4">
+        <ul class="row">
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <h4>News List</h4>
+                    {{#each news}}
+                        <a class="list-group-item list-group-item-action list-hover" href="/news/{{this.slug}}"><li>{{this.title}}</li></a>
+                    {{/each}}
+                </ul>
+            </div>
 
-<div class="mt-4">
-    <ul class="row">
-        <div class="col-3">
-            <ul class="list-group">
-                <h4>News List</h4>
+            <div class="col-md-9">
+                <div class="row">
                 {{#each news}}
-                    <a class="list-group-item list-group-item-action list-hover" href="/news/{{this.slug}}"><li>{{this.title}}</li></a>
-                {{/each}}
-            </ul>
-        </div>
-
-        <div class="col-9 row">
-            {{#each news}}
-            <div class="card-group col-4 mb-4">
-                <div class="card">
-                    <a href="/news/{{this.slug}}">
-                        <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
-                    </a>
-                    <div class="card-body">
+                <div class="card-group mb-4 col-12 col-sm-6 col-md-4">
+                    <div class="card">
                         <a href="/news/{{this.slug}}">
-                            <h5 class="card-title">{{this.name}}</h5>
+                            <img class="card-img-news" src="{{this.image}}" alt="{{this.name}}">
                         </a>
-                        <p class="card-text test1 overflow-hidden">{{this.description}}</p>
+                        <div class="card-body">
+                            <a href="/news/{{this.slug}}">
+                                <h5 class="card-title">{{this.name}}</h5>
+                            </a>
+                            <p class="card-text test1 overflow-hidden">{{this.description}}</p>
+                        </div>
+                        <a class="card-footer" href="/news/{{this.slug}}">Detail</a>
                     </div>
-                    <a class="card-footer" href="/news/{{this.slug}}">Detail</a>
+                </div>
+                {{/each}}
                 </div>
             </div>
-            {{/each}}
-        </div>
-    </ul>
+        </ul>
+    </div>
 </div>
