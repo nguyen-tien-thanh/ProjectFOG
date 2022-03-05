@@ -96,8 +96,10 @@
         transform: translateX(40px);
     }
 
-    .img-tablet{
-        height: 100px;
+    .img-tablet {
+        width: 100%;
+        height: 155px;
+        display: block;
         object-fit: cover;
     }
 
