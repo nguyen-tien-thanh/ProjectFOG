@@ -28,14 +28,11 @@ const app = express()
 const port = 3003
 
 
-
-
-
-
-app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.static(path.join(__dirname, 'uploads')))
+app.use(express.static('src/public')); 
+// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'uploads')));
 //HTTP Loggers
-app.use(morgan('combined'))
+app.use(morgan('combined'));
 
 //Connect Database
 db.connect();
