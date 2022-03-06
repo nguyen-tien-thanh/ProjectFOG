@@ -11,7 +11,7 @@
         <label for="detail">detail</label>
         <textarea type="text" class="form-control" id="detail" name="detail" placeholder="Enter detail" required></textarea>
       </div>
-      <div class="input-group mb-3">
+      {{!-- <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="type">Category</label>
         </div>
@@ -23,8 +23,13 @@
             </option>
           {{/each}}
         </select>
+      </div> --}}
+      <div class="form-group">
+        <label for="categoryName">Category Id</label>
+        <input type="text" class="form-control" id="categoryName" name="categoryName" value="{{category._id}}" required> 
       </div>
-            {{!-- {{moment this.deadline format="HH:mm on DD-MM-YYYY"}} --}}
+      <h2 style="color:red">Name: {{category.categoryName}}</h2>
+      <h2 style="color:red">Deadline: {{moment category.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}</h2>
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="{{userLogin._id}}" required> 
@@ -35,8 +40,27 @@
           data-file-maxsize="10240" data-component="fileupload">
       </div>
      
-  <input type="submit" class="btn btn-success" value="Submit">
+  <input type="submit" class="btn btn-success btn-submit" value="Submit">
 </form>
 </div>
 
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+  //For deadline of submit idea
+    $(document).ready(function () {
+
+        //Deadline comment for users
+        //var inputCmt = $('.input-idea')
+        var btnSubmit = $('.btn-submit')
+        var deadlineSubmitDate = new Date("{{category.deadlineSubmit}}")
+        if ( deadlineSubmitDate <= Date.now()){
+            btnSubmit.attr("disabled","disabled")
+            btnSubmit.attr("class","btn btn-secondary")
+            //inputCmt.attr("disabled","disabled")
+        }
+    });
+
+</script>

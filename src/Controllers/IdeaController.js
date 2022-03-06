@@ -21,6 +21,29 @@ class IdeaController {
         
     }
 
+    //[POST] /idea/:id/add-idea
+    addIdea(req,res,next) {
+        if (req.isAuthenticated()) {
+            Promise.all([Category.findById(req.params.id), User.findOne({username: req.user.username})])
+            .then(([category, userLogin]) => 
+            res.render('idea/create', {
+                category: mongooseToObject(category),
+                userLogin: mongooseToObject(userLogin),
+                })
+            )
+            .catch(next)
+        }
+        else{
+            Category.findById(req.params.id)
+            .then(category => {
+                res.render('idea/create', {
+                    category: mongooseToObject(category)
+                })
+            })
+            .catch(err=>next(err));
+            }
+    }
+
     //[GET] /idea/create 
     create(req,res,next) {
         if (req.isAuthenticated()) {
