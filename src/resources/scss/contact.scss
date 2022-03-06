@@ -1,43 +1,36 @@
-.co-xxxlarge
-{
-    text-align: center;
-    font-size: 5em;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.co-xxxlarge {
+  text-align: center;
+  font-size: 5em;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.co-display
-{
-    color: black;
-    text-align: center;
-    font-size: 1.5em;
-}
-
-.co-modal-content
-{
-    padding: 1em 10em;
-}
-.co-wide
-{
-    text-align: center;
-    font-size: 2em;
-    padding: 0.5em 2.5em;
-    background-color: black;
-    color: pink;
-    border-radius: 15em;
-}
-.co-co
-{
-    padding: 0 7em;
-    text-align: center;
+.co-display {
+  color: black;
+  text-align: center;
+  font-size: 1.5em;
 }
 
-.left-column-1
-{
-    width: 50%;
-    float: left;
+.co-modal-content {
+  padding: 1em 10em;
 }
-.right-column-1
-{
-    width: 50%;
-    float: right;
+.co-wide {
+  text-align: center;
+  font-size: 2em;
+  padding: 0.5em 2.5em;
+  background-color: black;
+  color: pink;
+  border-radius: 15em;
 }
-  
+.co-co {
+  padding: 0 7em;
+  text-align: center;
+}
+
+.left-column-1 {
+  width: 50%;
+  float: left;
+}
+.right-column-1 {
+  width: 50%;
+  float: right;
+}
