@@ -1187,7 +1187,16 @@ img.img-center {
     object-fit: cover;
     overflow: hidden; }
   .event-card {
-    margin: 10px 10px 10px 10px; } }
+    margin: 10px 10px 10px 10px; }
+  .col-tablet {
+    transform: translateX(40px); }
+  .img-tablet {
+    width: 100%;
+    height: 100px;
+    display: block;
+    object-fit: cover; }
+  .col-tablet {
+    transform: translateX(80px); } }
 
 /* MOBILE */
 @media (max-width: 740px) {
@@ -1211,7 +1220,7 @@ img.img-center {
     width: 100%;
     display: none; }
   .col-mobile {
-    margin: -18px 12px; }
+    margin: -18px 32px; }
   .title-mobile {
     font-size: 1rem;
     margin: -8px 2px; }
@@ -1301,3 +1310,9 @@ body li {
 
 .btn-secondary:hover {
   background-color: #ff3247; }
+
+.img-tablet {
+  width: 100%;
+  height: 100px;
+  display: block;
+  object-fit: cover; }
