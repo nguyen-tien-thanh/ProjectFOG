@@ -15,19 +15,19 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="type">Category</label>
         </div>
-        <select class="custom-select form-group" id="type" name="type">
+        <select class="custom-select form-group" id="type" name="categoryName">
           <option selected value="Another">--Choose--</option>
           {{#each category}}
-            <option value="{{this.name}}">{{this.name}} || 
-              {{moment this.deadline format="HH:mm on DD-MM-YYYY"}}
+            <option value="{{this._id}}">{{this.categoryName}} || 
+              {{moment this.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}
             </option>
           {{/each}}
         </select>
       </div>
             {{!-- {{moment this.deadline format="HH:mm on DD-MM-YYYY"}} --}}
       <div class="form-group">
-        <label for="author">author</label>
-        <input type="text" class="form-control" id="author" name="author" placeholder="Enter author" required> 
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="{{userLogin._id}}" required> 
       </div>
       <div class="form-group">
         <input type="file" name="file" class="form-upload validate[upload]"

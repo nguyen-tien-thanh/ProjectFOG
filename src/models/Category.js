@@ -5,12 +5,11 @@ const mongooseDelete = require('mongoose-delete');
 const Schema = mongoose.Schema;
 
 const Category = new Schema({
-    name: {type: String, minLength: 1, maxLength: 255},
-    slug: {type : String, slug : 'name', unique: true},
-    deadline: {type: Date, default: Date.now() + (3600 * 1000 * 24 * 7)},
+    categoryName: {type: String, minLength: 1, maxLength: 255},
+    slug: {type : String, slug : 'categoryName', unique: true},
+    deadlineSubmit: {type: Date, default: Date.now() + (3600 * 1000 * 24 * 7)},
+    deadlineCmt: {type: Date, default: Date.now() + (3600 * 1000 * 24 * 10)},
     deletedAt: {},
-    // createdAt: {type: Date, default : Date.Now},
-    // updateAt: {type: Date, default : Date.Now}
 }, {
     timestamps : true,
 });

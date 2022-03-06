@@ -7,16 +7,16 @@
         <input type="text" class="form-control" value="{{category.name}}" id="name" name="name" placeholder="Enter name"> 
       </div>
       <div class="form-group">
-        <label for="createdAt">Create at</label>
-        <input type="text" class="form-control" value="{{category.createdAt}}" id="createdAt" name="createdAt" disabled="disabled" placeholder="Enter createdAt"> 
+        <label for="deadlineSubmit">Deadline Submit</label>
+        <input type="date" class="" value="{{moment category.deadlineSubmit format="YYYY-MM-DD"}}" min="{{moment category.createdAt format="YYYY-MM-DD"}}" id="deadlineSubmit" name="deadlineSubmit"> 
       </div>
       <div class="form-group">
-        <label for="updatedAt">Updated at</label>
-        <input type="text" class="form-control" value="{{category.updatedAt}}" id="updatedAt" name="updatedAt" disabled="disabled" placeholder="Enter updatedAt"> 
-      </div> 
+        <label for="deadlineCmt">Deadline Comment</label>
+        <input type="date" class="" value="{{moment category.deadlineCmt format="YYYY-MM-DD"}}" min="{{moment category.deadlineSubmit format="YYYY-MM-DD"}}" id="deadlineCmt" name="deadlineCmt"> 
+      </div>
       <div class="form-group">
-        <label for="slug">slug</label>
-        <input type="text" class="form-control" value="{{category.slug}}" id="slug" name="slug" placeholder="Enter slug" disabled="disabled"> 
+        <label for="createdAt">Create at</label>
+        <input type="text" class="form-control" value="{{category.createdAt}}" id="createdAt" name="createdAt" disabled="disabled" placeholder="Enter createdAt"> 
       </div>
   <input type="submit" value="Edit">
 </form>
