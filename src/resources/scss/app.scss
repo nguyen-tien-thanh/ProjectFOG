@@ -34,3 +34,12 @@ body li {
 .btn-secondary:hover {
   background-color: rgb(255, 50, 71);
 }
+// event page responsive tablet img trong file grid có chia ra css reponsive
+
+.img-tablet {
+  width: 100%;
+  height: 100px;
+  display: block;
+  object-fit: cover;
+  
+}

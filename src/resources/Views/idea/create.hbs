@@ -11,23 +11,28 @@
         <label for="detail">detail</label>
         <textarea type="text" class="form-control" id="detail" name="detail" placeholder="Enter detail" required></textarea>
       </div>
-      <div class="input-group mb-3">
+      {{!-- <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="type">Category</label>
         </div>
-        <select class="custom-select form-group" id="type" name="type">
+        <select class="custom-select form-group" id="type" name="categoryName">
           <option selected value="Another">--Choose--</option>
           {{#each category}}
-            <option value="{{this.name}}">{{this.name}} || 
-              {{moment this.deadline format="HH:mm on DD-MM-YYYY"}}
+            <option value="{{this._id}}">{{this.categoryName}} || 
+              {{moment this.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}
             </option>
           {{/each}}
         </select>
-      </div>
-            {{!-- {{moment this.deadline format="HH:mm on DD-MM-YYYY"}} --}}
+      </div> --}}
       <div class="form-group">
-        <label for="author">author</label>
-        <input type="text" class="form-control" id="author" name="author" placeholder="Enter author" required> 
+        <label for="categoryName">Category Id</label>
+        <input type="text" class="form-control" id="categoryName" name="categoryName" value="{{category._id}}" required> 
+      </div>
+      <h2 style="color:red">Name: {{category.categoryName}}</h2>
+      <h2 style="color:red">Deadline: {{moment category.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}</h2>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="{{userLogin._id}}" required> 
       </div>
       <div class="form-group">
         <input type="file" name="file" class="form-upload validate[upload]"
@@ -35,8 +40,27 @@
           data-file-maxsize="10240" data-component="fileupload">
       </div>
      
-  <input type="submit" class="btn btn-success" value="Submit">
+  <input type="submit" class="btn btn-success btn-submit" value="Submit">
 </form>
 </div>
 
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+  //For deadline of submit idea
+    $(document).ready(function () {
+
+        //Deadline comment for users
+        //var inputCmt = $('.input-idea')
+        var btnSubmit = $('.btn-submit')
+        var deadlineSubmitDate = new Date("{{category.deadlineSubmit}}")
+        if ( deadlineSubmitDate <= Date.now()){
+            btnSubmit.attr("disabled","disabled")
+            btnSubmit.attr("class","btn btn-secondary")
+            //inputCmt.attr("disabled","disabled")
+        }
+    });
+
+</script>
