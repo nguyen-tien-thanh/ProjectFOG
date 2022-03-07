@@ -15,6 +15,9 @@ router.post('/handle-form-actions', isLoggedIn, ideaController.handleFormActions
 // [POST] /idea/create idea
 router.use('/create', isLoggedIn, ideaController.create)
 
+// [POST] /idea/add-idea idea
+router.use('/:id/add-idea', isLoggedIn, ideaController.addIdea)
+
 // [GET] /idea/trash idea
 router.use('/trash', isLoggedIn, isManager ,ideaController.trash)
 

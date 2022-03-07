@@ -6,11 +6,102 @@
             <p>- Title: {{idea.title}}</p>
             <p>- Detail: {{idea.detail}}</p>
             <p>- Ratings: {{idea.ratings}}</p>
-            <p>- Author: {{idea.author}}</p>
-            <p>- Category: {{idea.type}}</p>
+            <p>- Author: {{idea.username.username}}</p>
+            <p>- Category: {{idea.categoryName.categoryName}}</p>
             <p>- File: <a href="../../idea/{{idea.file}}">{{idea.file}}</a></p>
+            <p>- Deadline Submit: {{moment idea.categoryName.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}</p>
+            <p>- Dealine Cmt: {{moment idea.categoryName.deadlineCmt format="HH:mm on DD-MM-YYYY"}}</p>
+
             <p>- Create at: {{moment idea.createdAt format="HH:mm on DD-MM-YYYY"}}</p>
             <p>- Update at: {{moment idea.updatedAt format="HH:mm on DD-MM-YYYY"}}</p>
         </div>
     </div>
+     <button onclick="actOnPost(event);" class="btn btn-success btn-reactive"
+            data-post-id="{{ idea._id }}">Like</button>
+    <button onclick="actOnPost(event);" class="btn btn-success btn-reactive"
+            data-post-id="{{ idea._id }}">Unlike
+    </button>
+    <p><span id="ratings-{{ idea._id }}">{{ idea.ratings }}</span> liked this</p>
+
+    <form action="/idea/{{idea._id}}/storeComment?_method=PUT" method="post"> 
+        <label for="idea-comment">Write a comment:</label>
+        <input class="form-control input-comment" type="text" id="comment-user-name" name="userName">
+        <text>content:</text><input class="form-control input-comment" type="text" name="content">
+        <text>Cmt at:</text><input class="form-control input-comment" id="comment-date" name="commentAt">
+
+        <text>Idea id:</text><input type="" id="comment-idea-id input-comment" name="idea_id" value="{{idea._id}}">
+
+        <p>
+            <input type="checkbox" style="" id="comment-annoymous" value="true" name="annoymous">
+            Comment as anonymous
+        </p>
+        <input class="input-comment btn btn-success" type="submit" value="Submit">
+    </form> 
+    
+
+    <div class="card">
+        <p>Comments: </p>
+    {{#idea}}
+    {{#comment}}
+        {{#if annoymous}}
+        <input id="comment-posted-username" value="Annoymous" class="mt-4" disabled>
+        {{else}}
+        <input id="comment-posted-username" value="Name: {{userName}}" class="mt-4" disabled>
+        {{/if}}
+        <p>Content: {{content}}</p>
+        <p>Comment at (Hour): {{moment commentAt format="HH:mm"}}</p>
+        <p>Comment at (Date): {{moment commentAt format="DD-MM-YYYY"}}</p>
+    {{/comment}}
+    {{/idea}}
+    </div>
 </div>
+</div>
+</div>
+
+{{!-- Auto import username and comment date for user comment --}}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Assign the user name of who is using to input form
+            $('input[id="comment-user-name"]').val("{{userLogin.username}}");
+            //Assign time now for posting cmt
+            $('input[id="comment-date"]').val(Date.now());
+            //Deadline comment for users
+            var btnReactive = $('.btn-reactive')
+            var inputCmt = $('.input-comment')
+            var deadlineSubmitDate = new Date("{{idea.categoryName.deadlineCmt}}")
+            if ( deadlineSubmitDate <= Date.now()){
+                btnReactive.attr("disabled","disabled")
+                inputCmt.attr("disabled","disabled")
+            }
+        });
+
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var updateIdeaRatings = {
+            Like: function (postId) {
+                document.querySelector('#ratings-' + postId).textContent++;
+            },
+            Unlike: function(postId) {
+                document.querySelector('#ratings-' + postId).textContent--;
+            }
+        };
+    
+        var toggleButtonText = {
+            Like: function(button) {
+                button.textContent = "Unlike";
+            },
+            Unlike: function(button) {
+                button.textContent = "Like";
+            }
+        };
+    
+        var actOnPost = function (event) {
+            var postId = event.target.dataset.postId;
+            var action = event.target.textContent.trim();
+            toggleButtonText[action](event.target);
+            updateIdeaRatings[action](postId);
+            axios.post('/idea/' + postId + '/interactive?_method=PUT', { action: action });
+        };
+    </script>

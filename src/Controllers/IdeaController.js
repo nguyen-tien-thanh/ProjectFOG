@@ -21,6 +21,29 @@ class IdeaController {
         
     }
 
+    //[POST] /idea/:id/add-idea
+    addIdea(req,res,next) {
+        if (req.isAuthenticated()) {
+            Promise.all([Category.findById(req.params.id), User.findOne({username: req.user.username})])
+            .then(([category, userLogin]) => 
+            res.render('idea/create', {
+                category: mongooseToObject(category),
+                userLogin: mongooseToObject(userLogin),
+                })
+            )
+            .catch(next)
+        }
+        else{
+            Category.findById(req.params.id)
+            .then(category => {
+                res.render('idea/create', {
+                    category: mongooseToObject(category)
+                })
+            })
+            .catch(err=>next(err));
+            }
+    }
+
     //[GET] /idea/create 
     create(req,res,next) {
         if (req.isAuthenticated()) {
@@ -61,7 +84,10 @@ class IdeaController {
 
     //[GET] /idea/manage 
     manage(req,res,next) {
-        Promise.all([Idea.find({}), Idea.countDeleted(), Idea.count(), User.findOne({username: req.user.username})])
+        Promise.all([Idea.find({}).populate('username').populate('categoryName'), 
+            Idea.countDeleted(), 
+            Idea.count(), 
+            User.findOne({username: req.user.username})])
             .then(([idea, deletedCount, storedCount, userLogin]) => 
             res.render('idea/manage', {
                 deletedCount,
@@ -168,29 +194,32 @@ class IdeaController {
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
-        Idea.findOne({ slug: req.params.slug})
-        .then (idea => {
-            // res.json(idea);
-
-            res.render('idea/show', { 
-                idea: mongooseToObject(idea) 
-            });
-        })
+        Promise.all([Category.findOne({}), 
+            Idea.findOne({ slug: req.params.slug}).populate('username').populate('categoryName'), 
+            User.findOne({username: req.user.username})])
+        .then(([category, idea, userLogin]) => 
+        res.render('idea/show', {
+            category: mongooseToObject(category),
+            idea: mongooseToObject(idea),
+            userLogin: mongooseToObject(userLogin),
+            })
+        )
         .catch(next)
+
+        // Idea.findOne({ slug: req.params.slug})
+        // .then (idea => {
+        //     // res.json(idea);
+
+        //     res.render('idea/show', { 
+        //         idea: mongooseToObject(idea) 
+        //     });
+        // })
+        // .catch(next)
         // res.send('New detail !!! - '+ req.params.slug );
     }
 
     // [GET] /idea
     index(req, res, next){
-        // Idea.find({})
-        // .then(idea => {
-        //     // idea = idea.map(cat => cat.toObject())
-        //     res.render('idea', {
-        //         idea: multipleMongooseToObject(idea)
-        //     })
-        // })
-        // .catch(err=>next(err));
-
         if (req.isAuthenticated()) {
             Promise.all([Idea.find({}).sort({ratings: -1}).limit(5), User.findOne({username: req.user.username})])
             .then(([idea, userLogin]) => 

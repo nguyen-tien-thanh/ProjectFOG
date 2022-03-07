@@ -1099,15 +1099,12 @@ img.img-center {
 .co-xxxlarge {
   text-align: center;
   font-size: 5em;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif; }
 
 .co-display {
   color: black;
   text-align: center;
   font-size: 1.5em; }
-
-.co-modal-content {
-  padding: 1em 10em; }
 
 .co-wide {
   text-align: center;
@@ -1118,7 +1115,6 @@ img.img-center {
   border-radius: 15em; }
 
 .co-co {
-  padding: 0 7em;
   text-align: center; }
 
 .left-column-1 {
@@ -1128,6 +1124,67 @@ img.img-center {
 .right-column-1 {
   width: 50%;
   float: right; }
+
+.co-open-button {
+  background-color: black;
+  color: lightpink;
+  padding: 1em 3em;
+  bottom: 5.5em;
+  right: 0;
+  width: 15em;
+  border-radius: 10em;
+  border: none;
+  cursor: pointer;
+  position: fixed; }
+
+.co-open-button:hover {
+  opacity: 0.8; }
+
+.co-chat {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border-radius: 0.3em;
+  border: 0.5em solid #d3b2b2;
+  z-index: 7; }
+
+.co-0 {
+  padding: 1em;
+  background-color: #f7f3f3; }
+
+.co-chat-tr {
+  text-align: center;
+  font-size: 1.8em; }
+
+.co-e {
+  padding: 0.5em 3em; }
+
+.co-t {
+  padding: 0.5em 3em; }
+
+.co-m {
+  padding: 5em 3em; }
+
+.btn00 {
+  background-color: #8B93FC;
+  color: black;
+  padding: 0.5em 1.5em;
+  border: none;
+  cursor: pointer;
+  width: 10.7em;
+  opacity: 0.8;
+  border-radius: 0.2em;
+  font-size: 0.85em; }
+
+.cancel00 {
+  background-color: #F6F07C; }
+
+.btn00:hover {
+  opacity: 1; }
+
+.co-c5 {
+  font-size: 2em; }
 
 .grid {
   width: 1200px;
