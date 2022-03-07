@@ -203,7 +203,8 @@ header {
 
 .nav_tablet a {
   color: black;
-  font-size: 20px; }
+  font-size: 20px;
+  font-weight: bold; }
 
 .nav_tablet li {
   cursor: pointer;
@@ -1295,6 +1296,29 @@ img.img-center {
 
 .font-btn:hover {
   color: #fff; }
+
+.list-idea a {
+  color: black; }
+
+#customers {
+  border-collapse: collapse;
+  width: 20%;
+  position: fixed;
+  left: 2%; }
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px; }
+
+#customers tr:hover {
+  background-color: #ddd; }
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ff3247;
+  color: white; }
 
 body li {
   list-style-type: none;
