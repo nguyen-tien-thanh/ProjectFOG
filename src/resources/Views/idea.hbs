@@ -1,14 +1,22 @@
-<h1 class="text-center">Idea Layout</h1>
+<div class="container">
+    <h1 class="text-center">Idea Layout</h1>
 
 
 <div class="mt-4">
     <ul class="row">
-        <div class="col-3">
-            <ul>
+        <div class="col-3 list-idea">
+                <table id="customers">
+                    <tr>
+                        <th>Most Interactive Idea</th>
+                    </tr>
                 {{#each idea}}
-                <li><a href="/idea/{{this.slug}}">{{this.title}}</a></li>
+                {{!-- <li><a href="/idea/{{this.slug}}">{{this.title}}</a></li> --}}
+                    
+                    <tr>
+                        <td><a href="/idea/{{this.slug}}">{{this.title}}</a></td>
+                    </tr>
                 {{/each}}
-            </ul>
+                </table>
         </div>
 
         <div class="col-9 row">
@@ -143,3 +151,4 @@
             axios.post('/idea/' + postId + '/interactive?_method=PUT', { action: action });
         };
     </script>
+</div>

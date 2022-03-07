@@ -1,0 +1,24 @@
+.list-idea a{
+    color:black;
+}
+#customers {
+  border-collapse: collapse;
+  width: 20%;
+  position: fixed;
+  left: 2%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: rgb(255, 50, 71) ;
+  color: white;
+}
