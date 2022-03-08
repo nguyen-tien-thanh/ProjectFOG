@@ -2,6 +2,7 @@
 <a href="/idea/trash">Trash idea </a>
 (Total deleted idea: {{deletedCount}})
 
+        <a href="/idea/download"><button class="btn btn-primary"> Download all</button></a>
 <form name="container-form" action="/idea/handle-form-actions" method="POST">
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
@@ -29,6 +30,8 @@
             <th scope="col">No (Total: {{storedCount}})</th>
             <th scope="col">Idea Title</th>
             <th scope="col">Detail</th>
+            <th scope="col">Category</th>
+            <th scope="col">Author</th>
             <th scope="col">Ratings</th>
             <th scope="col">Created Date</th>
             <th scope="col">File</th>
@@ -47,6 +50,8 @@
         <th scope="row">{{sum @index 1}}</th>
         <td>{{this.title}}</td>
         <td>{{this.detail}}</td>
+        <td>{{this.categoryName.categoryName}}</td>
+        <td>{{this.username.username}}</td>
         <td>{{this.ratings}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td>{{this.file}}</td>
@@ -67,7 +72,6 @@
         {{/each}}
     </tbody>
     </table>
-
     {{!-- Confirm delete code --}}
     <div class="modal fade" id="delete-idea" tabindex="-1" role="dialog" aria-labelledby="delete-ideaLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

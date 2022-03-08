@@ -84,58 +84,58 @@
                             </div>
                 </div>
                 {{#if userLogin}}
-                <div class="nav-left-tablet"><a href="/"><i class="fas fa-fire" style="font-size:60px; color:red;"></i>FearOG</a></div>
+                <div class="nav-left-tablet"><a href="/"><i class="fas fa-fire" style="font-size:50px; color:red;"></i>FearOG</a></div>
                 </div>
                 {{else}}
-                <div class="nav-left-tablet-none-login"><a href="/"><i class="fas fa-fire" style="font-size:60px; color:red;"></i>FearOG</a></div>
+                <div class="nav-left-tablet-none-login"><a href="/"><i class="fas fa-fire" style="font-size:50px; color:red;"></i>FearOG</a></div>
                 </div>
                 {{/if}}
             {{!-- nav for pc --}}
             <div class="Nav_PC" id="Nav_PC">
               <div class="Nav-right">
                 <ul>
-                  <li><a href="/">Homepage </a></li>
+                  <li><a id="navpc-text" href="/">Homepage </a></li>
                   {{#if userLogin}}
                   <li>
                     <div class="news-idea-event-dropdown">
-                        <a href="/news">News <i class="fa fa-angle-down"></i></a>
+                        <a id="navpc-text" href="/news">News <i class="fa fa-angle-down"></i></a>
                         <div class="news-idea-event-content">
-                            <a href="/news">New list</a>
-                            <a href="../news/create">Create News</a>
-                            <a href="/news/manage">Manage News</a>
+                            <a id="navpc-text" href="/news">New list</a>
+                            <a id="navpc-text" href="../news/create">Create News</a>
+                            <a id="navpc-text" href="/news/manage">Manage News</a>
                         </div>
                     </div>
                   </li>
                   <li>
                     <div class="news-idea-event-dropdown">
-                        <a href="">Event <i class="fa fa-angle-down"></i></a>
+                        <a id="navpc-text" href="">Event <i class="fa fa-angle-down"></i></a>
                         <div class="news-idea-event-content">
-                            <a href="/event">Event list</a>
-                            <a href="../event/create">Create Event</a>
-                            <a href="/event/manage">Manage Event</a>
+                            <a id="navpc-text" href="/event">Event list</a>
+                            <a id="navpc-text" href="../event/create">Create Event</a>
+                            <a id="navpc-text" href="/event/manage">Manage Event</a>
                         </div>
                     </div>
                   </li>
                   <li>
                     <div class="news-idea-event-dropdown">
-                        <a href="/idea">Idea <i class="fa fa-angle-down"></i></a>
+                        <a id="navpc-text" href="/idea">Idea <i class="fa fa-angle-down"></i></a>
                         <div class="news-idea-event-content">
-                            <a href="/idea">Idea list</a>
-                            <a href="../idea/create">Create Idea</a>
-                            <a href="/idea/manage">Manage Idea</a>
+                            <a id="navpc-text" href="/idea">Idea list</a>
+                            <a id="navpc-text" href="../idea/create">Create Idea</a>
+                            <a id="navpc-text" href="/idea/manage">Manage Idea</a>
                         </div>
                     </div>
                   </li>
                   {{else}}
-                  <li><a href="/event">Event</a></li>
-                  <li><a href="/news">News</a></li>
+                  <li><a id="navpc-text" href="/event">Event</a></li>
+                  <li><a id="navpc-text" href="/news">News</a></li>
                   {{/if}}
                 </ul>
               </div>
 
               <div class="Nav-left">
                 <ul>
-                    <li><a href="/"><i class="fas fa-fire" style="font-size:60px; color:rgb(255, 50, 71);"></i>FearOG</a> </li>
+                    <li><a id="navpc-text" href="/"><i class="fas fa-fire" style="font-size:50px; color:rgb(255, 50, 71);"></i>FearOG</a> </li>
                 </ul>
               </div>
             </div>
@@ -143,13 +143,14 @@
 </header>
 <script>
     var navPc = document.getElementById("Nav_PC")
+    var navPcText=document.getElementById("navpc-text")
     var bodyScroll=document.getElementsByTagName("body")[0]
     bodyScroll.onscroll =function(){
         if(document.documentElement.scrollTop > 48){
-        navPc.setAttribute("style", "position:fixed; left:0; right:0; top:0; z-index:1")
+        navPc.setAttribute("style", "position:fixed; left:0; right:0; top:0; z-index:1; background-color: rgba(0, 0, 0, 0.8);" )
         }
         else{
-            navPc.setAttribute("style", "background-color:black; height:85px ")
+            navPc.setAttribute("style", "height:85px")
         }
     }
 </script>

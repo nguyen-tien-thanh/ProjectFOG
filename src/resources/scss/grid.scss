@@ -263,6 +263,12 @@
    .des-sm{
        
    }
+//    page event list
+    .dropdown-mobile{
+        display: block;
+        z-index: 1;
+        transform: translateY(-60px) translateX(-10px);
+    }
      
    
 }

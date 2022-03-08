@@ -1,5 +1,5 @@
 <h1 class="text-center">Event </h1>
-<div class="mt-4">
+<div class="mt-4 ">
     <ul class="row">
     <div class="col-3">
             <ul class="list-group list__group-mobile list__group-tablet">
@@ -8,6 +8,19 @@
                     <a class="list-group-item list-group-item-action list-hover" href="/event/{{this.slug}}"><li>{{this.name}}</li></a>
                 {{/each}}
             </ul>
+            
+        <div class="dropdown dropdown-mobile ">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Event List
+        </button>
+        <div class="dropdown-menu table-responsive-lg" aria-labelledby="dropdownMenu2">
+            {{#each event}}
+            <a href="/event/{{this.slug}}" class="detail-page">
+            <button  class="dropdown-item" type="button"><li>{{this.name}}</li></button>
+            {{/each}}
+            </a>
+        </div>
+        </div>
         </div>
 
    <div class="col-9 row col-modify">

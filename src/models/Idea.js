@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
@@ -7,8 +8,8 @@ const Schema = mongoose.Schema;
 const Idea = new Schema({
     title: {type: String, minLength: 1, maxLength: 255},
     detail: {type: String, minLength: 1},
-    type: {type: String, minLength: 1},
-    author: {type: String, minLength: 1},
+    categoryName: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
+    username: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     comment: [{
         "userName": {type: String},
         "annoymous": {type: Boolean, default: false},
