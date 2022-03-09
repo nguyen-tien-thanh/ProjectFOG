@@ -1009,7 +1009,9 @@ img.img-center {
   text-align: center; }
 
 #M-CA {
-  background-color: #8B93FC; }
+  background-color: #8B93FC;
+  width: 15em;
+  border-radius: 2em; }
 
 #N-CA {
   background-color: #DCCB97; }
@@ -1018,90 +1020,153 @@ img.img-center {
   opacity: 0.5; }
 
 #h1-create-category,
-#h2-create-category,
-#p-create-category {
+#create-name,
+#create-box,
+#create-button {
   text-align: center;
   line-height: 2em; }
 
-#h2-create-category {
-  font-size: 1.2em; }
+#create-all {
+  margin: 0.3% auto 2% auto;
+  border: 1em solid #eed9d9;
+  width: 60%;
+  border-radius: 5em; }
 
-#N-create-category {
-  width: auto;
-  background-color: black;
-  color: pink;
-  padding: 1em 15em;
-  border-radius: 5em;
-  cursor: pointer; }
+#box-text,
+#box-date-submit,
+#box-date-Cmt {
+  width: 70%;
+  border-radius: 1em; }
 
-#N-create-category:hover {
-  opacity: 0.8; }
-
-.create-modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding-top: 7em; }
-
-.cr-modal-content {
-  background-color: #fefefe;
-  margin: 10% auto 15% auto;
-  border: 1px solid #888;
-  width: 65%; }
-
-.create-container {
-  padding: 1.5rem; }
-
-#h3-create-category {
-  text-align: center; }
-
-#input type[text-create-category] {
-  padding: 1rem 10rem;
-  margin: 0.5rem 0;
-  display: inline-block;
-  border: 0.01rem solid #ccc;
-  box-sizing: border-box; }
-
-.btn-success-1 {
-  padding: .3em 4em;
+#box-sub-but {
+  padding: 0.2em 3em;
   border-radius: 2em;
   background-color: black;
   color: lightpink;
   cursor: pointer; }
 
-.cancelbtn-1 {
-  width: auto;
-  padding: .3em 4em;
-  border-radius: 2em;
-  background-color: #d47872;
-  color: black;
-  cursor: pointer; }
-
-.btn-success-1:hover,
-.cancelbtn-1:hover {
+#box-sub-but:hover {
   opacity: 0.85; }
 
-.animate-cr {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s; }
+#h1-edit-category,
+#edit-name,
+#edit-box,
+#edit-butsub {
+  text-align: center;
+  line-height: 2em; }
 
-@-webkit-keyframes animatezoom {
-  from {
-    -webkit-transform: scale(0); }
-  to {
-    -webkit-transform: scale(1); } }
+#edit-all {
+  margin: 0.3% auto 2% auto;
+  border: 1em solid #d9e2ee;
+  width: 60%;
+  border-radius: 5em; }
 
-@keyframes animatezoom {
-  from {
-    transform: scale(0); }
-  to {
-    transform: scale(1); } }
+#box-text-edit,
+#box-date-EditSubmit,
+#box-date-EditCmt,
+#box-text-EditcreatedAt {
+  width: 70%;
+  border-radius: 1em; }
+
+#box-edit-sub {
+  padding: 0.2em 3em;
+  border-radius: 2em;
+  background-color: black;
+  color: lightblue;
+  cursor: pointer; }
+
+#box-edit-sub:hover {
+  opacity: 0.85; }
+
+#h1-manage-category,
+#p-manage-category {
+  text-align: center;
+  line-height: 1.5em; }
+
+#manage-but1 {
+  background-color: black;
+  color: #c1e0ac;
+  border-radius: 1em;
+  border: white; }
+
+#manage-but1:hover {
+  background-color: #568181;
+  opacity: 0.6; }
+
+#manage-line1 {
+  text-align: center;
+  background-color: #c1e0ac;
+  color: #5a3e5f; }
+
+#manage-line2 {
+  text-align: center; }
+
+#manage-line2-1 {
+  text-align: center; }
+
+#ED {
+  background-color: #DCCB97;
+  color: black; }
+
+#DE {
+  background-color: #FCB38B;
+  color: black; }
+
+#DL {
+  background-color: #8B93FC;
+  color: black; }
+
+#ED:hover,
+#DE:hover,
+#DL:hover {
+  opacity: 0.6; }
+
+#manage-line2-0 {
+  text-align: center; }
+
+#h1-show-category {
+  text-align: center;
+  line-height: 1.5em; }
+
+#h1-trash-category,
+#p-trash-category {
+  text-align: center;
+  line-height: 1.5em; }
+
+#trash-button {
+  background-color: black;
+  color: #c7f5c0;
+  width: 7em;
+  border-radius: 0.5em; }
+
+#trash-button:hover {
+  opacity: 0.7; }
+
+#trash-first {
+  background-color: #c7f5c0;
+  color: black;
+  text-align: center; }
+
+#trash-second {
+  text-align: center; }
+
+#trash-second-td1 {
+  padding: 0.5em 3em; }
+
+#trash-cate-button1 {
+  background-color: #DCCB97;
+  color: black; }
+
+#trash-cate-button2 {
+  background-color: #FCB38B;
+  color: black; }
+
+#trash-cate-button1:hover,
+#trash-cate-button2:hover {
+  opacity: 0.9; }
+
+#trash-three {
+  text-align: center; }
 
 .co-xxxlarge {
   text-align: center;
@@ -1404,4 +1469,4 @@ body li {
   border: #ff3247; }
 
 .btn-secondary:hover {
-  background-color: #ff3247; }
+  background-color: #838eca; }
