@@ -47,7 +47,6 @@
                             <div class="nav_tablet">
                                 <label for="option-nav" class="x-btn" style="cursor: pointer;">x</label>
                                 <ul>
-                                    <li><a href="">Homepage</a></li>
                                     {{#if userLogin}}
                                     <li>
                                         <a>Event <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
@@ -72,7 +71,6 @@
                                                 <a href="../idea/create">Create Idea</a>
                                                 <a href="/idea/manage">Manage Idea</a>
                                             </div>
-                                        </div>
                                     </li>
                                     <li>
                                             <a>Category <i class="fa fa-angle-down"></i></a>
@@ -81,7 +79,6 @@
                                                 <a href="../category/create">Create Category</a>
                                                 <a href="/category/manage">Manage Category</a>
                                             </div>
-                                        </div>
                                     </li>
                                     <li>
                                             <a>User <i class="fa fa-angle-down"></i></a>
@@ -90,9 +87,9 @@
                                                 <a href="../user/create">Create User</a>
                                                 <a href="/user/manage">Manage User</a>
                                             </div>
-                                        </div>
                                     </li>
                                     {{else}}
+                                    <li><a href="">Homepage</a></li>
                                     <li><a href="/event">Event</a></li>
                                     <li><a href="/news">News</a></li>
                                     <li><a href="">Terms & Conditions</a></li>
