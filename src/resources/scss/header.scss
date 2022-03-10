@@ -128,7 +128,7 @@ header {
   display: inline-block;
 }
 .Nav-right li {
-  padding-right: 100px;
+  padding-right: 80px;
   padding-top: 30px;
   padding-left: 20px;
 }
@@ -153,7 +153,7 @@ header {
   .news-idea-event-content{
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     border-radius: 5px;
     z-index: 1;
@@ -288,7 +288,7 @@ header {
   background-color: #f1f1f1;
 }
 
-@media only screen and (min-width: 740px) and (max-width: 1200px) {
+@media only screen and (min-width: 738px) and (max-width: 1200px) {
   .Nav_PC {
     display: none;
   }
@@ -324,6 +324,12 @@ header {
     align-items: center;
     font-size: 30px;
   }
+  .nav_tablet{
+    width: 160px;
+  }
+  .x-btn{
+    margin-left: 138px;
+  }
   .nav-left-tablet {
     position: absolute;
     top: 50px;
@@ -352,3 +358,6 @@ header {
     padding-right: 10px;
   }
 }
+
+
+
