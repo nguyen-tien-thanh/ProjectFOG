@@ -8,9 +8,32 @@ const { mongooseToObject } = require('../ulti/mongoose')
 const formidable = require("formidable");
 var fs = require('fs');
 
+const path = require('path');
+const admz = require('adm-zip');
+//Download all submitted files as ZIP
+
+const to_zip = fs.readdirSync(path.join(__dirname, '../uploads/idea'));
 
 class IdeaController {
     
+    //[GET] /idea/download
+    download(req,res,next) {
+        //request the specific file and then print the data in it
+        res.sendFile(__dirname+'/'+'admin')
+        //created as an object of class admz() which contains functionalities
+        var zp = new admz();
+        // file of our folder "uploads/idea" and convert each of them to a zip!
+        for(var k=0 ; k<to_zip.length ; k++){
+            zp.addLocalFile(path.join(__dirname , '../uploads/idea', to_zip[k]))
+        }
+        const file_after_download = 'downloaded_file.zip';
+        const data = zp.toBuffer();
+        res.set('Content-Type','application/octet-stream');
+        res.set('Content-Disposition',`attachment; filename=${file_after_download}`);
+        res.set('Content-Length',data.length);
+        res.send(data);
+    }
+
     //[POST] /idea/:id/interactive
     interactive(req,res,next){
         const action = req.body.action;

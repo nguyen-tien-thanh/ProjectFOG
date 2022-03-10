@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize')
-const {ROLE} = require('../models/Role')
 
 const ideaController = require('../Controllers/IdeaController');
+
+// [GET] /idea/download idea
+router.get('/download', isLoggedIn, isAdmin, ideaController.download)
 
 // [POST] /idea/:id/interactive idea
 router.put('/:id/interactive', isLoggedIn, ideaController.interactive)

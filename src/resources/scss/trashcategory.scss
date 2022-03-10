@@ -1,0 +1,54 @@
+#h1-trash-category,
+#p-trash-category
+{
+    text-align: center;
+    line-height: 1.5em;
+}
+
+#trash-button
+{
+    background-color: black;
+    color:  rgb(199, 245, 192);
+    width: 7em;
+    border-radius: 0.5em;
+}
+#trash-button:hover
+{
+  opacity: 0.7;
+}
+
+#trash-first
+{
+    background-color: rgb(199, 245, 192);
+    color: black;
+    text-align: center;
+}
+
+#trash-second
+{
+    text-align: center;
+}
+#trash-second-td1
+{
+    padding: 0.5em 3em;
+}
+#trash-cate-button1
+{
+    background-color: #DCCB97;
+    color: black;
+}
+#trash-cate-button2
+{
+    background-color: #FCB38B;
+    color: black;
+}
+#trash-cate-button1:hover,
+#trash-cate-button2:hover
+{
+  opacity: 0.9;
+}
+
+#trash-three
+{
+    text-align: center;
+}
