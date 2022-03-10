@@ -772,7 +772,7 @@ header {
 
 .event-detail__info {
   transform: translateX(-30px) translateY(-20px);
-  margin-top: 30px; }
+  margin: 30px; }
 
 .event-edit {
   margin-bottom: 12px; }
@@ -1264,7 +1264,10 @@ img.img-center {
   .title-tablet {
     font-size: 0.9rem; }
   .col-tablet {
-    transform: translateX(80px); } }
+    transform: translateX(80px); }
+  .event-detail__info-tablet {
+    transform: translateX(-10px) translateY(-20px);
+    margin-top: 30px; } }
 
 /* MOBILE */
 @media (max-width: 740px) {
