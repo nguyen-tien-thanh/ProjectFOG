@@ -1,114 +1,109 @@
-<h1>Stored Category</h1>
-<a href="/category/trash">Trash Category </a>
-(Total deleted Category: {{deletedCount}})
+<h1 id="h1-manage-category"><B>CATEGORY MANAGEMENT</B></h1>
+<p id="p-manage-category"><a href="/category/trash"><b><i> Trash Category </i></b></a>(Total: {{deletedCount}})</p>
 
 <form name="container-form" action="/category/handle-form-actions" method="POST">
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
-            <label class="form-check-label" for="checkbox-all">
-                Select all categories
-            </label>
+            <label class="form-check-label" for="checkbox-all"><b>Select All Categories</b></label>
         </div>
 
         <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
             <option value="delete">Delete</option>
         </select>
 
-        
-        <button value="Do action" type="button" class="btn btn-primary disabled check-all-submit-btn">
-            Do action
-        </button>
+        <button id="manage-but1" value="Do action" type="button" class="btn btn-primary disabled check-all-submit-btn"><b>Do Action</b></button>
     </div>
 
     <table class="table mt-4">
-    <thead>
-        <tr>
-        <th></th>
-        <th scope="col">No (Total: {{storedCount}})</th>
-        <th scope="col">Category Name</th>
-        <th scope="col">Created Date</th>
-        <th scope="col">Deadline Submit</th>
-        <th scope="col">Deadline Comment</th>
-        <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each category}}
-        <tr>
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="categoryIds[]" value="{{this._id}}" >
-                    </label>
-                </div>
-            </td>
-        <th scope="row">{{sum @index 1}}</th>
-        <td>{{this.categoryName}}</td>
-        <td>{{moment this.createdAt format="DD-MM-YYYY"}}</td>
-        <td>{{moment this.deadlineSubmit format="DD-MM-YYYY"}}</td>
-        <td>{{moment this.deadlineCmt format="DD-MM-YYYY"}}</td>
-        <td style="padding:5px">
-            <a href="/category/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
-            <a href="/category/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-category" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
-        </td>
-        </tr>
-        {{else}}
-        <tr>
-            <td colspan="5" class="text-center">
-                You have not created any category.
-                <a href="/category/create">Create new one?</a>
-            </td>
-        </tr>
+        <thead>
+            <tr id="manage-line1">
+                <th></th>
+                <th scope="col">No <i>(Total: {{storedCount}})</i></th>
+                <th scope="col">Category Name</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">Deadline Submit</th>
+                <th scope="col">Deadline Comment</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
 
-        {{/each}}
-    </tbody>
+        <tbody>
+            {{#each category}}
+            <tr id="manage-line2">
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="categoryIds[]" value="{{this._id}}">
+                    </div>
+                </td>
+                <th scope="row">{{sum @index 1}}</th>
+                <td><b>{{this.categoryName}}</b></td>
+                <td>{{moment this.createdAt format="DD-MM-YYYY"}}</td>
+                <td>{{moment this.deadlineSubmit format="DD-MM-YYYY"}}</td>
+                <td>{{moment this.deadlineCmt format="DD-MM-YYYY"}}</td>
+                <td style="padding:5px">
+                    <a href="/category/{{this._id}}/edit">
+                        <button id="ED" type="button" class="btn btn-secondary"><i>Edit</i></button></a>
+                    <a href="/category/{{this.slug}}">
+                        <button id="DE" type="button" class="btn btn-secondary"><i>Detail</i></button></a>
+                    <a href="" data-toggle="modal" data-target="#delete-category" data-id="{{this._id}}">
+                        <button id="DL" class="btn btn-secondary"><i>Delete</i></button></a>
+                </td>
+            </tr>
+                {{else}}
+            <tr id="manage-line2-0">
+                <td colspan="10">You have not created any category.
+                    <a href="/category/create"><i>Create new one?</i></a>
+                </td>
+            </tr>
+                {{/each}}
+        </tbody>
     </table>
 
     {{!-- Confirm delete code --}}
     <div class="modal fade" id="delete-category" tabindex="-1" role="dialog" aria-labelledby="delete-categoryLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="delete-categoryLabel">Delete Category</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure to delete this category?
-            </div>
-            <div class="modal-footer">
-                <button id="btn-delete-category" type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="delete-categoryLabel"><b>Delete Category</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">Are you sure to delete this category?</div>
+                
+                <div class="modal-footer">
+                    <button id="btn-delete-category" type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                </div>
             </div>
         </div>
-        </div>
+    </div>
 
         <!-- Delete multiple categories model confirm -->
-        <div class="modal fade" id="delete-multiple-categories" tabindex="-1" role="dialog" aria-labelledby="delete-multiple-categoriesLabel" aria-hidden="true">
+    <div class="modal fade" id="delete-multiple-categories" tabindex="-1" role="dialog" aria-labelledby="delete-multiple-categoriesLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="delete-multiple-categoriesLabel">Delete category</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure to <b>delete</b> these categories?
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger btn-small disabled delete-multiple-categories-btn">Delete</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="delete-multiple-categoriesLabel"><b>Delete category</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">Are you sure to <b><i>delete</i></b> these categories?</div>
+            
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-small disabled delete-multiple-categories-btn">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-        </div>
+    </div>
 </form>
         {{!-- Delete form hidden --}}
-        <form name="delete-category-form" method="post"></form>
+<form name="delete-category-form" method="post"></form>
 
         <script>
             //WHEN HTML DOM is loaded, Delete confirm shows
@@ -162,7 +157,6 @@
                     }
                 })
                 
-
                 //Re-render check all submit button <Go>
                 function renderCheckAllSubmitBtn() {
                     var checkedCount = $('input[name="categoryIds[]"]:checked').length;
@@ -178,6 +172,5 @@
                         checkAllSubmitBtn.attr("data-target","");
                     }
                 }
-                
             })
         </script>

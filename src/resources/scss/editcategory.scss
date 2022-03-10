@@ -1,0 +1,38 @@
+#h1-edit-category,
+#edit-name,
+#edit-box,
+#edit-butsub
+{
+    text-align: center;
+    line-height: 2em;
+}
+#edit-all
+{
+  margin: 0.3% auto 2% auto;
+  border: 1em solid rgb(217, 226, 238);
+  width: 60%;
+  border-radius: 5em;
+}
+
+#box-text-edit,
+#box-date-EditSubmit,
+#box-date-EditCmt,
+#box-text-EditcreatedAt
+{
+  width: 70%;
+  border-radius: 1em;
+}
+
+
+#box-edit-sub
+{
+  padding: 0.2em 3em;
+  border-radius: 2em;
+  background-color: black;
+  color: lightblue;
+  cursor: pointer;
+}
+#box-edit-sub:hover
+{
+  opacity: 0.85;
+}

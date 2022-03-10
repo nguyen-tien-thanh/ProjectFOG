@@ -11,6 +11,10 @@
 @import "news.scss";
 @import "category.scss";
 @import "createcategory.scss";
+@import "editcategory.scss";
+@import "managecategory.scss";
+@import "showcategory.scss";
+@import "trashcategory.scss";
 @import "contact.scss";
 @import "grid.scss";
 @import "error.scss";
@@ -33,7 +37,7 @@ body li {
 }
 
 .btn-secondary:hover {
-  background-color: rgb(255, 50, 71);
+  background-color: rgb(131, 142, 202);
 }
 
 

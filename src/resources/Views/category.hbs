@@ -2,8 +2,8 @@
 
 <div id="mySide" class="side">
     <a href="./category/create" id="C"><b><i> Create </i></b></a>
-    <a href="./category/create.hbs" id="U"><b><i> Update </i></b></a>
-    <a href="./category/create.hbs" id="D"><b><i> Delete </i></b></a></div>
+    <a href="./category/manage" id="U"><b><i> Update </i></b></a>
+    <a href="./category/trash" id="D"><b><i> Delete </i></b></a></div>
 
 <div class="panel panel-default-category">
     <div class="panel-body-category">
@@ -27,7 +27,7 @@
                         <h6 class="card-title-category">{{this.categoryName}}</h6></a></td>
                     <td>
                         <a href="/category/{{this.slug}}" class="btn btn-primary-category" id="M-CA"> Category Detail 
-                            <P><h6 class="card-title-category">{{this.categoryName}}</h5></P></a></td>
+                            <P><h6 class="card-title-category"><b><i>{{this.categoryName}}</i></b></h5></P></a></td>
                     <td>
                         <a href="/idea/{{this._id}}/add-idea"><button class="btn btn-warning-category btn-circle-category" id="N-CA">
                             <i class="fa fa-edit"></i></button>

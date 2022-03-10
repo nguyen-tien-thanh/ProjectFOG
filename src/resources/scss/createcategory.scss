@@ -1,99 +1,36 @@
 #h1-create-category,
-#h2-create-category,
-#p-create-category
+#create-name,
+#create-box,
+#create-button
 {
   text-align: center;
   line-height: 2em;
 }
-#h2-create-category
+
+#create-all
 {
-  font-size: 1.2em;
-}
-#N-create-category
-{
-  width: auto;
-  background-color: black;
-  color: pink;
-  padding: 1em 15em;
+  margin: 0.3% auto 2% auto;
+  border: 1em solid rgb(238, 217, 217);
+  width: 60%;
   border-radius: 5em;
-  cursor: pointer;
 }
-#N-create-category:hover 
+#box-text,
+#box-date-submit,
+#box-date-Cmt
 {
-  opacity: 0.8;
-}
-
-.create-modal 
-{
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-  padding-top: 7em;
-}
-.cr-modal-content 
-{
-  background-color: #fefefe;
-  margin: 10% auto 15% auto;
-  border: 1px solid #888;
-  width: 65%;
+  width: 70%;
+  border-radius: 1em;
 }
 
-.create-container 
+#box-sub-but
 {
-  padding: 1.5rem;
-}
-#h3-create-category
-{
-  text-align: center;
-}
-
-#input type[text-create-category]
-{
-  padding: 1rem 10rem;
-  margin: 0.5rem 0;
-  display: inline-block;
-  border: 0.01rem solid #ccc;
-  box-sizing: border-box;
-}
-.btn-success-1
-{
-  padding: .3em 4em;
+  padding: 0.2em 3em;
   border-radius: 2em;
   background-color: black;
   color: lightpink;
   cursor: pointer;
 }
-.cancelbtn-1 
-{
-  width: auto;
-  padding: .3em 4em;
-  border-radius: 2em;
-  background-color: #d47872;
-  color: black;
-  cursor: pointer;
-}
-.btn-success-1:hover,
-.cancelbtn-1:hover
+#box-sub-but:hover
 {
   opacity: 0.85;
-}
-
-.animate-cr
-{
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
 }
