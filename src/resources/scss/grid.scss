@@ -100,21 +100,32 @@
     .list__group-tablet{
         
     }
+
+    .list-tablet{
+        // display:none;
+    }
     //event page img
     .img-tablet {
-        width: 100%;
-        height: 100px;
         display: block;
+        width: 100%;
+        height: 150px;
         object-fit: cover;
-        
+        overflow: hidden;
+        // background:red;  
+      }
+
+      .title-tablet{
+        font-size:0.9rem;
       }
     //   event page detail
     .col-tablet{
         transform: translateX(80px);
     }
-    
 
-    
+    .event-detail__info-tablet {
+        transform: translateX(-10px) translateY(-20px);
+        margin-top: 30px;   
+    }
 }
 
 /* MOBILE */
@@ -256,6 +267,12 @@
    .des-sm{
        
    }
+//    page event list
+    .dropdown-mobile{
+        display: block;
+        z-index: 1;
+        transform: translateY(-60px) translateX(-10px);
+    }
      
    
 }

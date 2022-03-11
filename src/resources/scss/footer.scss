@@ -1,26 +1,4 @@
-// footer {
-//   font-size: 16px;
-//   background-color: black;
-// }
-// .col-2 li {
-//   list-style: none;
-//   padding-top: 20px;
-//   color: white;
-// }
 
-// .col-2 a {
-//   color: white;
-// }
-// .col-2 .infor {
-//   opacity: 0.6;
-// }
-
-// // CSS for Colum4
-// .col-6 li {
-//   list-style: none;
-//   color: white;
-//   padding-top: 20px;
-// }
 
 .site-footer
 {
@@ -89,13 +67,6 @@
 {
   margin:0
 }
-@media (max-width:991px)
-{
-  .site-footer
-  {
-    margin-bottom:30px
-  }
-}
 @media (max-width:767px)
 {
   .site-footer
@@ -159,8 +130,8 @@
 {
   .social-icons li
   {
-    display:block;
+    display:inline;
     margin-right:0;
-    font-weight:600
+    font-weight:600;
   }
 }

@@ -2,8 +2,12 @@
 <a href="/idea/trash">Trash idea </a>
 (Total deleted idea: {{deletedCount}})
 
+<<<<<<< HEAD
+<form class="idea-manage" name="container-form" action="/idea/handle-form-actions" method="POST">
+=======
         <a href="/idea/download"><button class="btn btn-primary"> Download all</button></a>
 <form name="container-form" action="/idea/handle-form-actions" method="POST">
+>>>>>>> c9ffa1adb530587bcf96ccc3fc72076638475186
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
@@ -23,7 +27,7 @@
         {{!-- <button class="btn btn-primary btn-small disabled check-all-submit-btn">Go</button> --}}
     </div>
 
-    <table class="table mt-4">
+    <table class="table mt-4 table-responsive-sm table-responsive-md">
     <thead>
         <tr>
             <th></th>
@@ -56,9 +60,9 @@
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td>{{this.file}}</td>
         <td style="padding:5px">
-            <a href="/idea/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
-            <a href="/idea/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
+            <a href="/idea/{{this._id}}/edit"><button type="button" class="btn btn-secondary btn-crud-reponsive">Edit</button></a>
+            <a href="/idea/{{this.slug}}"><button type="button" class="btn btn-secondary btn-crud-reponsive">Detail</button></a>
+            <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}"><button class="btn btn-secondary btn-crud-reponsive">Delete</button></a>
         </td>
         </tr>
         {{else}}
