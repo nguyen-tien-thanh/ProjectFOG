@@ -13,10 +13,9 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 
 const hbs = exphbs.create({ 
-  extname: '.hbs', 
-  helper: {
-    sum: (a,b) => a+b,
-}})
+  helpers:require('./ulti/helpers'),
+  extname: '.hbs'
+})
 
 const helpers = require('handlebars-helpers')();
 

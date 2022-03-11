@@ -4,6 +4,7 @@ const User = require('../models/User');
 const Category = require('../models/Category');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
+const sendMail = require('../ulti/mail')
 
 const formidable = require("formidable");
 var fs = require('fs');
@@ -15,6 +16,22 @@ const admz = require('adm-zip');
 const to_zip = fs.readdirSync(path.join(__dirname, '../uploads/idea'));
 
 class IdeaController {
+
+    //[POST] /idea/email
+    email(req,res) {
+        // const { subject, email, text } = req.body;
+
+        // console.log('Data: ', req.body);
+
+        // sendMail(email, subject, text, function(err, data) {
+        //     if (err) {
+        //         console.log('ERROR: ', err);
+        //         return res.status(500).json({ message: err.message || 'Internal Error' });
+        //     }
+        //     console.log('Email sent!!!');
+        //     return res.json({ message: 'Email sent!!!!!' });
+        // });
+    }
     
     //[GET] /idea/download
     download(req,res,next) {
