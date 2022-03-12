@@ -2,12 +2,11 @@
 <a href="/idea/trash">Trash idea </a>
 (Total deleted idea: {{deletedCount}})
 
-<<<<<<< HEAD
-<form class="idea-manage" name="container-form" action="/idea/handle-form-actions" method="POST">
-=======
-        <a href="/idea/download"><button class="btn btn-primary"> Download all</button></a>
+{{#ifeq userLogin.role 'Admin'}}
+<a href="/idea/download"><button class="btn btn-primary"> Download all</button></a>
+{{/ifeq}}
+
 <form name="container-form" action="/idea/handle-form-actions" method="POST">
->>>>>>> c9ffa1adb530587bcf96ccc3fc72076638475186
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">

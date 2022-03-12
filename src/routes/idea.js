@@ -5,9 +5,6 @@ const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize')
 
 const ideaController = require('../Controllers/IdeaController');
 
-// [GET] /idea/email idea
-router.post('/email', isLoggedIn, isAdmin, ideaController.email)
-
 // [GET] /idea/download idea
 router.get('/download', isLoggedIn, isAdmin, ideaController.download)
 

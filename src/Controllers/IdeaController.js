@@ -9,29 +9,15 @@ const sendMail = require('../ulti/mail')
 const formidable = require("formidable");
 var fs = require('fs');
 
+// Libraries for Download all files uploaded
 const path = require('path');
 const admz = require('adm-zip');
-//Download all submitted files as ZIP
 
+//Download all submitted files as ZIP
 const to_zip = fs.readdirSync(path.join(__dirname, '../uploads/idea'));
 
 class IdeaController {
 
-    //[POST] /idea/email
-    email(req,res) {
-        // const { subject, email, text } = req.body;
-
-        // console.log('Data: ', req.body);
-
-        // sendMail(email, subject, text, function(err, data) {
-        //     if (err) {
-        //         console.log('ERROR: ', err);
-        //         return res.status(500).json({ message: err.message || 'Internal Error' });
-        //     }
-        //     console.log('Email sent!!!');
-        //     return res.json({ message: 'Email sent!!!!!' });
-        // });
-    }
     
     //[GET] /idea/download
     download(req,res,next) {
@@ -43,7 +29,7 @@ class IdeaController {
         for(var k=0 ; k<to_zip.length ; k++){
             zp.addLocalFile(path.join(__dirname , '../uploads/idea', to_zip[k]))
         }
-        const file_after_download = 'downloaded_file.zip';
+        const file_after_download = 'fearOG_files.zip';
         const data = zp.toBuffer();
         res.set('Content-Type','application/octet-stream');
         res.set('Content-Disposition',`attachment; filename=${file_after_download}`);
@@ -206,18 +192,32 @@ class IdeaController {
     store(req,res,next) {
         const form = new formidable.IncomingForm();
         form.parse(req, function(err, fields, files){
-  
+        
         const oldPath = files.file.filepath;
-        const newPath = 'src/uploads/idea/' + files.file.originalFilename
+        const newPath = path.join(__dirname, '../uploads/idea') + files.file.originalFilename
         const rawData = fs.readFileSync(oldPath)
         const idea = new Idea(fields);
         
-            
             idea.file = files.file.originalFilename;
             fs.writeFile(newPath, rawData, function(err){
                 if(err) console.log(err)
-                idea.save()
-                return res.send("Successfully uploaded")
+                idea.save(
+                    function(err,idea){
+                        if(err){
+                            return res.status(400).send({
+                                message : err
+                            });
+                        }else{
+                            const subject = fields.title
+                            const text = fields.detail
+                            const author = fields.author
+                            const category = fields.category
+                            console.log(subject, text, author, category)
+                            sendMail(subject, text, author, category);
+                            return res.redirect('/idea');
+                        }
+                    }
+                )
             })
         })
     }

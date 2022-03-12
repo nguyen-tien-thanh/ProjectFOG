@@ -16,7 +16,7 @@ const Idea = new Schema({
         "content": {type: String},
         "commentAt": {type: Date, default: Date.Now},
     }],
-    file: {type: String},
+    file: {type: String, default: 'None'},
     ratings: {type: Number, default: 0},
     view: {type: String},
     slug: {type : String, slug : 'title', unique: true},
