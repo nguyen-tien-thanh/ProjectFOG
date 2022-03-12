@@ -214,10 +214,11 @@ class IdeaController {
                             const category = fields.category
                             console.log(subject, text, author, category)
                             sendMail(subject, text, author, category);
-                            return res.redirect('/idea');
+                            return res.json(idea);
                         }
                     }
                 )
+                // return res.send("Successfully uploaded")
             })
         })
     }
