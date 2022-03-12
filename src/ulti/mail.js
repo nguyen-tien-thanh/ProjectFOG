@@ -12,18 +12,22 @@ const auth = {
 
 const transporter = nodemailer.createTransport(mailGun(auth));
 
+const current_date = Date();
+
 const sendMail = ( subject, text, author, category) => {
     const mailOptions = {
         // from: 'nguyentienthanh.tgdd@gmail.com',
         from: 'nguyentienthanh.tgdd@gmail.com',
-        to: 'thanh.kira_flynn@yahoo.com',
-        subject: 'An idea has been uploaded ',
+        to: 'hoanghiep3411@gmail.com',
+        subject: 'Notification Email',
         text,
         html: 
-        '<h3 style ="text-transform: uppercase; color: red">Name: '+ subject + '</h3>' +
-        '<p style ="text-transform: capitalize;"> '+ text + '</p>'+
-        '<span style ="text-transform: capitalize; color: lightgrey">Author: '+ author + '</span><br>' +
-        '<span style ="text-transform: capitalize; font-size:8px">Category name: '+ category + '</span>',
+        '<p>A new idea has been submitted to the system: </p>' +
+        '<p style ="text-transform: capitalize;"><b>Created At: </b>' + current_date + '</p><br>' +
+        '<h3 style ="text-transform: uppercase; color: red; text-align: center;"> '+ subject + '</h3>' +
+        '<p style ="text-transform: capitalize;"><b>Idea detail: </b>'+ text + '</p><br>'+
+        '<p style ="text-transform: capitalize;"><b>Author: </b>'+ author + '</p>' +
+        '<p style ="text-transform: capitalize;"><b>Category name: </b>'+ category + '</p>',
     }
 
     transporter.sendMail(mailOptions)
