@@ -43,16 +43,18 @@
 
                     <form action="/idea/{{this._id}}/storeComment?_method=PUT" method="post"> 
                         <label for="idea-comment">Write a comment:</label>
-                        <input class="form-control" type="text" style="" id="comment-user-name" name="userName">
+                        <input class="form-control" type="text" style="" id="comment-user-name" name="userName" disabled>
                         <text>content:</text><input class="form-control" type="text" name="content">
-                        <text>Cmt at:</text><input class="form-control" style="" id="comment-date" name="commentAt">
-
-                        <text>Idea id:</text><input type="" id="comment-idea-id" name="idea_id" value="{{this._id}}">
-
                         <p>
                             <input type="checkbox" style="" id="comment-annoymous" value="true" name="annoymous">
                             Comment as anonymous
                         </p>
+                        {{!-- ====================== For send email comment ====================================--}}
+                        <text>Cmt at:</text><input class="form-control" style="" id="comment-date" name="commentAt">
+                        <text>Idea id:</text><input type="" id="comment-idea-id" name="idea_id" value="{{this._id}}">
+                        <input type="text" name="ideaTitle" value="{{this.title}}">
+                        <input type="text" name="emailReceiver" value="{{this.username.email}}">
+                        {{!-- ============================================================================ --}}
                         <input type="submit" value="Submit">
                     </form> 
                     

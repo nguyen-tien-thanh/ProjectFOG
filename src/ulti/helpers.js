@@ -20,6 +20,13 @@
         return options.inverse(this);  
       }
     },
+    ifequal: function(a,b, options){
+      if (a === b){
+        return options.fn(this);
+      }else{
+        return options.inverse(this);  
+      }
+    },
     isAdmin: function(username, options) {
       var Admins = 'Admin';
       if(Admins.includes (username)) {

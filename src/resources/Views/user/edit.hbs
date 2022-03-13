@@ -82,7 +82,7 @@
 										<h6 class="mb-0">Role</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="text" class="form-control" name="role" value="{{user.role}}" disabled>
+										<input type="text" class="form-control" id="role-choose" name="role" value="{{user.role}}" disabled>
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -163,3 +163,13 @@
       </div>
     </div>
   </div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		var roleChoose = $('#role-choose')
+		console.log(roleChoose)
+		if ( '{{userLogin.role}}' == 'Admin' || '{{userLogin._id}}' == '{{user._id}}'){
+			roleChoose.prop("disabled", false);
+		}
+	})
+</script>

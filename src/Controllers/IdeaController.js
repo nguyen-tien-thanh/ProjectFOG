@@ -5,6 +5,7 @@ const Category = require('../models/Category');
 const { multipleMongooseToObject } = require('../ulti/mongoose')
 const { mongooseToObject } = require('../ulti/mongoose')
 const sendMail = require('../ulti/mail')
+const mailComment = require('../ulti/mailComment')
 
 const formidable = require("formidable");
 var fs = require('fs');
@@ -212,13 +213,11 @@ class IdeaController {
                             const text = fields.detail
                             const author = fields.author
                             const category = fields.category
-                            console.log(subject, text, author, category)
                             sendMail(subject, text, author, category);
                             return res.json(idea);
                         }
                     }
                 )
-                // return res.send("Successfully uploaded")
             })
         })
     }
@@ -226,9 +225,18 @@ class IdeaController {
 
     //[POST] /storeComment idea
     storeComment(req,res,next) {
+
+        const email = req.body.emailReceiver
+        const ideaTitle = req.body.ideaTitle
+        const content = req.body.content
+        const author = req.body.userName
+
         Idea.findByIdAndUpdate({_id: req.params.id}, {$push: {comment: req.body}})
-            .then(idea => res.redirect('/idea'))
-            .catch(next);  
+            .then(() => {
+                mailComment(email, ideaTitle, content, author);
+                res.redirect('/idea');
+            })
+            .catch(next);
     }
 
 
@@ -262,7 +270,8 @@ class IdeaController {
     // [GET] /idea
     index(req, res, next){
         if (req.isAuthenticated()) {
-            Promise.all([Idea.find({}).sort({ratings: -1}).limit(5), User.findOne({username: req.user.username})])
+            Promise.all([Idea.find({}).populate('username').populate('categoryName').sort({ratings: -1}).limit(5), 
+                        User.findOne({username: req.user.username})])
             .then(([idea, userLogin]) => 
             res.render('idea', {
                 idea: multipleMongooseToObject(idea),
