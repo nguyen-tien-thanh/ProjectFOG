@@ -169,9 +169,23 @@ class IdeaController {
     //[DELETE] /idea/:id
     delete(req,res,next) {
         Idea.delete({_id: req.params.id})
-            .then(() => res.redirect('back'))
+            .then(() => res.redirect('/idea'))
             .catch(next);
+    }
+
+    //[PUT] /idea/:id/descCount
+    descCount(req,res,next){
+        console.log(req.params.id+ 'aaa')
+        Category.updateOne({_id : req.params.id}, {$inc : {ideaCount : -1}}, {}, (err, numberAffected) => {
+            res.send('');
+        })
         
+
+        // const action = req.body.action;
+        // const counter = action === 'Like' ? 1 : -1;
+        // Idea.updateOne({_id: req.params.id}, {$inc: {ratings: counter}}, {}, (err, numberAffected) => {
+        //     res.send('');
+        // });
     }
 
     //[DELETE] /idea/:id/force
@@ -220,10 +234,7 @@ class IdeaController {
 
                             // Increase ideaCount in Category field
                             const catId = fields.categoryName;
-                            console.log('')
-                            console.log(catId)
-                            console.log('')
-                            Category.updateOne({_id : fields.categoryName}, {$inc : {'ideaCount' : 1}}, {}, (err, numberAffected) => {
+                            Category.updateOne({_id : catId}, {$inc : {'ideaCount' : 1}}, {}, (err, numberAffected) => {
                                 
                             });
                             return res.redirect('/idea');
