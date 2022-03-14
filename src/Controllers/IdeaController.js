@@ -97,7 +97,8 @@ class IdeaController {
 
     //[GET] /idea/trash 
     trash(req,res,next) {
-        Promise.all([Idea.findDeleted({}), Idea.countDeleted(), Idea.count(), User.findOne({username: req.user.username})])
+        Promise.all([Idea.findDeleted({}).populate('username').populate('categoryName'), 
+                    Idea.countDeleted(), Idea.count(), User.findOne({username: req.user.username})])
         .then(([idea, deletedCount, storedCount, userLogin]) => 
         res.render('idea/trash', {
             deletedCount,
@@ -195,8 +196,8 @@ class IdeaController {
         form.parse(req, function(err, fields, files){
         
         const oldPath = files.file.filepath;
-        const newPath = path.join(__dirname, '../uploads/idea') + files.file.originalFilename
-        const rawData = fs.readFileSync(oldPath)
+        const newPath = path.join(__dirname, '../uploads/idea') + files.file.originalFilename;
+        const rawData = fs.readFileSync(oldPath);
         const idea = new Idea(fields);
         
             idea.file = files.file.originalFilename;
@@ -209,12 +210,29 @@ class IdeaController {
                                 message : err
                             });
                         }else{
-                            const subject = fields.title
-                            const text = fields.detail
-                            const author = fields.author
-                            const category = fields.category
+                            // const action = req.body.action;
+                            // const counter = action === 'Like' ? 1 : -1;
+                            // Idea.updateOne({_id: req.params.id}, {$inc: {ratings: counter}}, {}, (err, numberAffected) => {
+                            //     res.send('');
+                            // });
+
+
+                            //Send mail to QA Manager
+                            const subject = fields.title;
+                            const text = fields.detail;
+                            const author = fields.author;
+                            const category = fields.category;
                             sendMail(subject, text, author, category);
-                            return res.json(idea);
+
+                            // Increase ideaCount in Category field
+                            const catId = fields.categoryName;
+                            console.log('')
+                            console.log(catId)
+                            console.log('')
+                            Category.updateOne({_id : fields.categoryName}, {$inc : {'ideaCount' : 1}}, {}, (err, numberAffected) => {
+                                
+                            });
+                            return res.redirect('/idea');
                         }
                     }
                 )

@@ -21,6 +21,7 @@
                 <th></th>
                 <th scope="col">No <i>(Total: {{storedCount}})</i></th>
                 <th scope="col">Category Name</th>
+                <th scope="col">Idea Count</th>
                 <th scope="col">Created Date</th>
                 <th scope="col">Deadline Submit</th>
                 <th scope="col">Deadline Comment</th>
@@ -38,6 +39,7 @@
                 </td>
                 <th scope="row">{{sum @index 1}}</th>
                 <td><b>{{this.categoryName}}</b></td>
+                <td>{{this.ideaCount}}</td>
                 <td>{{moment this.createdAt format="DD-MM-YYYY"}}</td>
                 <td>{{moment this.deadlineSubmit format="DD-MM-YYYY"}}</td>
                 <td>{{moment this.deadlineCmt format="DD-MM-YYYY"}}</td>
@@ -46,8 +48,12 @@
                         <button id="ED" type="button" class="btn btn-secondary"><i>Edit</i></button></a>
                     <a href="/category/{{this.slug}}">
                         <button id="DE" type="button" class="btn btn-secondary"><i>Detail</i></button></a>
-                    <a href="" data-toggle="modal" data-target="#delete-category" data-id="{{this._id}}">
+                    {{#ifeq this.ideaCount 0}}
+                        <a href="" data-toggle="modal" data-target="#delete-category" data-id="{{this._id}}">
                         <button id="DL" class="btn btn-secondary"><i>Delete</i></button></a>
+                    {{else}}
+                        <button class="btn btn-dark" disabled><i>Delete</i></button>
+                    {{/ifeq}}
                 </td>
             </tr>
                 {{else}}
@@ -105,72 +111,72 @@
         {{!-- Delete form hidden --}}
 <form name="delete-category-form" method="post"></form>
 
-        <script>
-            //WHEN HTML DOM is loaded, Delete confirm shows
-            document.addEventListener('DOMContentLoaded', function(){
-                var categoryId;
-                var deleteForm = document.forms['delete-category-form'];
-                var checkboxAll = $('#checkbox-all');
-                var categoryItemCheckBox = $('input[name="categoryIds[]"]');
-                var deleteMultipleCategoriesBtn = $('.delete-multiple-categories-btn');
-                var containerForm = document.forms['container-form'];
-                var checkAllSubmitBtn = $('.check-all-submit-btn');
+<script>
+    //WHEN HTML DOM is loaded, Delete confirm shows
+    document.addEventListener('DOMContentLoaded', function(){
+        var categoryId;
+        var deleteForm = document.forms['delete-category-form'];
+        var checkboxAll = $('#checkbox-all');
+        var categoryItemCheckBox = $('input[name="categoryIds[]"]');
+        var deleteMultipleCategoriesBtn = $('.delete-multiple-categories-btn');
+        var containerForm = document.forms['container-form'];
+        var checkAllSubmitBtn = $('.check-all-submit-btn');
 
-                $('#delete-category').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget)
-                categoryId = button.data('id')
-                })
+        $('#delete-category').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        categoryId = button.data('id')
+        })
 
-                //When delete category btn clicked
-                var btnDeleteCategory = document.getElementById('btn-delete-category')
-                btnDeleteCategory.onclick = function(){
-                    deleteForm.action = '/category/' + categoryId + '?_method=DELETE';
-                    deleteForm.submit();
-                }
+        //When delete category btn clicked
+        var btnDeleteCategory = document.getElementById('btn-delete-category')
+        btnDeleteCategory.onclick = function(){
+            deleteForm.action = '/category/' + categoryId + '?_method=DELETE';
+            deleteForm.submit();
+        }
 
-                //Checkbox all clicked
-                checkboxAll.change(function () {
-                    var isCheckedAll = $(this).prop('checked');
-                        categoryItemCheckBox.prop('checked', isCheckedAll);
-                        renderCheckAllSubmitBtn();
-                });
+        //Checkbox all clicked
+        checkboxAll.change(function () {
+            var isCheckedAll = $(this).prop('checked');
+                categoryItemCheckBox.prop('checked', isCheckedAll);
+                renderCheckAllSubmitBtn();
+        });
 
-                categoryItemCheckBox.change(function () {
-                    var isCheckedAll = categoryItemCheckBox.length === $('input[name="categoryIds[]"]:checked').length;
-                    checkboxAll.prop('checked', isCheckedAll);
-                    renderCheckAllSubmitBtn();
-                })
+        categoryItemCheckBox.change(function () {
+            var isCheckedAll = categoryItemCheckBox.length === $('input[name="categoryIds[]"]:checked').length;
+            checkboxAll.prop('checked', isCheckedAll);
+            renderCheckAllSubmitBtn();
+        })
 
-                //Check all submit btn clicked not submit
-                deleteMultipleCategoriesBtn.on('submit', function (e) {
-                    var isSubmittable = !$(this).hasClass('disable');
-                    if(!isSubmittable){
-                        e.preventDefault();
-                    }
-                })
+        //Check all submit btn clicked not submit
+        deleteMultipleCategoriesBtn.on('submit', function (e) {
+            var isSubmittable = !$(this).hasClass('disable');
+            if(!isSubmittable){
+                e.preventDefault();
+            }
+        })
 
-                checkAllSubmitBtn.on('change', function (e) {
-                    var isSubmittable = !$(this).hasClass('disable');
-                    if(isSubmittable){
-                        e.preventDefault();
-                        console.log('123')
-                    }
-                })
-                
-                //Re-render check all submit button <Go>
-                function renderCheckAllSubmitBtn() {
-                    var checkedCount = $('input[name="categoryIds[]"]:checked').length;
-                    if(checkedCount > 0){
-                        deleteMultipleCategoriesBtn.removeClass('disabled');
-                        checkAllSubmitBtn.removeClass('disabled');
-                        checkAllSubmitBtn.attr("data-toggle","modal");
-                        checkAllSubmitBtn.attr("data-target","#delete-multiple-categories");
-                    } else{
-                        deleteMultipleCategoriesBtn.addClass('disabled');
-                        checkAllSubmitBtn.addClass('disabled');
-                        checkAllSubmitBtn.attr("data-toggle","");
-                        checkAllSubmitBtn.attr("data-target","");
-                    }
-                }
-            })
+        checkAllSubmitBtn.on('change', function (e) {
+            var isSubmittable = !$(this).hasClass('disable');
+            if(isSubmittable){
+                e.preventDefault();
+                console.log('123')
+            }
+        })
+        
+        //Re-render check all submit button <Go>
+        function renderCheckAllSubmitBtn() {
+            var checkedCount = $('input[name="categoryIds[]"]:checked').length;
+            if(checkedCount > 0){
+                deleteMultipleCategoriesBtn.removeClass('disabled');
+                checkAllSubmitBtn.removeClass('disabled');
+                checkAllSubmitBtn.attr("data-toggle","modal");
+                checkAllSubmitBtn.attr("data-target","#delete-multiple-categories");
+            } else{
+                deleteMultipleCategoriesBtn.addClass('disabled');
+                checkAllSubmitBtn.addClass('disabled');
+                checkAllSubmitBtn.attr("data-toggle","");
+                checkAllSubmitBtn.attr("data-target","");
+            }
+        }
+    })
         </script>
