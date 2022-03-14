@@ -262,7 +262,7 @@ class IdeaController {
     // [GET] /idea
     index(req, res, next){
         if (req.isAuthenticated()) {
-            Promise.all([Idea.find({}).sort({ratings: -1}).limit(5), User.findOne({username: req.user.username})])
+            Promise.all([Idea.find({}).sort({ratings: -1}), User.findOne({username: req.user.username})])
             .then(([idea, userLogin]) => 
             res.render('idea', {
                 idea: multipleMongooseToObject(idea),
@@ -272,7 +272,7 @@ class IdeaController {
             .catch(next)
         }
         else{
-            Idea.find({}).sort({ratings: -1}).limit(5)
+            Idea.find({}).sort({ratings: -1})
             .then(idea => {
                 // idea = idea.map(cat => cat.toObject())
                 res.render('idea', {
