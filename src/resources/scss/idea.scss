@@ -31,4 +31,53 @@
   @media only screen and (min-width: 320px) and (max-width: 738px) {
    
   }
-  
+
+
+.pagination-idea-page {
+  text-align: center;
+  margin: 32px 0 32px;
+  user-select: none;
+}
+
+.pagination-idea-page li {
+  display: inline-block;
+  margin: 5px;
+}
+
+.pagination-idea-page li a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  line-height: 45px;
+}
+
+.previous-page, .next-page {
+  background:rgb(255, 50, 71);
+  width: 80px;
+  border-radius: 45px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.previous-page:hover {
+  transform: translateX(-5px);
+}
+
+.next-page:hover {
+  transform: translateX(5px);
+}
+
+.current-page, .dots {
+  background-color: #ccc;
+  width: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.active {
+  background:rgb(255, 50, 71);
+}
+
+.disable {
+  background-color: #ccc;
+}

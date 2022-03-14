@@ -293,7 +293,7 @@ class IdeaController {
     // [GET] /idea
     index(req, res, next){
         if (req.isAuthenticated()) {
-            Promise.all([Idea.find({}).populate('username').populate('categoryName').sort({ratings: -1}).limit(5), 
+            Promise.all([Idea.find({}).populate('username').populate('categoryName').sort({ratings: -1}), 
                         User.findOne({username: req.user.username})])
             .then(([idea, userLogin]) => 
             res.render('idea', {
@@ -304,7 +304,7 @@ class IdeaController {
             .catch(next)
         }
         else{
-            Idea.find({}).sort({ratings: -1}).limit(5)
+            Idea.find({}).sort({ratings: -1})
             .then(idea => {
                 // idea = idea.map(cat => cat.toObject())
                 res.render('idea', {
