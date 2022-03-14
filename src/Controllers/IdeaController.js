@@ -196,7 +196,7 @@ class IdeaController {
         form.parse(req, function(err, fields, files){
         
         const oldPath = files.file.filepath;
-        const newPath = path.join(__dirname, '../uploads/idea') + files.file.originalFilename;
+        const newPath = path.join(__dirname, '../uploads/idea/') + files.file.originalFilename;
         const rawData = fs.readFileSync(oldPath);
         const idea = new Idea(fields);
         
@@ -210,12 +210,6 @@ class IdeaController {
                                 message : err
                             });
                         }else{
-                            // const action = req.body.action;
-                            // const counter = action === 'Like' ? 1 : -1;
-                            // Idea.updateOne({_id: req.params.id}, {$inc: {ratings: counter}}, {}, (err, numberAffected) => {
-                            //     res.send('');
-                            // });
-
 
                             //Send mail to QA Manager
                             const subject = fields.title;
