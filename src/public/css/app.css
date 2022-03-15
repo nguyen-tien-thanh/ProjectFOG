@@ -325,7 +325,6 @@ header {
 
 .site-footer {
   background-color: #47484c;
-  padding: 45px 0 20px;
   font-size: 15px;
   line-height: 24px;
   color: #737373; }
@@ -1458,6 +1457,16 @@ img.img-center {
   text-align: center;
   background-color: #ff3247;
   color: white; }
+
+.title-of-idea p {
+  margin-bottom: 0; }
+
+.profile-img-idea {
+  width: 40px;
+  border-radius: 20px; }
+
+.comment-for-idea {
+  margin-top: 10px; }
 
 body li {
   list-style-type: none;
