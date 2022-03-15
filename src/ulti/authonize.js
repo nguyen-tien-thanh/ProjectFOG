@@ -14,7 +14,7 @@ function isLoggedIn(req, res, next) {
 }
 
 function isManager(req,res,next){
-        if(req.user.role == ROLE.STAFF){
+        if(req.user.role == ROLE.ADMIN || req.user.role == ROLE.QAC){
             User.findOne({username: req.user.username})
             .then (user =>{
                 res.render('index', {
