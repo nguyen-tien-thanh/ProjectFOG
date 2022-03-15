@@ -39,8 +39,8 @@ function isAdmin(req,res,next){
                 roleNofitication: 'This is Admin page. You are not allowed !',
             })
         })
-        .catch(next)
     }
+    next()
 }
 
 function isQAC(req,res,next){

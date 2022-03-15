@@ -18,7 +18,7 @@ router.post('/handle-form-actions', isManager, categoryController.handleFormActi
 router.use('/create', isManager, categoryController.create)
 
 // [GET] /category/:id/edit category
-router.get('/:id/edit', categoryController.edit)
+router.get('/:id/edit', isManager, categoryController.edit)
 
 // [PUT] /category/:id/update category
 router.put('/:id', isManager, categoryController.update)

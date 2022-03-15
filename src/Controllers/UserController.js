@@ -11,6 +11,7 @@ class UserController {
         Promise.all([User.findDeleted({}), User.countDeleted(), User.count(), User.findOne({username:req.user.username})])
         .then(([user, deletedCount, storedCount, userLogin]) => 
         res.render('user/trash', {
+            title: 'Deleted User',
             deletedCount,
             storedCount,
             user: multipleMongooseToObject(user),
@@ -25,6 +26,7 @@ class UserController {
         Promise.all([User.find({}), User.countDeleted(), User.count(), User.findOne({username: req.user.username})])
             .then(([user, deletedCount, storedCount, userLogin]) => 
             res.render('user/manage', {
+                title: 'Manage User',
                 deletedCount,
                 storedCount,
                 user: multipleMongooseToObject(user),
@@ -62,6 +64,7 @@ class UserController {
         Promise.all([User.findById(req.params.id), User.findOne({username: req.user.username})])
             .then(([user, userLogin]) => 
             res.render('user/edit', {
+                title: 'Edit User',
                 user: mongooseToObject(user),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -131,6 +134,7 @@ class UserController {
         Promise.all([User.findOne({ slug: req.params.slug}), User.findOne({username: req.user.username})])
             .then(([user, userLogin]) => 
             res.render('user/show', {
+                title: 'User Detail',
                 user: mongooseToObject(user),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -153,6 +157,7 @@ class UserController {
         Promise.all([User.find({}), User.findOne({username: req.user.username})])
             .then(([user, userLogin]) => 
             res.render('user', {
+                title: 'User',
                 user: multipleMongooseToObject(user),
                 userLogin: mongooseToObject(userLogin),
                 })

@@ -12,6 +12,7 @@ class NewsController {
             User.findOne({username: req.user.username})
             .then (user =>{
                 res.render('news/create', { 
+                    title: 'Create News',
                     userLogin: mongooseToObject(user)
                 });
             })
@@ -26,6 +27,7 @@ class NewsController {
         Promise.all([News.findDeleted({}), News.countDeleted(), News.count(), User.findOne({username:req.user.username})])
         .then(([news, deletedCount, storedCount, userLogin]) => 
         res.render('news/trash', {
+            title: 'Create News',
             deletedCount,
             storedCount,
             news: multipleMongooseToObject(news),
@@ -50,6 +52,7 @@ class NewsController {
         Promise.all([News.find({}), News.countDeleted(), News.count(), User.findOne({username: req.user.username})])
             .then(([news, deletedCount, storedCount, userLogin]) => 
             res.render('news/manage', {
+                title: 'Manage News',
                 deletedCount,
                 storedCount,
                 news: multipleMongooseToObject(news),
@@ -87,6 +90,7 @@ class NewsController {
         Promise.all([News.findById(req.params.id), User.findOne({username: req.user.username})])
             .then(([news, userLogin]) => 
             res.render('news/edit', {
+                title: 'Edit News',
                 news: mongooseToObject(news),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -158,6 +162,7 @@ class NewsController {
             User.findOne({username: req.user.username})])
             .then(([news, newsDetail, userLogin]) => 
             res.render('news/show', {
+                title: 'News Detail',
                 newsDetail: mongooseToObject(newsDetail),
                 news: multipleMongooseToObject(news),
                 userLogin: mongooseToObject(userLogin),
@@ -169,6 +174,7 @@ class NewsController {
             Promise.all([News.find({}), News.findOne({ slug: req.params.slug})])
                 .then(([news, newsDetail]) => 
                 res.render('news/show', {
+                    title: 'News Detail',
                     newsDetail: mongooseToObject(newsDetail),
                     news: multipleMongooseToObject(news),
                     })
@@ -183,6 +189,7 @@ class NewsController {
             Promise.all([News.find({}), User.findOne({username: req.user.username})])
             .then(([news, userLogin]) => 
             res.render('news', {
+                title: 'News',
                 news: multipleMongooseToObject(news),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -194,6 +201,7 @@ class NewsController {
             .then(news => {
                 // news = news.map(cat => cat.toObject())
                 res.render('news', {
+                    title: 'News',
                     news: multipleMongooseToObject(news)
                 })
             })
