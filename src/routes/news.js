@@ -24,14 +24,14 @@ router.get('/:id/edit', isLoggedIn, isManager, newsController.edit)
 router.put('/:id', isLoggedIn, isManager, newsController.update)
 
 // [PATCH] /news/:id/update news
-router.patch('/:id/restore', isLoggedIn, newsController.restore)
+router.patch('/:id/restore', isLoggedIn, isManager, newsController.restore)
 
 // [DELETE] /news/:id/detele news
 router.delete('/:id', isLoggedIn, isManager, newsController.delete)
-router.delete('/:id/force', isLoggedIn, isManager, newsController.force)
+router.delete('/:id/force', isLoggedIn, isAdmin, newsController.force)
 
 // // [POST] /news/store news
-router.post('/store', isLoggedIn, newsController.store)
+router.post('/store', isLoggedIn, isManager, newsController.store)
 
 // [link bien dong] /news/show || /news/:slug
 router.use('/:slug', newsController.show)

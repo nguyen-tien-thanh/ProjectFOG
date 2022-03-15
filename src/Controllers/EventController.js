@@ -33,16 +33,6 @@ class EventController {
             })
         )
         .catch(next)
-
-        // Promise.all([Event.findDeleted({}), Event.countDeleted(), Event.count()])
-        // .then(([event, deletedCount, storedCount]) => 
-        // res.render('event/trash', {
-        //     deletedCount,
-        //     storedCount,
-        //     event: multipleMongooseToObject(event),
-        //     })
-        // )
-        // .catch(next) 
     }
 
     //[GET] /event/manage 
@@ -92,12 +82,6 @@ class EventController {
                 })
             )
             .catch(next)
-
-        // Event.findById(req.params.id)
-        //     .then(event => res.render('event/edit', {
-        //         event: mongooseToObject(event)
-        //     }))
-        //     .catch(next);
     }
 
     //[PUT] /event/:id
@@ -145,14 +129,6 @@ class EventController {
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
-        // Event.findOne({ slug: req.params.slug})
-        // .then (event => {
-        //     res.render('event/show', { 
-        //         event: mongooseToObject(event) 
-        //     });
-        // })
-        // .catch(next)
-        
         if (req.isAuthenticated()) {
         Promise.all([Event.find({}), Event.findOne({ slug: req.params.slug}), 
             User.findOne({username: req.user.username})])
@@ -199,24 +175,6 @@ class EventController {
             })
             .catch(err=>next(err));
             }
-
-        // Promise.all([Event.find({}), User.findOne({username: req.user.username})])
-        //     .then(([event, userLogin]) => 
-        //     res.render('event', {
-        //         event: multipleMongooseToObject(event),
-        //         userLogin: mongooseToObject(userLogin),
-        //         })
-        //     )
-        //     .catch(next)
-
-        // Event.find({})
-        // .then(event => {
-        //     // event = event.map(cat => cat.toObject())
-        //     res.render('event', {
-        //         event: multipleMongooseToObject(event)
-        //     })
-        // })
-        // .catch(err=>next(err));
     }
 
 }

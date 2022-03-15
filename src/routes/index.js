@@ -10,14 +10,13 @@ const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize')
 
 function route(app){
 
-    app.use('/user',isLoggedIn, userRouter);
+    app.use('/user', isLoggedIn, isAdmin, userRouter);
 
     app.use('/news', newsRouter);
 
-    app.use('/idea', ideaRouter);
+    app.use('/idea', isLoggedIn, ideaRouter);
 
-    // app.use('/category', categoryRouter);
-    app.use('/category', isLoggedIn, isManager, categoryRouter);
+    app.use('/category', isLoggedIn, categoryRouter);
 
     app.use('/event', eventRouter);
 

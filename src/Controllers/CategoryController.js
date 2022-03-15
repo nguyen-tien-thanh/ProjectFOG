@@ -288,25 +288,24 @@ class CategoryController {
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
-        // Category.findOne({ slug: req.params.slug})
-        // .then (category => {
-        //     res.render('category/show', { 
-        //         category: mongooseToObject(category) 
-        //     });
-        // })
-        // .catch(next)
-        
         if (req.isAuthenticated()) {
-        Promise.all([Category.find({}), Category.findOne({ slug: req.params.slug}), 
-            User.findOne({username: req.user.username})])
-            .then(([category, categoryDetail, userLogin]) => 
-            res.render('category/show', {
-                categoryDetail: mongooseToObject(categoryDetail),
-                category: multipleMongooseToObject(category),
-                userLogin: mongooseToObject(userLogin),
-                })
-            )
-            .catch(next)
+            //Check if event exist
+            Category.findOne({slug: !req.params.slug})
+            .then(() => res.render('partials/error', {
+                title: 'Not found'
+            }))
+            .catch(next);
+
+            Promise.all([Category.find({}), Category.findOne({ slug: req.params.slug}), 
+                User.findOne({username: req.user.username})])
+                .then(([category, categoryDetail, userLogin]) => 
+                res.render('category/show', {
+                    categoryDetail: mongooseToObject(categoryDetail),
+                    category: multipleMongooseToObject(category),
+                    userLogin: mongooseToObject(userLogin),
+                    })
+                )
+                .catch(next)
         }
         else{
             Promise.all([Category.find({}), Category.findOne({ slug: req.params.slug})])
@@ -343,21 +342,6 @@ class CategoryController {
             .catch(err=>next(err));
             }
     }
-    // [GET] /category/:slug
-    error(req,res,next){
-        if (req.isAuthenticated()) {
-            User.findOne({username: req.user.username})
-            .then (user =>{
-                res.render('partials/error', { 
-                    userLogin: mongooseToObject(user)
-                });
-            })
-        }
-        else{
-            res.render('partials/error')
-        }
-    }
-
 }
 
 module.exports = new CategoryController;
