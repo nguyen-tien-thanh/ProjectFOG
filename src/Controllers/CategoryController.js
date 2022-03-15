@@ -156,12 +156,15 @@ class CategoryController {
             User.findOne({username: req.user.username})
             .then (user =>{
                 res.render('category/create', { 
+                    title: 'Create Category',
                     userLogin: mongooseToObject(user)
                 });
             })
         }
         else{
-            res.render('category/create')
+            res.render('category/create', { 
+                title: 'Create Category'}
+                )
         }
     }
     //[GET] /category/trash 
@@ -169,6 +172,7 @@ class CategoryController {
         Promise.all([Category.findDeleted({}), Category.countDeleted(), Category.count(), User.findOne({username:req.user.username})])
         .then(([category, deletedCount, storedCount, userLogin]) => 
         res.render('category/trash', {
+            title:'Trash',
             deletedCount,
             storedCount,
             category: multipleMongooseToObject(category),
@@ -193,6 +197,7 @@ class CategoryController {
         Promise.all([Category.find({}), Category.countDeleted(), Category.count(), User.findOne({username: req.user.username})])
             .then(([category, deletedCount, storedCount, userLogin]) => 
             res.render('category/manage', {
+                title: 'Manage',
                 deletedCount,
                 storedCount,
                 category: multipleMongooseToObject(category),
@@ -230,6 +235,7 @@ class CategoryController {
         Promise.all([Category.findById(req.params.id), User.findOne({username: req.user.username})])
             .then(([category, userLogin]) => 
             res.render('category/edit', {
+                title:'Edit',
                 category: mongooseToObject(category),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -288,30 +294,24 @@ class CategoryController {
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
-        // Category.findOne({ slug: req.params.slug})
-        // .then (category => {
-        //     res.render('category/show', { 
-        //         category: mongooseToObject(category) 
-        //     });
-        // })
-        // .catch(next)
-        
         if (req.isAuthenticated()) {
-        Promise.all([Category.find({}), Category.findOne({ slug: req.params.slug}), 
-            User.findOne({username: req.user.username})])
-            .then(([category, categoryDetail, userLogin]) => 
-            res.render('category/show', {
-                categoryDetail: mongooseToObject(categoryDetail),
-                category: multipleMongooseToObject(category),
-                userLogin: mongooseToObject(userLogin),
-                })
-            )
-            .catch(next)
+            Promise.all([Category.find({}), Category.findOne({ slug: req.params.slug}), 
+                User.findOne({username: req.user.username})])
+                .then(([category, categoryDetail, userLogin]) => 
+                res.render('category/show', {
+                    title: 'Detail',
+                    categoryDetail: mongooseToObject(categoryDetail),
+                    category: multipleMongooseToObject(category),
+                    userLogin: mongooseToObject(userLogin),
+                    })
+                )
+                .catch(next)
         }
         else{
             Promise.all([Category.find({}), Category.findOne({ slug: req.params.slug})])
                 .then(([category, categoryDetail]) => 
                 res.render('category/show', {
+                    title: 'Detail',
                     categoryDetail: mongooseToObject(categoryDetail),
                     category: multipleMongooseToObject(category),
                     })
@@ -326,6 +326,7 @@ class CategoryController {
             Promise.all([Category.find({}), User.findOne({username: req.user.username})])
             .then(([category, userLogin]) => 
             res.render('category', {
+                title: 'Category',
                 category: multipleMongooseToObject(category),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -337,27 +338,13 @@ class CategoryController {
             .then(category => {
                 // category = category.map(cat => cat.toObject())
                 res.render('category', {
+                    title: 'Category',
                     category: multipleMongooseToObject(category)
                 })
             })
             .catch(err=>next(err));
             }
     }
-    // [GET] /category/:slug
-    error(req,res,next){
-        if (req.isAuthenticated()) {
-            User.findOne({username: req.user.username})
-            .then (user =>{
-                res.render('partials/error', { 
-                    userLogin: mongooseToObject(user)
-                });
-            })
-        }
-        else{
-            res.render('partials/error')
-        }
-    }
-
 }
 
 module.exports = new CategoryController;

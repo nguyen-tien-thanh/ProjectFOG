@@ -28,7 +28,7 @@ router.delete('/:id', isAdmin, userController.delete)
 router.delete('/:id/force', isAdmin, userController.force)
 
 // // [POST] /categories/store category
-router.post('/store', userController.store)
+router.post('/store', isAdmin, userController.store)
 
 // [link bien dong] /category/show || /category/:slug
 router.use('/:slug', userController.show)

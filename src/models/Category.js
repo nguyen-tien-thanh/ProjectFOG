@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 
 const Category = new Schema({
     categoryName: {type: String, minLength: 1, maxLength: 255},
+    ideaCount: {type: Number, default: 0},
     slug: {type : String, slug : 'categoryName', unique: true},
     deadlineSubmit: {type: Date, default: Date.now() + (3600 * 1000 * 24 * 7)},
     deadlineCmt: {type: Date, default: Date.now() + (3600 * 1000 * 24 * 10)},

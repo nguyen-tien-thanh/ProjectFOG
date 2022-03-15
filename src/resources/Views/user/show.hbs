@@ -92,7 +92,7 @@
 									<input type="text" class="form-control" value="{{user.address}}" disabled>
 								</div>
 							</div>
-							<div class="row">
+							<div id="edit-btn" class="row" hidden>
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
             						<a href="/user/{{user._id}}/edit"><button type="button" class="btn btn-secondary px-3 save-btn">Edit</button></a>
@@ -133,3 +133,11 @@
 			</div>
 		</div>
 	</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+		var editBtn = document.getElementById('edit-btn')
+		if( '{{userLogin.role}}' == 'Admin' || '{{userLogin._id}}' == '{{user._id}}') {
+			editBtn.removeAttribute('hidden')
+		}
+</script>

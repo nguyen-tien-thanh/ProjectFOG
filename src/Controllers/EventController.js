@@ -12,12 +12,14 @@ class EventController {
             User.findOne({username: req.user.username})
             .then (user =>{
                 res.render('event/create', { 
+                    title:'Create Event',
                     userLogin: mongooseToObject(user)
                 });
             })
         }
         else{
-            res.render('event/create')
+            res.render('event/create', { 
+                title:'Create Event'})
         }
     }
 
@@ -26,6 +28,7 @@ class EventController {
         Promise.all([Event.findDeleted({}), Event.countDeleted(), Event.count(), User.findOne({username:req.user.username})])
         .then(([event, deletedCount, storedCount, userLogin]) => 
         res.render('event/trash', {
+            title:'Trash Event',
             deletedCount,
             storedCount,
             event: multipleMongooseToObject(event),
@@ -33,16 +36,6 @@ class EventController {
             })
         )
         .catch(next)
-
-        // Promise.all([Event.findDeleted({}), Event.countDeleted(), Event.count()])
-        // .then(([event, deletedCount, storedCount]) => 
-        // res.render('event/trash', {
-        //     deletedCount,
-        //     storedCount,
-        //     event: multipleMongooseToObject(event),
-        //     })
-        // )
-        // .catch(next) 
     }
 
     //[GET] /event/manage 
@@ -50,6 +43,7 @@ class EventController {
         Promise.all([Event.find({}), Event.countDeleted(), Event.count(), User.findOne({username: req.user.username})])
             .then(([event, deletedCount, storedCount, userLogin]) => 
             res.render('event/manage', {
+                title: 'Manage Event',
                 deletedCount,
                 storedCount,
                 event: multipleMongooseToObject(event),
@@ -87,17 +81,12 @@ class EventController {
         Promise.all([Event.findById(req.params.id), User.findOne({username: req.user.username})])
             .then(([event, userLogin]) => 
             res.render('event/edit', {
+                title: 'Edit Event',
                 event: mongooseToObject(event),
                 userLogin: mongooseToObject(userLogin),
                 })
             )
             .catch(next)
-
-        // Event.findById(req.params.id)
-        //     .then(event => res.render('event/edit', {
-        //         event: mongooseToObject(event)
-        //     }))
-        //     .catch(next);
     }
 
     //[PUT] /event/:id
@@ -145,19 +134,12 @@ class EventController {
     // [GET] /:slug
     // Find object in MongoDB by slug
     show(req,res,next){
-        // Event.findOne({ slug: req.params.slug})
-        // .then (event => {
-        //     res.render('event/show', { 
-        //         event: mongooseToObject(event) 
-        //     });
-        // })
-        // .catch(next)
-        
         if (req.isAuthenticated()) {
         Promise.all([Event.find({}), Event.findOne({ slug: req.params.slug}), 
             User.findOne({username: req.user.username})])
             .then(([event, eventDetail, userLogin]) => 
             res.render('event/show', {
+                title: 'Event detail',
                 eventDetail: mongooseToObject(eventDetail),
                 event: multipleMongooseToObject(event),
                 userLogin: mongooseToObject(userLogin),
@@ -169,6 +151,7 @@ class EventController {
             Promise.all([Event.find({}), Event.findOne({ slug: req.params.slug})])
                 .then(([event, eventDetail]) => 
                 res.render('event/show', {
+                    title: 'Event detail',
                     eventDetail: mongooseToObject(eventDetail),
                     event: multipleMongooseToObject(event),
                     })
@@ -183,6 +166,7 @@ class EventController {
             Promise.all([Event.find({}), User.findOne({username: req.user.username})])
             .then(([event, userLogin]) => 
             res.render('event', {
+                title: 'Event',
                 event: multipleMongooseToObject(event),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -194,29 +178,12 @@ class EventController {
             .then(event => {
                 // event = event.map(cat => cat.toObject())
                 res.render('event', {
+                    title: 'Event',
                     event: multipleMongooseToObject(event)
                 })
             })
             .catch(err=>next(err));
             }
-
-        // Promise.all([Event.find({}), User.findOne({username: req.user.username})])
-        //     .then(([event, userLogin]) => 
-        //     res.render('event', {
-        //         event: multipleMongooseToObject(event),
-        //         userLogin: mongooseToObject(userLogin),
-        //         })
-        //     )
-        //     .catch(next)
-
-        // Event.find({})
-        // .then(event => {
-        //     // event = event.map(cat => cat.toObject())
-        //     res.render('event', {
-        //         event: multipleMongooseToObject(event)
-        //     })
-        // })
-        // .catch(err=>next(err));
     }
 
 }

@@ -24,11 +24,15 @@
         <thead>
             <tr>
                 <th></th>
-            <th scope="col">No (Total: {{deletedCount}})</th>
-            <th scope="col">Title</th>
-            <th scope="col">Detail</th>
-            <th scope="col">Deleted Date</th>
-            <th scope="col">Action</th>
+                <th scope="col">No (Total: {{deletedCount}})</th>
+                <th scope="col">Idea Title</th>
+                <th scope="col">Detail</th>
+                <th scope="col">Category</th>
+                <th scope="col">Author</th>
+                <th scope="col">Ratings</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">Deleted at</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -41,12 +45,16 @@
                     </div>
                 </th>
             <th scope="row">{{sum @index 1}}</th>
-            <td>{{this.name}}</td>
-            <td>{{this.description}}</td>
-            <td>{{moment this.deletedAt format="HH:mm on DD-MM-YYYY"}}</td>
+                <td>{{this.title}}</td>
+                <td>{{this.detail}}</td>
+                <td>{{this.categoryName.categoryName}}</td>
+                <td>{{this.username.username}}</td>
+                <td>{{this.ratings}}</td>
+                <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
+                <td>{{moment this.deletedAt format="HH:mm on DD-MM-YYYY"}}</td>
             <td style="padding:5px">
                 <a href="" data-toggle="modal" data-target="#restore-idea" data-id="{{this._id}}"><button class="btn btn-secondary btn-restore" >Restore</button></a>
-                <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}"><button class="btn btn-secondary btn-force">Delete</button></a>
+                <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}"><button class="btn btn-danger btn-force">Delete</button></a>
             </td>
             </tr>
             {{else}}

@@ -61,7 +61,9 @@
         <td style="padding:5px">
             <a href="/idea/{{this._id}}/edit"><button type="button" class="btn btn-secondary btn-crud-reponsive">Edit</button></a>
             <a href="/idea/{{this.slug}}"><button type="button" class="btn btn-secondary btn-crud-reponsive">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}"><button class="btn btn-secondary btn-crud-reponsive">Delete</button></a>
+            <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}">
+                <button class="btn btn-secondary btn-crud-reponsive">Delete</button>
+            </a>
         </td>
         </tr>
         {{else}}

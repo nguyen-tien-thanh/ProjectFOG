@@ -14,23 +14,22 @@ const transporter = nodemailer.createTransport(mailGun(auth));
 
 const current_date = Date();
 
-const sendMail = ( subject, text, author, category) => {
+const mailComment = (email, ideaTitle, content, author) => {
     const mailOptions = {
         // from: 'nguyentienthanh.tgdd@gmail.com',
         from: 'nguyentienthanh.tgdd@gmail.com',
-        to: 'thanh.kira_flynn@yahoo.com',
-        subject: 'Notification Email',
-        text,
+        to: email,
+        subject: 'New comment on your Idea',
+        text: '',
         html: 
         '<p>A new idea has been submitted to the system: </p>' +
         '<p style ="text-transform: capitalize;"><b>Created At: </b>' + current_date + '</p><br>' +
-        '<h3 style ="text-transform: uppercase; color: red; text-align: center;"> '+ subject + '</h3>' +
-        '<p style ="text-transform: capitalize;"><b>Idea detail: </b>'+ text + '</p><br>'+
-        '<p style ="text-transform: capitalize;"><b>Author: </b>'+ author + '</p>' +
-        '<p style ="text-transform: capitalize;"><b>Category name: </b>'+ category + '</p>',
+        '<h3 style ="text-transform: uppercase; color: red; text-align: center;"> '+ ideaTitle + '</h3>' +
+        '<p style ="text-transform: capitalize;"><b>Comment content: </b>'+ content + '</p><br>'+
+        '<p style ="text-transform: capitalize;"><b>Author: </b>'+ author + '</p>',
     }
 
     transporter.sendMail(mailOptions)
 }
 
-module.exports = sendMail;
+module.exports = mailComment;
