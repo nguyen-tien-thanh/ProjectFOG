@@ -18,17 +18,17 @@ router.use('/trash', isLoggedIn, isManager, eventController.trash)
 router.use('/manage', isLoggedIn, isManager, eventController.manage)
 
 // [GET] /event/:id/edit event
-router.get('/:id/edit', isLoggedIn, isManager, eventController.edit)
+router.get('/:id/edit', isLoggedIn, eventController.edit)
 
 // [PUT] /event/:id/update event
-router.put('/:id', isLoggedIn, isManager, eventController.update)
+router.put('/:id', isLoggedIn, eventController.update)
 
 // [PATCH] /event/:id/update event
 router.patch('/:id/restore', isLoggedIn, isManager, eventController.restore)
 
 // [DELETE] /event/:id/detele event
-router.delete('/:id', isLoggedIn, isManager, eventController.delete)
-router.delete('/:id/force', isLoggedIn, isManager, eventController.force)
+router.delete('/:id', isLoggedIn, eventController.delete)
+router.delete('/:id/force', isLoggedIn, isAdmin, eventController.force)
 
 // // [POST] /event/store event
 router.post('/store', isLoggedIn, eventController.store)

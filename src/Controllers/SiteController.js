@@ -78,7 +78,6 @@ class SiteController {
     }
 
     login(req, res, next){
-
         res.render('login', {layout: 'intropage'});
     }
 

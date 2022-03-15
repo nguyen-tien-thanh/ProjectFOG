@@ -3,7 +3,7 @@
     <form class="sign-in" method="post" action="/validation">
         <h3>Login Here</h3>
         <label for="username">Username</label>
-        <input  type="text" placeholder="Username" id="username" name="username" required>
+        <input type="text" placeholder="Username" id="username" name="username" required>
 
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password"  name="password" required>
@@ -15,3 +15,11 @@
         </div>
     </form>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (){
+        if( '{{requireLogin}}') {
+            alert("{{requireLogin}}");
+        }
+    })
+</script>

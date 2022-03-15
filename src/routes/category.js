@@ -3,40 +3,41 @@ const router = express.Router();
 
 const categoryController = require('../Controllers/CategoryController');
 
+const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize'); 
+
 // [GET] /category/trash category
-router.use('/trash', categoryController.trash)
+router.use('/trash', isManager, categoryController.trash)
 
 // [GET] /category/create category
-router.use('/manage', categoryController.manage)
+router.use('/manage', isManager, categoryController.manage)
 
 // [POST] /category/handle-form-actions category
-router.post('/handle-form-actions', categoryController.handleFormActions)
+router.post('/handle-form-actions', isManager, categoryController.handleFormActions)
 
 // [GET] /category/create category
-router.use('/create', categoryController.create)
+router.use('/create', isManager, categoryController.create)
 
 // [GET] /category/:id/edit category
 router.get('/:id/edit', categoryController.edit)
 
 // [PUT] /category/:id/update category
-router.put('/:id', categoryController.update)
+router.put('/:id', isManager, categoryController.update)
 
 // [PATCH] /category/:id/update category
-router.patch('/:id/restore', categoryController.restore)
+router.patch('/:id/restore', isManager, categoryController.restore)
 
 // [DELETE] /category/:id/detele category
-router.delete('/:id', categoryController.delete)
-router.delete('/:id/force', categoryController.force)
+router.delete('/:id', isManager, categoryController.delete)
+router.delete('/:id/force', isAdmin, categoryController.force)
 
 // // [POST] /categories/store category
-router.post('/store', categoryController.store)
+router.post('/store', isManager, categoryController.store)
 
 // [link bien dong] /category/show || /category/:slug
 router.use('/:slug', categoryController.show)
 
 // /category/index - category.hbs
 router.use('/', categoryController.index)
-
 
 
 module.exports = router;
