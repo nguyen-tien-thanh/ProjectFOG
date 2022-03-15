@@ -6,7 +6,7 @@ const categoryController = require('../Controllers/CategoryController');
 const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize'); 
 
 // [GET] /category/trash category
-router.use('/trash', isManager, categoryController.trash)
+router.use('/trash', isAdmin, categoryController.trash)
 
 // [GET] /category/create category
 router.use('/manage', isManager, categoryController.manage)

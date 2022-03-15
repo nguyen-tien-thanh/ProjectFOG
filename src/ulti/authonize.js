@@ -14,18 +14,18 @@ function isLoggedIn(req, res, next) {
 }
 
 function isManager(req,res,next){
-        if(req.user.role == ROLE.ADMIN || req.user.role == ROLE.QAC){
-            User.findOne({username: req.user.username})
+    if(req.user.role == ROLE.STAFF){
+        User.findOne({username: req.user.username})
             .then (user =>{
-                res.render('index', {
-                    title: 'Homepage',
-                    layout: 'intropage',
-                    userLogin: mongooseToObject(user),
-                    roleNofitication: 'This is manager page. You are not allowed !',
-                })
-            })  
-            .catch(next)
-        }
+            res.render('index', {
+                title: 'Homepage',
+                layout: 'intropage',
+                userLogin: mongooseToObject(user),
+                roleNofitication: 'This is Manager page. You are not allowed !',
+            })
+        })
+    }
+    next()
 }
 
 function isAdmin(req,res,next){
@@ -54,8 +54,8 @@ function isQAC(req,res,next){
                 roleNofitication: 'This is QA Coordinator page. You are not allowed !',
             })
         })
-        .catch(next)
     }
+    next();
 }
 
 module.exports = { 
