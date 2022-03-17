@@ -6,7 +6,7 @@ const categoryController = require('../Controllers/CategoryController');
 const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize'); 
 
 // [GET] /category/trash category
-router.use('/trash', isManager, categoryController.trash)
+router.use('/trash', isAdmin, categoryController.trash)
 
 // [GET] /category/create category
 router.use('/manage', isManager, categoryController.manage)
@@ -18,7 +18,7 @@ router.post('/handle-form-actions', isManager, categoryController.handleFormActi
 router.use('/create', isManager, categoryController.create)
 
 // [GET] /category/:id/edit category
-router.get('/:id/edit', categoryController.edit)
+router.get('/:id/edit', isManager, categoryController.edit)
 
 // [PUT] /category/:id/update category
 router.put('/:id', isManager, categoryController.update)

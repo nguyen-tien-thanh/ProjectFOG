@@ -433,7 +433,7 @@ header {
   height: 100vh; }
 
 .sign-in {
-  height: 520px;
+  height: fit-content;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
@@ -470,10 +470,11 @@ header {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.07);
   border-radius: 3px;
-  padding: 0 10px;
+  padding: 0 15px;
   margin-top: 8px;
   font-size: 14px;
-  font-weight: 300; }
+  font-weight: 300;
+  border: solid 1px; }
 
 ::placeholder {
   color: #e5e5e5; }
@@ -513,6 +514,33 @@ header {
 
 .social i {
   margin-right: 4px; }
+
+.notification-all {
+  color: #ff3247;
+  font-size: 12px;
+  margin-left: 4px;
+  margin-top: 2px; }
+
+.username-icon i,
+.password-icon i {
+  position: absolute; }
+
+.username-icon,
+.password-icon {
+  width: 100%;
+  margin-bottom: 10px; }
+
+.login-success-icon {
+  padding: 17px 8px;
+  color: green;
+  min-width: 50px;
+  text-align: left; }
+
+.login-fail-icon {
+  padding: 17px 10px;
+  color: red;
+  min-width: 50px;
+  text-align: left; }
 
 .Intro {
   position: relative;

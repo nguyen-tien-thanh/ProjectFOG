@@ -38,10 +38,20 @@ class IdeaController {
         res.send(data);
     }
 
-    //[POST] /idea/:id/interactive
+    //[PUT] /idea/:id/interactive
     interactive(req,res,next){
         const action = req.body.action;
-        const counter = action === 'Like' ? 1 : -1;
+        // const counter = action === 'Like' ? 1 : -1;
+        var counter
+        if (action ==='Like' || action ==='CancelUnlike'){
+            counter = 1;
+        }else if (action ==='LikeThenUnlike'){
+            counter = -2;
+        }else if (action ==='UnlikeThenLike'){
+            counter = 2;
+        }else {
+            counter = -1;
+        }
         Idea.updateOne({_id: req.params.id}, {$inc: {ratings: counter}}, {}, (err, numberAffected) => {
             res.send('');
         });
@@ -54,6 +64,7 @@ class IdeaController {
             Promise.all([Category.findById(req.params.id), User.findOne({username: req.user.username})])
             .then(([category, userLogin]) => 
             res.render('idea/create', {
+                title: 'Create Idea',
                 category: mongooseToObject(category),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -64,6 +75,7 @@ class IdeaController {
             Category.findById(req.params.id)
             .then(category => {
                 res.render('idea/create', {
+                    title: 'Create Idea',
                     category: mongooseToObject(category)
                 })
             })
@@ -77,6 +89,7 @@ class IdeaController {
             Promise.all([Category.find({}), User.findOne({username: req.user.username})])
             .then(([category, userLogin]) => 
             res.render('idea/create', {
+                title: 'Create Idea',
                 category: multipleMongooseToObject(category),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -88,6 +101,7 @@ class IdeaController {
             .then(category => {
                 // category = category.map(cat => cat.toObject())
                 res.render('idea/create', {
+                    title: 'Create Idea',
                     category: multipleMongooseToObject(category)
                 })
             })
@@ -101,6 +115,7 @@ class IdeaController {
                     Idea.countDeleted(), Idea.count(), User.findOne({username: req.user.username})])
         .then(([idea, deletedCount, storedCount, userLogin]) => 
         res.render('idea/trash', {
+            title: 'Trash Idea',
             deletedCount,
             storedCount,
             idea: multipleMongooseToObject(idea),
@@ -118,6 +133,7 @@ class IdeaController {
             User.findOne({username: req.user.username})])
             .then(([idea, deletedCount, storedCount, userLogin]) => 
             res.render('idea/manage', {
+                title: 'Trash Idea',
                 deletedCount,
                 storedCount,
                 idea: multipleMongooseToObject(idea),
@@ -271,6 +287,7 @@ class IdeaController {
             User.findOne({username: req.user.username})])
         .then(([category, idea, userLogin]) => 
         res.render('idea/show', {
+            title: 'Detail Idea',
             category: mongooseToObject(category),
             idea: mongooseToObject(idea),
             userLogin: mongooseToObject(userLogin),
@@ -297,6 +314,7 @@ class IdeaController {
                         User.findOne({username: req.user.username})])
             .then(([idea, userLogin]) => 
             res.render('idea', {
+                title: 'Idea',
                 idea: multipleMongooseToObject(idea),
                 userLogin: mongooseToObject(userLogin),
                 })
@@ -308,6 +326,7 @@ class IdeaController {
             .then(idea => {
                 // idea = idea.map(cat => cat.toObject())
                 res.render('idea', {
+                    title: 'Idea',
                     idea: multipleMongooseToObject(idea)
                 })
             })

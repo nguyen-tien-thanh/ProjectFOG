@@ -25,7 +25,7 @@ const { options } = require('./routes/idea');
 
 const app = express()
 
-const port = 3003
+const port = process.env.port || 3000;
 
 
 app.use(express.static('src/public')); 

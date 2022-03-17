@@ -19,7 +19,9 @@ class SiteController {
         }
         else{
             
-        res.render('index', {layout: 'intropage'});
+        res.render('index', {
+            title:'Homepage',
+            layout: 'intropage'});
         }
     }
 
@@ -34,17 +36,18 @@ class SiteController {
             User.findOne({username: req.user.username})
             .then (user =>{
                 res.render('contact', { 
+                    title: 'Contact',
                     userLogin: mongooseToObject(user)
                 });
             })
         }
         else{
-            res.render('contact')
+            res.render('contact', {title:'Contact'})
         }
     }
 
     register(req, res, next){
-        res.render('register', {layout: 'intropage'});
+        res.render('register', {title: 'Register',layout: 'intropage'});
     }
 
     //[POST] /store User
@@ -68,6 +71,7 @@ class SiteController {
                     User.findOne({username: req.user.username})
                         .then (user =>{
                             res.render('index', { 
+                                title: 'Homepage',
                                 layout: 'intropage',
                                 userLogin: mongooseToObject(user)
                             });
@@ -78,7 +82,9 @@ class SiteController {
     }
 
     login(req, res, next){
-        res.render('login', {layout: 'intropage'});
+        res.render('login', {
+            title:'Login',
+            layout: 'intropage'});
     }
 
     //[POST] /validation User
@@ -106,6 +112,7 @@ class SiteController {
                 User.findOne({username: req.user.username})
                     .then (user =>{
                         res.render('index', { 
+                            title: 'Homepage',
                             layout: 'intropage',
                             userLogin: mongooseToObject(user)
                         });
@@ -120,12 +127,13 @@ class SiteController {
             User.findOne({username: req.user.username})
             .then (user =>{
                 res.render('partials/error', { 
+                    title: 'Not Found',
                     userLogin: mongooseToObject(user)
                 });
             })
         }
         else{
-            res.render('partials/error')
+            res.render('partials/error', {title: 'Not Found'});
         }
     }
 
@@ -134,12 +142,13 @@ class SiteController {
             User.findOne({username: req.user.username})
             .then (user =>{
                 res.render('termsandconditions', { 
+                    title: 'Terms',
                     userLogin: mongooseToObject(user)
                 });
             })
         }
         else{
-            res.render('termsandconditions')
+            res.render('termsandconditions', {title: 'Terms' })
         }
     }
 
@@ -148,12 +157,13 @@ class SiteController {
             User.findOne({username: req.user.username})
             .then (user =>{
                 res.render('secret', { 
+                    title: 'secret',
                     userLogin: mongooseToObject(user)
                 });
             })
         }
         else{
-            res.render('secret')
+            res.render('secret', {title: 'Secret' })
         }
     }
 
