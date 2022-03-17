@@ -1,39 +1,63 @@
 
 {{!-- ================================================================================================= --}}
-<div class="container">
-  <h1>Create new idea page</h1> 
+<div class="container create-idea">
+  <h1 class="text-center">Create new idea</h1> 
   <div class="mt-4">
   <form action="/idea/store" method="post" enctype="multipart/form-data" id="idea-form">
         <div class="form-group">
-          <label for="title">title</label>
+          <label for="title">Idea title</label>
           <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required> 
         </div>
         <div class="form-group">
-          <label for="detail">detail</label>
+          <label for="detail">Idea detail</label>
           <textarea type="text" class="form-control" id="detail" name="detail" placeholder="Enter detail" required></textarea>
         </div>
-        <div class="form-group">
-          <label for="categoryName">Category Id</label>
-          <input type="text" class="form-control" id="categoryName" name="categoryName" value="{{category._id}}" required> 
+
+        <div class="row">
+          <div class="col-lg-1 col-md-2 col-sm-1" style="margin-top:5px;">Category </div>
+          <div class="col-lg-8 col-md-5 col-sm-11">
+            {{#if category.categoryName}}
+                <select name="categoryName" id="category-select" class="form-control">
+                  <option value="{{category._id}}" selected>{{category.categoryName}}</option>
+                  <option disabled>──────────</option>
+                  {{#categoryList}}
+                    <option id="category-deadline-{{this._id}}" 
+                      deadline="{{moment this.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}"
+                      value="{{this._id}}">{{this.categoryName}}
+                    </option>
+                  {{/categoryList}}
+                </select>
+
+                {{else}}
+                <select name="categoryName" id="category-select" class="form-control">
+                  {{#categoryList}}
+                    <option id="category-deadline" 
+                      deadline="{{moment this.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}"
+                      value="{{this._id}}">{{this.categoryName}}
+                    </option>
+                  {{/categoryList}}
+                </select>
+                {{/if}}
+          </div>
+          <div class="col-lg-3 col-md-5 col-sm-12">
+            <p style="color:red; margin-top:5px; font-size:18px">Deadline: 
+              <span id="deadline-submit">a</span>
+            </p>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="category">Category Name</label>
-          <input type="text" class="form-control" id="category" name="category" value="{{category.categoryName}}" required> 
-        </div>
-        <h2 style="color:red">Name: {{category.categoryName}}</h2>
-        <h2 style="color:red">Deadline: {{moment category.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}</h2>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="{{userLogin._id}}" required> 
-        </div>
-        <div class="form-group">
-          <label for="author">author</label>
-          <input type="text" class="form-control" id="author" name="author" placeholder="Enter author" value="{{userLogin.username}}" required> 
-        </div>
+      
         <div class="form-group">
           <input type="file" name="file" class="form-upload validate[upload]"
             data-file-accept="pdf, doc, docx, xls, csv, txt, rtf, html, zip, jpg, jpeg, png, gif" 
             data-file-maxsize="10240" data-component="fileupload">
+        </div>
+        <div class="form-group" hidden>
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="{{userLogin._id}}" required> 
+        </div>
+        <div class="form-group">
+          <label for="author">Auhor</label>
+          <input type="text" class="form-control" id="author" name="author" placeholder="Enter author" value="{{userLogin.username}}" required> 
         </div>
       <input type="submit" class="btn btn-success btn-submit" value="Submit">
     </form>
@@ -56,4 +80,12 @@
             //inputCmt.attr("disabled","disabled")
         };
     });
+
+
+    //Import date submit for users easily choose
+    var categorySelect = document.getElementById("category-select")
+    var categorySelection = function(ideaId){
+      var categoryDeadline = $('#category-deadline-'+ ideaId).attr('deadline')
+      console.log(categoryDeadline)
+    }
 </script>

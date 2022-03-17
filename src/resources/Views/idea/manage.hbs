@@ -1,21 +1,19 @@
-<h1>Manage idea</h1>
-<a href="/idea/trash">Trash idea </a>
+<h1 class="text-center">Manage idea</h1>
+<h5 class="text-center">(Total: {{storedCount}})</h5>
+<a href="/idea/trash"><i class="fa fa-trash"></i> Trash idea </a>
 (Total deleted idea: {{deletedCount}})
 
-{{#ifeq userLogin.role 'Admin'}}
-<a href="/idea/download"><button class="btn btn-primary"> Download all</button></a>
-{{/ifeq}}
 
 <form name="container-form" action="/idea/handle-form-actions" method="POST">
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
             <label class="form-check-label" for="checkbox-all">
-                Select all ideas
+                Select all
             </label>
         </div>
 
-        <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
+        <select class="checkbox-select-all-options" name="action" required>
             <option value="delete">Delete</option>
         </select>
 
@@ -26,57 +24,63 @@
         {{!-- <button class="btn btn-primary btn-small disabled check-all-submit-btn">Go</button> --}}
     </div>
 
-    <table class="table mt-4 table-responsive-sm table-responsive-md">
-    <thead>
-        <tr>
-            <th></th>
-            <th scope="col">No (Total: {{storedCount}})</th>
-            <th scope="col">Idea Title</th>
-            <th scope="col">Detail</th>
-            <th scope="col">Category</th>
-            <th scope="col">Author</th>
-            <th scope="col">Ratings</th>
-            <th scope="col">Created Date</th>
-            <th scope="col">File</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each idea}}
-        <tr>
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="ideaIds[]" value="{{this._id}}" >
-                    </label>
-                </div>
+    <div class="table-responsive">
+        <table class="table mt-4">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col">No</th>
+                <th scope="col">Idea Title</th>
+                <th scope="col">Detail</th>
+                <th scope="col">Category</th>
+                <th scope="col">Author</th>
+                <th scope="col">Ratings</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">File
+                    {{#ifeq userLogin.role 'Admin'}}
+                    <a href="/idea/download"><button class="btn btn-primary"> Download all files</button></a>
+                    {{/ifeq}}
+                </th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each idea}}
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="ideaIds[]" value="{{this._id}}" >
+                        </label>
+                    </div>
+                </td>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.title}}</td>
+            <td>{{this.detail}}</td>
+            <td>{{this.categoryName.categoryName}}</td>
+            <td>{{this.username.username}}</td>
+            <td>{{this.ratings}}</td>
+            <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
+            <td>{{this.file}}</td>
+            <td style="padding:5px">
+                <a href="/idea/{{this._id}}/edit"><button type="button" class="btn btn-secondary btn-crud-reponsive">Edit</button></a>
+                <a href="/idea/{{this.slug}}"><button type="button" class="btn btn-secondary btn-crud-reponsive">Detail</button></a>
+                <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}">
+                    <button class="btn btn-secondary btn-crud-reponsive">Delete</button>
+                </a>
             </td>
-        <th scope="row">{{sum @index 1}}</th>
-        <td>{{this.title}}</td>
-        <td>{{this.detail}}</td>
-        <td>{{this.categoryName.categoryName}}</td>
-        <td>{{this.username.username}}</td>
-        <td>{{this.ratings}}</td>
-        <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
-        <td>{{this.file}}</td>
-        <td style="padding:5px">
-            <a href="/idea/{{this._id}}/edit"><button type="button" class="btn btn-secondary btn-crud-reponsive">Edit</button></a>
-            <a href="/idea/{{this.slug}}"><button type="button" class="btn btn-secondary btn-crud-reponsive">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}">
-                <button class="btn btn-secondary btn-crud-reponsive">Delete</button>
-            </a>
-        </td>
-        </tr>
-        {{else}}
-        <tr>
-            <td colspan="5" class="text-center">
-                You have not created any idea.
-                <a href="/idea/create">Create new one?</a>
-            </td>
-        </tr>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="5" class="text-center">
+                    You have not created any idea.
+                    <a href="/idea/create">Create new one?</a>
+                </td>
+            </tr>
 
-        {{/each}}
-    </tbody>
-    </table>
+            {{/each}}
+        </tbody>
+        </table>
+    </div>
     {{!-- Confirm delete code --}}
     <div class="modal fade" id="delete-idea" tabindex="-1" role="dialog" aria-labelledby="delete-ideaLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

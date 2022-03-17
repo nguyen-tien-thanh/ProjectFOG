@@ -11,7 +11,7 @@
             </label>
         </div>
 
-        <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
+        <select class="checkbox-select-all-options" name="action" required>
             <option value="delete">Delete</option>
         </select>
 
@@ -21,54 +21,55 @@
         </button>
     </div>
 
-    <table class="table mt-4">
-    <thead>
-        <tr>
-            <th><a href="/user/create"><button type="button"class="btn btn-secondary">Create</button></a></th>
-            <th scope="col">Total:{{storedCount}}</th>
-            <th scope="col">Name</th>
-            <th scope="col">UserName</th>
-            <th scope="col">Email</th> 
-            <th scope="col">Workplace</th>
-            <th scope="col">Role</th>
-            <th scope="col">Created at</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each user}}
-        <tr>
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="userIds[]" value="{{this._id}}" >
-                    </label>
-                </div>
+    <div class="table-responsive">
+        <table class="table mt-4">
+        <thead>
+            <tr>
+                <th><a href="/user/create"><button type="button"class="btn btn-secondary">Create</button></a></th>
+                <th scope="col">Total:{{storedCount}}</th>
+                <th scope="col">Name</th>
+                <th scope="col">UserName</th>
+                <th scope="col">Email</th> 
+                <th scope="col">Workplace</th>
+                <th scope="col">Role</th>
+                <th scope="col">Created at</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each user}}
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="userIds[]" value="{{this._id}}" >
+                        </label>
+                    </div>
+                </td>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.username}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.workplace}}</td>
+            <td>{{this.role}}</td>
+            <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
+            <td style="padding:5px">
+                <a href="/user/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
+                <a href="/user/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
+                <a href="" data-toggle="modal" data-target="#delete-user" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
             </td>
-        <th scope="row">{{sum @index 1}}</th>
-        <td>{{this.name}}</td>
-        <td>{{this.username}}</td>
-        <td>{{this.email}}</td>
-        <td>{{this.workplace}}</td>
-        <td>{{this.role}}</td>
-        <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
-        <td style="padding:5px">
-            <a href="/user/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
-            <a href="/user/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-user" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
-        </td>
-        </tr>
-        {{else}}
-        <tr>
-            <td colspan="10" class="text-center">
-                You have not created any user.
-                <a href="/user/create">Create new one?</a>
-            </td>
-        </tr>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="10" class="text-center">
+                    You have not created any user.
+                    <a href="/user/create">Create new one?</a>
+                </td>
+            </tr>
 
-        {{/each}}
-    </tbody>
-    </table>
-
+            {{/each}}
+        </tbody>
+        </table>
+    </div>
     {{!-- Confirm delete code --}}
     <div class="modal fade" id="delete-user" tabindex="-1" role="dialog" aria-labelledby="delete-userLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
