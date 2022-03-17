@@ -13,7 +13,7 @@
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Event List
         </button>
-        <div class="dropdown-menu table-responsive-lg" aria-labelledby="dropdownMenu2">
+        <div class="dropdown-menu table-responsive-sm pad" aria-labelledby="dropdownMenu2">
             {{#each event}}
             <a href="/event/{{this.slug}}" class="detail-page">
             <button  class="dropdown-item" type="button"><li>{{this.name}}</li></button>
@@ -23,7 +23,7 @@
         </div>
         </div>
 
-        <div class="col-9 row col-modify">
+   <div class="col-9 row col-modify">
             {{#each event}}
             <div class="col-sm-4 col-md-4 col-lg-4 col-mobile col-tablet">
                 
@@ -33,7 +33,7 @@
                 </a>
                 <div class="card-body body-new">
                     <a href="/event/{{this.slug}}">
-                        <h5 class="card-title title-mobile">{{this.name}}</h5>
+                        <h5 class="card-title title-mobile title-tablet">{{this.name}}</h5>
                     </a>
                     <p class="card-text text-new ">{{this.description}}</p>
                   
