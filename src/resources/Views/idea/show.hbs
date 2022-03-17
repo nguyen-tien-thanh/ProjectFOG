@@ -1,6 +1,6 @@
 <div class="container">
     <div class="title-of-idea">
-            <span><img class="profile-img-idea" src="{{userLogin.avatar}}" alt="avatar"></span>
+            <span class="avatar-for-idea"><img class="profile-img-idea" src="{{userLogin.avatar}}" alt="avatar"></span>
             <b style="margin-bottom:0">{{idea.username.username}}</b>
             <p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment idea.createdAt format="DD-MM-YYYY on HH:mm"}}</p>
             <p style="font-size:18px">{{idea.title}}</p>
@@ -9,19 +9,42 @@
                 <p><i class="fas fa-heart" style="color:red"></i> <span id="ratings-{{ idea._id }}">{{ idea.ratings }}</span></p>
                 <hr>
                 <div class="interactive-for-idea">
-                <div>
+                <div class="like-unlike-btn">
                     <button onclick="actOnPost(event);" class="btn btn-success btn-reactive"
                             data-post-id="{{ idea._id }}">Like</button>
                     <button onclick="actOnPost(event);" class="btn btn-success btn-reactive"
                             data-post-id="{{ idea._id }}">Unlike
                     </button>
                 </div>
-                <div class="comment-for-idea">
-                    <input class="form-control input-comment" placeholder="Write comment..." type="text" name="content">
+                <div id="show-content-idea" class="show-content-of-idea">
+                    <p>Show content</p>
                 </div>
             </div>
+                <div id="commentIdea" class="comment-for-idea">
+                    {{#idea}}
+                    {{#comment}}
+                        {{#if annoymous}}
+                        <input id="comment-posted-username" value="Annoymous" class="mt-4" disabled>
+                        {{else}}
+                        <input id="comment-posted-username" value="Name: {{userName}}" class="mt-4" disabled>
+                        {{/if}}
+                        <p>Content: {{content}}</p>
+                        <p>Comment at (Hour): {{moment commentAt format="HH:mm"}}</p>
+                        <p>Comment at (Date): {{moment commentAt format="DD-MM-YYYY"}}</p>
+                    {{/comment}}
+                    {{/idea}}
+                    <input class="form-control input-comment" placeholder="Write comment..." type="text" name="content">
+                </div>
     </div>
 </div>
+
+<script>
+    var showContent= document.getElementById('show-content-idea')
+    var commentIdea=document.getElementById('commentIdea')
+    showContent.onclick=function(){
+        commentIdea.setAttribute("style", "background-color:black")
+    }
+</script>
 
 
 

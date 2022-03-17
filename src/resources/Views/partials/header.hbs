@@ -47,7 +47,7 @@
                             <div class="nav_tablet">
                                 <label for="option-nav" class="x-btn" style="cursor: pointer;">x</label>
                                 <ul>
-                                    {{#if userLogin}}
+                                    {{#ifeq userLogin.role 'Admin'}}
                                     <li>
                                         <a>Event <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
                                         <div class="News-Event-Idea-content">
@@ -68,7 +68,7 @@
                                             <a>Idea <i class="fa fa-angle-down"></i></a>
                                             <div class="News-Event-Idea-content">
                                                 <a href="/idea">Idea list</a>
-                                                <a href="/idea/create">Create Idea</a>
+                                                <a href="/category">Create Idea</a>
                                                 <a href="/idea/manage">Manage Idea</a>
                                             </div>
                                     </li>
@@ -88,13 +88,81 @@
                                                 <a href="/user/manage">Manage User</a>
                                             </div>
                                     </li>
+                                    {{else ifeq userLogin.role 'QAC'}}
+                                          <li>
+                                        <a>Event <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
+                                        <div class="News-Event-Idea-content">
+                                            <a href="/event">Event list</a>
+                                            <a href="/event/create">Create event</a>
+                                            <a href="/event/manage">Manage event</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a>News <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
+                                        <div class="News-Event-Idea-content">
+                                            <a href="/news">New list</a>
+                                            <a href="/news/create">Create News</a>
+                                            <a href="/news/manage">Manage News</a>  
+                                        </div>
+                                    </li>
+                                    <li>
+                                            <a>Idea <i class="fa fa-angle-down"></i></a>
+                                            <div class="News-Event-Idea-content">
+                                                <a href="/idea">Idea list</a>
+                                                <a href="/category">Create Idea</a>
+                                                <a href="/idea/manage">Manage Idea</a>
+                                            </div>
+                                    </li>
+                                    <li>
+                                            <a>Category <i class="fa fa-angle-down"></i></a>
+                                            <div class="News-Event-Idea-content">
+                                                <a href="/category">Category list</a>
+                                                <a href="/category/create">Create Category</a>
+                                                <a href="/category/manage">Manage Category</a>
+                                            </div>
+                                    </li>
+                                    <li>
+                                            <a>User <i class="fa fa-angle-down"></i></a>
+                                            <div class="News-Event-Idea-content">
+                                                <a href="/user">User list</a>
+                                                <a href="/user/create">Create User</a>
+                                            </div>
+                                    </li>
+                                    {{else ifeq userLogin.role 'Staff'}}
+                                      <li>
+                                        <a>Event <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
+                                        <div class="News-Event-Idea-content">
+                                            <a href="/event">Event list</a>
+                                            <a href="/event/create">Create event</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a>News <i class="fas fa-chevron-down" style="font-size: 13px;"></i></a>
+                                        <div class="News-Event-Idea-content">
+                                            <a href="/news">New list</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                            <a>Idea <i class="fa fa-angle-down"></i></a>
+                                            <div class="News-Event-Idea-content">
+                                                <a href="/idea">Idea list</a>
+                                                <a href="/category">Create Idea</a>
+                                            </div>
+                                    </li>
+                                    <li>
+                                            <a>Category <i class="fa fa-angle-down"></i></a>
+                                            <div class="News-Event-Idea-content">
+                                                <a href="/category">Category list</a>
+                                                <a href="/category/create">Create Category</a>
+                                            </div>
+                                    </li>
                                     {{else}}
                                     <li><a href="">Homepage</a></li>
                                     <li><a href="/event">Event</a></li>
                                     <li><a href="/news">News</a></li>
                                     <li><a href="">Terms & Conditions</a></li>
                                     <li><a href="">Contact</a></li>
-                                    {{/if}}
+                                    {{/ifeq}}
                                 </ul>
                             </div>
                 </div>
@@ -109,7 +177,7 @@
             <div class="Nav_PC" id="Nav_PC">
               <div class="Nav-right">
                 <ul>
-                  {{#if userLogin}}
+                  {{#ifeq userLogin.role 'Admin'}}
                   <li>
                     <div class="news-idea-event-dropdown">
                         <a id="navpc-text" href="/news">News <i class="fa fa-angle-down"></i></a>
@@ -135,7 +203,7 @@
                         <a id="navpc-text" href="/idea">Idea <i class="fa fa-angle-down"></i></a>
                         <div class="news-idea-event-content">
                             <a id="navpc-text" href="/idea">Idea list</a>
-                            <a id="navpc-text" href="/idea/create">Create Idea</a>
+                            <a id="navpc-text" href="/category">Create Idea</a>
                             <a id="navpc-text" href="/idea/manage">Manage Idea</a>
                         </div>
                     </div>
@@ -160,11 +228,98 @@
                         </div>
                     </div>
                   </li>
+
+                  {{else ifeq userLogin.role 'QAC'}}
+                      <li>
+                    <div class="news-idea-event-dropdown">
+                        <a id="navpc-text" href="/news">News <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a id="navpc-text" href="/news">New list</a>
+                            <a id="navpc-text" href="/news/create">Create News</a>
+                            <a id="navpc-text" href="/news/manage">Manage News</a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-idea-event-dropdown">
+                        <a id="navpc-text" href="">Event <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a id="navpc-text" href="/event">Event list</a>
+                            <a id="navpc-text" href="/event/create">Create Event</a>
+                            <a id="navpc-text" href="/event/manage">Manage Event</a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-idea-event-dropdown">
+                        <a id="navpc-text" href="/idea">Idea <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a id="navpc-text" href="/idea">Idea list</a>
+                            <a id="navpc-text" href="/category">Create Idea</a>
+                            <a id="navpc-text" href="/idea/manage">Manage Idea</a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-idea-event-dropdown">
+                        <a id="navpc-text" href="/category">Category <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a id="navpc-text" href="/category">Category list</a>
+                            <a id="navpc-text" href="/category/create">Create Category</a>
+                            <a id="navpc-text" href="/category/manage">Manage Category</a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-idea-event-dropdown">
+                        <a id="navpc-text" href="/user">User <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a id="navpc-text" href="/user">User list</a>
+                            <a id="navpc-text" href="/user/create">Create User</a>
+                        </div>
+                    </div>
+                  </li>
+                  {{else ifeq userLogin.role 'Staff'}}
+                    <li>
+                    <div class="news-idea-event-dropdown">
+                        <a id="navpc-text" href="/news">News <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a id="navpc-text" href="/news">New list</a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-idea-event-dropdown">
+                        <a id="navpc-text" href="">Event <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a id="navpc-text" href="/event">Event list</a>
+                            <a id="navpc-text" href="/event/create">Create Event</a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-idea-event-dropdown">
+                        <a id="navpc-text" href="/idea">Idea <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a id="navpc-text" href="/idea">Idea list</a>
+                            <a id="navpc-text" href="/category">Create Idea</a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-idea-event-dropdown">
+                        <a id="navpc-text" href="/category">Category <i class="fa fa-angle-down"></i></a>
+                        <div class="news-idea-event-content">
+                            <a id="navpc-text" href="/category">Category list</a>
+                            <a id="navpc-text" href="/category/create">Create Category</a>
+                        </div>
+                    </div>
+                  </li>
                   {{else}}
                   <li><a id="navpc-text" href="/">Homepage </a></li>
                   <li><a id="navpc-text" href="/event">Event</a></li>
                   <li><a id="navpc-text" href="/news">News</a></li>
-                  {{/if}}
+                  {{/ifeq}}
                 </ul>
               </div>
 

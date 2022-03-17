@@ -1,10 +1,48 @@
+.title-of-idea{
+    background-color: #fff;
+    border: solid rgb(218, 213, 213);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
 .title-of-idea p{
     margin-bottom: 0;
+    padding-left: 10px;
+}
+.title-of-idea .avatar-for-idea{
+    padding-left: 10px;
 }
 .profile-img-idea{
-    width: 40px;
+    width: 35px;
     border-radius: 20px;
+    margin-top: 5px;
 }
 .comment-for-idea{
     margin-top: 10px;
+}
+.interactive-for-idea{
+    display: flex;
+    justify-content: space-between;
+}
+.like-unlike-btn{
+    margin-left: 5px;
+}
+.show-content-of-idea{
+    margin-right: 5px;
+}
+.show-content-of-idea p{
+    cursor: pointer;
+}
+.show-content-of-idea p:hover{
+    opacity: 0.6;
+    text-decoration: underline;
+}
+.comment-for-idea{
+    background-color: #fff;
+    border-radius: 10pxf;
+    display: none;
+}
+.comment-for-idea input{
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
 }
