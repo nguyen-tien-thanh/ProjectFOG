@@ -1529,7 +1529,6 @@ img.img-center {
 .disable {
   background-color: #ccc; }
 
-<<<<<<< HEAD
 .create-idea {
   height: fit-content;
   background-color: rgba(255, 255, 255, 0.13);
@@ -1538,7 +1537,7 @@ img.img-center {
   margin-bottom: 1rem;
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6); }
-=======
+
 .title-of-idea {
   background-color: #fff;
   border: solid #dad5d5;
@@ -1617,7 +1616,6 @@ img.img-center {
 
 .box-comment p {
   padding-right: 10px; }
->>>>>>> d0c84ab424e25ee272c7bfaef243281e60003edf
 
 body li {
   list-style-type: none;
