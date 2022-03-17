@@ -10,8 +10,6 @@
                         <th>Most Interactive Idea</th>
                     </tr>
                 {{#each idea}}
-                {{!-- <li><a href="/idea/{{this.slug}}">{{this.title}}</a></li> --}}
-                    
                     <tr>
                         <td><a href="/idea/{{this.slug}}">{{this.title}}</a></td>
                     </tr>
@@ -33,13 +31,12 @@
                         File: <p class="card-text"><a href="../../idea/{{this.file}}">{{this.file}}</a></p>
                         <a href="/idea/{{this.slug}}" class="btn btn-primary"> Detail </a>
                         <br>
-                        <button onclick="actOnPost(event);" class="btn btn-success"
-                                data-post-id="{{ this._id }}">Like
-                        </button>
-                        <button onclick="actOnPost(event);" class="btn btn-success"
-                                data-post-id="{{ this._id }}">Unlike
-                        </button>
-                        <p><span id="ratings-{{ this._id }}">{{ this.ratings }}</span> liked this</p>
+
+                        <i class="far fa-thumbs-up like-icon" onclick="actOnIdea(event)" id="like-icon-{{this._id}}" 
+                            data-post-id="{{this._id }}" interactive="Like"></i>
+                        <i class="far fa-thumbs-down unlike-icon" onclick="actOnIdea(event)" id="unlike-icon-{{this._id}}" 
+                            data-post-id="{{this._id }}" interactive="Unlike"></i>
+                        <p><span id="ratings-{{this._id}}">{{ this.ratings }}</span> liked this</p>
 
                         <form action="/idea/{{this._id}}/storeComment?_method=PUT" method="post"> 
                             <label for="idea-comment">Write a comment:</label>
@@ -91,73 +88,118 @@
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
-        /* function doComment(form){
-            $.ajax({
-                url: "/idea/do-comment",
-                method: "POST",
-                data: {
-                    userName: form.commentUserName.value, 
-                    content: form.commentContent.value, 
-                    commentAt: form.commentAt.value, 
-                    annoymous: form.commentAnnoymous.value, 
-                    idea_id: form.idea_id.value,
-                }, 
-                    success: function (res){
-                        alert(res);
-                    }
-            });
-            return false
-        } 
-        $(document).ready(function doComment(form) {
-            $.ajax({
-                url: "/idea/do-comment",
-                method: "POST",
-                data: {
-                    userName: form.commentUserName.value, 
-                    content: form.commentContent.value, 
-                    commentAt: form.commentAt.value, 
-                    annoymous: form.commentAnnoymous.value, 
-                    idea_id: form.idea_id.value,
-                }, 
-                    success: function (res){
-                        alert(res);
-                    }
-            });
-            return false
-        });*/
-        
         $(document).ready(function () {
             //Assign the user name of who is using to input form
             $('input[id="comment-user-name"]').val("{{userLogin.username}}");
             //Assign time now for posting cmt
             $('input[id="comment-date"]').val(Date.now());
         });
-
     </script>
+    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        //=============== REALTIME INTERACTIVE FOR IDEA ==================//
+        // Change number of ratings context
+        
         var updateIdeaRatings = {
             Like: function (postId) {
-                document.querySelector('#ratings-' + postId).textContent++;
+                var ratings = document.querySelector('#ratings-' + postId).textContent;
+                ratings++
+                document.querySelector('#ratings-' + postId).textContent = ratings
+            },
+            CancelLike: function (postId) {
+                var ratings = document.querySelector('#ratings-' + postId).textContent;
+                ratings--
+                document.querySelector('#ratings-' + postId).textContent = ratings
             },
             Unlike: function(postId) {
-                document.querySelector('#ratings-' + postId).textContent--;
-            }
-        };
-    
-        var toggleButtonText = {
-            Like: function(button) {
-                button.textContent = "Unlike";
+                var ratings = document.querySelector('#ratings-' + postId).textContent;
+                ratings--
+                document.querySelector('#ratings-' + postId).textContent = ratings
             },
-            Unlike: function(button) {
-                button.textContent = "Like";
+            CancelUnlike: function(postId) {
+                var ratings = document.querySelector('#ratings-' + postId).textContent;
+                ratings++
+                document.querySelector('#ratings-' + postId).textContent = ratings
+            },
+            LikeThenUnlike: function(postId) {
+                var ratings = document.querySelector('#ratings-' + postId).textContent;
+                ratings--;ratings--
+                document.querySelector('#ratings-' + postId).textContent = ratings
+            },
+            UnlikeThenLike: function(postId) {
+                var ratings = document.querySelector('#ratings-' + postId).textContent;
+                ratings++;ratings++
+                document.querySelector('#ratings-' + postId).textContent = ratings
             }
         };
-    
-        var actOnPost = function (event) {
+
+        // Modify icon after user rate
+        var toggleButtonIcon = {
+            Like: function(icon, postId) { 
+                icon.setAttribute("class","fa fa-thumbs-up choosen-icon")
+                icon.setAttribute("style","color:rgb(255, 50, 71)")
+                icon.setAttribute("interactive","CancelLike")
+                if($('#unlike-icon-'+postId).hasClass("choosen-icon") || $('#like-icon-'+postId).hasClass("choosen-icon")){
+                    document.getElementById("unlike-icon-"+postId).setAttribute("class","far fa-thumbs-down")
+                    document.getElementById("unlike-icon-"+postId).setAttribute("style","")
+                    document.getElementById("unlike-icon-"+postId).setAttribute("interactive","LikeThenUnlike")
+                }
+            },
+            CancelLike: function(icon, postId) {
+                icon.setAttribute("class","far fa-thumbs-up")
+                icon.removeAttribute("style")
+                if(!$('#like-icon-'+postId).hasClass("choosen-icon")){
+                    icon.setAttribute("interactive","Like")
+                    document.getElementById("unlike-icon-"+postId).setAttribute("interactive","Unlike")
+                }else{
+                    icon.setAttribute("interactive","Like")
+                }
+            },
+            Unlike: function(icon, postId) {
+                icon.setAttribute("class","fa fa-thumbs-down choosen-icon")
+                icon.setAttribute("interactive","CancelUnlike")
+                if($('#like-icon-'+postId).hasClass("choosen-icon") || $('#unlike-icon-'+postId).hasClass("choosen-icon")){
+                    document.getElementById("like-icon-"+postId).setAttribute("class","far fa-thumbs-up")
+                    document.getElementById("like-icon-"+postId).setAttribute("style","")
+                    document.getElementById("like-icon-"+postId).setAttribute("interactive","UnlikeThenLike")
+                }
+            },
+            CancelUnlike: function(icon, postId) {
+                icon.setAttribute("class","far fa-thumbs-down")
+                if(!$('#unlike-icon-'+postId).hasClass("choosen-icon")){
+                    icon.setAttribute("interactive","Unlike")
+                    document.getElementById("like-icon-"+postId).setAttribute("interactive","Like")
+                }else{
+                icon.setAttribute("interactive","Unlike")
+                }
+            },
+            LikeThenUnlike: function(icon, postId) {
+                icon.setAttribute("class","fa fa-thumbs-down choosen-icon")
+                icon.setAttribute("interactive","CancelUnlike")
+                if($('#like-icon-'+postId).hasClass("choosen-icon")){
+                    document.getElementById("like-icon-"+postId).setAttribute("class","far fa-thumbs-up")
+                    document.getElementById("like-icon-"+postId).setAttribute("style","")
+                    document.getElementById("like-icon-"+postId).setAttribute("interactive","UnlikeThenLike")
+                }
+            },
+            UnlikeThenLike: function(icon, postId) {
+                icon.setAttribute("class","fa fa-thumbs-up choosen-icon")
+                icon.setAttribute("style","color:rgb(255, 50, 71)")
+                icon.setAttribute("interactive","CancelLike")
+                if($('#unlike-icon-'+postId).hasClass("choosen-icon")){
+                    document.getElementById("unlike-icon-"+postId).setAttribute("class","far fa-thumbs-down")
+                    document.getElementById("unlike-icon-"+postId).setAttribute("interactive","LikeThenUnlike")
+                }
+            }
+        };
+
+        //Send req to the server for modify ratings of idea
+        var actOnIdea = function (event) {
             var postId = event.target.dataset.postId;
-            var action = event.target.textContent.trim();
-            toggleButtonText[action](event.target);
+            var action = event.target.getAttribute("interactive").trim();
+            toggleButtonIcon[action](event.target, postId);
+            console.log(action)
             updateIdeaRatings[action](postId);
             axios.post('/idea/' + postId + '/interactive?_method=PUT', { action: action });
         };

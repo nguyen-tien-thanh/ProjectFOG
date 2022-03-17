@@ -38,10 +38,20 @@ class IdeaController {
         res.send(data);
     }
 
-    //[POST] /idea/:id/interactive
+    //[PUT] /idea/:id/interactive
     interactive(req,res,next){
         const action = req.body.action;
-        const counter = action === 'Like' ? 1 : -1;
+        // const counter = action === 'Like' ? 1 : -1;
+        var counter
+        if (action ==='Like' || action ==='CancelUnlike'){
+            counter = 1;
+        }else if (action ==='LikeThenUnlike'){
+            counter = -2;
+        }else if (action ==='UnlikeThenLike'){
+            counter = 2;
+        }else {
+            counter = -1;
+        }
         Idea.updateOne({_id: req.params.id}, {$inc: {ratings: counter}}, {}, (err, numberAffected) => {
             res.send('');
         });
