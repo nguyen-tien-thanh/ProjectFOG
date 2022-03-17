@@ -1473,7 +1473,8 @@ img.img-center {
   position: fixed;
   left: 2%; }
 
-#customers td, #customers th {
+#customers td,
+#customers th {
   border: 1px solid #ddd;
   padding: 8px; }
 
@@ -1502,7 +1503,8 @@ img.img-center {
   font-size: 1.2rem;
   line-height: 45px; }
 
-.previous-page, .next-page {
+.previous-page,
+.next-page {
   background: #ff3247;
   width: 80px;
   border-radius: 45px;
@@ -1515,7 +1517,8 @@ img.img-center {
 .next-page:hover {
   transform: translateX(5px); }
 
-.current-page, .dots {
+.current-page,
+.dots {
   background-color: #ccc;
   width: 45px;
   border-radius: 50%;
@@ -1527,13 +1530,18 @@ img.img-center {
 .disable {
   background-color: #ccc; }
 
+.create-idea {
+  height: fit-content;
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6); }
+
 body li {
   list-style-type: none;
   text-decoration: none; }
-
-.checkbox-select-all-options {
-  width: 10%;
-  margin: 0px 16px; }
 
 .btn-secondary {
   background-color: black;
@@ -1541,3 +1549,16 @@ body li {
 
 .btn-secondary:hover {
   background-color: #838eca; }
+
+.checkbox-select-all-options {
+  width: 20%;
+  margin: 0px 16px;
+  padding: 9px 10px;
+  border-radius: 5px; }
+
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .checkbox-select-all-options {
+    width: 30%; } }
+
+table tr:nth-child(2n) {
+  background: lightgrey; }

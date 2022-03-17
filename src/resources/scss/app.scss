@@ -26,11 +26,6 @@ body li {
   text-decoration: none;
 }
 
-.checkbox-select-all-options {
-  width: 10%;
-  margin: 0px 16px;
-}
-
 .btn-secondary {
   background-color: black;
   border: rgb(255, 50, 71);
@@ -40,7 +35,19 @@ body li {
   background-color: rgb(131, 142, 202);
 }
 
+.checkbox-select-all-options {
+  width: 20%;
+  margin: 0px 16px;
+  padding: 9px 10px;
+  border-radius: 5px;
+}
 
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .checkbox-select-all-options {
+    width: 30%;
+  }
+}
 
-
-
+table tr:nth-child(2n) {
+  background: lightgrey;
+}

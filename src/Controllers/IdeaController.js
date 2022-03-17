@@ -61,24 +61,27 @@ class IdeaController {
     //[POST] /idea/:id/add-idea
     addIdea(req,res,next) {
         if (req.isAuthenticated()) {
-            Promise.all([Category.findById(req.params.id), User.findOne({username: req.user.username})])
-            .then(([category, userLogin]) => 
+            Promise.all([Category.findById(req.params.id), Category.find({}),
+                User.findOne({username: req.user.username})])
+            .then(([category, categoryList, userLogin]) => 
             res.render('idea/create', {
                 title: 'Create Idea',
                 category: mongooseToObject(category),
+                categoryList: multipleMongooseToObject(categoryList),
                 userLogin: mongooseToObject(userLogin),
                 })
             )
             .catch(next)
         }
         else{
-            Category.findById(req.params.id)
-            .then(category => {
-                res.render('idea/create', {
-                    title: 'Create Idea',
-                    category: mongooseToObject(category)
+            Promise.all([Category.findById(req.params.id), Category.find({})])
+            .then(([category, categoryList]) => 
+            res.render('idea/create', {
+                title: 'Create Idea',
+                category: mongooseToObject(category),
+                categoryList: multipleMongooseToObject(categoryList)
                 })
-            })
+            )
             .catch(err=>next(err));
             }
     }
@@ -87,10 +90,10 @@ class IdeaController {
     create(req,res,next) {
         if (req.isAuthenticated()) {
             Promise.all([Category.find({}), User.findOne({username: req.user.username})])
-            .then(([category, userLogin]) => 
+            .then(([categoryList, userLogin]) => 
             res.render('idea/create', {
                 title: 'Create Idea',
-                category: multipleMongooseToObject(category),
+                categoryList: multipleMongooseToObject(categoryList),
                 userLogin: mongooseToObject(userLogin),
                 })
             )
@@ -98,11 +101,11 @@ class IdeaController {
         }
         else{
             Category.find({})
-            .then(category => {
-                // category = category.map(cat => cat.toObject())
+            .then(categoryList => {
+                // categoryList = categoryList.map(cat => cat.toObject())
                 res.render('idea/create', {
                     title: 'Create Idea',
-                    category: multipleMongooseToObject(category)
+                    categoryList: multipleMongooseToObject(categoryList)
                 })
             })
             .catch(err=>next(err));
