@@ -1151,9 +1151,17 @@ img.img-center {
 #manage-line2-0 {
   text-align: center; }
 
-#h1-show-category {
+#h1-cateshow {
   text-align: center;
-  line-height: 1.5em; }
+  line-height: 2em; }
+
+.title-cate {
+  background-color: #fff;
+  border: solid #e4cece;
+  box-shadow: 0 4em 10em 0 rgba(0, 0, 0, 0.2);
+  border-radius: 1.5em;
+  width: 50%;
+  padding: 1.5em 7em; }
 
 #h1-trash-category,
 #p-trash-category {
@@ -1529,7 +1537,6 @@ img.img-center {
 .disable {
   background-color: #ccc; }
 
-<<<<<<< HEAD
 .create-idea {
   height: fit-content;
   background-color: rgba(255, 255, 255, 0.13);
@@ -1538,7 +1545,7 @@ img.img-center {
   margin-bottom: 1rem;
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6); }
-=======
+
 .title-of-idea {
   background-color: #fff;
   border: solid #dad5d5;
@@ -1617,7 +1624,6 @@ img.img-center {
 
 .box-comment p {
   padding-right: 10px; }
->>>>>>> d0c84ab424e25ee272c7bfaef243281e60003edf
 
 body li {
   list-style-type: none;
