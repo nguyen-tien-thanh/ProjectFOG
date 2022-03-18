@@ -394,14 +394,17 @@
             showPage(1);
 
             $(document).on("click", ".pagination-idea-page li.current-page:not(.active)", function(){
+                window.scrollTo(0, 0);
                 return showPage(+$(this).text());
             });
 
             $(".next-page").on("click", function(){
+                window.scrollTo(0, 0);
                 return showPage(currentPage + 1);
             });
 
             $(".previous-page").on("click", function(){
+                window.scrollTo(0, 0);
                 return showPage(currentPage - 1);
             });
 

@@ -2,7 +2,7 @@
 <a href="/news/trash">Trash news </a>
 (Total deleted news: {{deletedCount}})
 
-<form name="container-form" action="/news/handle-form-actions" method="POST">
+<form class="form-mobile" name="container-form" action="/news/handle-form-actions" method="POST">
     <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
@@ -22,7 +22,7 @@
         {{!-- <button class="btn btn-primary btn-small disabled check-all-submit-btn">Go</button> --}}
     </div>
 
-    <table class="table mt-4">
+    <table class="table mt-4 table-responsive-sm table-responsive-md">
     <thead>
         <tr>
             <th></th>
@@ -35,7 +35,7 @@
     </thead>
     <tbody>
         {{#each news}}
-        <tr>
+        <tr class="manage_mobile">
             <td>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="newsIds[]" value="{{this._id}}" >
@@ -43,8 +43,8 @@
                 </div>
             </td>
         <th scope="row">{{sum @index 1}}</th>
-        <td>{{this.name}}</td>
-        <td>{{this.description}}</td>
+        <td class="kitbox">{{this.name}}</td>
+        <td class="kitbox">{{this.description}}</td>
         <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
         <td style="padding:5px">
             <a href="/news/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
