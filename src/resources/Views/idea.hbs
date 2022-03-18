@@ -83,9 +83,7 @@
                 </div>
                 <p style="font-size:18px">{{this.title}}</p>
                 <p style="font-size:14px">{{this.detail}}</p>
-                <p>File: <a id="file-check-{{this._id}}" data-post-id="{{this._id}}" 
-                            href="../../idea/{{this.file}}">{{this.file}}</a>
-                </p>
+                <p>File: <a id="file-check" href="../../idea/{{this.file}}">{{this.file}}</a></p>
                     <hr>
                     <div class="interactive-for-idea">
                     <div class="like-unlike-btn">
@@ -93,11 +91,11 @@
                             <span id="ratings-{{this._id}}">{{this.ratings }}</span> liked this idea
                         </p>
                         <i class="far fa-thumbs-up like-icon" onclick="actOnIdea(event)" id="like-icon-{{this._id}}" 
-                                data-post-id="{{this._id}}" interactive="Like"></i>
+                                data-post-id="{{this._id }}" interactive="Like"></i>
                         <i class="far fa-thumbs-down unlike-icon" onclick="actOnIdea(event)" id="unlike-icon-{{this._id}}" 
-                            data-post-id="{{this._id}}" interactive="Unlike"></i>
+                            data-post-id="{{this._id }}" interactive="Unlike"></i>
                     </div>
-                    <div id="show-content-idea" class="show-content-of-idea">
+                    <div id="show-content-idea-{{this._id}}" class="show-content-of-idea">
                         <p>Show content</p>
                     </div>
                 </div>
@@ -158,13 +156,13 @@
 </div>
 
     {{! Button show comment }}
-    <script>
+    {{!-- <script>
         var showContent= document.getElementById('show-content-idea')
         var commentIdea=document.getElementById('commentIdea')
         showContent.onclick=function(){
             commentIdea.setAttribute("style", "display:block")
         }
-    </script>
+    </script> --}}
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
@@ -284,35 +282,62 @@
             axios.post('/idea/' + postId + '/interactive?_method=PUT', { action: action });
         };
     </script>
-
+    
         <script>
 
         //Check type of file uploaded to import icon 
-        var imgShow = '<img src="/idea/{{idea.file}}" alt="{{this.title}}" style="width:50px; height:50px">'
+        var imgShow = '<img class="idea-img" src="../../idea/test-img.jpeg" alt="{{this.title}}" style="width:100%; height:auto;  align-items: center;">'
         var pdfShow = '<i class="fa fa-file-powerpoint"></i> {{this.file}}'
-        var wordShow = '<i class="fa fa-file-word"></i> {{idea.file}}'
+        var wordShow = '<i class="fa fa-file-word"></i> {{this.file}}'
         var excelShow = '<i class="fa fa-file-xls"></i> {{this.file}}'
-        var fileCheck = document.querySelector("file-check-"+postId).innerHTML
+        var fileCheck = document.getElementById("file-check").innerHTML
         var fileName;
         var fileLastName;
         fileName = fileCheck.split('.')
         fileLastName = fileName[fileName.length -1]
 
         if (fileLastName == 'doc' || fileLastName == 'docx' || fileLastName == 'txt'){
-            document.querySelector("file-check-"+postId).innerHTML = wordShow;
+            document.getElementById("file-check").innerHTML = wordShow;
         }
         else if (fileLastName == 'xls'){
-            document.querySelector("file-check-"+postId).innerHTML = excelShow;
+            document.getElementById("file-check").innerHTML = excelShow;
         }
         else if (fileLastName == 'jpg' || fileLastName=='jpeg' || fileLastName== 'png' ){
-            document.querySelector("file-check-"+postId).innerHTML = imgShow;
+            document.getElementById("file-check").innerHTML = imgShow;
         }
         else if (fileLastName == 'pdf') {
-            document.querySelector("file-check-"+postId).innerHTML = pdfShow
+            document.getElementById("file-check").innerHTML = pdfShow
         }
         else{
-            document.querySelector("file-check-"+postId).innerHTML = ''
+            document.getElementById("file-check").innerHTML = ''
         }
+
+        //Like button
+        var updateIdeaRatings = {
+            Like: function (postId) {
+                document.querySelector('#ratings-' + postId).textContent++;
+            },
+            Unlike: function(postId) {
+                document.querySelector('#ratings-' + postId).textContent--;
+            }
+        };
+    
+        var toggleButtonText = {
+            Like: function(button) {
+                button.textContent = "Unlike";
+            },
+            Unlike: function(button) {
+                button.textContent = "Like";
+            }
+        };
+    
+        var actOnPost = function (event) {
+            var postId = event.target.dataset.postId;
+            var action = event.target.textContent.trim();
+            toggleButtonText[action](event.target);
+            updateIdeaRatings[action](postId);
+            axios.post('/idea/' + postId + '/interactive?_method=PUT', { action: action });
+        };
     </script>
 
     <script>
