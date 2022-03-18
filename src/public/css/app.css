@@ -1541,6 +1541,9 @@ img.img-center {
 .disable {
   background-color: #ccc; }
 
+#like-count {
+  font-size: 12px; }
+
 .create-idea {
   height: fit-content;
   background-color: rgba(255, 255, 255, 0.13);
@@ -1590,7 +1593,8 @@ img.img-center {
   justify-content: space-between; }
 
 .like-unlike-btn {
-  margin-left: 5px; }
+  margin-left: 5px;
+  margin-top: -5px; }
 
 .show-content-of-idea {
   margin-right: 5px; }
