@@ -31,7 +31,7 @@
 /* Break point*/
 
 /* PC */ 
-@media (min-width: 1024px ) {
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
     .pc {
         display: block;
     }
@@ -43,7 +43,7 @@
 
 
 /* TABLET */
-@media (min-width: 740px ) and (max-width:1023px ) {
+@media only screen and (min-width: 390px) and (max-width: 741px) {
     .tablet {
         display: block;
     }
@@ -140,7 +140,7 @@
 }
 
 /* MOBILE */
-@media (max-width: 740px )  {
+@media only screen and (min-width: 320px) and (max-width: 741px)  {
     .mobile {
         display: block;
     }
@@ -284,7 +284,6 @@
         z-index: 1;
         transform: translateY(-60px) translateX(-10px);
     }
-     
    
 }
 

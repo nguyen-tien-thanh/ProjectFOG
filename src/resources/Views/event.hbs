@@ -1,53 +1,35 @@
 <h1 class="text-center">Event </h1>
-<div class="mt-4 ">
-    <ul class="row">
-    <div class="col-3">
-            <ul class="list-group list__group-mobile list__group-tablet">
-                <h4>Event List</h4>
-                {{#each event}}
-                    <a class="list-group-item list-group-item-action list-hover" href="/event/{{this.slug}}"><li>{{this.name}}</li></a>
-                {{/each}}
-            </ul>
-            
-        <div class="dropdown dropdown-mobile ">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Event List
-        </button>
-        <div class="dropdown-menu table-responsive-sm pad" aria-labelledby="dropdownMenu2">
-            {{#each event}}
-            <a href="/event/{{this.slug}}" class="detail-page">
-            <button  class="dropdown-item" type="button"><li>{{this.name}}</li></button>
-            {{/each}}
-            </a>
-        </div>
-        </div>
-        </div>
-
-   <div class="col-9 row col-modify">
-            {{#each event}}
-            <div class="col-sm-4 col-md-4 col-lg-4 col-mobile col-tablet">
-                
-            <div class="card event-card">
-                <a class="card-content" href="/event/{{this.slug}}">
-                    <img class="card-img-top img-mobile img-tablet" src="{{this.image}}" alt="{{this.name}}">
-                </a>
-                <div class="card-body body-new">
-                    <a href="/event/{{this.slug}}">
-                        <h5 class="card-title title-event title-mobile title-tablet">{{this.name}}</h5>
-                    </a>
-                    <p class="card-text text-new ">{{this.description}}</p>
-                  
-                        <div class="event-footer-button">
-                            <a  href="/event/{{this.slug}}"> 
-                            <button>See more</button>
-                            </a> 
-                        </div>   
-                </div>  
+<div class= "container-fluid">
+    <div class="mt-4">
+        <ul class="row">
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <h4>Event List</h4>
+                    {{#each event}}
+                        <a class="list-group-item list-group-item-action list-hover" href="/event/{{this.slug}}"><li>{{this.name}}</li></a>
+                    {{/each}}
+                </ul>
             </div>
-        </div>
-        {{/each}}
-        </div>
-    </ul>
+            <div class="col-md-9">
+                <div class="row">
+                {{#each event}}
+                <div class="card-group mb-4 col-12 col-sm-6 col-md-4">
+                    <div class="card card-event-page">
+                        <a href="/event/{{this.slug}}">
+                            <img class="card-img-news" src="{{this.image}}" alt="{{this.name}}">
+                        </a>
+                        <div class="card-body">
+                            <a href="/event/{{this.slug}}">
+                                <h5 class="card-title title-event ">{{this.name}}</h5>
+                            </a>
+                            <p class="card-text test1 overflow-hidden">{{this.description}}</p>
+                        </div>
+                        <a class="card-footer btn-detail" href="/event/{{this.slug}}">Detail</a>
+                    </div>
+                </div>
+                {{/each}}
+                </div>
+            </div>
+        </ul>
+    </div>
 </div>
-
- 
