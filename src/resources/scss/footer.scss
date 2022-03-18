@@ -1,5 +1,4 @@
 
-
 .site-footer
 {
   background-color:#47484c;
@@ -132,5 +131,14 @@
     display:inline;
     margin-right:0;
     font-weight:600;
+  }
+  .footer-row{
+    width:100%
+  }
+  .footer-about{
+    text-align: center;
+  }
+  .footer-about p{
+    margin-left: 35px;
   }
 }
