@@ -84,7 +84,12 @@
 }
 
 #like-count {
-  font-size: 12px;
+  font-size: 16px;
+}
+
+.interactive-for-idea button:focus {
+  border: none;
+  outline: none;
 }
 
 //Create idea page

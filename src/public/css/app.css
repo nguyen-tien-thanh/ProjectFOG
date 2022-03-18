@@ -1550,7 +1550,11 @@ img.img-center {
   background-color: #ccc; }
 
 #like-count {
-  font-size: 12px; }
+  font-size: 16px; }
+
+.interactive-for-idea button:focus {
+  border: none;
+  outline: none; }
 
 .create-idea {
   height: fit-content;
@@ -1601,8 +1605,7 @@ img.img-center {
   justify-content: space-between; }
 
 .like-unlike-btn {
-  margin-left: 5px;
-  margin-top: -5px; }
+  margin-left: 5px; }
 
 .show-content-of-idea {
   margin-right: 5px; }
