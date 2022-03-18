@@ -66,7 +66,7 @@
   display: inline;
   background-color: rgb(226, 222, 222);
 }
-::placeholder {
+.comment-for-idea ::placeholder {
   color: rgb(51, 48, 48);
 }
 .box-comment {
@@ -77,4 +77,5 @@
 }
 .box-comment p {
   padding-right: 10px;
+ 
 }
