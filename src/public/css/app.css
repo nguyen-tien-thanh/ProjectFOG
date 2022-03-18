@@ -834,7 +834,8 @@ body {
   object-fit: cover;
   overflow: hidden; }
 
-.event-card {
+.event-card,
+.card-event-page {
   margin: 18px 8px;
   box-shadow: 5px 10px  #888888;
   display: flex; }
@@ -869,7 +870,9 @@ body {
   background-color: #B22222;
   color: #fff; }
 
-.title-event {
+.title-event,
+.title-event-page,
+.btn-detail {
   color: #1e1e1e;
   font-size: 0.9rem;
   line-height: 1.8rem;
@@ -983,7 +986,7 @@ img.img-center {
   text-align: center; }
 
 .card-footer:hover {
-  background-color: #ff3247;
+  background-color: #B22222;
   color: white;
   text-decoration: none; }
 
@@ -1330,12 +1333,12 @@ img.img-center {
 
 /* Break point*/
 /* PC */
-@media (min-width: 1024px) {
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
   .pc {
     display: block; } }
 
 /* TABLET */
-@media (min-width: 740px) and (max-width: 1023px) {
+@media only screen and (min-width: 390px) and (max-width: 741px) {
   .tablet {
     display: block; }
   .col-lg-4 {
@@ -1388,7 +1391,7 @@ img.img-center {
     margin-top: 30px; } }
 
 /* MOBILE */
-@media (max-width: 740px) {
+@media only screen and (min-width: 320px) and (max-width: 741px) {
   .mobile {
     display: block; }
   .event-detail__img {
@@ -1556,7 +1559,11 @@ img.img-center {
   background-color: #ccc; }
 
 #like-count {
-  font-size: 12px; }
+  font-size: 16px; }
+
+.interactive-for-idea button:focus {
+  border: none;
+  outline: none; }
 
 .create-idea {
   height: fit-content;
@@ -1607,8 +1614,7 @@ img.img-center {
   justify-content: space-between; }
 
 .like-unlike-btn {
-  margin-left: 5px;
-  margin-top: -5px; }
+  margin-left: 5px; }
 
 .show-content-of-idea {
   margin-right: 5px; }
