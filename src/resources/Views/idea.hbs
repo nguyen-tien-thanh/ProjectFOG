@@ -19,7 +19,7 @@
 
         <div style="display: block;" class="col-9 row content-idea">
             {{#each idea}}
-            <div class="col-12 mt-4">
+            {{!-- <div class="col-12 mt-4">
                 <div class="card">
                     <div class="card-body">
                         <a href="/idea/{{this.slug}}">
@@ -69,7 +69,77 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+
+            <div class="title-of-idea container-fluid mt-3">
+                <div class="row">
+                    <div class="col-0.5">
+                    <span class="avatar-for-idea"><img class="profile-img-idea" src="{{this.username.avatar}}" alt="avatar"></span>
+                    </div>
+                    <div class="col-11.5">
+                    <b style="margin-bottom:0; padding-left:5px;">{{this.username.username}}</b>
+                    <p style="font-size: 10px; color:rgb(107, 104, 104); padding-left:5px;">{{moment this.createdAt format="DD-MM-YYYY on HH:mm"}}</p>
+                    </div>
+                </div>
+                <p style="font-size:18px">{{this.title}}</p>
+                <p style="font-size:14px">{{this.detail}}</p>
+                <p>File: <a id="file-check" href="../../idea/{{this.file}}">{{this.file}}</a></p>
+                    <hr>
+                    <div class="interactive-for-idea">
+                    <div class="like-unlike-btn">
+                        <p id="like-count"><i class="fas fa-heart" style="color:red"></i>
+                            <span id="ratings-{{this._id}}">{{this.ratings }}</span> liked this idea
+                        </p>
+                        <i class="far fa-thumbs-up like-icon" onclick="actOnIdea(event)" id="like-icon-{{this._id}}" 
+                                data-post-id="{{this._id }}" interactive="Like"></i>
+                        <i class="far fa-thumbs-down unlike-icon" onclick="actOnIdea(event)" id="unlike-icon-{{this._id}}" 
+                            data-post-id="{{this._id }}" interactive="Unlike"></i>
+                    </div>
+                    <div id="show-content-idea-{{this._id}}" class="show-content-of-idea">
+                        <p>Show content</p>
+                    </div>
+                </div>
+                    <div id="commentIdea" class="comment-for-idea">
+                    <hr>
+                        {{#idea}}
+                        {{#comment}}
+                            {{#if annoymous}}
+                            <input id="comment-posted-username" value="Anonymous" class="mt-4" disabled style="display: none;">
+                            <img class="profile-img-for-comment" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
+                                <div class="box-comment">
+                                <p><b>Anonymous</b><br>{{content}}</p>
+                                </div>
+                            <div style="margin-left: 32px;"><p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment commentAt format="DD-MM-YYYY on HH:mm"}}</p></div>
+                            {{else}}
+                            <input id="comment-posted-username" value="Name: {{userName}}" class="mt-4" disabled style="display: none;">
+                            <img class="profile-img-for-comment" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
+                                <div class="box-comment">
+                                <p><b>{{userName}}</b><br>{{content}}</p>
+                                </div>
+                            <div style="margin-left: 32px;"><p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment commentAt format="DD-MM-YYYY on HH:mm"}}</p></div>
+                            {{/if}}
+                        {{/comment}}
+                        {{/idea}}
+                        <hr>
+                        <form action="/idea/{{this._id}}/storeComment?_method=PUT" method="post"> 
+                            <input class="form-control" type="text" style="" id="comment-user-name" name="userName" hidden>
+                            <span><img class="profile-img-input-comment" src="{{userLogin.avatar}}" alt="avatar"></span>
+                            <input class=" input-comment" placeholder="Write comment..." type="text" name="content">
+                            <p style="font-size: 12px; margin-left:35px">
+                                <input type="checkbox" style="widh:10px; height:10px" id="comment-annoymous" value="true" name="annoymous">
+                                Comment as anonymous
+                            </p>
+                            {{!-- ====================== For send email comment HIDDEN form ====================================--}}
+
+                            <input type="" id="comment-idea-id input-comment" name="idea_id" value="{{this._id}}" hidden>
+                            <input class="form-control input-comment" id="comment-date" name="commentAt"hidden>
+                            <input type="text" name="ideaTitle" value="{{this.title}}"hidden>
+                            <input type="text" name="emailReceiver" value="{{this.username.email}}" hidden>
+                            {{!-- ============================================================================ --}}
+                            <input class="input-comment btn btn-success" type="submit" value="Submit" hidden>
+                        </form> 
+                    </div>
+                </div>
             {{/each}}
         </div>
     </ul>
@@ -85,6 +155,14 @@
     </div>
 </div>
 
+    {{! Button show comment }}
+    {{!-- <script>
+        var showContent= document.getElementById('show-content-idea')
+        var commentIdea=document.getElementById('commentIdea')
+        showContent.onclick=function(){
+            commentIdea.setAttribute("style", "display:block")
+        }
+    </script> --}}
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
@@ -200,6 +278,63 @@
             var action = event.target.getAttribute("interactive").trim();
             toggleButtonIcon[action](event.target, postId);
             console.log(action)
+            updateIdeaRatings[action](postId);
+            axios.post('/idea/' + postId + '/interactive?_method=PUT', { action: action });
+        };
+    </script>
+    
+        <script>
+
+        //Check type of file uploaded to import icon 
+        var imgShow = '<img class="idea-img" src="../../idea/test-img.jpeg" alt="{{this.title}}" style="width:100%; height:auto;  align-items: center;">'
+        var pdfShow = '<i class="fa fa-file-powerpoint"></i> {{this.file}}'
+        var wordShow = '<i class="fa fa-file-word"></i> {{this.file}}'
+        var excelShow = '<i class="fa fa-file-xls"></i> {{this.file}}'
+        var fileCheck = document.getElementById("file-check").innerHTML
+        var fileName;
+        var fileLastName;
+        fileName = fileCheck.split('.')
+        fileLastName = fileName[fileName.length -1]
+
+        if (fileLastName == 'doc' || fileLastName == 'docx' || fileLastName == 'txt'){
+            document.getElementById("file-check").innerHTML = wordShow;
+        }
+        else if (fileLastName == 'xls'){
+            document.getElementById("file-check").innerHTML = excelShow;
+        }
+        else if (fileLastName == 'jpg' || fileLastName=='jpeg' || fileLastName== 'png' ){
+            document.getElementById("file-check").innerHTML = imgShow;
+        }
+        else if (fileLastName == 'pdf') {
+            document.getElementById("file-check").innerHTML = pdfShow
+        }
+        else{
+            document.getElementById("file-check").innerHTML = ''
+        }
+
+        //Like button
+        var updateIdeaRatings = {
+            Like: function (postId) {
+                document.querySelector('#ratings-' + postId).textContent++;
+            },
+            Unlike: function(postId) {
+                document.querySelector('#ratings-' + postId).textContent--;
+            }
+        };
+    
+        var toggleButtonText = {
+            Like: function(button) {
+                button.textContent = "Unlike";
+            },
+            Unlike: function(button) {
+                button.textContent = "Like";
+            }
+        };
+    
+        var actOnPost = function (event) {
+            var postId = event.target.dataset.postId;
+            var action = event.target.textContent.trim();
+            toggleButtonText[action](event.target);
             updateIdeaRatings[action](postId);
             axios.post('/idea/' + postId + '/interactive?_method=PUT', { action: action });
         };

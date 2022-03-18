@@ -13,6 +13,7 @@
   
   module.exports = {
     sum: (a,b) => a+b,
+    dateNow: new Date(),
     ifeq: function(a,b, options){
       if (a == b){
         return options.fn(this);

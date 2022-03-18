@@ -6,14 +6,15 @@
     <a href="./category/trash" id="D"><b><i> Delete </i></b></a></div>
 
 <div class="panel panel-default-category">
-    <div class="panel-body-category">
+    <div class="panel-body-category table-responsive">
         <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-categories">
             <thead id="head-category">
                 <tr id="tr-head-category">
                     <th width="150px"><i>Category Code</i></th>
                     <th width="350px"><i>Category Name</i></th>
-                    <th width="500px"><i>Description</i></th>
-                    <th width="100px"><i>Status</i></th>
+                    <th width="500px"><i>Deadline submit</i></th>
+                    <th width="500px"><i>Deadline Comment</i></th>
+                    <th width="100px"><i>Create Idea</i></th>
                 </tr>
             </thead>
             <tbody id="body-category">
@@ -23,13 +24,16 @@
                     <td>
                         <h6>{{this.slug}}</h6></td>
                     <td>
-                        <a href="/category/{{this.slug}}" id="name-category">
-                        <h6 class="card-title-category">{{this.categoryName}}</h6></a></td>
+                        <a href="/category/{{this.slug}}" class="btn btn-primary-category" id="M-CA">
+                            <P><h6 class="card-title-category"><b><i>{{this.categoryName}}</i></b></h5></P></a>
+                    </td>
                     <td>
-                        <a href="/category/{{this.slug}}" class="btn btn-primary-category" id="M-CA"> Category Detail 
-                            <P><h6 class="card-title-category"><b><i>{{this.categoryName}}</i></b></h5></P></a></td>
+                        <h6>{{moment this.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}</h6></td>
                     <td>
-                        <a href="/idea/{{this._id}}/add-idea"><button class="btn btn-warning-category btn-circle-category" id="N-CA">
+                        <h6>{{moment this.deadlineCmt format="HH:mm on DD-MM-YYYY"}}</h6></td>
+                    <td>
+                        <a href="/idea/{{this._id}}/add-idea">
+                            <button class="btn btn-warning-category btn-circle-category" id="N-CA">
                             <i class="fa fa-edit"></i></button>
                             </a>
                     </td>
