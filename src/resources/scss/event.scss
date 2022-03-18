@@ -39,7 +39,8 @@ body{
     overflow: hidden;
 }
 
-.event-card{
+.event-card ,
+.card-event-page{
     margin: 18px 8px;
     box-shadow: 5px 10px  #888888;
     display: flex;
@@ -83,7 +84,9 @@ body{
 }
 
 
-.title-event   {
+.title-event , 
+.title-event-page,
+.btn-detail   {
     color: #1e1e1e;
     font-size: 0.9rem;
     line-height: 1.8rem;
