@@ -1,3 +1,4 @@
+
 <h1>Manage news</h1>
 <a href="/news/trash">Trash news </a>
 (Total deleted news: {{deletedCount}})
@@ -23,45 +24,45 @@
     </div>
 
     <table class="table mt-4 table-responsive-sm table-responsive-md">
-    <thead>
-        <tr>
-            <th></th>
-            <th scope="col">No (Total: {{storedCount}})</th>
-            <th scope="col">news Name</th>
-            <th scope="col">Detail</th>
-            <th scope="col">Created Date</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each news}}
-        <tr class="manage_mobile">
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="newsIds[]" value="{{this._id}}" >
-                    </label>
-                </div>
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col">No (Total: {{storedCount}})</th>
+                <th scope="col">news Name</th>
+                <th scope="col">Detail</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each news}}
+            <tr class="manage_mobile">
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="newsIds[]" value="{{this._id}}" >
+                        </label>
+                    </div>
+                </td>
+            <th scope="row">{{sum @index 1}}</th>
+            <td class="kitbox">{{this.name}}</td>
+            <td class="kitbox">{{this.description}}</td>
+            <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
+            <td style="padding:5px">
+                <a href="/news/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
+                <a href="/news/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
+                <a href="" data-toggle="modal" data-target="#delete-news" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
             </td>
-        <th scope="row">{{sum @index 1}}</th>
-        <td class="kitbox">{{this.name}}</td>
-        <td class="kitbox">{{this.description}}</td>
-        <td>{{moment this.createdAt format="HH:mm on DD-MM-YYYY"}}</td>
-        <td style="padding:5px">
-            <a href="/news/{{this._id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
-            <a href="/news/{{this.slug}}"><button type="button" class="btn btn-secondary">Detail</button></a>
-            <a href="" data-toggle="modal" data-target="#delete-news" data-id="{{this._id}}"><button class="btn btn-secondary">Delete</button></a>
-        </td>
-        </tr>
-        {{else}}
-        <tr>
-            <td colspan="5" class="text-center">
-                You have not created any news.
-                <a href="/news/create">Create new one?</a>
-            </td>
-        </tr>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="5" class="text-center">
+                    You have not created any news.
+                    <a href="/news/create">Create new one?</a>
+                </td>
+            </tr>
 
-        {{/each}}
-    </tbody>
+            {{/each}}
+        </tbody>
     </table>
 
     {{!-- Confirm delete code --}}
