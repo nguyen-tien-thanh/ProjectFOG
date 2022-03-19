@@ -1,65 +1,92 @@
 <div class="container">
-    <div class="title-of-idea container-fluid">
+    
+    <div class="title-of-idea container-fluid idea-count">
         <div class="row">
-            <div class="col-0.5">
-             <span class="avatar-for-idea"><img class="profile-img-idea" src="{{userLogin.avatar}}" alt="avatar"></span>
+            <div class="col-1">
+                <a href="../user/{{idea.username.slug}}">
+                    <span class="avatar-for-idea"><img class="profile-img-idea" src="{{idea.username.avatar}}" alt="avatar"></span>
+                </a>
             </div>
-            <div class="col-11.5">
-             <b style="margin-bottom:0; padding-left:5px;">{{idea.username.username}}</b>
-             <p style="font-size: 10px; color:rgb(107, 104, 104); padding-left:5px;">{{moment idea.createdAt format="DD-MM-YYYY on HH:mm"}}</p>
+            <div class="col-10">
+                <a class="name-idea-owner" href="../user/{{idea.username.slug}}">
+                    <b style="margin-bottom:0;">{{idea.username.username}}</b>
+                </a>
+                <p class="date-category-idea">
+                {{moment idea.createdAt format="DD-MM-YYYY on HH:mm"}}
+                <a href="../category/{{idea.categoryName.slug}}">
+                    <span class="badge badge-pill badge-secondary badge-idea-list">{{idea.categoryName.categoryName}}</span>
+                </a>
+            </p>
+            </div>
+            <div class="col-1">
+                <a href="../idea/{{idea.slug}}">
+                    <i class="fas fa-info-circle button-info-idea"></i>
+                </a>
             </div>
         </div>
 
-        <p style="font-size:18px">{{idea.title}}</p>
+        <b><p style="font-size:18px">{{idea.title}}</p></b>
         <p style="font-size:14px">{{idea.detail}}</p>
         <p><a id="file-check" href="../../idea/{{idea.file}}">{{idea.file}}</a></p>
-            <hr>
-            <div class="interactive-for-idea">
-            <div class="like-unlike-btn">
-                <p id="like-count"><i class="fas fa-heart" style="color:red"></i>
-                    <span id="ratings-{{idea._id}}">{{ idea.ratings }}</span> liked this idea
-                </p>
+        <hr>
+        <p id="like-count" class="like-count"><i class="fas fa-heart"></i>
+            <span id="ratings-{{idea._id}}">{{idea.ratings}}</span> liked idea idea
+        </p>
+        <div class="interactive-for-idea row">
+            <div class="col-4 interactive-icons">
                 <i class="far fa-thumbs-up like-icon" onclick="actOnIdea(event)" id="like-icon-{{idea._id}}" 
-                        data-post-id="{{idea._id }}" interactive="Like"></i>
-                <i class="far fa-thumbs-down unlike-icon" onclick="actOnIdea(event)" id="unlike-icon-{{idea._id}}" 
-                    data-post-id="{{idea._id }}" interactive="Unlike"></i>
+                    data-post-id="{{idea._id }}" interactive="Like"> Like</i>
             </div>
-            <div id="show-content-idea" class="show-content-of-idea">
-                <p>Show content</p>
+            <div class="col-4 interactive-icons">
+            <i class="far fa-thumbs-down unlike-icon" onclick="actOnIdea(event)" id="unlike-icon-{{idea._id}}" 
+                data-post-id="{{idea._id }}" interactive="Unlike"> Unlike</i>
+            </div>
+            <div class="col-4 interactive-icons">
+                <i class="far fa-comment" id="show-content-idea"> Comments</i>
             </div>
         </div>
-        <div id="commentIdea" class="comment-for-idea">
+        <div id="comment-idea" class="comment-for-idea">
             <hr>
             {{#idea}}
             {{#comment}}
                 {{#if annoymous}}
-                <input id="comment-posted-username" value="Anonymous" class="mt-4" disabled style="display: none;">
-                <img class="profile-img-for-comment" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
-                    <div class="box-comment">
-                    <p><b>Anonymous</b><br>{{content}}</p>
-                    </div>
-                <div style="margin-left: 32px;"><p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment commentAt format="DD-MM-YYYY on HH:mm"}}</p></div>
+                    <input id="comment-posted-username" value="Anonymous" class="mt-4" disabled style="display: none;">
+                    <img class="profile-img-for-comment" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
+                        <div class="box-comment">
+                        <p><b>Anonymous</b><br>{{content}}</p>
+                        </div>
+                    <div style="margin-left: 32px;"><p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment commentAt format="DD-MM-YYYY on HH:mm"}}</p></div>
                 {{else}}
-                <input id="comment-posted-username" value="Name: {{userName}}" class="mt-4" disabled style="display: none;">
-                <img class="profile-img-for-comment" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
-                    <div class="box-comment">
-                    <p><b>{{userName}}</b><br>{{content}}</p>
-                    </div>
-                <div style="margin-left: 32px;"><p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment commentAt format="DD-MM-YYYY on HH:mm"}}</p></div>
+                    <input id="comment-posted-username" value="Name: {{userName}}" class="mt-4" disabled style="display: none;">
+                    <img class="profile-img-for-comment" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
+                        <div class="box-comment">
+                        <p><b>{{userName}}</b><br>{{content}}</p>
+                        </div>
+                    <div style="margin-left: 32px;"><p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment commentAt format="DD-MM-YYYY on HH:mm"}}</p></div>
                 {{/if}}
             {{/comment}}
             {{/idea}}
-            <hr>
             <form action="/idea/{{idea._id}}/storeComment?_method=PUT" method="post"> 
-                <input class="form-control" type="text" style="" id="comment-user-name" name="userName" hidden>
-                <span><img class="profile-img-input-comment" src="{{userLogin.avatar}}" alt="avatar"></span>
-                <input class=" input-comment" placeholder="Write comment..." type="text" name="content">
-                <p style="font-size: 12px; margin-left:35px">
-                    <input type="checkbox" style="widh:10px; height:10px" id="comment-annoymous" value="true" name="annoymous">
-                    Comment as anonymous
-                </p>
+                <div class="row"> 
+                    <div class="col-lg-1">
+                        <span><img class="profile-img-input-comment" src="{{idea.username.avatar}}" alt="avatar"></span>
+                    </div>
+                    <div class="col-lg-11">
+                        <input class="input-comment" placeholder="Write comment..." type="text" name="content">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col-3">
+                        <p style="font-size: 16px;">
+                            <input type="checkbox" style="width:10px; height:10px" id="comment-annoymous" value="true" name="annoymous">
+                            Comment as anonymous
+                        </p>
+                    </div>
+                </div>
                 {{!-- ====================== For send email comment HIDDEN form ====================================--}}
 
+                <input class="form-control" type="text" style="" id="comment-user-name" name="userName" hidden>
                 <input type="" id="comment-idea-id input-comment" name="idea_id" value="{{idea._id}}" hidden>
                 <input class="form-control input-comment" id="comment-date" name="commentAt"hidden>
                 <input type="text" name="ideaTitle" value="{{idea.title}}"hidden>
@@ -74,9 +101,10 @@
 
 <script>
     var showContent= document.getElementById('show-content-idea')
-    var commentIdea=document.getElementById('commentIdea')
+    var commentIdea=document.getElementById('comment-idea')
     showContent.onclick=function(){
         commentIdea.setAttribute("style", "display:block")
+        showContent.setAttribute("class", "fa fa-comment")
     }
 </script>
 
@@ -107,10 +135,10 @@
     <script>
 
         //Check type of file uploaded to import icon 
-        var imgShow = '<img class="idea-img" src="/idea/{{idea.file}}" alt="{{this.title}}" style="width:100%; height:auto;  align-items: center;">'
-        var pdfShow = '<i class="fa fa-file-powerpoint"></i> {{this.file}}'
+        var imgShow = '<img class="idea-img" src="/idea/{{idea.file}}" alt="{{idea.title}}" style="width:100%; height:auto;  align-items: center;">'
+        var pdfShow = '<i class="fa fa-file-powerpoint"></i> {{idea.file}}'
         var wordShow = '<i class="fa fa-file-word"></i> {{idea.file}}'
-        var excelShow = '<i class="fa fa-file-xls"></i> {{this.file}}'
+        var excelShow = '<i class="fa fa-file-xls"></i> {{idea.file}}'
         var fileCheck = document.getElementById("file-check").innerHTML
         var fileName;
         var fileLastName;

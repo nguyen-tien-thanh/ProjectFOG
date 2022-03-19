@@ -1552,9 +1552,6 @@ img.img-center {
 .disable {
   background-color: #ccc; }
 
-#like-count {
-  font-size: 16px; }
-
 .interactive-for-idea button:focus {
   border: none;
   outline: none; }
@@ -1568,6 +1565,48 @@ img.img-center {
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6); }
 
+.badge-idea-list {
+  font-size: 12px; }
+
+.badge-idea-list:hover {
+  background-color: #ff3247; }
+
+.button-info-idea {
+  font-size: 25px;
+  color: black; }
+
+.button-info-idea:hover {
+  color: #ff3247; }
+
+.fa-heart {
+  color: red; }
+
+.like-count {
+  font-size: 12px; }
+
+.date-category-idea {
+  font-size: 10px;
+  color: #6b6868; }
+
+.name-idea-owner b {
+  color: black; }
+
+.name-idea-owner b:hover {
+  color: #ff3247;
+  text-decoration: none; }
+
+.title-of-idea hr,
+.idea-list-page hr {
+  margin: 0;
+  margin-bottom: 10px; }
+
+.interactive-icons {
+  text-align: center;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 10px;
+  cursor: pointer; }
+
 .title-of-idea {
   background-color: #fff;
   border: solid #dad5d5;
@@ -1579,7 +1618,7 @@ img.img-center {
 .title-of-idea p {
   margin-bottom: 0; }
 
-.title-of-idea .avatar-for-idea {
+.title-of-idea {
   padding-left: 10px; }
 
 .profile-img-idea {
@@ -1633,19 +1672,38 @@ img.img-center {
   width: 95%;
   padding: 6px 20px;
   display: inline;
-  background-color: #e2dede; }
+  background-color: rgba(0, 0, 0, 0.13); }
 
 .comment-for-idea ::placeholder {
   color: #333030; }
 
 .box-comment {
-  background-color: #e2dede;
+  background-color: rgba(0, 0, 0, 0.08);
   display: inline-block;
   border-radius: 10px;
   width: fit-content; }
 
 .box-comment p {
   padding-right: 10px; }
+
+.title-of-idea form {
+  padding-top: 10px; }
+
+@media only screen and (min-width: 1201px) {
+  .button-info-idea {
+    margin-left: 30px; }
+  .name-date-category-owner {
+    margin-right: 20px; } }
+
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .col-10 {
+    margin-left: 10px; } }
+
+@media only screen and (min-width: 740) and (max-width: 1199px) {
+  .button-info-idea {
+    margin-left: 0px; }
+  a {
+    color: red; } }
 
 body li {
   list-style-type: none;

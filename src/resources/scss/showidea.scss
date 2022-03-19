@@ -9,7 +9,7 @@
 .title-of-idea p {
   margin-bottom: 0;
 }
-.title-of-idea .avatar-for-idea {
+.title-of-idea {
   padding-left: 10px;
 }
 .profile-img-idea {
@@ -63,17 +63,46 @@
   width: 95%;
   padding: 6px 20px;
   display: inline;
-  background-color: rgb(226, 222, 222);
+  background-color: rgba(0, 0, 0, 0.13);
 }
 .comment-for-idea ::placeholder {
   color: rgb(51, 48, 48);
 }
 .box-comment {
-  background-color: rgb(226, 222, 222);
+  background-color: rgba(0, 0, 0, 0.08);
   display: inline-block;
   border-radius: 10px;
   width: fit-content;
 }
 .box-comment p {
   padding-right: 10px;
+}
+
+.title-of-idea form {
+  padding-top: 10px;
+}
+
+@media only screen and (min-width: 1201px) {
+  .button-info-idea {
+    margin-left: 30px;
+  }
+
+  .name-date-category-owner {
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 739px) {
+  .col-10 {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (min-width: 740) and (max-width: 1199px) {
+  .button-info-idea {
+    margin-left: 0px;
+  }
+  a {
+    color: red;
+  }
 }
