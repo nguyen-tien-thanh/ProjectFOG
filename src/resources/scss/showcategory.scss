@@ -1,14 +1,49 @@
-#h1-cateshow
+#h1-cateshow,
+#p1-cateshow
 {
     text-align: center;
     line-height: 2em;
 }
+#h1-cateshow
+{
+    margin: 0;
+}
+#show_back
+{
+    text-align: center;
+    background-color: black;
+    color: lightsalmon;
+    padding: 0.2em 3em;
+    border-radius: 2em;
+    cursor: pointer;
+}
+#show_back:hover
+{
+    opacity: 0.85;
+}
+
 .title-cate
 {
     background-color: #fff;
-    border: solid rgb(228, 206, 206);
-    box-shadow: 0 4em 10em 0 rgba(0,0,0,0.2);
+    border: solid lightsalmon;
+    box-shadow: 0 10em 10em 10em rgba(0,0,0,0.2);
     border-radius: 1.5em;
+    width: 70%;
+    font-size: 20px;
+    padding: 12px 75px;
+}
+#cate-all-show
+{
+    margin-top: 20px;
+}
+
+.left-column-2
+{
     width: 50%;
-    padding: 1.5em 7em;
+    float: left;
+}
+.right-column-2
+{
+    width: 50%;
+    float: right;
 }

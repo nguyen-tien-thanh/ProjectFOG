@@ -5,6 +5,20 @@
     line-height: 1.5em;
 }
 
+#manage_back
+{
+    text-align: center;
+    background-color: rgb(193, 224, 172);
+    color: rgb(90, 62, 95);
+    padding: 0.2em 3em;
+    border-radius: 2em;
+    cursor: pointer;
+}
+#manage_back :hover
+{
+    opacity: 0.85;
+}
+
 #manage-but1
 {
     background-color: black;

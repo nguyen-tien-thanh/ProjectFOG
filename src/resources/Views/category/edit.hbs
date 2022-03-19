@@ -1,4 +1,5 @@
 <h1 id="h1-edit-category"><b>EDIT CATEGORY</b></h1>
+<button id="edit_back" type="button" onclick="Back()"><b><i> Back </i></b></button>
 
 <form id="edit-all" action="/category/{{category._id}}?_method=PUT" method="post">
   <div class="edit-form">
@@ -13,7 +14,7 @@
         <input id="box-date-EditSubmit" type="date" name="deadlineSubmit" value="{{moment category.deadlineSubmit format="YYYY-MM-DD"}}" min="{{moment category.createdAt format="YYYY-MM-DD"}}"></p>
 
       <p id="edit-name">
-        <label for="deadlineCmt"><b><i>Deadline Cmt</i></b></label></p>
+        <label for="deadlineCmt"><b><i>Deadline Comment</i></b></label></p>
       <p id="edit-box">
         <input id="box-date-EditCmt" type="date" name="deadlineCmt" value="{{moment category.deadlineCmt format="YYYY-MM-DD"}}" min="{{moment category.deadlineSubmit format="YYYY-MM-DD"}}"></p>
 
@@ -27,4 +28,11 @@
   
   </div>
 </form>
+
+<script>
+  function Back()
+  {
+    history.back();
+  }
+</script>
 

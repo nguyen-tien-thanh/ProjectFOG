@@ -1,5 +1,7 @@
 <h1 id="h1-manage-category"><B>CATEGORY MANAGEMENT</B></h1>
+<p id="p-manage-category"><button id="manage_back" type="button" onclick="Back()"><b><i> Back </i></b></button></p>
 <p id="p-manage-category"><a href="/category/trash"><b><i> Trash Category </i></b></a>(Total: {{deletedCount}})</p>
+<p id="p-manage-category"><a href="/category/create"><b><i> Create Category </i></b></a></p>
 
 <form name="container-form" action="/category/handle-form-actions" method="POST">
     <div class="mt-4 d-flex align-items-center">
@@ -179,4 +181,9 @@
             }
         }
     })
-        </script>
+
+    function Back()
+    {
+        history.back();
+    }
+</script>

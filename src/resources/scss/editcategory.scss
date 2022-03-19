@@ -6,6 +6,20 @@
     text-align: center;
     line-height: 2em;
 }
+
+#edit_back
+{
+  padding: 0.2em 3em;
+  border-radius: 2em;
+  background-color: black;
+  color: lightblue;
+  cursor: pointer;
+}
+#edit_back :hover
+{
+  opacity: 0.85;
+}
+
 #edit-all
 {
   margin: 0.3% auto 2% auto;

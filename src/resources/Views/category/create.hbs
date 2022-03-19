@@ -1,22 +1,30 @@
 <h1 id="h1-create-category"><B> NEW CATEGORY </B></h1>
-  
-  <form id="create-all" action="/category/store" method="post">
-    <div class="create-form">
-      <p id="create-name">
-        <label for="categoryName"><b><i>Name Category</i></b></label></p>
-      <p id="create-box">
-        <input id="box-text" type="text" name="categoryName"></p>
+<button id="create_back" type="button" onclick="Back()"><b><i> Back </i></b></button>
 
-      <p id="create-name">
-        <label for="deadlineSubmit"><b><i>Deadline Submit</i></b></label></p>
-      <p id="create-box">
-        <input id="box-date-submit" type="date" name="deadlineSubmit"></p>
+<form id="create-all" action="/category/store" method="post">
+  <div class="create-form">
+    <p id="create-name">
+      <label for="categoryName"><b><i>Name Category</i></b></label></p>
+    <p id="create-box">
+      <input id="box-text" type="text" name="categoryName"></p>
+
+    <p id="create-name">
+      <label for="deadlineSubmit"><b><i>Deadline Submit</i></b></label></p>
+    <p id="create-box">
+      <input id="box-date-submit" type="date" name="deadlineSubmit"></p>
     
-      <p id="create-name">
-        <label for="deadlineCmt"><b><i>Deadline Cmt</i></b></label></p>
-      <p id="create-box">
-        <input id="box-date-Cmt" type="date" name="deadlineCmt"></p>
+    <p id="create-name">
+      <label for="deadlineCmt"><b><i>Deadline Comment</i></b></label></p>
+    <p id="create-box">
+      <input id="box-date-Cmt" type="date" name="deadlineCmt"></p>
     
-      <p id="create-button"><button id="box-sub-but" value="Submit">Submit</button></p>
-    </div>
+    <p id="create-button"><button id="box-sub-but" value="Submit">Submit</button></p>
+  </div>
 </form>
+
+<script>
+  function Back()
+  {
+    history.back();
+  }
+</script>
