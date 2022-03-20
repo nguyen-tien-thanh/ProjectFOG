@@ -5,6 +5,18 @@ const { mongooseToObject } = require('../ulti/mongoose')
 
 class UserController {
 
+    //[GET] /user/create
+    create(req,res,next){
+        Promise.all([User.findById(req.params.id), User.findOne({username: req.user.username})])
+            .then(([user, userLogin]) => 
+            res.render('user/create', {
+                title: 'Create User',
+                user: mongooseToObject(user),
+                userLogin: mongooseToObject(userLogin),
+                })
+            )
+            .catch(next)
+    }
 
     //[GET] /user/:id/changepassword
     changepassword(req,res,next) {

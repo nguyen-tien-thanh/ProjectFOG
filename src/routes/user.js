@@ -5,6 +5,10 @@ const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize')
 
 const userController = require('../Controllers/UserController');
 
+
+// [GET] /user/create
+router.get('/create', isAdmin, userController.create)
+
 // [POST] /user/handle-form-actions user
 router.post('/handle-form-actions', isAdmin, userController.handleFormActions)
 
