@@ -18,11 +18,6 @@
                 </a>
             </p>
             </div>
-            <div class="col-sm-1 icon-detail-showidea">
-                <a href="../idea/{{idea.slug}}">
-                    <i class="fas fa-info-circle button-info-idea"></i>
-                </a>
-            </div>
         </div>
 
         <b><p style="font-size:18px">{{idea.title}}</p></b>
@@ -75,10 +70,8 @@
                         <input class="input-comment" placeholder="Write comment..." type="text" name="content">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-9"></div>
-                    <div class="col-3 comment-as-anonymous">
-                        <p style="font-size: 16px;">
+                    <div class="comment-as-anonymous">
+                        <p>
                             <input type="checkbox" style="width:10px; height:10px" id="comment-annoymous" value="true" name="annoymous">
                             Comment as anonymous
                         </p>

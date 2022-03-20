@@ -1801,9 +1801,6 @@ img.img-center {
   .img-comment-idea {
     margin-left: 0;
     max-width: 70px; }
-  .comment-as-anonymous p {
-    padding-left: 0;
-    margin-left: -75px; }
   .input-comment-idea {
     margin-left: -28px;
     max-width: 625px; }
@@ -1814,62 +1811,74 @@ img.img-center {
   .img-comment-idea {
     margin-left: 0;
     max-width: 70px; }
-  .comment-as-anonymous p {
-    padding-left: 0;
-    margin-left: -100px; }
   .input-comment-idea {
     margin-left: -28px;
-    max-width: 465px; }
+    max-width: 90%; }
   .icon-detail-showidea {
     margin-left: -20px; } }
 
-@media only screen and (min-width: 414px) and (max-width: 599px) {
+@media only screen and (min-width: 321px) and (max-width: 599px) {
+  .title-of-idea b {
+    font-size: 12px; }
   .title-of-idea .col-sm-10 {
-    max-width: 210px; }
+    max-width: 70%; }
+  .title-of-idea .profile-img-idea {
+    width: 30px;
+    margin-top: 5px; }
+  .title-of-idea p {
+    font-size: 14px; }
+  .interactive-icons {
+    font-size: 12px; }
+  .box-comment p {
+    font-size: 12px; }
+  .title-of-idea b {
+    font-size: 10px; }
+  .input-comment {
+    font-size: 12px; }
+  .profile-img-input-comment {
+    width: 30px;
+    margin-top: 0; }
   .img-comment-idea {
-    margin-left: 0;
-    max-width: 70px; }
-  .comment-as-anonymous p {
-    padding-left: 0;
-    margin-left: -159px; }
+    max-width: 0; }
   .input-comment-idea {
-    margin-left: -28px;
-    max-width: 268px; }
-  .icon-detail-showidea {
-    margin-left: 42px;
-    max-width: 0; } }
-
-@media only screen and (min-width: 321px) and (max-width: 413px) {
-  .title-of-idea .col-sm-10 {
-    max-width: 210px; }
-  .img-comment-idea {
-    margin-left: 0;
-    max-width: 70px; }
-  .comment-as-anonymous p {
-    padding-left: 0;
-    margin-left: -159px; }
-  .input-comment-idea {
-    margin-left: -28px;
-    max-width: 268px; }
-  .icon-detail-showidea {
-    margin-left: 4px;
-    max-width: 0; } }
+    margin-left: 3px;
+    max-width: 85%; } }
 
 @media only screen and (max-width: 320px) {
+  .title-of-idea b {
+    font-size: 10px; }
   .title-of-idea .col-sm-10 {
-    max-width: 200px; }
+    max-width: 85%;
+    padding: 0;
+    padding-left: 5px; }
+  .title-of-idea .profile-img-idea {
+    width: 30px;
+    margin-top: 5px; }
+  .title-of-idea .avatar-for-idea {
+    margin-left: 2px; }
+  .interactive-icons {
+    font-size: 10px; }
+  .box-comment p {
+    font-size: 12px; }
+  .title-of-idea b {
+    font-size: 10px; }
+  .input-comment {
+    font-size: 12px; }
+  .profile-img-input-comment {
+    width: 30px;
+    margin-top: 0; }
   .img-comment-idea {
-    margin-left: 0;
-    max-width: 70px; }
-  .comment-as-anonymous p {
-    padding-left: 0;
-    margin-left: -159px; }
+    max-width: 0; }
   .input-comment-idea {
-    margin-left: -28px;
-    max-width: 215px; }
-  .icon-detail-showidea {
-    max-width: 0;
-    margin-left: -38px; } }
+    margin-left: 3px;
+    max-width: 85%; }
+  .like-count {
+    font-size: 9px; }
+  .title-of-idea {
+    width: 116%;
+    margin-left: -5%; }
+  .comment-as-anonymous {
+    font-size: 10px; } }
 
 body li {
   list-style-type: none;
