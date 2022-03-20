@@ -17,6 +17,8 @@
 </div></p>
 
 <form id="trash-all" action="/category/handle-form-actions" method="POST">
+<div class="table-responsive">
+    
     <table class="table">
         <thead>
             <tr id="trash-first">
@@ -63,6 +65,7 @@
                 {{/each}}
         </tbody>
     </table>
+</div>
     
     {{!-- Confirm force delete 1 category code --}}
     <div class="modal fade" id="delete-category" tabindex="-1" role="dialog" aria-labelledby="delete-categoryLabel" aria-hidden="true">
