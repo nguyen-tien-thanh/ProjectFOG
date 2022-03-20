@@ -38,10 +38,13 @@
                                 </a>
                             </p>
                         </div>
-                        <div class="col-2" style="right:20px">
-                                <a class="setting-idea-btn" href="/idea/{{this._id}}/edit">
-                                    <i class="fa fa-wrench button-info-idea"></i>
-                                </a>
+                        <div class="col-2">
+                            <a class="button-action-idea" href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}">
+                                <i class="fa fa-trash button-info-idea"></i>
+                            </a>
+                            <a class="button-action-idea" class="setting-idea-btn" href="/idea/{{this._id}}/edit">
+                                <i class="fa fa-wrench button-info-idea"></i>
+                            </a>
                             <a href="../idea/{{this.slug}}">
                                 <i class="fas fa-info-circle button-info-idea"></i>
                             </a>
@@ -134,6 +137,29 @@
     </div>
 </div>
 
+    {{!-- Confirm delete code --}}
+        <div class="modal fade" id="delete-idea" tabindex="-1" role="dialog" aria-labelledby="delete-ideaLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="delete-ideaLabel">Delete idea</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete this idea?
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-delete-idea" type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                </div>
+                </div>
+            </div>
+            </div>
+    
+        <form name="delete-idea-form" method="post"></form>
+
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -147,6 +173,24 @@
             if ( deadlineSubmitDate <= Date.now()){
                 btnReactive.attr("disabled","disabled")
                 inputCmt.attr("disabled","disabled")
+            }
+
+            //Show or hidden button Delete and Modify
+
+
+            //Delete idea (by owner)
+            var ideaId;
+            var deleteForm = document.forms['delete-idea-form'];
+            $('#delete-idea').on('show.bs.modal', function (idea) {
+            var button = $(idea.relatedTarget)
+            ideaId = button.data('id')
+            })
+            console.log(ideaId)
+            //When delete idea btn clicked
+            var btnDeleteIdea = document.getElementById('btn-delete-idea')
+            btnDeleteIdea.onclick = function(){
+                deleteForm.action = '/idea/' + ideaId + '?_method=DELETE';
+                deleteForm.submit();
             }
 
         });
