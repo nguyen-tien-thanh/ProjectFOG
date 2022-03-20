@@ -12,6 +12,7 @@ const Idea = new Schema({
     username: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     comment: [{
         "userName": {type: String},
+        "avatar": {type: String, default: "https://www.w3schools.com/howto/img_avatar.png"},
         "annoymous": {type: Boolean, default: false},
         "content": {type: String},
         "commentAt": {type: Date, default: Date.Now},

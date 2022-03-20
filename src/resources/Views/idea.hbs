@@ -39,7 +39,7 @@
                             </p>
                         </div>
                         <div class="col-2">
-                            {{#ifCond this.username._id '==' ../userLogin._id}}
+                            {{!-- {{#ifCond this.username._id '==' ../userLogin._id}} --}}
                             <div class="dropdown-setting-idealist">
                                 <button class="btn-setting-dropdown-idealist">...</button>
                                 <div class="dropdown-content-setting-idealist">
@@ -54,11 +54,11 @@
                                     </a>
                                 </div>
                             </div>
-                            {{else}}
+                            {{!-- {{else}}
                             <a href="../idea/{{this.slug}}">
                                 <i class="fas fa-info-circle button-info-idea"></i>
                             </a>
-                            {{/ifCond}}
+                            {{/ifCond}} --}}
                         </div>
                     </div>
 
@@ -90,14 +90,14 @@
                         {{#comment}}
                             {{#if annoymous}}
                                 <input id="comment-posted-username" value="Anonymous" class="mt-4" disabled style="display: none;">
-                                <img class="profile-img-for-comment profile-img-for-comment-idealist" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
+                                <img class="profile-img-for-comment profile-img-for-comment-idealist" src="{{avatar}}" alt="avatar">
                                     <div class="box-comment">
                                     <p><b>Anonymous</b><br>{{content}}</p>
                                     </div>
                                 <div style="margin-left: 32px;"><p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment commentAt format="DD-MM-YYYY on HH:mm"}}</p></div>
                             {{else}}
                                 <input id="comment-posted-username" value="Name: {{userName}}" class="mt-4" disabled style="display: none;">
-                                <img class="profile-img-for-comment profile-img-for-comment-idealist" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
+                                <img class="profile-img-for-comment profile-img-for-comment-idealist" src="{{avatar}}" alt="avatar">
                                     <div class="box-comment">
                                     <p><b>{{userName}}</b><br>{{content}}</p>
                                     </div>
@@ -105,10 +105,11 @@
                             {{/if}}
                         {{/comment}}
                         <form action="/idea/{{this._id}}/storeComment?_method=PUT" method="post">
-                            <input class="form-control" type="text" style="" id="comment-user-name" name="userName" hidden>
+                            <input class="form-control" type="text" style="" id="comment-user-name" name="userName" value="{{../userLogin.username}}" hidden>
+                            <input class="form-control" type="text" style="" id="comment-user-avatar" name="avatar" value="{{../userLogin.avatar}}" hidden>
                             <div class="row">
                             <div class="col-1">
-                                <span><img class="profile-img-input-comment profile-img-input-comment-idealist" src="{{this.username.avatar}}" alt="avatar"></span>
+                                <span><img class="profile-img-input-comment profile-img-input-comment-idealist" src="{{../userLogin.avatar}}" alt="avatar"></span>
                             </div>
                             <div class="col-11 write-comment-idealist">
                                 <input class=" input-comment input-comment-idealist" placeholder="Write comment..." type="text" name="content">
@@ -172,8 +173,6 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
         $(document).ready(function () {
-            //Assign the user name of who is using to input form
-            $('input[id="comment-user-name"]').val("{{userLogin.username}}");
             //Assign time now for posting cmt
             $('input[id="comment-date"]').val(Date.now());//Deadline comment for users
             var btnReactive = $('.btn-reactive')
