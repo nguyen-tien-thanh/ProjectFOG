@@ -25,7 +25,6 @@ const { options } = require('./routes/idea');
 
 const app = express()
 
-const port = process.env.port || 3000;
 
 
 app.use(express.static('src/public')); 
@@ -77,9 +76,6 @@ app.set("views", path.join(__dirname, 'resources/Views')); // cách mình tìm �
 route(app);
 
 
-app.listen(port, () => {
-  console.log(``)
-  console.log(``)
-  console.log(``)
-  console.log(`Application listening at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
