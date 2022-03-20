@@ -27,7 +27,7 @@
                                 <span class="avatar-for-idea"><img class="profile-img-idea" src="{{this.username.avatar}}" alt="avatar"></span>
                             </a>
                         </div>
-                        <div class="col-10">
+                        <div class="col-9">
                             <a class="name-idea-owner" href="../user/{{this.username.slug}}">
                                 <b style="margin-bottom:0;">{{this.username.username}}</b>
                             </a>
@@ -38,7 +38,10 @@
                                 </a>
                             </p>
                         </div>
-                        <div class="col-1" style="right:20px">
+                        <div class="col-2" style="right:20px">
+                                <a class="setting-idea-btn" href="/idea/{{this._id}}/edit">
+                                    <i class="fa fa-wrench button-info-idea"></i>
+                                </a>
                             <a href="../idea/{{this.slug}}">
                                 <i class="fas fa-info-circle button-info-idea"></i>
                             </a>
@@ -139,6 +142,7 @@
                 btnReactive.attr("disabled","disabled")
                 inputCmt.attr("disabled","disabled")
             }
+
         });
     </script>
     

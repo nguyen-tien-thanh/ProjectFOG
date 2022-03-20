@@ -1,5 +1,7 @@
 <h1 id="h1-trash-category"><B> DELETED CATEGORY </B></h1>
+<p id="p-trash-category"><button id="trash_back" type="button" onclick="Back()"><b><i> Back </i></b></button></p>
 <p id="p-trash-category"><a href="/category/manage" id="Tr"><b><i>Stored Category</i></b></a> (Total: {{storedCount}})</p>
+
 
 <p id="p-trash-category">
 <div class="mt-4 d-flex align-items-center">
@@ -212,4 +214,10 @@
             }
         })
     })
+
+    function Back()
+    {
+        history.back();
+    }
+
 </script>

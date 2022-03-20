@@ -1,15 +1,27 @@
-<h1 id="h1-cateshow">CATEGORY INFORMATION</h1>
+<h1 id="h1-cateshow"><i>{{categoryDetail.categoryName}}</i><b> Category </b></h1>
+<p id="p1-cateshow"><button id="show_back" type="button" onclick="Back()"><b>Back</b></button></p>
 
-<div id="container">
+<div id="container_show">
     <div class="title-cate container-fluid">
-        <div class="row">
-            <h2 class="cate-detail-name"><b>{{categoryDetail.name}}</b></h2>
-            <ul>
-                <p class="cate-detail_dea"><b>- Deadline Submit at: </b>{{moment categoryDetail.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}</p>
-			    <p class="cate-detail_cmt"><b>- Deadline Cmt at: </b>{{moment categoryDetail.deadlineCmt format="HH:mm on DD-MM-YYYY"}}</p>
-			    <p class="cate-detail_cre"><b>- Create at: </b>{{moment categoryDetail.createdAt format="HH:mm on DD-MM-YYYY"}}</p>
-			    <p class="cate-detail_upd"><b>- Update at: </b>{{moment categoryDetail.updatedAt format="HH:mm on DD-MM-YYYY"}}</p>
+        <div class="row" id="cate-all-show">
+            <ul class="left-column-2">
+                <p class="cate-detail_dea"> - <b>Deadline Submit at: </b><i>{{moment categoryDetail.deadlineSubmit format="HH:mm on DD-MM-YYYY"}}</i></p>
+                <p class="cate-detail_cre"> - <b>Create at: </b><i>{{moment categoryDetail.createdAt format="HH:mm on DD-MM-YYYY"}}</i></p>
+            </ul>
+
+            <ul class="right-column-2">
+                <p class="cate-detail_cmt"> - <b>Deadline Comment at: </b><i>{{moment categoryDetail.deadlineCmt format="HH:mm on DD-MM-YYYY"}}</i></p>
+                <p class="cate-detail_upd"> - <b>Update at: </b><i>{{moment categoryDetail.updatedAt format="HH:mm on DD-MM-YYYY"}}</i></p>
             </ul>
         </div>
     </div>
 </div>
+
+<h5 class="ad"><b style="color: #f0d7ec">.</b></h5>
+
+<script>
+    function Back()
+    {
+        history.back();
+    }
+</script>

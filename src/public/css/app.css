@@ -1075,6 +1075,17 @@ img.img-center {
   text-align: center;
   line-height: 2em; }
 
+#create_back {
+  text-align: center;
+  padding: 0.2em 3em;
+  border-radius: 2em;
+  background-color: black;
+  color: lightpink;
+  cursor: pointer; }
+
+#create_back :hover {
+  opacity: 0.85; }
+
 #create-all {
   margin: 0.3% auto 2% auto;
   border: 1em solid #eed9d9;
@@ -1104,6 +1115,16 @@ img.img-center {
   text-align: center;
   line-height: 2em; }
 
+#edit_back {
+  padding: 0.2em 3em;
+  border-radius: 2em;
+  background-color: black;
+  color: lightblue;
+  cursor: pointer; }
+
+#edit_back :hover {
+  opacity: 0.85; }
+
 #edit-all {
   margin: 0.3% auto 2% auto;
   border: 1em solid #d9e2ee;
@@ -1131,6 +1152,17 @@ img.img-center {
 #p-manage-category {
   text-align: center;
   line-height: 1.5em; }
+
+#manage_back {
+  text-align: center;
+  background-color: #c1e0ac;
+  color: #5a3e5f;
+  padding: 0.2em 3em;
+  border-radius: 2em;
+  cursor: pointer; }
+
+#manage_back :hover {
+  opacity: 0.85; }
 
 #manage-but1 {
   background-color: black;
@@ -1173,22 +1205,60 @@ img.img-center {
 #manage-line2-0 {
   text-align: center; }
 
-#h1-cateshow {
+#h1-cateshow,
+#p1-cateshow {
   text-align: center;
   line-height: 2em; }
 
+#h1-cateshow {
+  margin: 0; }
+
+#show_back {
+  text-align: center;
+  background-color: black;
+  color: lightsalmon;
+  padding: 0.2em 3em;
+  border-radius: 2em;
+  cursor: pointer; }
+
+#show_back:hover {
+  opacity: 0.85; }
+
 .title-cate {
   background-color: #fff;
-  border: solid #e4cece;
-  box-shadow: 0 4em 10em 0 rgba(0, 0, 0, 0.2);
+  border: solid lightsalmon;
+  box-shadow: 0 10em 10em 10em rgba(0, 0, 0, 0.2);
   border-radius: 1.5em;
+  width: 70%;
+  font-size: 20px;
+  padding: 12px 75px; }
+
+#cate-all-show {
+  margin-top: 20px; }
+
+.left-column-2 {
   width: 50%;
-  padding: 1.5em 7em; }
+  float: left; }
+
+.right-column-2 {
+  width: 50%;
+  float: right; }
 
 #h1-trash-category,
 #p-trash-category {
   text-align: center;
   line-height: 1.5em; }
+
+#trash_back {
+  text-align: center;
+  background-color: #c1e0ac;
+  color: black;
+  padding: 0.2em 3em;
+  border-radius: 2em;
+  cursor: pointer; }
+
+#trash_back:hover {
+  opacity: 0.85; }
 
 #trash-button {
   background-color: black;

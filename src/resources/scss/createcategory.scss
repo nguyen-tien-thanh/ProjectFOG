@@ -7,6 +7,20 @@
   line-height: 2em;
 }
 
+#create_back
+{
+  text-align: center;
+  padding: 0.2em 3em;
+  border-radius: 2em;
+  background-color: black;
+  color: lightpink;
+  cursor: pointer;
+}
+#create_back :hover
+{
+  opacity: 0.85;
+}
+
 #create-all
 {
   margin: 0.3% auto 2% auto;
