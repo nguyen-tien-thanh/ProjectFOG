@@ -10,7 +10,7 @@ const User = new Schema({
     name: {type: String, maxLength: 255, default:"No information"},
     username: {type: String, maxLength: 255, default:"No information", required:true},
     email: {type: String, default:"No information"},
-    password: {type: String, minLength: 1, maxLength: 32, require:true},
+    password: {type: String, maxLength: 32, require:true},
     avatar: {type: String, default: "https://www.w3schools.com/howto/img_avatar.png"},    
     worktime: {type: String, maxLength: 255, default:"No information"},
     workplace: {type: String, maxLength: 255, default:"No information"},

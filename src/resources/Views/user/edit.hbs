@@ -71,14 +71,6 @@
 								</div>
 								<div class="row mb-3">
 									<div class="col-sm-3">
-										<h6 class="mb-0">Password</h6>
-									</div>
-									<div class="col-sm-9 text-secondary">
-										<input type="password" class="form-control" name="password" value="{{user.password}}">
-									</div>
-								</div>
-								<div class="row mb-3">
-									<div class="col-sm-3">
 										<h6 class="mb-0">Role</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
@@ -158,14 +150,19 @@
 								</div>
 								<div class="row">
 									<div class="col-sm-3"></div>
-									<div class="col-sm-9 text-secondary">
-						<button type="submit" class="btn btn-secondary px-3 save-btn">Edit Profile</button>
+									<div class="col-sm-4 text-secondary">
+										<a href="/user/{{user._id}}/changepassword">
+											<button type="button" class="btn btn-secondary px-3 save-btn">Change Password</button>
+										</a>
+									</div>
+									<div class="col-sm-5 text-secondary">
+										<button type="submit" class="btn btn-secondary px-3 save-btn">Save Profile</button>
 									</div>
 								</div>
 							</div>
 						</form>
-          </div>
-        </div>
+          		</div>
+        	</div>
         </div>
       </div>
     </div>

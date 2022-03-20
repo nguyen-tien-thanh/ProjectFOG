@@ -5,6 +5,38 @@ const { mongooseToObject } = require('../ulti/mongoose')
 
 class UserController {
 
+
+    //[GET] /user/:id/changepassword
+    changepassword(req,res,next) {
+        Promise.all([User.findById(req.params.id), User.findOne({username: req.user.username})])
+            .then(([user, userLogin]) => 
+            res.render('user/changepassword', {
+                title: 'Change password',
+                user: mongooseToObject(user),
+                userLogin: mongooseToObject(userLogin),
+                })
+            )
+            .catch(next)
+    }
+
+    //[POST] /user/:id/change
+    change(req,res,next){
+        User.findOne({_id: req.params.id})
+        .then(function(sanitizedUser){
+            if (sanitizedUser){
+                var password = req.body.password
+                sanitizedUser.setPassword(password, function(){
+                    sanitizedUser.save();
+                    res.status(200).json({message: 'password reset successful'});
+                });
+            } else {
+                res.status(500).json({message: 'This user does not exist'});
+            }
+        },function(err){
+            console.error(err);
+        })
+    }
+
     //[GET] /User/trash 
     trash(req,res,next) {
         
@@ -70,22 +102,6 @@ class UserController {
                 })
             )
             .catch(next)
-        // if (req.isAuthenticated()) {
-        //     User.findOne({username: req.user.username})
-        //     .then (user =>{
-        //         res.render('contact', { 
-        //             userLogin: mongooseToObject(user)
-        //         });
-        //     })
-        // }
-        // else{
-        //     res.render('contact')
-        // }
-        // User.findById(req.params.id)
-        //     .then(user => res.render('user/edit', {
-        //         user: mongooseToObject(user)
-        //     }))
-        //     .catch(next);
     }
 
     //[PUT] /User/:id

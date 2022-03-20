@@ -5,35 +5,41 @@ const { isLoggedIn, isManager, isAdmin, isQAC } = require('../ulti/authonize')
 
 const userController = require('../Controllers/UserController');
 
-// [POST] /category/handle-form-actions category
+// [POST] /user/handle-form-actions user
 router.post('/handle-form-actions', isAdmin, userController.handleFormActions)
 
-// [GET] /category/trash category
+// [GET] /user/trash user
 router.use('/trash', isAdmin, userController.trash)
 
-// [GET] /category/create category
+// [GET] /user/create user
 router.use('/manage', isAdmin, userController.manage)
 
-// [GET] /category/:id/edit category
+// [GET] /user/:id/changepassword user
+router.get('/:id/changepassword', userController.changepassword)
+
+// [POST] /user/:id/changepassword user
+router.post('/:id/change', userController.change)
+
+// [GET] /user/:id/edit user
 router.get('/:id/edit', userController.edit)
 
-// [PUT] /category/:id/update category
+// [PUT] /user/:id/update user
 router.put('/:id', userController.update)
 
-// [PATCH] /category/:id/update category
+// [PATCH] /user/:id/update user
 router.patch('/:id/restore', isAdmin, userController.restore)
 
-// [DELETE] /category/:id/detele category
+// [DELETE] /user/:id/detele user
 router.delete('/:id', isAdmin, userController.delete)
 router.delete('/:id/force', isAdmin, userController.force)
 
-// // [POST] /categories/store category
+// // [POST] /categories/store user
 router.post('/store', isAdmin, userController.store)
 
-// [link bien dong] /category/show || /category/:slug
+// [link bien dong] /user/show || /user/:slug
 router.use('/:slug', userController.show)
 
-// /category/index - category.hbs
+// /user/index - user.hbs
 router.use('/',isAdmin, userController.index)
 
 
