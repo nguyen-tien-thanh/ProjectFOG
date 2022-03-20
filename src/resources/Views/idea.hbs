@@ -48,13 +48,13 @@
                         </div>
                     </div>
 
-                    <b><p style="font-size:18px">{{this.title}}</p></b>
-                    <p style="font-size:14px">{{this.detail}}</p>
-                    <p><a id="file-check-{{this._id}}" name="file-check[]" class="file-check" href="../../idea/{{this.file}}">{{this.file}}</a>
+                    <b class="title-text-idea"><p style="font-size:18px">{{this.title}}</p></b>
+                    <p class="content-text-idea" style="font-size:14px">{{this.detail}}</p>
+                    <p class="file-for-idea"><a id="file-check-{{this._id}}" name="file-check[]" class="file-check" href="../../idea/{{this.file}}">{{this.file}}</a>
                     </p>
                     <br>
                     <hr>
-                    <p id="like-count" class="like-count"><i class="fas fa-heart"></i>
+                    <p id="like-count" class="like-count like-count-idea"><i class="fas fa-heart"></i>
                         <span id="ratings-{{this._id}}">{{this.ratings}}</span> liked this idea
                     </p>
                     <div class="interactive-for-idea row">
@@ -76,24 +76,30 @@
                         {{#comment}}
                             {{#if annoymous}}
                                 <input id="comment-posted-username" value="Anonymous" class="mt-4" disabled style="display: none;">
-                                <img class="profile-img-for-comment" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
+                                <img class="profile-img-for-comment profile-img-for-comment-idealist" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
                                     <div class="box-comment">
                                     <p><b>Anonymous</b><br>{{content}}</p>
                                     </div>
                                 <div style="margin-left: 32px;"><p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment commentAt format="DD-MM-YYYY on HH:mm"}}</p></div>
                             {{else}}
                                 <input id="comment-posted-username" value="Name: {{userName}}" class="mt-4" disabled style="display: none;">
-                                <img class="profile-img-for-comment" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
+                                <img class="profile-img-for-comment profile-img-for-comment-idealist" src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar">
                                     <div class="box-comment">
                                     <p><b>{{userName}}</b><br>{{content}}</p>
                                     </div>
                                 <div style="margin-left: 32px;"><p style="font-size: 10px; color:rgb(107, 104, 104);">{{moment commentAt format="DD-MM-YYYY on HH:mm"}}</p></div>
                             {{/if}}
                         {{/comment}}
-                        <form action="/idea/{{this._id}}/storeComment?_method=PUT" method="post"> 
+                        <form action="/idea/{{this._id}}/storeComment?_method=PUT" method="post">
                             <input class="form-control" type="text" style="" id="comment-user-name" name="userName" hidden>
-                            <span><img class="profile-img-input-comment" src="{{this.username.avatar}}" alt="avatar"></span>
-                            <input class=" input-comment" placeholder="Write comment..." type="text" name="content">
+                            <div class="row">
+                            <div class="col-1">
+                                <span><img class="profile-img-input-comment profile-img-input-comment-idealist" src="{{this.username.avatar}}" alt="avatar"></span>
+                            </div>
+                            <div class="col-11">
+                                <input class=" input-comment input-comment-idealist" placeholder="Write comment..." type="text" name="content">
+                            </div>
+                            </div>
                             <p style="font-size: 12px; margin-left:35px">
                                 <input type="checkbox" style="width:10px; height:10px" id="comment-annoymous" value="true" name="annoymous">
                                 Comment as anonymous
