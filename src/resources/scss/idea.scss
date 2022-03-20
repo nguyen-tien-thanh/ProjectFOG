@@ -83,8 +83,9 @@
   background-color: #ccc;
 }
 
-#like-count {
-  font-size: 12px;
+.interactive-for-idea button:focus {
+  border: none;
+  outline: none;
 }
 
 //Create idea page
@@ -96,4 +97,57 @@
   margin-bottom: 1rem;
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+
+.badge-idea-list {
+  font-size: 12px;
+}
+
+.badge-idea-list:hover {
+  background-color: rgb(255, 50, 71);
+}
+
+.button-info-idea {
+  font-size: 25px;
+  color: black;
+}
+
+.button-info-idea:hover {
+  color: rgb(255, 50, 71);
+}
+
+.fa-heart {
+  color: red;
+}
+
+.like-count {
+  font-size: 12px;
+}
+
+.date-category-idea {
+  font-size: 10px;
+  color: rgb(107, 104, 104);
+}
+
+.name-idea-owner b {
+  color: black;
+}
+
+.name-idea-owner b:hover {
+  color: rgb(255, 50, 71);
+  text-decoration: none;
+}
+
+.title-of-idea hr,
+.idea-list-page hr {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.interactive-icons {
+  text-align: center;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 10px;
+  cursor: pointer;
 }

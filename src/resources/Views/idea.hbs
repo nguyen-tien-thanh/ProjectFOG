@@ -2,7 +2,7 @@
     <h1 class="text-center">Idea Layout</h1>
 
 
-<div class="mt-4">
+<div class="mt-4 idea-list-page">
     <ul class="row">
         <div class="col-3 list-idea">
                 <table id="customers">
@@ -19,98 +19,56 @@
 
         <div style="display: block;" class="col-9 row content-idea">
             {{#each idea}}
-
-            
             <div class="col-12 mt-4">
-                {{!-- <div class="card">
-                    <div class="card-body">
-                        <a href="/idea/{{this.slug}}">
-                            <h5 class="card-title">{{this.title}}</h5>
-                        </a>
-                        <p class="card-text idea-detail">{{this.detail}}</p>
-                        Author: <p class="card-text">{{this.author}}</p>
-                        Category: <p class="card-text">{{this.type}}</p>
-                        File: <p class="card-text"><a href="../../idea/{{this.file}}">{{this.file}}</a></p>
-                        <a href="/idea/{{this.slug}}" class="btn btn-primary"> Detail </a>
-                        <br>
-
-                        <i class="far fa-thumbs-up like-icon" onclick="actOnIdea(event)" id="like-icon-{{this._id}}" 
-                            data-post-id="{{this._id }}" interactive="Like"></i>
-                        <i class="far fa-thumbs-down unlike-icon" onclick="actOnIdea(event)" id="unlike-icon-{{this._id}}" 
-                            data-post-id="{{this._id }}" interactive="Unlike"></i>
-                        <p><span id="ratings-{{this._id}}">{{ this.ratings }}</span> liked this</p>
-
-                        <form action="/idea/{{this._id}}/storeComment?_method=PUT" method="post"> 
-                            <label for="idea-comment">Write a comment:</label>
-                            <input class="form-control" type="text" style="" id="comment-user-name" name="userName">
-                            <text>content:</text><input class="form-control" type="text" name="content">
-                            <text>Cmt at:</text><input class="form-control" style="" id="comment-date" name="commentAt">
-
-                            <text>Idea id:</text><input type="" id="comment-idea-id" name="idea_id" value="{{this._id}}">
-
-                            <p>
-                                <input type="checkbox" style="" id="comment-annoymous" value="true" name="annoymous">
-                                Comment as anonymous
-                            </p>
-                            <input type="submit" value="Submit">
-                        </form> 
-                        
-
-                        <div class="card">
-                            <p>Comments: </p>
-                        {{#comment}}
-                            {{#if annoymous}}
-                            <input id="comment-posted-username" value="Annoymous" class="mt-4" disabled>
-                            {{else}}
-                            <input id="comment-posted-username" value="Name: {{userName}}" class="mt-4" disabled>
-                            {{/if}}
-                            <p>Content: {{content}}</p>
-                            <p>Comment at (Hour): {{moment commentAt format="HH:mm"}}</p>
-                            <p>Comment at (Date): {{moment commentAt format="DD-MM-YYYY"}}</p>
-                        {{/comment}}
-                        </div>
-                    </div>
-                </div> --}}
-                <div class="title-of-idea container-fluid idea-count">
+                <div class="title-of-idea idea-count">
                     <div class="row">
-                        <div class="col-0.5">
-                            <span class="avatar-for-idea"><img class="profile-img-idea" src="{{this.username.avatar}}" alt="avatar"></span>
+                        <div class="col-1">
+                            <a href="../user/{{this.username.slug}}">
+                                <span class="avatar-for-idea"><img class="profile-img-idea" src="{{this.username.avatar}}" alt="avatar"></span>
+                            </a>
                         </div>
-                        <div class="col-11.5">
-                            <b style="margin-bottom:0; padding-left:5px;">{{this.username.username}}</b>
-                        <p style="font-size: 10px; color:rgb(107, 104, 104); padding-left:5px;">{{moment this.createdAt format="DD-MM-YYYY on HH:mm"}}</p>
+                        <div class="col-10">
+                            <a class="name-idea-owner" href="../user/{{this.username.slug}}">
+                                <b style="margin-bottom:0;">{{this.username.username}}</b>
+                            </a>
+                            <p class="date-category-idea">
+                                {{moment this.createdAt format="DD-MM-YYYY on HH:mm"}}
+                                <a href="../category/{{this.categoryName.slug}}">
+                                    <span class="badge badge-pill badge-secondary badge-idea-list">{{this.categoryName.categoryName}}</span>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-1" style="right:20px">
+                            <a href="../idea/{{this.slug}}">
+                                <i class="fas fa-info-circle button-info-idea"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <p style="font-size:18px">{{this.title}}</p>
+                    <b><p style="font-size:18px">{{this.title}}</p></b>
                     <p style="font-size:14px">{{this.detail}}</p>
-                    <p><a id="file-check" href="../../idea/{{this.file}}">{{this.file}}</a></p>
-                    <p id="like-count"><i class="fas fa-heart" style="color:red"></i>
+                    <p><a id="file-check-{{this._id}}" name="file-check[]" class="file-check" href="../../idea/{{this.file}}">{{this.file}}</a>
+                    </p>
+                    <br>
+                    <hr>
+                    <p id="like-count" class="like-count"><i class="fas fa-heart"></i>
                         <span id="ratings-{{this._id}}">{{this.ratings}}</span> liked this idea
                     </p>
-                    <hr>
                     <div class="interactive-for-idea row">
-                        <div class="col-4">
-                            <button class="btn btn-block">
+                        <div class="col-4 interactive-icons">
                                 <i class="far fa-thumbs-up like-icon" onclick="actOnIdea(event)" id="like-icon-{{this._id}}" 
                                     data-post-id="{{this._id }}" interactive="Like"> Like</i>
-                            </button>
                         </div>
-                        <div class="col-4">
-                            <button class="btn btn-block">
+                        <div class="col-4 interactive-icons">
                             <i class="far fa-thumbs-down unlike-icon" onclick="actOnIdea(event)" id="unlike-icon-{{this._id}}" 
                                 data-post-id="{{this._id }}" interactive="Unlike"> Unlike</i>
-                            </button>
                         </div>
-                        <div class="col-4">
-                            <button class="btn btn-block">
-                            <div id="show-content-idea-{{this._id}}" class="show-content-of-idea">
-                                <p><i id="comment-btn" class="far fa-comment"></i> Comments</p>
-                            </div>
-                            </button>
+                        <div class="col-4 interactive-icons">
+                                <i class="far fa-comment" id="comment-show-btn-{{this._id}}"
+                                    onclick="showContentIdea(event)" data-post-id="{{this._id}}"> Comments</i>
                         </div>
                     </div>
-                    <div id="commentIdea-{{this._id}}" class="comment-for-idea">
+                    <div id="comment-idea-{{this._id}}" class="comment-for-idea">
                         <hr>
                         {{#comment}}
                             {{#if annoymous}}
@@ -134,7 +92,7 @@
                             <span><img class="profile-img-input-comment" src="{{this.username.avatar}}" alt="avatar"></span>
                             <input class=" input-comment" placeholder="Write comment..." type="text" name="content">
                             <p style="font-size: 12px; margin-left:35px">
-                                <input type="checkbox" style="widh:10px; height:10px" id="comment-annoymous" value="true" name="annoymous">
+                                <input type="checkbox" style="width:10px; height:10px" id="comment-annoymous" value="true" name="annoymous">
                                 Comment as anonymous
                             </p>
                             {{!-- ====================== For send email comment HIDDEN form ====================================--}}
@@ -166,15 +124,6 @@
         <li class="page-item next-page"><a class="idea-page-link" href="#">Next</a></li>
     </div>
 </div>
-
-    <script>
-        var showContent= document.getElementById('show-content-idea')
-        var commentIdea=document.getElementById('commentIdea')
-        showContent.onclick=function(){
-            commentIdea.setAttribute("style", "display:block")
-            document.getElementById("comment-btn").setAttribute("class", "fas fa-comment")
-        }
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
@@ -300,39 +249,55 @@
             updateIdeaRatings[action](postId);
             axios.post('/idea/' + postId + '/interactive?_method=PUT', { action: action });
         };
-    </script>
 
-    <script>
+        // Onclick button Comments to show comments of each idea
+        var showContentIdea = function (){
+            var postId = event.target.dataset.postId
+            var commentIdea = document.getElementById('comment-idea-'+ postId)
+            commentIdea.setAttribute("style", "display:block")
+            var commentShowBtn = document.getElementById('comment-show-btn-'+ postId)
+            commentShowBtn.setAttribute("class", "fa fa-comment")
+        }
 
-        //Check type of file uploaded to import icon 
-        var imgShow = '<img class="idea-img" src="/idea/{{idea.file}}" alt="{{this.title}}" style="width:100%; height:auto;  align-items: center;">'
-        var pdfShow = '<i class="fa fa-file-powerpoint"></i> {{this.file}}'
-        var wordShow = '<i class="fa fa-file-word"></i> {{idea.file}}'
-        var excelShow = '<i class="fa fa-file-xls"></i> {{this.file}}'
-        var fileCheck = document.getElementById("file-check").innerHTML
-        var fileName;
-        var fileLastName;
-        fileName = fileCheck.split('.')
-        fileLastName = fileName[fileName.length -1]
+            //Check type of file uploaded to import icon 
+            var imgShow = '<img class="idea-img" src="/idea/{{idea.file}}" alt="{{this.title}}" style="width:100%; height:auto;  align-items: center;">'
+            var pdfShow = '<i class="fa fa-file-powerpoint"></i> {{this.file}}'
+            var wordShow = '<i class="fa fa-file-word"></i> {{idea.file}}'
+            var excelShow = '<i class="fa fa-file-xls"></i> {{this.file}}'
 
-        if (fileLastName == 'doc' || fileLastName == 'docx' || fileLastName == 'txt'){
-            document.getElementById("file-check").innerHTML = wordShow;
-        }
-        else if (fileLastName == 'xls'){
-            document.getElementById("file-check").innerHTML = excelShow;
-        }
-        else if (fileLastName == 'jpg' || fileLastName=='jpeg' || fileLastName== 'png' ){
-            document.getElementById("file-check").innerHTML = imgShow;
-        }
-        else if (fileLastName == 'pdf') {
-            document.getElementById("file-check").innerHTML = pdfShow
-        }
-        else{
-            document.getElementById("file-check").innerHTML = ''
-        }
-    </script>
+            var fileCheck = document.querySelectorAll('.file-check')
 
-    <script>
+            var file;
+            var fileName;
+            var fileLastName;
+            {{!-- for(let i = 0; i < fileCheck.length; i++)
+            {
+                file = fileCheck[i].innerHTML
+                fileName = file.split('.')
+                fileLastName = fileName[fileName.length -1]
+                console.log(fileLastName)
+
+                if (fileLastName == 'doc' || fileLastName == 'docx' || fileLastName == 'txt'){
+                    fileCheck[i].innerHTML = wordShow;
+                }
+                else if (fileLastName == 'xls'){
+                    fileCheck[i].innerHTML = excelShow;
+                }
+                else if (fileLastName == 'jpg' || fileLastName=='jpeg' || fileLastName== 'png' ){
+                    fileCheck[i].getAttribute('href')
+                    fileCheck[i].innerHTML = imgShow;
+                }
+                else if (fileLastName == 'pdf') {
+                    fileCheck[i].innerHTML = pdfShow
+                }
+                else{
+                    fileCheck[i].innerHTML = ''
+                }
+            }
+ --}}
+            
+
+        // Create function page for 5 ideas on 1 page
         function getPageList(totalPages, page, maxLength) {
             function range(start, end) {
                 return Array.from(Array(end - start + 1), (_, i) => i + start);
