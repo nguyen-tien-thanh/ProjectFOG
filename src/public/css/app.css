@@ -1587,6 +1587,30 @@ img.img-center {
 #customers tr:hover {
   background-color: #ddd; }
 
+.title-of-idea .col-9 {
+  margin-left: -15px; }
+
+.title-text-idea p {
+  margin-left: 8px; }
+
+.content-text-idea {
+  margin-left: 8px; }
+
+.like-count-idea {
+  margin-left: 8px; }
+
+.file-for-idea {
+  margin-left: 8px; }
+
+.profile-img-for-comment-idealist {
+  margin-left: 8px; }
+
+.profile-img-input-comment-idealist {
+  margin-left: 8px; }
+
+.input-comment-idealist {
+  margin-left: -15px; }
+
 #customers th {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -1690,6 +1714,97 @@ img.img-center {
   flex-direction: column;
   padding: 10px;
   cursor: pointer; }
+
+.dropdown-setting-idealist {
+  position: relative;
+  display: inline-block; }
+
+.btn-setting-dropdown-idealist {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 0;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer; }
+
+.dropdown-content-setting-idealist a {
+  color: black;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin-left: -32%; }
+
+.dropdown-content-setting-idealist {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  left: -35px; }
+
+.dropdown-setting-idealist:hover .dropdown-content-setting-idealist {
+  display: block; }
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .title-of-idealist {
+    width: 115%;
+    margin-left: -7%; } }
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .list-idea {
+    display: none; }
+  .title-of-idealist {
+    width: 155%;
+    margin-left: -5%; } }
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .list-idea {
+    display: none; }
+  .title-of-idealist {
+    width: 166%;
+    margin-left: -9%; }
+  .title-of-idealist .col-9 {
+    margin-left: -1px; }
+  .write-comment-idealist {
+    margin-left: 20px;
+    max-width: 82%; } }
+
+@media only screen and (min-width: 321px) and (max-width: 599px) {
+  .list-idea {
+    display: none; }
+  .title-of-idealist {
+    width: 180%;
+    margin-left: -12%; }
+  .title-of-idealist .col-9 {
+    margin-left: 12px;
+    max-width: 68%; }
+  .title-of-idealist .username-idealist {
+    font-size: 12px; }
+  .write-comment-idealist {
+    margin-left: 27px;
+    max-width: 82%; } }
+
+@media only screen and (max-width: 320px) {
+  .list-idea {
+    display: none; }
+  .title-of-idealist {
+    width: 202%;
+    margin-left: -17%; }
+  .title-of-idealist .col-9 {
+    margin-left: 3px; }
+  .title-of-idealist .col-9 {
+    margin-left: 10px;
+    max-width: 62%; }
+  .title-of-idealist .username-idealist {
+    font-size: 12px; }
+  .write-comment-idealist {
+    margin-left: 27px;
+    max-width: 82%; } }
 
 .title-of-idea {
   background-color: #fff;
@@ -1903,3 +2018,20 @@ body li {
 
 table tr:nth-child(2n) {
   background: lightgrey; }
+
+@media only screen and (max-width: 320px) {
+  .list-idea {
+    display: none; }
+  .title-of-idealist {
+    width: 202%;
+    margin-left: -17%; }
+  .title-of-idealist .col-9 {
+    margin-left: 3px; }
+  .title-of-idealist .col-9 {
+    margin-left: 10px;
+    max-width: 62%; }
+  .title-of-idealist .username-idealist {
+    font-size: 10px; }
+  .write-comment-idealist {
+    margin-left: 27px;
+    max-width: 74%; } }
