@@ -66,7 +66,7 @@
 										<h6 class="mb-0">Email</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="email" class="form-control" name="email" value="{{user.email}}">
+										<input type="text" class="form-control" name="email" value="{{user.email}}">
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -82,7 +82,14 @@
 										<h6 class="mb-0">Role</h6>
 									</div>
 									<div class="col-sm-9 text-secondary">
-										<input type="text" class="form-control" id="role-choose" name="role" value="{{user.role}}" disabled>
+										<select name="role" id="role-choose" class="form-control" disabled>
+											<option disabled>-- Select role --</option>
+											<option disabled>____________</option>
+											<option selected value="Staff">Staff</option>
+											<option value="QAC">QAC</option>
+											<option value="Admin">Admin</option>
+										</select>
+										{{!-- <input type="text" class="form-control" id="role-choose" name="role" value="{{user.role}}" disabled> --}}
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -167,8 +174,7 @@
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
 		var roleChoose = $('#role-choose')
-		console.log(roleChoose)
-		if ( '{{userLogin.role}}' == 'Admin' || '{{userLogin._id}}' == '{{user._id}}'){
+		if ( '{{userLogin.role}}' == 'Admin'){
 			roleChoose.prop("disabled", false);
 		}
 	})

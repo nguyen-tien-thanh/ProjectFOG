@@ -60,10 +60,14 @@ class SiteController {
         var username = req.body.username
         var password = req.body.password
         User.register(new User({ username: username }),
-                password, function (err, user) {
+                req.body.password, function (err, user) {
             if (err) {
                 console.log(err);
-                return res.redirect("register");
+                return res.render('register', {
+                    title: 'Register again',
+                    layout: 'intropage',
+                    failRegister: "This username had been created"
+                })
             }
     
             passport.authenticate("local")(
@@ -73,7 +77,8 @@ class SiteController {
                             res.render('index', { 
                                 title: 'Homepage',
                                 layout: 'intropage',
-                                userLogin: mongooseToObject(user)
+                                userLogin: mongooseToObject(user),
+                                successRegister: "Welcome to fearOG !"
                             });
                         })
             });

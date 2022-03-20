@@ -201,4 +201,13 @@
     document.getElementById("disagreeButton").onclick = function () {
         document.getElementById("vehicle1").checked = false;
     };
+    
+     document.addEventListener('DOMContentLoaded', function(){
+         if( '{{failRegister}}' ){
+             alert("{{failRegister}}");
+         } else if ('{{successRegister}}'){
+             console.log(123)
+             alert("{{successRegister}}")
+         }
+     })
 </script>

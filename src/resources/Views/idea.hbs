@@ -39,10 +39,10 @@
                             </p>
                         </div>
                         <div class="col-2">
-                            <a class="button-action-idea" href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}">
+                            <a href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}">
                                 <i class="fa fa-trash button-info-idea"></i>
                             </a>
-                            <a class="button-action-idea" class="setting-idea-btn" href="/idea/{{this._id}}/edit">
+                            <a class="setting-idea-btn" href="/idea/{{this._id}}/edit">
                                 <i class="fa fa-wrench button-info-idea"></i>
                             </a>
                             <a href="../idea/{{this.slug}}">
@@ -114,8 +114,6 @@
                             
                 </div>
             </div>
-
-
             {{/each}}
         </div>
     </ul>
@@ -179,7 +177,6 @@
             var button = $(idea.relatedTarget)
             ideaId = button.data('id')
             })
-            console.log(ideaId)
             //When delete idea btn clicked
             var btnDeleteIdea = document.getElementById('btn-delete-idea')
             btnDeleteIdea.onclick = function(){
