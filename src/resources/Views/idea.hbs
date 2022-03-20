@@ -39,6 +39,7 @@
                             </p>
                         </div>
                         <div class="col-2">
+                            {{#ifCond this.username._id '==' ../userLogin._id}}
                             <div class="dropdown-setting-idealist">
                                 <button class="btn-setting-dropdown-idealist">...</button>
                                 <div class="dropdown-content-setting-idealist">
@@ -53,6 +54,11 @@
                                     </a>
                                 </div>
                             </div>
+                            {{else}}
+                            <a href="../idea/{{this.slug}}">
+                                <i class="fas fa-info-circle button-info-idea"></i>
+                            </a>
+                            {{/ifCond}}
                         </div>
                     </div>
 
