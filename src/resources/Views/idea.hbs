@@ -20,7 +20,7 @@
         <div style="display: block;" class="col-9 row content-idea">
             {{#each idea}}
             <div class="col-12 mt-4">
-                <div class="title-of-idea idea-count">
+                <div class="title-of-idea title-of-idealist idea-count">
                     <div class="row">
                         <div class="col-1">
                             <a href="../user/{{this.username.slug}}">
@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-9">
                             <a class="name-idea-owner" href="../user/{{this.username.slug}}">
-                                <b style="margin-bottom:0;">{{this.username.username}}</b>
+                                <b class="username-idealist" style="margin-bottom:0;">{{this.username.username}}</b>
                             </a>
                             <p class="date-category-idea">
                                 {{moment this.createdAt format="DD-MM-YYYY on HH:mm"}}
@@ -39,15 +39,20 @@
                             </p>
                         </div>
                         <div class="col-2">
-                            <a class="button-action-idea" href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}">
-                                <i class="fa fa-trash button-info-idea"></i>
-                            </a>
-                            <a class="button-action-idea" class="setting-idea-btn" href="/idea/{{this._id}}/edit">
-                                <i class="fa fa-wrench button-info-idea"></i>
-                            </a>
-                            <a href="../idea/{{this.slug}}">
-                                <i class="fas fa-info-circle button-info-idea"></i>
-                            </a>
+                            <div class="dropdown-setting-idealist">
+                                <button class="btn-setting-dropdown-idealist">...</button>
+                                <div class="dropdown-content-setting-idealist">
+                                    <a class="button-action-idea" href="" data-toggle="modal" data-target="#delete-idea" data-id="{{this._id}}">
+                                        <i class="fa fa-trash button-info-idea"></i>
+                                    </a>
+                                    <a class="button-action-idea" class="setting-idea-btn" href="/idea/{{this._id}}/edit">
+                                        <i class="fa fa-wrench button-info-idea"></i>
+                                    </a>
+                                    <a href="../idea/{{this.slug}}">
+                                        <i class="fas fa-info-circle button-info-idea"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -99,7 +104,7 @@
                             <div class="col-1">
                                 <span><img class="profile-img-input-comment profile-img-input-comment-idealist" src="{{this.username.avatar}}" alt="avatar"></span>
                             </div>
-                            <div class="col-11">
+                            <div class="col-11 write-comment-idealist">
                                 <input class=" input-comment input-comment-idealist" placeholder="Write comment..." type="text" name="content">
                             </div>
                             </div>

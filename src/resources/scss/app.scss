@@ -52,3 +52,28 @@ body li {
 table tr:nth-child(2n) {
   background: lightgrey;
 }
+
+
+@media only screen and (max-width:320px){
+  .list-idea{
+    display: none;
+  }
+  .title-of-idealist{
+    width: 202%;
+    margin-left: -17%;
+  }
+  .title-of-idealist .col-9{
+    margin-left: 3px;
+  }
+  .title-of-idealist .col-9{
+    margin-left: 10px;
+    max-width: 62%;
+  }
+  .title-of-idealist .username-idealist{
+    font-size: 10px;
+  }
+  .write-comment-idealist{
+    margin-left: 27px;
+    max-width: 74%;
+  }
+}

@@ -175,3 +175,125 @@
   padding: 10px;
   cursor: pointer;
 }
+
+.dropdown-setting-idealist {
+  position: relative;
+  display: inline-block;
+}
+
+.btn-setting-dropdown-idealist{
+  background-color: rgb(255, 255, 255);
+  border:none;
+  color: black;
+  padding: 0;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer;
+}
+.dropdown-content-setting-idealist a {
+  color: black;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin-left: -32%;
+}
+.dropdown-content-setting-idealist{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  left: -35px;
+  
+}
+.dropdown-setting-idealist:hover .dropdown-content-setting-idealist{
+  display: block;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px){
+  .title-of-idealist{
+    width: 115%;
+    margin-left: -7%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+ .list-idea{
+   display: none;
+ }
+ .title-of-idealist{
+  width: 155%;
+  margin-left: -5%;
+ }
+}
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .list-idea{
+    display: none;
+  }
+  .title-of-idealist{
+    width: 166%;
+    margin-left: -9%;
+  }
+  .title-of-idealist .col-9{
+    margin-left: -1px;
+  }
+  .write-comment-idealist{
+    margin-left: 20px;
+    max-width: 82%;
+  }
+}
+
+//reponsive for mobile
+@media only screen and (min-width: 321px) and (max-width: 599px) {
+  .list-idea{
+    display: none;
+  }
+  .title-of-idealist{
+    width: 180%;
+    margin-left: -12%;
+  }
+  .title-of-idealist .col-9{
+    margin-left: 12px;
+    max-width: 68%;
+  }
+  .title-of-idealist .username-idealist{
+    font-size: 12px;
+  }
+  .write-comment-idealist{
+    margin-left: 27px;
+    max-width: 82%;
+  }
+}
+
+
+@media only screen and (max-width:320px){
+  .list-idea{
+    display: none;
+  }
+  .title-of-idealist{
+    width: 202%;
+    margin-left: -17%;
+  }
+  .title-of-idealist .col-9{
+    margin-left: 3px;
+  }
+  .title-of-idealist .col-9{
+    margin-left: 10px;
+    max-width: 62%;
+  }
+  .title-of-idealist .username-idealist{
+    font-size: 12px;
+  }
+  .write-comment-idealist{
+    margin-left: 27px;
+    max-width: 82%;
+  }
+}
+  
+
+
+
