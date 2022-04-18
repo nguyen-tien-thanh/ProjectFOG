@@ -18,7 +18,7 @@ const sendMail = ( subject, text, author, category) => {
     const mailOptions = {
         // from: 'nguyentienthanh.tgdd@gmail.com',
         from: 'nguyentienthanh.tgdd@gmail.com',
-        to: 'hoanghiep3411@gmail.com',
+        to: 'thanh.kira_flynn@yahoo.com',
         subject: 'Notification Email',
         text,
         html: 
