@@ -2,7 +2,7 @@
   "name": "webenterprise",
   "version": "1.0.0",
   "description": "Group 38 Greenwich Project",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "nodemon --inspect src/main.js",
     "watch": "node-sass --watch src/resources/scss/app.scss src/public/css/app.css",
