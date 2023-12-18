@@ -2,7 +2,7 @@
   "name": "webenterprise",
   "version": "1.0.0",
   "description": "Group 38 Greenwich Project",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "nodemon --inspect src/main.js",
     "watch": "node-sass --watch src/resources/scss/app.scss src/public/css/app.css",
@@ -35,7 +35,6 @@
     "form-data": "^4.0.0",
     "formidable": "^2.0.1",
     "handlebars-helpers": "^0.10.0",
-    "jade": "^1.11.0",
     "jquery": "^3.6.0",
     "mailgun.js": "^5.0.1",
     "method-override": "^3.0.0",
