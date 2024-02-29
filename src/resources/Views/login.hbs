@@ -1,13 +1,12 @@
 <div class="sign-in-page">
-        
-    <form class="sign-in" method="post" action="/validation" name="loginform">
+
+    <form class="sign-in" style="margin-top: 70px;" method="post" action="/validation" name="loginform">
         <h3>Login Here</h3>
         <label for="username">Username</label>
         <div class="username-icon">
             <i class="fa fa-check login-success-icon" id="username-success-icon" hidden></i>
             <i class="fa fa-exclamation-triangle login-fail-icon" id="username-fail-icon" hidden></i>
-            <input type="text" placeholder="Username" onkeyup="usernameCheck()"
-                id="username" name="username">
+            <input type="text" placeholder="Username" onkeyup="usernameCheck()" id="username" name="username">
         </div>
         <p class="notification-all" id="username-noti" display="none"></p>
 
@@ -15,32 +14,32 @@
         <div class="password-icon">
             <i class="fa fa-check login-success-icon" id="password-success-icon" hidden></i>
             <i class="fa fa-exclamation-triangle login-fail-icon" id="password-fail-icon" hidden></i>
-            <input type="password" placeholder="Password" onkeyup="passwordCheck()"
-                id="password"  name="password" required>
+            <input type="password" placeholder="Password" onkeyup="passwordCheck()" id="password" name="password"
+                autocomplete="false" required>
         </div>
         <p class="notification-all" id="password-noti" display="none"></p>
 
-{{!-- Example account of website --}}
-{{!-- This part will be delete in real process --}}
-    <div style="background-color:rgba(41, 41, 41, 0.1);font-size:8px">
+        {{!-- Example account of website --}}
+        {{!-- This part will be delete in real process --}}
+        <div style="background-color:rgba(41, 41, 41, 0.1);font-size:8px">
             Example account (Username - password)<br>
             Role Admin: <strong>admin - admin</strong> <br>
             Role QAC: <strong>qacoordinator - qacoordinator</strong><br>
             Role Staff: <strong>staff - staff</strong><br>
-    </div>
-{{!-- ---------------------------------------- --}}
+        </div>
+        {{!-- ---------------------------------------- --}}
         <button type="button" class="log-in-button submit" id="login-btn">Log In</button>
 
         <div class="social">
-          <div class="go"><i class="fab fa-google"></i>  Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+            <div class="go"><i class="fab fa-google"></i> Google</div>
+            <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
         </div>
     </form>
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function (){
-        if( '{{requireLogin}}') {
+    document.addEventListener("DOMContentLoaded", function () {
+        if ('{{requireLogin}}') {
             alert("{{requireLogin}}");
         }
     })
@@ -50,31 +49,31 @@
     var usernameNofi = document.getElementById("username-noti")
     var usernameSuccessIcon = document.getElementById("username-success-icon")
     var usernameFailIcon = document.getElementById("username-fail-icon")
-    function usernameCheck(){
+    function usernameCheck() {
         var usernameValue = usernameInput.value;
-        
-        if ( usernameValue.length <= 0 ){
+
+        if (usernameValue.length <= 0) {
             usernameNofi.innerHTML = "Please fill this field with your username"
-            usernameInput.setAttribute('style','border:1px solid red;padding:0 30px')
-            usernameSuccessIcon.setAttribute('hidden','hidden')
+            usernameInput.setAttribute('style', 'border:1px solid red;padding:0 30px')
+            usernameSuccessIcon.setAttribute('hidden', 'hidden')
             usernameFailIcon.removeAttribute('hidden')
         }
-        else if ( !usernameValue.match(/^[A-Za-z0-9_.@]+$/)){
+        else if (!usernameValue.match(/^[A-Za-z0-9_.@]+$/)) {
             usernameNofi.innerHTML = "Please not fill this field with special dorms"
-            usernameInput.setAttribute('style','border:1px solid red;padding:0 30px')
-            usernameSuccessIcon.setAttribute('hidden','hidden')
+            usernameInput.setAttribute('style', 'border:1px solid red;padding:0 30px')
+            usernameSuccessIcon.setAttribute('hidden', 'hidden')
             usernameFailIcon.removeAttribute('hidden')
         }
-        else if ( usernameValue.length <5 ){
+        else if (usernameValue.length < 5) {
             usernameNofi.innerHTML = "Username needs at least 5 characters"
-            usernameInput.setAttribute('style','border:1px solid red;padding:0 30px')
-            usernameSuccessIcon.setAttribute('hidden','hidden')
+            usernameInput.setAttribute('style', 'border:1px solid red;padding:0 30px')
+            usernameSuccessIcon.setAttribute('hidden', 'hidden')
             usernameFailIcon.removeAttribute('hidden')
         }
         else {
             usernameNofi.innerHTML = ""
-            usernameInput.setAttribute('style','border:2px solid green;padding:0 30px')
-            usernameFailIcon.setAttribute('hidden','hidden')
+            usernameInput.setAttribute('style', 'border:2px solid green;padding:0 30px')
+            usernameFailIcon.setAttribute('hidden', 'hidden')
             usernameSuccessIcon.removeAttribute('hidden')
         }
     }
@@ -84,38 +83,38 @@
     var passwordNofi = document.getElementById("password-noti")
     var passwordSuccessIcon = document.getElementById("password-success-icon")
     var passwordFailIcon = document.getElementById("password-fail-icon")
-    function passwordCheck(){
+    function passwordCheck() {
         var passwordValue = passwordInput.value;
-        
-        if ( passwordValue.length <= 0 ){
+
+        if (passwordValue.length <= 0) {
             passwordNofi.innerHTML = "Please fill this field with your password"
-            passwordInput.setAttribute('style','border:1px solid red;padding:0 30px')
-            passwordSuccessIcon.setAttribute('hidden','hidden')
+            passwordInput.setAttribute('style', 'border:1px solid red;padding:0 30px')
+            passwordSuccessIcon.setAttribute('hidden', 'hidden')
             passwordFailIcon.removeAttribute('hidden')
         }
-        else if ( !passwordValue.match(/^[A-Za-z0-9_.@]+$/)){
+        else if (!passwordValue.match(/^[A-Za-z0-9_.@]+$/)) {
             passwordNofi.innerHTML = "Please not fill this field with special dorms"
-            passwordInput.setAttribute('style','border:1px solid red;padding:0 30px')
-            passwordSuccessIcon.setAttribute('hidden','hidden')
+            passwordInput.setAttribute('style', 'border:1px solid red;padding:0 30px')
+            passwordSuccessIcon.setAttribute('hidden', 'hidden')
             passwordFailIcon.removeAttribute('hidden')
         }
-        else if ( passwordValue.length <5 ){
+        else if (passwordValue.length < 5) {
             passwordNofi.innerHTML = "Password needs at least 5 characters"
-            passwordInput.setAttribute('style','border:1px solid red;padding:0 30px')
-            passwordSuccessIcon.setAttribute('hidden','hidden')
+            passwordInput.setAttribute('style', 'border:1px solid red;padding:0 30px')
+            passwordSuccessIcon.setAttribute('hidden', 'hidden')
             passwordFailIcon.removeAttribute('hidden')
         }
         else {
             passwordNofi.innerHTML = ""
-            passwordInput.setAttribute('style','border:2px solid green;padding:0 30px')
-            passwordFailIcon.setAttribute('hidden','hidden')
+            passwordInput.setAttribute('style', 'border:2px solid green;padding:0 30px')
+            passwordFailIcon.setAttribute('hidden', 'hidden')
             passwordSuccessIcon.removeAttribute('hidden')
-            
+
             //After checking for all 
             var loginBtn = document.getElementById('login-btn')
-            loginBtn.setAttribute('type','submit')
+            loginBtn.setAttribute('type', 'submit')
         }
     }
-    
+
 
 </script>

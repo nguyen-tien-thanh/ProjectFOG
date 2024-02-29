@@ -25,15 +25,8 @@
               </span>
             </div>
             <label for="username"></label>
-            <input
-              class="form-control input-signup"
-              type="text"
-              placeholder="Username"
-              id="username"
-              name="username"
-              pattern="[a-z0-9._]{5,}$"
-              title="User name needs at least 5 characters"
-            />
+            <input class="form-control input-signup" type="text" placeholder="Username" id="username" name="username"
+              pattern="[a-z0-9._]{5,}$" title="User name needs at least 5 characters" />
           </div>
           <!-- form-group// -->
 
@@ -42,41 +35,23 @@
               <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
             </div>
             <label for="password"></label>
-            <input
-              class="form-control input-signup"
-              type="password"
-              placeholder="Create password"
-              id="password"
-              name="password"
-              pattern="[a-z0-9]{5,}$"
-              title="Password needs at least 5 characters"
-            />
+            <input class="form-control input-signup" type="password" placeholder="Create password" id="password"
+              name="password" pattern="[a-z0-9]{5,}$" title="Password needs at least 5 characters"
+              autocomplete="false" />
           </div>
           <!-- form-group// -->
 
           <div class="checkbox-terms" style="margin-bottom: 16px">
-            <input
-              type="checkbox"
-              id="vehicle1"
-              name="vehicle1"
-              value="Bike"
-              required
-            />
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" required />
             <label1 class="text-white" for="vehicle1">
               I accept the
-              <a
-                style="cursor: pointer"
-                class="link-registerpage"
-                data-toggle="modal"
-                data-target="#termsModal"
-              >Terms and Conditions</a></label1>
+              <a style="cursor: pointer" class="link-registerpage" data-toggle="modal" data-target="#termsModal">Terms
+                and Conditions</a>
+            </label1>
           </div>
 
           <div class="form-group">
-            <button
-              type="submit"
-              class="btn btn-register btn-block register-button"
-            > Create Account </button>
+            <button type="submit" class="btn btn-register btn-block register-button"> Create Account </button>
           </div>
           <!-- form-group// -->
           <p class="text-center text-white">Have an account?
@@ -88,15 +63,8 @@
     </div>
     <!-- card.// -->
 
-    <div
-      style="top: auto"
-      class="modal fade"
-      id="termsModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="Terms and conditions"
-      aria-hidden="true"
-    >
+    <div style="top: auto" class="modal fade" id="termsModal" tabindex="-1" role="dialog"
+      aria-labelledby="Terms and conditions" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
@@ -165,9 +133,9 @@
 
             <p>This Agreement shall begin on the date hereof. Our Terms and
               Conditions were created with the help of the
-              <a
-                href="https://www.privacypolicies.com/blog/sample-terms-conditions-template/"
-              >Terms And Conditions Template</a>.</p>
+              <a href="https://www.privacypolicies.com/blog/sample-terms-conditions-template/">Terms And Conditions
+                Template</a>.
+            </p>
 
             <p>Parts of this website offer an opportunity for users to post and
               exchange opinions and information in certain areas of the website.
@@ -345,18 +313,8 @@
           </div>
 
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="agreeButton"
-              data-dismiss="modal"
-            >Agree</button>
-            <button
-              type="button"
-              class="btn btn-default"
-              id="disagreeButton"
-              data-dismiss="modal"
-            >Disagree</button>
+            <button type="button" class="btn btn-primary" id="agreeButton" data-dismiss="modal">Agree</button>
+            <button type="button" class="btn btn-default" id="disagreeButton" data-dismiss="modal">Disagree</button>
           </div>
         </div>
       </div>
@@ -367,10 +325,15 @@
 
 <script language="javascript">
   document.getElementById("agreeButton").onclick = function () {
-  document.getElementById("vehicle1").checked = true; };
+    document.getElementById("vehicle1").checked = true;
+  };
   document.getElementById("disagreeButton").onclick = function () {
-  document.getElementById("vehicle1").checked = false; };
-  document.addEventListener('DOMContentLoaded', function(){ if( '{{failRegister}}'
-  ){ alert("{{failRegister}}"); } else if ('{{successRegister}}'){
-  console.log(123) alert("{{successRegister}}") } })
+    document.getElementById("vehicle1").checked = false;
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    if ('{{failRegister}}'
+    ) { alert("{{failRegister}}"); } else if ('{{successRegister}}') {
+      alert("{{successRegister}}")
+    }
+  })
 </script>
